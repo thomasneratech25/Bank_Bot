@@ -174,7 +174,7 @@ class Bank_Bot(Automation):
 
                     # Detect "Something went wrong" popup
                     try:
-                        if page.locator("h2.MuiTypography-h6:text('Something went wrong')").is_visible(timeout=2000):
+                        if page.locator("h2.MuiTypography-h6:text('Something went wrong')").is_visible(timeout=1500):
                             page.get_by_text("OK").click()
                             print("Resumed after inactivity.")
                     except:
@@ -182,7 +182,7 @@ class Bank_Bot(Automation):
 
                     # Detect "You have been inactive" popup
                     try:
-                        if page.locator("//h2[normalize-space()='You have been inactive for too long']").is_visible(timeout=2000):
+                        if page.locator("//h2[normalize-space()='You have been inactive for too long']").is_visible(timeout=1500):
                             page.click("//span[normalize-space()='Continue']")
                             print("Resumed after inactivity.")
                     except:
@@ -190,7 +190,7 @@ class Bank_Bot(Automation):
 
                     # Detect "For your online security" logout popup
                     try:
-                        if page.locator("//h2[contains(text(),'For your online security, you have been logged out')]").is_visible(timeout=3000):
+                        if page.locator("//h2[contains(text(),'For your online security, you have been logged out')]").is_visible(timeout=1500):
                             print("⚠️ Session expired. Restarting browser...")
                             page.locator("//span[normalize-space()='OK']").click(timeout=0)
                             browser.close()

@@ -86,9 +86,134 @@ class Automation:
 # Bank Bot
 class Bank_Bot(Automation):
 
-    last_seen = None
+    LAST_SEEN_FILE = "last_seen.txt"
 
-    # SCB Anywhere (Web)
+    @classmethod
+    def load_last_seen_list(cls):   
+        """
+        Load up to 20 stored transactions from last_seen.txt
+        newest → oldest
+        """
+        if not os.path.exists(cls.LAST_SEEN_FILE):
+            return []
+
+        with open(cls.LAST_SEEN_FILE, "r", encoding="utf-8") as f:
+            lines = [x.strip() for x in f.readlines() if x.strip()]
+
+        return lines[:20]
+
+    @classmethod
+    def save_last_seen(cls, new_tx):
+        """
+        Insert a new transaction at the top and keep newest 20 only.
+        """
+        max_items = 20
+
+        items = cls.load_last_seen_list()
+
+        if new_tx not in items:
+            items.insert(0, new_tx)
+
+        items = items[:max_items]
+
+        with open(cls.LAST_SEEN_FILE, "w", encoding="utf-8") as f:
+            f.write("\n".join(items))
+    
+    # ---------- Detection helpers ----------
+    
+    # Extract Transactions
+    @classmethod
+    def extract_page_transactions(cls, page):
+
+        """
+        Extracts collapsed transaction data only.
+        Each transaction = 12 rows.
+        First transaction starts at index 45.
+        """
+
+        # Extract all the rows (transfer name, account number, amount, date)
+        # Count total rows of Transactions
+        rows = page.locator("//p[contains(@class,'MuiTypography-body1')]")
+        row_count = rows.count()
+        
+        # why - 45? to remove the top uneccessary rows, first transactions rows element is start from 46 (in html view)
+        # HTML View = 46, code view = 45
+        # Rows before 45 are header / non-transaction
+        usable = row_count - 45
+        if usable <= 0:
+            return []
+
+        # Limit to 20 because SCB only shows max 20 transactions per page then divide by 12, to know how many new transaction
+        tx_count = min(20, usable // 12)
+        
+        # Use to store transaction
+        transactions = []
+
+        # the reason put + 1, let said tx_count = 4, it will only loop 3, thats why have to + 1 to make it loop 4 times
+        for n in range(1, tx_count + 1):
+            start = 45 + (n - 1) * 12
+            end = start + 12
+            
+            # for loop each element start and end, extract text and store in tx_block
+            tx_block = [rows.nth(i).inner_text().strip() for i in range(start, end)]
+            # print("TX", n, tx_block)
+
+            date = tx_block[0]       # 09/12/2025
+            time = tx_block[1]       # 10:11
+            code = tx_block[2]       # FE / X1 / X2 / etc.
+            note = tx_block[3]       # รับโอนจาก / Transfer from...
+            amount = tx_block[4]     # 100.00 THB    
+
+            # Ignore FE, X2, or any other codes you list
+            ignore_codes = ["FE", "X2"]
+            if code in ignore_codes:
+                # print(f"⚠️ Ignored {code} transaction")
+                continue
+
+            signature = f"{date} {time}|{note}|{amount}"
+            transactions.append(signature)
+
+        return transactions
+    
+    # Detect/Record the last seen of Transactions
+    @classmethod
+    def detect_new_transactions(cls, page):
+
+        tx_list = cls.extract_page_transactions(page)  # newest → oldest
+        if not tx_list:
+            return []
+
+        # Load history (newest → oldest)
+        history = cls.load_last_seen_list()
+        new_tx = []
+
+        #============ Not Upload Old Transaction at the first time
+        if not history:
+            cls.save_last_seen(tx_list[0])
+            print(f"Initialized last_seen history with newest: {tx_list[0]}")
+            return []
+
+        for tx in tx_list:
+            if tx not in history:
+                new_tx.append(tx)
+            else:
+                break
+
+        # #============ Upload Old Transaction at the first time
+        # if not history:
+        #     # Send ALL transactions (oldest → newest)
+        #     all_old_tx = list(reversed(tx_list))
+
+        #     for tx in all_old_tx:
+        #         print("🆕 FIRST RUN TX:", tx)
+
+        #     # Save newest only (so next run works normally)
+        #     cls.save_last_seen(tx_list[0])
+        #     return all_old_tx
+
+        cls.save_last_seen(tx_list[0])
+        return list(reversed(new_tx))
+
     @classmethod
     def scb_Anywhere_web(cls):
         with sync_playwright() as p: 
@@ -104,7 +229,7 @@ class Bank_Bot(Automation):
             page = context.new_page() 
             page.goto("https://www.scbbusinessanywhere.com/", wait_until="domcontentloaded")
 
-            # # Update your Operating System
+            # Update your Operating System - skipped as it was commented out in original code
             # try:
             #     expect(page.locator("//span[contains(text(),'Enter Site/เข้าสู่เว็บไซต์')]")).to_be_visible(timeout=3000)
             #     page.locator("//span[contains(text(),'Enter Site/เข้าสู่เว็บไซต์')]").click(timeout=0)
@@ -113,6 +238,7 @@ class Bank_Bot(Automation):
             
             # if Account already login, can skip
             # For your online security, you have been logged out of SCB Business Anywhere (please log in again.)
+            
             try:
                 expect(page.locator("//h2[contains(text(),'For your online security, you have been logged out')]")).to_be_visible(timeout=1500)
                 page.locator("//span[normalize-space()='OK']").click(timeout=0) 
@@ -157,6 +283,73 @@ class Bank_Bot(Automation):
             counter = 1
             
             while True:
+                
+                # Detect "Something went wrong" popup
+                try:
+                    if page.locator("h2.MuiTypography-h6:text('Something went wrong')").is_visible(timeout=1500):
+                        page.get_by_text("OK").click()
+                        print("Resumed after inactivity.")
+                except:
+                    pass
+
+                # Detect "You have been inactive" popup
+                try:
+                    if page.locator("//h2[normalize-space()='You have been inactive for too long']").is_visible(timeout=1500):
+                        page.click("//span[normalize-space()='Continue']")
+                        print("Resumed after inactivity.")
+                except:
+                    pass
+
+                # Detect "For your online security" logout popup (MODIFIED BLOCK)
+                try:
+                    if page.locator("//h2[contains(text(),'For your online security, you have been logged out')]").is_visible(timeout=1500):
+                        print("⚠️ Session expired. Attempting relogin...")
+
+                        try:
+                            # 1. Click 'OK' on the logout popup
+                            page.locator("//span[normalize-space()='OK']").click(timeout=0)
+                        except:
+                            pass
+
+                        # 2. Re-run the login steps:
+                        
+                        # Go to the home page (which should be the login page after logout)
+                        page.goto("https://www.scbbusinessanywhere.com/", wait_until="domcontentloaded")
+                        
+                        # Fill "Username"
+                        page.locator("//input[@name='username']").fill(scb_web["username"], timeout=1000)
+
+                        # Button Click "Next"
+                        page.locator("//span[normalize-space()='Next']").click(timeout=0) 
+
+                        # Fill "Password"
+                        page.locator("//input[@name='password']").fill(scb_web["password"], timeout=0)
+
+                        # Button Click "submit"
+                        page.locator("//button[@type='submit']").click(timeout=0) 
+
+                        time.sleep(3)
+                        
+                        # Browse back to Deposit Report
+                        page.goto("https://www.scbbusinessanywhere.com/account-management", wait_until="domcontentloaded")
+
+                        # delay 1 second
+                        time.sleep(1)
+
+                        # Button Click "View Details"
+                        page.locator("//span[normalize-space()='View Details']").click(timeout=0) 
+
+                        # Wait for "Latest Transactions" title appear
+                        page.locator("//h3[normalize-space()='Latest Transactions']").wait_for(state="visible", timeout=10000)  
+
+                        time.sleep(2)
+                        
+                        # Continue the while loop (skip the rest of the current iteration and start fresh)
+                        continue 
+
+                except:
+                    pass
+
 
                 # Try only the inner operations, NOT the whole loop
                 try:
@@ -178,9 +371,9 @@ class Bank_Bot(Automation):
                         timestamp_ms = int(dt.timestamp() * 1000)
 
                         raw_data = f"{note}|{amount}|{scb_web['toAccount']}"
-                        print(raw_data)
+                        # print(raw_data)
 
-                        print(timestamp_ms, raw_data)
+                        # print(timestamp_ms, raw_data)
 
                         # --- send to API ---
                         cls.eric_api(raw_data.strip(), timestamp_ms)
@@ -192,110 +385,15 @@ class Bank_Bot(Automation):
                     print(f"\nWait for Incoming Transaction... [#{counter}]")
                     counter += 1
 
-
-
                 except Exception as e:
-                    # Do NOT restart SCB session. Just continue the loop safely.
+                    msg = str(e)
+                    if "has been closed" in msg or "Target page" in msg:
+                        print("❌ Page or browser is closed. Exiting loop...")
+                        raise RuntimeError("SessionExpired")
+
                     print("⚠️ Minor loop error recovered:", e)
                     time.sleep(1)
                     continue
-
-    # ---------- Detection helpers ----------
-    
-    # Extract Transactions
-    @classmethod
-    def extract_page_transactions(cls, page):
-
-        """
-        Extracts collapsed transaction data only.
-        Each transaction = 12 rows.
-        First transaction starts at index 45.
-        """
-
-        # Extract all the rows (transfer name, account number, amount, date)
-        # Count total rows of Transactions
-        rows = page.locator("//p[contains(@class,'MuiTypography-body1')]")
-        row_count = rows.count()
-        
-        # why - 45? to remove the top uneccessary rows, first transactions rows element is start from 46 (in html view)
-        # HTML View = 46, code view = 45
-        # Rows before 45 are header / non-transaction
-        usable = row_count - 45
-        if usable <= 0:
-            return []
-
-        # Limit to 20 because SCB only shows max 20 transactions per page then divide by 12, to know how many new transaction
-        tx_count = min(20, usable // 12)
-        
-        # Use to store transaction
-        transactions = []
-
-        # the reason put + 1, let said tx_count = 4, it will only loop 3, thats why have to + 1 to make it loop 4 times
-        for n in range(1, tx_count + 1):
-            start = 45 + (n - 1) * 12
-            end = start + 12
-            
-            # for loop each element start and end, extract text and store in tx_block
-            tx_block = [rows.nth(i).inner_text().strip() for i in range(start, end)]
-            # print("TX", n, tx_block)
-
-            date = tx_block[0]       # 09/12/2025
-            time = tx_block[1]       # 10:11
-            note = tx_block[3]       # รับโอนจาก / Transfer from...
-            amount = tx_block[4]     # 100.00 THB    
-
-            signature = f"{date} {time}|{note}|{amount}"
-
-            transactions.append(signature)
-
-        return transactions
-    
-    # Detect/Record the last seen of Transactions
-    @classmethod
-    def detect_new_transactions(cls, page):
-        """
-        Uses position-based detection:
-        - Reads TX list (newest → oldest)
-        - Collects all items above last_seen
-        - Updates last_seen to newest
-        - Handles duplicates safely
-        """
-
-        # Use extract page transaction function
-        tx_list = cls.extract_page_transactions(page)  # newest → oldest
-
-        # create new index call new_tx
-        new_tx = []
-
-        if not tx_list:
-            return []
-
-        # First run: initialize last_seen only, do not send anything
-        if cls.last_seen is None:
-            cls.last_seen = tx_list[0]
-            print(f"Initialized last_seen = {cls.last_seen}")
-            return []
-
-        # Collect all transactions above last_seen
-        found_last = False
-        for tx in tx_list:
-            if tx == cls.last_seen:
-                found_last = True
-                break
-            new_tx.append(tx)
-
-        # If last_seen was not found (e.g. more than 20 new TX),
-        # treat all current page as new but still update last_seen.
-        if new_tx:
-            cls.last_seen = tx_list[0]
-            print(f"🔄 Updated last_seen after new transaction: {cls.last_seen}")
-        elif not found_last:
-            # didn't find last_seen but no new_tx (weird case) — reset to newest
-            cls.last_seen = tx_list[0]
-            print(f"⚠️ last_seen missing, reset to: {cls.last_seen}")
-
-        # return in chronological order: oldest → newest
-        return list(reversed(new_tx))
 
     # Eric API
     @classmethod
@@ -356,5 +454,27 @@ class Bank_Bot(Automation):
 if __name__ == "__main__":
 
     Automation.chrome_CDP()
-    Bank_Bot.scb_Anywhere_web()
-    # Bank_Bot.eric_api("รับโอนจาก TTB x3850 MR APITOON SEEBOONRO|100.00 THB|8144211935", 1765271880000)
+
+    while True:
+        try:
+            Bank_Bot.scb_Anywhere_web()
+        except RuntimeError as e:
+            if "SessionExpired" in str(e):
+                print("🔁 Reconnecting after logout...")
+                time.sleep(3)
+                Automation.chrome_CDP()
+                continue
+            else:
+                print(f"⚠️ Unexpected error: {e}. Restarting in 5s...")
+                Automation.cleanup()
+                time.sleep(5)
+                Automation.chrome_CDP()
+                continue
+        except Exception as e:
+            print(f"⚠️ Fatal error: {e}. Restarting in 10s...")
+            Automation.cleanup()
+            time.sleep(10)
+            Automation.chrome_CDP()
+            continue
+
+

@@ -195,13 +195,13 @@ class Bank_Bot(Automation):
     _ktb_web_ref_code_2 = None
 
     @classmethod
-    def eric_api(cls, transactionID):
+    def eric_api(cls):
 
         url = "https://stg-bot-integration.cloudbdtech.com/integration-service/transaction/payoutScriptCallback"
 
         # Create payload as a DICTIONARY (not JSON yet)
         payload = {
-            "transactionID": transactionID,
+            "transactionId": sys.argv[12],
             "bankCode": sys.argv[3],
             "deviceId": sys.argv[1],
             "merchantCode": sys.argv[2],
@@ -212,7 +212,7 @@ class Bank_Bot(Automation):
 
         # Build the hash string (exact order required)
         string_to_hash = (
-            f"transactionID={payload['transactionID']}&"
+            f"transactionId={payload['transactionId']}&"
             f"bankCode={payload['bankCode']}&"
             f"deviceId={payload['deviceId']}&"
             f"merchantCode={payload['merchantCode']}{secret_key}"
@@ -770,7 +770,6 @@ class Bank_Bot(Automation):
 
                 # Call kma_messages_OTP() function and Get OTP Code
                 _messages_otp_code = cls.kma_messages_OTP()
-                print(_messages_otp_code)
 
                 # Fill OTP Code
                 page.locator("//input[@id='ctl00_cphSectionData_OTPBox1_txtOTPPassword']").fill(_messages_otp_code, timeout=0)
@@ -782,16 +781,21 @@ class Bank_Bot(Automation):
                 page.locator("//input[@id='ctl00_cphSectionData_OTPBox1_btnConfirm']").click(timeout=0)
                 page.locator("//input[@id='ctl00_cphSectionData_OTPBox1_btnConfirm']").click(timeout=0)
                 
-                # Transaction ID
-                transactionID = page.locator(".transaction_detail_row_value").nth(5).text_content().strip()
-                print(transactionID)
-
                 print("-" * 30)
 
                 # Call Eric API
-                cls.eric_api(transactionID)
+                cls.eric_api()
 
-                time.sleep(10)
+                # Wait for "Fund transfer transaction is complete."
+                page.locator("//div[@id='ctl00_cphSectionData_pnlSuccessMsg']").wait_for(state="visible", timeout=10000)
+
+                # Delay 1.5 seconds
+                page.wait_for_timeout(1500)
+                
+                # Button Click "Make another transfer"
+                page.locator("//input[@id='ctl00_cphSectionData_btnOtherTxn']").click(timeout=0)
+
+                time.sleep(111110)
 
             except Exception as error:
                 print(f"An error occurred: {error}")
@@ -828,56 +832,41 @@ class Bank_Bot(Automation):
             poco(text="Krungsri").click()
         else:
             pass
+        
+        while True:
 
-        # Timer Setting
-        start_time = time.time()
-        timeout = 60  # seconds
+            # Delay 3 seconds
+            time.sleep(3)
 
-        # Get all the messages text
-        message_nodes = poco("message_list").offspring("message_text")
-        # Calculate the current total messages
-        initial_count = len(message_nodes)
-        # The Last Message
-        last_text = message_nodes[-1].get_text().strip() if message_nodes else ""
-        print("Waiting for new message from KMA bank...")
+            # Read All KMA Bank Messages
+            print("# Reading latest message from KMA bank...")
 
-        # Timer, timeout 60 seconds, wait for new OTP Message come in...
-        while time.time() - start_time < timeout:
+            # Read All KMA Messages
             message_nodes = poco("message_list").offspring("message_text")
-            current_count = len(message_nodes)
 
-            # Get Last Message
-            current_last_text = message_nodes[-1].get_text().strip()
+            # --- Collect OTP + Ref from all new messages ---
+            otp_candidates = []
+            for i, node in reversed(list(enumerate(message_nodes))):
+                messages = node.get_text().strip()
+                if not messages:
+                    continue
+                
+                # using regex to get Message OTP Code and Ref Code
+                match = re.search(r"\bRef\s*[:\-]?\s*(\d+)\b.*?\bOTP\s*[:\-]?\s*(\d+)\b", messages, re.IGNORECASE,)
 
-            # Detect new messages (if current count > inital count or current text != last test, that means got new message come in )
-            if current_count > initial_count or current_last_text != last_text:
-                print("✅ New message(s) detected!")
+                if match:
+                    _messages_ref_code, messages_otp_code = match.groups()
+                    otp_candidates.append((_messages_ref_code.strip(), messages_otp_code.strip()))
+                    print(f"# Ref: {_messages_ref_code}, OTP: {messages_otp_code}")
 
-                # --- Collect OTP + Ref from all new messages ---
-                otp_candidates = []
-                for i, node in reversed(list(enumerate(message_nodes))):
-                    messages = node.get_text().strip()
-                    if not messages:
-                        continue
-                    
-                    # using regex to get Message OTP Code and Ref Code
-                    match = re.search(r"\bRef\s*[:\-]?\s*(\d+)\b.*?\bOTP\s*[:\-]?\s*(\d+)\b", messages, re.IGNORECASE,)
-
-                    if match:
-                        _messages_ref_code, messages_otp_code = match.groups()
-                        otp_candidates.append((_messages_ref_code.strip(), messages_otp_code.strip()))
-                        print(f"# Ref: {_messages_ref_code}, OTP: {messages_otp_code}")
-
-                # --- Match correct Ref Code ---
-                for _messages_ref_code, messages_otp_code in otp_candidates:
-                    if cls._kma_web_ref_code == _messages_ref_code:
-                        print(f"Found matching Ref: {_messages_ref_code} | OTP: {messages_otp_code} #")
-                        return messages_otp_code
-                    
-                # Saves the latest message count and text.
-                # ✅ Prevents detecting the same OTP again on the next loop cycle.
-                initial_count = current_count
-                last_text = current_last_text
+            # --- Match correct Ref Code ---
+            for _messages_ref_code, messages_otp_code in otp_candidates:
+                if cls._kma_web_ref_code == _messages_ref_code:
+                    print(f"Found matching Ref: {_messages_ref_code} | OTP: {messages_otp_code} #")
+                    return messages_otp_code
+                
+            # If no match, loop again
+            print("# OTP not found yet, keep waiting... \n")
 
     # KTB Business (Web)
     @classmethod
