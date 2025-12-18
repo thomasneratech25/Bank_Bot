@@ -7,12 +7,9 @@ import atexit
 import hashlib
 import logging
 import requests
-import traceback
 import subprocess
 from pathlib import Path
 from dotenv import load_dotenv
-from datetime import datetime, timedelta
-from bson.objectid import ObjectId  
 from playwright.sync_api import sync_playwright, expect
 from airtest.core.api import *
 from poco.drivers.android.uiautomation import AndroidUiautomationPoco
@@ -828,7 +825,7 @@ class Bank_Bot(Automation):
         
         # Click KMA Chat
         # If not in inside KMA chat, click it, else passs
-        if not poco("message_text").exists():
+        if not poco("message_text").exists(timeout=10000):
             poco(text="Krungsri").click()
         else:
             pass

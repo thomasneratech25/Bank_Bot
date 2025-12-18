@@ -7,7 +7,7 @@ import threading
 
 app = Flask(__name__)
 
-QUEUE_FILE = Path(__file__).parent / "kma_queue.json"
+QUEUE_FILE = Path(__file__).parent / "payout_queue.json"
 LOCK = threading.Lock()
 logger = logging.getLogger(__name__)
 
@@ -36,7 +36,7 @@ def save_queue(queue):
     tmp.replace(QUEUE_FILE)
 
 
-@app.route("/kma/withdrawal", methods=["POST"])
+@app.route("/payout", methods=["POST"])
 def kma_withdraw():
     
     data = request.get_json()
@@ -49,30 +49,49 @@ def kma_withdraw():
 
     # ---- Validate input ----
     required_fields = [
+        "deviceId",
+        "merchantCode",
+        "fromBankCode",
+        "fromAccountNum",
         "toBankCode",
         "toAccountNum",
         "toAccountName",
         "amount",
+        "username",
+        "password",
+        "pin",
         "transactionId",
     ]
 
     for field in required_fields:
-        if not data.get(field):
+        if field not in data:
             return jsonify({
                 "success": False,
                 "message": f"Missing field: {field}"
             }), 400
 
+        if field != "pin" and data[field] in (None, ""):
+            return jsonify({
+                "success": False,
+                "message": f"Invalid field: {field}"
+            }), 400
+
     job = {
-    "transactionId": data["transactionId"],
+    "deviceId": data["deviceId"],
+    "merchantCode": data["merchantCode"],
+    "fromBankCode": data["fromBankCode"],
+    "fromAccountName": data["fromAccountNum"],
     "toBankCode": data["toBankCode"],
     "toAccountNum": data["toAccountNum"],
     "toAccountName": data["toAccountName"],
     "amount": data["amount"],
+    "username": data["username"],
+    "password": data["password"],
+    "pin": data["pin"],
+    "transactionId": data["transactionId"],
     "status": "pending",
     "createdAt": datetime.utcnow().isoformat()
     }
-
 
     with LOCK:
         queue = load_queue()
@@ -90,7 +109,7 @@ def kma_withdraw():
 
     return jsonify({
         "success": True,
-        "message": "Withdrawal queued",
+        "message": "Withdrawal Request Received",
         "transactionId": job["transactionId"]
     }), 200
 
@@ -99,9 +118,10 @@ def kma_withdraw():
 def health():
     return jsonify({
         "status": "ok",
-        "service": "KMA API Server"
+        "service": "Payout API Server"
     })
 
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=80, debug=False)
+

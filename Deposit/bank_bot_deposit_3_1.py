@@ -8,7 +8,7 @@ import requests
 import subprocess
 from pathlib import Path
 from dotenv import load_dotenv
-from datetime import datetime, timedelta
+from datetime import datetime
 from playwright.sync_api import sync_playwright, expect
 
 # Load .env (Load Credential)
@@ -23,7 +23,9 @@ scb_web = {
     "toAccount": os.getenv("toAccount"),
     "amount": os.getenv("AMOUNT"),
     "deviceID": os.getenv("deviceID"),
-    "merchant_code": os.getenv("merchant_code")
+    "merchant_code": os.getenv("merchant_code"),
+    "chrome_profile": os.getenv("chrome_profile"),
+    "chrome_path": os.getenv("chrome_path")
 }
 
 # Chrome 
@@ -35,11 +37,11 @@ class Automation:
     def chrome_CDP(cls):
 
         # User Profile
-        USER_DATA_DIR = r"C:\Users\Thomas\AppData\Local\Google\Chrome\User Data\Profile 1"
+        USER_DATA_DIR = rf"{scb_web['chrome_profile']}"
 
         # Step 1: Start Chrome normally
         cls.chrome_proc = subprocess.Popen([
-            r"C:\Program Files\Google\Chrome\Application\chrome.exe",
+            rf"{scb_web['chrome_path']}",
             "--remote-debugging-port=9222",
             "--disable-session-crashed-bubble",
             "--hide-crash-restore-bubble",
@@ -86,7 +88,7 @@ class Automation:
 # Bank Bot
 class Bank_Bot(Automation):
 
-    LAST_SEEN_FILE = "last_seen.txt"
+    LAST_SEEN_FILE = Path(__file__).parent / "last_seen.txt"
 
     @classmethod
     def load_last_seen_list(cls):   
@@ -94,10 +96,12 @@ class Bank_Bot(Automation):
         Load up to 20 stored transactions from last_seen.txt
         newest → oldest
         """
-        if not os.path.exists(cls.LAST_SEEN_FILE):
+        file_path = cls.LAST_SEEN_FILE
+
+        if not file_path.exists():
             return []
 
-        with open(cls.LAST_SEEN_FILE, "r", encoding="utf-8") as f:
+        with file_path.open("r", encoding="utf-8") as f:
             lines = [x.strip() for x in f.readlines() if x.strip()]
 
         return lines[:20]
@@ -108,6 +112,7 @@ class Bank_Bot(Automation):
         Insert a new transaction at the top and keep newest 20 only.
         """
         max_items = 20
+        file_path = cls.LAST_SEEN_FILE
 
         items = cls.load_last_seen_list()
 
@@ -116,10 +121,29 @@ class Bank_Bot(Automation):
 
         items = items[:max_items]
 
-        with open(cls.LAST_SEEN_FILE, "w", encoding="utf-8") as f:
+        with file_path.open("w", encoding="utf-8") as f:
             f.write("\n".join(items))
     
     # ---------- Detection helpers ----------
+    @staticmethod
+    def detect_first_tx_index(rows, row_count):
+        """
+        First transaction block can shift (40/41/44/45, etc.).
+        Pick the first candidate that looks like a date/time pair.
+        """
+        candidates = list(range(40, 46))  # search a small window for the date/time header
+        for offset in candidates:
+            if row_count - offset < 12:
+                continue
+            try:
+                date_text = rows.nth(offset).inner_text().strip()
+                time_text = rows.nth(offset + 1).inner_text().strip()
+                datetime.strptime(date_text, "%d/%m/%Y")
+                datetime.strptime(time_text, "%H:%M")
+                return offset
+            except Exception:
+                continue
+        return 45
     
     # Extract Transactions
     @classmethod
@@ -128,7 +152,7 @@ class Bank_Bot(Automation):
         """
         Extracts collapsed transaction data only.
         Each transaction = 12 rows.
-        First transaction starts at index 45.
+        First transaction may start around index 40-45.
         """
 
         # Extract all the rows (transfer name, account number, amount, date)
@@ -136,10 +160,12 @@ class Bank_Bot(Automation):
         rows = page.locator("//p[contains(@class,'MuiTypography-body1')]")
         row_count = rows.count()
         
-        # why - 45? to remove the top uneccessary rows, first transactions rows element is start from 46 (in html view)
-        # HTML View = 46, code view = 45
-        # Rows before 45 are header / non-transaction
-        usable = row_count - 45
+        # Some pages render extra banner rows, so the first tx block can start
+        # anywhere in a small window (40-45). Detect the correct offset before slicing.
+        start_index = cls.detect_first_tx_index(rows, row_count)
+
+        # Rows before start_index are header / non-transaction
+        usable = row_count - start_index
         if usable <= 0:
             return []
 
@@ -151,7 +177,7 @@ class Bank_Bot(Automation):
 
         # the reason put + 1, let said tx_count = 4, it will only loop 3, thats why have to + 1 to make it loop 4 times
         for n in range(1, tx_count + 1):
-            start = 45 + (n - 1) * 12
+            start = start_index + (n - 1) * 12
             end = start + 12
             
             # for loop each element start and end, extract text and store in tx_block
@@ -476,5 +502,3 @@ if __name__ == "__main__":
             time.sleep(10)
             Automation.chrome_CDP()
             continue
-
-

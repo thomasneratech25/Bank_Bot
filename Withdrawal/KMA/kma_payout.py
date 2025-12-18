@@ -16,7 +16,8 @@ from poco.drivers.android.uiautomation import AndroidUiautomationPoco
 
 # ================== Global Variable ==================
 
-QUEUE_FILE = Path(__file__).parent / "kma_queue.json"
+BASE_DIR = Path(__file__).resolve().parents[1]  # → Withdrawal/
+QUEUE_FILE = BASE_DIR / "payout_queue.json"
 
 # ================== Read .env file ==================
 
@@ -40,7 +41,7 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s | %(levelname)s | %(message)s",
 )
-logger = logging.getLogger("KMA-BOT")
+logger = logging.getLogger("Bot_Logger")
 
 # ================== Job Queue ==================
 
@@ -50,10 +51,16 @@ class JobQueue:
         self.path = path
 
     def load(self):
-        if not self.path.exists():
+        # File missing or empty → safe empty queue
+        if not self.path.exists() or self.path.stat().st_size == 0:
             return []
-        return json.loads(self.path.read_text(encoding="utf-8"))
 
+        try:
+            return json.loads(self.path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            logger.warning("Queue file invalid or being written. Returning empty queue.")
+            return []
+    
     def save(self, queue):
         tmp = self.path.with_suffix(".tmp")
         tmp.write_text(json.dumps(queue, indent=2), encoding="utf-8")
@@ -128,11 +135,16 @@ class Automation:
 # ================== BANK BOT ==================
 
 class BankBot(Automation):
+    
     _kma_ref = None
+
+    # ==============================
+    # -=-=-=-=-= KMA =-=-=-=-=-=-=-=
+    # ==============================
 
     # Login
     @classmethod
-    def login(cls, p):
+    def kma_login(cls, p):
         
         # Connect to running Chrome
         browser = p.chromium.connect_over_cdp("http://localhost:9222")
@@ -154,22 +166,23 @@ class BankBot(Automation):
         page.click("#ctl00_cphLoginBox_imgLogin")
 
         # Click "Other Account"
+        page.locator("//div[normalize-space()='Other Account']").wait_for(timeout=15000)
         page.locator("//div[normalize-space()='Other Account']").click()
-        page.wait_for_timeout(2000)
         return page
 
     # Withdrawal
     @classmethod
-    def withdraw(cls, page, job):
+    def kma_withdrawal(cls, page, job):
 
         # Select Bank Code
-        page.select_option("#ddlBanking", job["toBankCode"])
+        page.locator("#ddlBanking").wait_for(timeout=10000)
+        page.select_option("#ddlBanking", str(job["toBankCode"]))
 
         # Fill in Account Number
-        page.fill("#ctl00_cphSectionData_txtAccTo", job["toAccountNum"])
+        page.fill("#ctl00_cphSectionData_txtAccTo", str(job["toAccountNum"]))
 
         # Fill in Amount
-        page.fill("#ctl00_cphSectionData_txtAmountTransfer", job["amount"])
+        page.fill("#ctl00_cphSectionData_txtAmountTransfer", str(job["amount"]))
 
         # Click Submit
         page.click("#ctl00_cphSectionData_btnSubmit")
@@ -178,19 +191,26 @@ class BankBot(Automation):
         page.locator(".otpbox_header").wait_for(timeout=10000)
 
         # Capture OTP Reference Number
-        cls._kma_ref = page.locator("//div[@class='inputbox_half_center']//div[@class='input_input_half']").first.inner_text()
+        cls._kma_ref = page.locator("//div[@class='inputbox_half_center']//div[@class='input_input_half']").first.inner_text().strip()
 
         # Run Read OTP Code
-        otp = cls.read_otp()
+        otp = cls.kma_read_otp()
 
         # Fill OTP Code
         page.fill("#ctl00_cphSectionData_OTPBox1_txtOTPPassword", otp)
 
-        # Click Button Confirm
-        page.click("#ctl00_cphSectionData_OTPBox1_btnConfirm")
+        # Delay 0.5 second
+        page.wait_for_timeout(500)
+
+        # Button Click "Confirm"
+        page.locator("//input[@id='ctl00_cphSectionData_OTPBox1_btnConfirm']").click(timeout=0)
+        page.locator("//input[@id='ctl00_cphSectionData_OTPBox1_btnConfirm']").click(timeout=0)
 
         # Wait for Appear withdrawal Successful
         page.locator("#ctl00_cphSectionData_pnlSuccessMsg").wait_for(timeout=10000)
+
+        # Delay 1 second
+        page.wait_for_timeout(1000)
 
         # Call Eric API
         cls.callback(job)
@@ -200,7 +220,7 @@ class BankBot(Automation):
 
     # Read Phone Message OTP Code
     @classmethod
-    def read_otp(cls):
+    def kma_read_otp(cls):
 
         # Hide Debug Log, if want view, just comment the bottom code
         logging.getLogger("airtest").setLevel(logging.WARNING)
@@ -220,20 +240,49 @@ class BankBot(Automation):
             wake()
             wake()
 
-        # Start Apps and Click Apps
+        time.sleep(1) 
+
+        # Start Messages Apps
         start_app("com.google.android.apps.messaging")
-        poco(text="Krungsri").click()
-
-        # While loop until the ref code match the sms ref code, then get the OTP Code
+        
+        # Click KMA Chat
+        # If not in inside KMA chat, click it, else passs
+        if not poco("message_text").exists():
+            poco(text="Krungsri").click()
+        else:
+            pass
+        
         while True:
-            time.sleep(3)
-            messages = poco("message_list").offspring("message_text")
 
-            for node in reversed(messages):
-                text = node.get_text()
-                match = re.search(r"Ref\s*(\d+).*OTP\s*(\d+)", text)
-                if match and match.group(1) == cls._kma_ref:
-                    return match.group(2)
+            # Read All KMA Bank Messages
+            print("🤖 Reading latest message from KMA bank...")
+
+            # Read All KMA Messages
+            message_nodes = poco("message_list").offspring("message_text")
+
+            # --- Collect OTP + Ref from all new messages ---
+            otp_candidates = []
+            for i, node in reversed(list(enumerate(message_nodes))):
+                messages = node.get_text().strip()
+                if not messages:
+                    continue
+                
+                # using regex to get Message OTP Code and Ref Code
+                match = re.search(r"\bRef\s*[:\-]?\s*(\d+)\b.*?\bOTP\s*[:\-]?\s*(\d+)\b", messages, re.IGNORECASE,)
+
+                if match:
+                    _messages_ref_code, messages_otp_code = match.groups()
+                    otp_candidates.append((_messages_ref_code.strip(), messages_otp_code.strip()))
+                    print(f"# Ref: {_messages_ref_code}, OTP: {messages_otp_code} ❌")
+
+            # --- Match correct Ref Code ---
+            for _messages_ref_code, messages_otp_code in otp_candidates:
+                if cls._kma_ref == _messages_ref_code:
+                    print(f"Found matching Ref: {_messages_ref_code} | OTP: {messages_otp_code} ✅")
+                    return messages_otp_code
+                
+            # If no match, loop again
+            print("# OTP not found yet, keep waiting... \n")
     
     # Call back to ERIC API
     @classmethod
@@ -267,7 +316,7 @@ if __name__ == "__main__":
     Automation.chrome_cdp()
 
     with sync_playwright() as p:
-        page = BankBot.login(p)
+        page = BankBot.kma_login(p)
         logger.info("✅ Logged in once — waiting at transfer page")
 
         while True:
@@ -275,10 +324,9 @@ if __name__ == "__main__":
             if not job:
                 time.sleep(2)
                 continue
-
             try:
                 logger.info(f"▶ Processing {job['transactionId']}")
-                BankBot.withdraw(page, job)
+                BankBot.kma_withdrawal(page, job)
                 queue.mark_done(job["transactionId"], True)
                 logger.info(f"✔ Done {job['transactionId']}")
             except Exception as e:

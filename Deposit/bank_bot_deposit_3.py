@@ -88,7 +88,7 @@ class Automation:
 # Bank Bot
 class Bank_Bot(Automation):
 
-    LAST_SEEN_FILE = "last_seen.txt"
+    LAST_SEEN_FILE = Path(__file__).parent / "last_seen.txt"
 
     @classmethod
     def load_last_seen_list(cls):   
@@ -96,10 +96,12 @@ class Bank_Bot(Automation):
         Load up to 20 stored transactions from last_seen.txt
         newest → oldest
         """
-        if not os.path.exists(cls.LAST_SEEN_FILE):
+        file_path = cls.LAST_SEEN_FILE
+
+        if not file_path.exists():
             return []
 
-        with open(cls.LAST_SEEN_FILE, "r", encoding="utf-8") as f:
+        with file_path.open("r", encoding="utf-8") as f:
             lines = [x.strip() for x in f.readlines() if x.strip()]
 
         return lines[:20]
@@ -110,6 +112,7 @@ class Bank_Bot(Automation):
         Insert a new transaction at the top and keep newest 20 only.
         """
         max_items = 20
+        file_path = cls.LAST_SEEN_FILE
 
         items = cls.load_last_seen_list()
 
@@ -118,7 +121,7 @@ class Bank_Bot(Automation):
 
         items = items[:max_items]
 
-        with open(cls.LAST_SEEN_FILE, "w", encoding="utf-8") as f:
+        with file_path.open("w", encoding="utf-8") as f:
             f.write("\n".join(items))
     
     # ---------- Detection helpers ----------
