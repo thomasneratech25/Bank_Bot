@@ -1,25 +1,21 @@
 import re
 import os
-import json
 import time
 import atexit
-import hashlib
 import logging
 import requests
 import subprocess
 from pathlib import Path
 from dotenv import load_dotenv
-from datetime import datetime
 from playwright.sync_api import sync_playwright
 from airtest.core.api import *
 from poco.drivers.android.uiautomation import AndroidUiautomationPoco
 
-# ================== Global Variable ==================
+# ================== API Base ==================
 
-BASE_DIR = Path(__file__).resolve().parents[1]  # → Withdrawal/
-QUEUE_FILE = BASE_DIR / "payout_queue.json"
+API_BASE = "https://api.thainfo.site"   
 
-# ================== Read .env file ==================
+# ================== Read .env file (Username and Password) ==================
 
 env_path = Path(__file__).parent / ".env"
 load_dotenv(dotenv_path=env_path, override=True)
@@ -41,35 +37,42 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s | %(levelname)s | %(message)s",
 )
-logger = logging.getLogger("Bot_Logger")
+logger = logging.getLogger("TTB_Bot_Logger")
 
 # ================== Job Queue ==================
 
 class JobQueue:
     
-    def __init__(self, api_base):
-        self.api_base = api_base.rstrip("/")
+    def __init__(self, api_base, logger):
+        self.api_base = api_base
+        self.logger = logger
 
     def fetch_next_job(self):
         try:
-            r = requests.post(f"{self.api_base}/jobs/next", timeout=10)
+            r = requests.post(f"{self.api_base}/jobs/next", json={"fromBankKey": os.getenv("WORKER_BANK_KEY")}, timeout=10)
             r.raise_for_status()
             return r.json().get("job")
         except Exception as e:
-            logger.error(f"Fetch job failed: {e}")
+            self.logger.error(f"Fetch job failed: {e}")
             return None
 
     def mark_done(self, txid):
-        requests.post(f"{self.api_base}/jobs/{txid}/done", timeout=10)
+        try:
+            requests.post(f"{self.api_base}/jobs/{txid}/done", timeout=10)
+        except Exception as e:
+            self.logger.error(f"Mark done failed: {e}")
 
     def mark_fail(self, txid, error):
-        requests.post(
-            f"{self.api_base}/jobs/{txid}/fail",
-            json={"error": str(error)},
-            timeout=10,
-        )
+        try:
+            requests.post(
+                f"{self.api_base}/jobs/{txid}/fail",
+                json={"error": str(error)},
+                timeout=10,
+            )
+        except Exception as e:
+            self.logger.error(f"Mark fail failed: {e}")
 
-# ================== Chrome Settings ==================
+# ============== Chrome Settings ================
 
 class Automation:
     chrome_proc = None
@@ -114,7 +117,7 @@ class Automation:
             time.sleep(1)
         raise RuntimeError("Chrome CDP not ready")
 
-# ================== BANK BOT ==================
+# =============== BANK BOT ======================
 
 class BankBot(Automation):
     
@@ -285,31 +288,30 @@ class BankBot(Automation):
             # If no match, loop again
             print("# OTP not found yet, keep waiting... \n")
 
-# ================== Code Start Here ==================
+# ================== Code Start Here =============
 
 if __name__ == "__main__":
-    queue = JobQueue(API_BASE)
-    Automation.start_chrome()
+    logger.info("🚀 TTB Bot starting")
+    Automation.chrome_cdp()
+
+    queue = JobQueue(API_BASE, logger) 
 
     with sync_playwright() as p:
-        logger.info("Bot started")
+        page = BankBot.ttb_login(p)
+        logger.info("✅ Logged in and ready")
 
         while True:
-            job = queue.fetch_next_job()
+            job = queue.fetch_next_job() 
             if not job:
                 time.sleep(2)
                 continue
 
-            txid = job["transactionId"]
             try:
-                logger.info(f"Processing {txid}")
-
-                # 🔴 YOUR ORIGINAL TTB LOGIN + WITHDRAW LOGIC GOES HERE
-                # BankBot.ttb_withdrawal(page, job)
-
-                queue.mark_done(txid)
-                logger.info(f"Done {txid}")
-
+                logger.info(f"▶ Processing {job['transactionId']}")
+                BankBot.ttb_withdrawal(page, job)
+                queue.mark_done(job["transactionId"])  
+                logger.info(f"✔ Done {job['transactionId']}")
             except Exception as e:
-                logger.exception("Withdrawal failed")
-                queue.mark_fail(txid, e)
+                logger.exception("❌ Withdrawal failed")
+                queue.mark_fail(job["transactionId"], e)  
+

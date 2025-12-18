@@ -124,12 +124,14 @@ def create_payout():
 @app.route("/jobs/next", methods=["POST"])
 def get_next_job():
     data = request.get_json(silent=True) or {}
-    worker_bank_key = data.get("fromBankKey")
+
+    raw_worker_bank = data.get("fromBankKey", "")
+    worker_bank_key = BANK_MAP.get(raw_worker_bank.upper().strip())
 
     if not worker_bank_key:
         return jsonify({
             "success": False,
-            "message": "Missing fromBankKey"
+            "message": f"Unsupported fromBankKey: {raw_worker_bank}"
         }), 400
 
     with LOCK:
