@@ -1,37 +1,26 @@
 import re
 import os
+import json
 import time
 import atexit
+import hashlib
 import logging
 import requests
 import subprocess
 from pathlib import Path
+from threading import Lock
+from flask import Flask, request, jsonify
 from dotenv import load_dotenv
 from playwright.sync_api import sync_playwright
 from airtest.core.api import *
 from poco.drivers.android.uiautomation import AndroidUiautomationPoco
 
-# ================== API Base ==================
+# =========================== Flask apps ==============================
 
-API_BASE = "https://api.thainfo.site"   
+app = Flask(__name__)
+LOCK = Lock()
 
-# ================== Read .env file (Username and Password) ==================
-
-env_path = Path(__file__).parent / ".env"
-load_dotenv(dotenv_path=env_path, override=True)
-
-REQUIRED_ENV = [
-    "TTB_USERNAME",
-    "TTB_PASSWORD",
-    "TTB_DEVICE_ID",
-    "TTB_MERCHANT_CODE",
-]
-
-for key in REQUIRED_ENV:
-    if not os.getenv(key):
-        raise RuntimeError(f"Missing required env var: {key}")
-
-# ================== LOG File ==================
+# ================== Logging ========================
 
 logging.basicConfig(
     level=logging.INFO,
@@ -39,47 +28,27 @@ logging.basicConfig(
 )
 logger = logging.getLogger("TTB_Bot_Logger")
 
-# ================== Job Queue ==================
+# ================== PLAYWRIGHT SINGLETON ========================
 
-class JobQueue:
-    
-    def __init__(self, api_base, logger):
-        self.api_base = api_base
-        self.logger = logger
+PLAYWRIGHT = None
+BROWSER = None
+CONTEXT = None
+PAGE = None
 
-    def fetch_next_job(self):
-        try:
-            r = requests.post(f"{self.api_base}/jobs/next", json={"fromBankKey": os.getenv("WORKER_BANK_KEY")}, timeout=10)
-            r.raise_for_status()
-            return r.json().get("job")
-        except Exception as e:
-            self.logger.error(f"Fetch job failed: {e}")
-            return None
-
-    def mark_done(self, txid):
-        try:
-            requests.post(f"{self.api_base}/jobs/{txid}/done", timeout=10)
-        except Exception as e:
-            self.logger.error(f"Mark done failed: {e}")
-
-    def mark_fail(self, txid, error):
-        try:
-            requests.post(
-                f"{self.api_base}/jobs/{txid}/fail",
-                json={"error": str(error)},
-                timeout=10,
-            )
-        except Exception as e:
-            self.logger.error(f"Mark fail failed: {e}")
-
-# ============== Chrome Settings ================
+# ============== Chrome Settings ====================
 
 class Automation:
+    
     chrome_proc = None
 
     # Chrome CDP
     @classmethod
     def chrome_cdp(cls):
+
+        # Prevent starting Chrome more than once
+        if cls.chrome_proc:
+            return
+        
         USER_DATA_DIR = r"C:\Users\Thomas\AppData\Local\Google\Chrome\User Data\Profile99"
 
         cls.chrome_proc = subprocess.Popen([
@@ -95,7 +64,7 @@ class Automation:
         cls.wait_for_cdp_ready()
         atexit.register(cls.cleanup)
 
-    # Close Chrome Completely 
+    # Close Chrome Completely
     @classmethod
     def cleanup(cls):
         try:
@@ -117,29 +86,43 @@ class Automation:
             time.sleep(1)
         raise RuntimeError("Chrome CDP not ready")
 
-# =============== BANK BOT ======================
+# =============== TTB BANK BOT ======================
 
 class BankBot(Automation):
-    
+
     _ttb_ref = None
 
-    # ==============================
-    # -=-=-=-=-= TTB =-=-=-=-=-=-=-=
-    # ==============================
-
-    # TTB Business One (Web)
+    # TTB Login
     @classmethod
-    def ttb_login(cls, p):
-
-        # Connect to running Chrome
-        browser = p.chromium.connect_over_cdp("http://localhost:9222")
-        context = browser.contexts[0] if browser.contexts else browser.new_context()    
-
-        # Open a new browser page
-        page = context.pages[0] if context.pages else context.new_page()
-        page.goto("https://www.ttbbusinessone.com/auth/login", wait_until="domcontentloaded")
+    def ttb_login(cls, data):
         
-        # Delay 1.5 seconds
+        global PLAYWRIGHT, BROWSER, CONTEXT, PAGE
+
+        # Start Chrome
+        cls.chrome_cdp()
+
+        # Start Playwright ONLY ONCE
+        if PLAYWRIGHT is None:
+            PLAYWRIGHT = sync_playwright().start()
+
+        # Connect to running Chrome ONLY ONCE
+        if BROWSER is None:
+            BROWSER = PLAYWRIGHT.chromium.connect_over_cdp("http://localhost:9222")
+
+        # Reuse context
+        CONTEXT = BROWSER.contexts[0] if BROWSER.contexts else BROWSER.new_context()
+
+        # Reuse page
+        if PAGE is None or PAGE.is_closed():
+            PAGE = CONTEXT.new_page()
+
+        page = PAGE
+
+        # If already on transfer page, skip login
+        if "PPRT" in page.url or "payment" in page.url:
+            return page
+
+        page.goto("https://www.ttbbusinessone.com/auth/login", wait_until="domcontentloaded")
         page.wait_for_timeout(1500)
 
         # if text "Outward Remittance Service....." appear, button click "Accept", else pass
@@ -155,13 +138,13 @@ class BankBot(Automation):
         # if Account already login, can skip
         try: 
             # Fill "Username"
-            page.locator("//input[@type='text']").fill(os.getenv("TTB_USERNAME"), timeout=1000)
+            page.locator("//input[@type='text']").fill(str(data["username"]), timeout=1000)
             # Delay 0.5 seconds
             page.wait_for_timeout(500)
             # Button Click "Next"
             page.locator("//button[normalize-space()='Next']").click(timeout=0) 
             # Fill "Password"
-            page.locator("//input[@type='password']").fill(os.getenv("TTB_PASSWORD"), timeout=0)
+            page.locator("//input[@type='password']").fill(str(data["password"]), timeout=0)
             # Delay 0.5 seconds
             page.wait_for_timeout(500)
             # Button Click "Next"
@@ -176,26 +159,26 @@ class BankBot(Automation):
         
         return page
 
-    # Withdrawal
+    # TTB Withdrawal
     @classmethod
-    def ttb_withdrawal(cls, page, job):
+    def ttb_withdrawal(cls, page, data):
 
         # Fill Recipient name
-        page.locator("//input[@id='counterparty']").fill(str(job["toAccountName"]), timeout=0)
+        page.locator("//input[@id='counterparty']").fill(str(data["toAccountName"]), timeout=0)
         # Button Click "Transfer by"
         page.locator("//ca-combo[@name='counterpartyIdType']//button[@type='button']").click(timeout=0)
         # Button Click "Account no"
         page.locator("//li[normalize-space()='Account no.']").click(timeout=0)
         # Select Bank
-        page.locator("//input[@id='bank']").fill(str(job["toBankCode"]), timeout=0)
+        page.locator("//input[@id='bank']").fill(str(data["toBankCode"]), timeout=0)
         # Delay 0.5 seconds
         page.wait_for_timeout(500)
         # Button Click Bank
         page.locator("//ul[@class='ng-star-inserted']//li[@class='ng-star-inserted']").click(timeout=0)
         # Fill Account No.
-        page.locator("//input[@id='counterpartyIdValue']").fill(str(job["toAccountNum"]), timeout=0)
+        page.locator("//input[@id='counterpartyIdValue']").fill(str(data["toAccountNum"]), timeout=0)
         # Fill Amount
-        page.locator("//input[@id='amount']").fill(str(job["amount"]), timeout=0)
+        page.locator("//input[@id='amount']").fill(str(data["amount"]), timeout=0)
         # Button Click "CONFIRM"
         page.locator("//button[normalize-space()='Confirm']").click(timeout=0)
         # Button Click "Approve"
@@ -218,10 +201,15 @@ class BankBot(Automation):
         page.locator("//button[@id='orders-summary-sign-and-send-button']").click(timeout=0)
         # Wait for Appear "Transfer successful"
         page.locator("//h1[normalize-space()='Transfer successful']").wait_for(timeout=10000)
+        # Callback Eric API
+        cls.eric_api(data)
         # Delay 1 seconds
         page.wait_for_timeout(1000)
         # Button Click "Transfer again"
         page.locator("//i[@class='icon-payment-result-refresh']").click(timeout=0)
+
+        # WAIT for form reset (IMPORTANT FOR NEXT API CALL)
+        page.locator("//input[@id='counterparty']").wait_for(timeout=5000)
     
     # Messages (SMS TTB Business One OTP Code)
     @classmethod
@@ -288,30 +276,78 @@ class BankBot(Automation):
             # If no match, loop again
             print("# OTP not found yet, keep waiting... \n")
 
-# ================== Code Start Here =============
+    # Callback ERIC API
+    @classmethod
+    def eric_api(cls, data):
+
+        url = "https://stg-bot-integration.cloudbdtech.com/integration-service/transaction/payoutScriptCallback"
+
+        # Create payload as a DICTIONARY (not JSON yet)
+        payload = {
+            "transactionId": str(data["transactionId"]),
+            "bankCode": str(data["fromBankCode"]),
+            "deviceId": str(data["deviceId"]),
+            "merchantCode": str(data["merchantCode"]),
+        }
+
+        # Your secret key
+        secret_key = "DEVBankBotIsTheBest"
+
+        # Build the hash string (exact order required)
+        string_to_hash = (
+            f"transactionId={payload['transactionId']}&"
+            f"bankCode={payload['bankCode']}&"
+            f"deviceId={payload['deviceId']}&"
+            f"merchantCode={payload['merchantCode']}{secret_key}"
+        )
+
+        # Generate MD5 hash
+        hash_result = hashlib.md5(string_to_hash.encode("utf-8")).hexdigest()
+
+        # Convert payload to JSON string AFTER hash
+        payload_json = json.dumps(payload)
+
+        # Send request
+        headers = {
+            'accept': '*/*',
+            'hash': hash_result,
+            'Content-Type': 'application/json'
+        }
+
+        response = requests.post(url, headers=headers, data=payload_json)
+
+        # 7️⃣ Debug info
+        print("Raw string to hash:", string_to_hash)
+        print("MD5 Hash:", hash_result)
+        print("Response:", response.text)
+        print("\n\n")
+
+# ================== Code Start Here ================
+
+# Run API
+@app.route("/ttb_company_web/runPython", methods=["POST"])        
+def runPython():
+    data = request.get_json(silent=True)
+    if not data:
+        return jsonify({"success": False, "message": "Invalid JSON"}), 400
+
+    with LOCK:
+        try:
+            # Run Browser
+            Automation.chrome_cdp()
+            # Login TTB
+            page = BankBot.ttb_login(data)
+            logger.info(f"▶ Processing {data['transactionId']}")
+            BankBot.ttb_withdrawal(page, data)
+            logger.info(f"✔ Done {data['transactionId']}")
+            return jsonify({
+                "success": True,
+                "transactionId": data["transactionId"]
+            })
+        except Exception as e:
+            logger.exception("❌ Withdrawal failed")
+            return jsonify({"success": False, "message": str(e)}), 500
 
 if __name__ == "__main__":
-    logger.info("🚀 TTB Bot starting")
-    Automation.chrome_cdp()
-
-    queue = JobQueue(API_BASE, logger) 
-
-    with sync_playwright() as p:
-        page = BankBot.ttb_login(p)
-        logger.info("✅ Logged in and ready")
-
-        while True:
-            job = queue.fetch_next_job() 
-            if not job:
-                time.sleep(2)
-                continue
-
-            try:
-                logger.info(f"▶ Processing {job['transactionId']}")
-                BankBot.ttb_withdrawal(page, job)
-                queue.mark_done(job["transactionId"])  
-                logger.info(f"✔ Done {job['transactionId']}")
-            except Exception as e:
-                logger.exception("❌ Withdrawal failed")
-                queue.mark_fail(job["transactionId"], e)  
-
+    logger.info("🚀 TTB Local API started")
+    app.run(host="0.0.0.0", port=5000, debug=False, threaded=False, use_reloader=False)
