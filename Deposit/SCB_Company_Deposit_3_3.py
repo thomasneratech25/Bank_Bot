@@ -1,19 +1,49 @@
 import os 
 import json
 import time
-import hashlib
-import requests
 import atexit
+import hashlib
+import logging
 import requests
 import subprocess
 from pathlib import Path
-from dotenv import load_dotenv
 from datetime import datetime
+from dotenv import load_dotenv
+from logging.handlers import RotatingFileHandler
+from datetime import datetime, timezone, timedelta
 from playwright.sync_api import sync_playwright, expect
 
-# Load .env (Load Credential)
+# ================= Load .env Credentials =========
+
 env_path = Path(__file__).parent / ".env"
 load_dotenv(dotenv_path=env_path, override=True)
+
+# ================= LOGGING SETUP =================
+
+LOG_DIR = Path(__file__).parent / "logs"
+LOG_DIR.mkdir(exist_ok=True)
+
+LOG_FILE = LOG_DIR / "eric_api.log"
+
+logger = logging.getLogger("BankBotLogger")
+logger.setLevel(logging.DEBUG)
+
+handler = RotatingFileHandler(
+    LOG_FILE,
+    maxBytes=5 * 1024 * 1024,  # 5MB per file
+    backupCount=5,
+    encoding="utf-8"
+)
+
+formatter = logging.Formatter(
+    "%(asctime)s | %(levelname)s | %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S"
+)
+
+handler.setFormatter(formatter)
+logger.addHandler(handler)
+
+# ==================================================
 
 # SCB Anywhere (Web)
 scb_web = {
@@ -90,6 +120,7 @@ class Bank_Bot(Automation):
 
     LAST_SEEN_FILE = Path(__file__).parent / "last_seen.txt"
 
+    # Load Last Seen
     @classmethod
     def load_last_seen_list(cls):   
         """
@@ -106,6 +137,7 @@ class Bank_Bot(Automation):
 
         return lines[:20]
 
+    # Save Last Seen
     @classmethod
     def save_last_seen(cls, new_tx):
         """
@@ -128,10 +160,10 @@ class Bank_Bot(Automation):
     @staticmethod
     def detect_first_tx_index(rows, row_count):
         """
-        First transaction block can shift (40/41/44/45, etc.).
+        First transaction block can shift (35-56, etc.).
         Pick the first candidate that looks like a date/time pair.
         """
-        candidates = list(range(40, 46))  # search a small window for the date/time header
+        candidates = list(range(35, 56))  # search a small window for the date/time header
         for offset in candidates:
             if row_count - offset < 12:
                 continue
@@ -143,6 +175,7 @@ class Bank_Bot(Automation):
                 return offset
             except Exception:
                 continue
+        print("⚠️ Transaction start index not detected, using fallback 45")
         return 45
     
     # Extract Transactions
@@ -240,6 +273,7 @@ class Bank_Bot(Automation):
         cls.save_last_seen(tx_list[0])
         return list(reversed(new_tx))
 
+    # SCB Company Web
     @classmethod
     def scb_Anywhere_web(cls):
         with sync_playwright() as p: 
@@ -338,12 +372,13 @@ class Bank_Bot(Automation):
                             pass
 
                         # 2. Re-run the login steps:
-                        
                         # Go to the home page (which should be the login page after logout)
                         page.goto("https://www.scbbusinessanywhere.com/", wait_until="domcontentloaded")
-                        
-                        # Fill "Username"
-                        page.locator("//input[@name='username']").fill(scb_web["username"], timeout=1000)
+
+                        # Wait for "Username" to appear and fill
+                        username_input = page.locator("//input[@name='username']")
+                        username_input.wait_for(state="visible", timeout=10000)  
+                        username_input.fill(scb_web["username"])
 
                         # Button Click "Next"
                         page.locator("//span[normalize-space()='Next']").click(timeout=0) 
@@ -396,19 +431,17 @@ class Bank_Bot(Automation):
                         dt = datetime.strptime(datetime_str, "%d/%m/%Y %H:%M")
                         timestamp_ms = int(dt.timestamp() * 1000)
 
+                        # Raw Data
                         raw_data = f"{note}|{amount}|{scb_web['toAccount']}"
-                        # print(raw_data)
-
-                        # print(timestamp_ms, raw_data)
 
                         # --- send to API ---
                         cls.eric_api(raw_data.strip(), timestamp_ms)
 
                     # --- Refresh the transaction table ---
-                    time.sleep(5)
+                    time.sleep(4)
                     page.locator("//span[normalize-space()='Apply']").click(timeout=2000)
-                    time.sleep(1)
-                    print(f"\nWait for Incoming Transaction... [#{counter}]")
+                    time.sleep(3)
+                    print(f"\nWait for Incoming Transaction... [#{counter}]\n")
                     counter += 1
 
                 except Exception as e:
@@ -426,8 +459,11 @@ class Bank_Bot(Automation):
     def eric_api(cls, raw_data, timestamp_ms):
         
         # # Production
+        # secret_key = "PRODBankBotIsTheBest"
         # url = "https://bot-integration.cloudbdtech.com/integration-service/transaction/addDepositTransaction"
+
         # Staging
+        secret_key = "DEVBankBotIsTheBest"
         url = "https://stg-bot-integration.cloudbdtech.com/integration-service/transaction/addDepositTransaction"
 
         # Create payload as a DICTIONARY (not JSON yet)
@@ -439,11 +475,6 @@ class Bank_Bot(Automation):
             "transactionTime": timestamp_ms
         }
 
-        # Your secret key
-        # # Production
-        # secret_key = "PRODBankBotIsTheBest"
-        # Staging
-        secret_key = "DEVBankBotIsTheBest"
 
         # Build the hash string (exact order required)
         string_to_hash = (
@@ -453,6 +484,9 @@ class Bank_Bot(Automation):
             f"rawMessage={payload['rawMessage']}&"
             f"transactionTime={payload['transactionTime']}{secret_key}"
         )
+
+        # Convert timestamp ms to "date and time"
+        dt_gmt7 = datetime.fromtimestamp(timestamp_ms / 1000, tz=timezone(timedelta(hours=7)))
 
         # Generate MD5 hash
         hash_result = hashlib.md5(string_to_hash.encode("utf-8")).hexdigest()
@@ -469,11 +503,17 @@ class Bank_Bot(Automation):
 
         response = requests.post(url, headers=headers, data=payload_json)
 
+        # Logging
+        logger.debug("Transaction Time: %s", dt_gmt7)
+        logger.debug("RawData: %s", raw_data)
+        logger.debug("Raw string to hash: %s", string_to_hash)
+        logger.debug("MD5 Hash: %s", hash_result)
+        logger.info("API Response: %s \n", response.text)
+
         # Debug info
         print("\nRaw string to hash:", string_to_hash)
         print("MD5 Hash:", hash_result)
         print("Response:", response.text)
-        print("\n\n")
 
 # =========================== Main Loop ===========================
 

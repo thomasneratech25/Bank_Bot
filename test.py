@@ -57,11 +57,13 @@
     "toAccountNum": "2651424765",
     "toAccountName": "VIVIEN LIVE MALL CO LTD",
     "amount": "100",
-    "username": "JIN666",
-    "password": "Aaaa1111@",
-    "pin": "",
+    "username": "thaisure235",
+    "password": "Thai755#*",
+    "pin": "258096",
+    "token_pin": "55011235",
     "transactionId": "8813"
 }
+
 
 {   
     "deviceId": "2312",
@@ -74,6 +76,36 @@
     "amount": "100",
     "username": "wanneeboo086",
     "password": "Ozone112233@",
+    "pin": "",
+    "transactionId": "1111"
+}
+
+{   
+    "deviceId": "2312",
+    "merchantCode": "IBS",
+    "fromBankCode": "TTB Company Web",
+    "fromAccountNum": "4272987647",
+    "toBankCode": "Siam Commercial Bank Public Company Limited",
+    "toAccountNum": "8144211935",
+    "toAccountName": "THAI SURE TRANSPORT CO. LTD",
+    "amount": "100",
+    "username": "JIN666",
+    "password": "Aaaa1111@",
+    "pin": "",
+    "transactionId": "8813"
+}
+
+{   
+    "deviceId": "2312",
+    "merchantCode": "IBS",
+    "fromBankCode": "KBANK_COMPANY_WEB",
+    "fromAccountNum": "2121618497",
+    "toBankCode": "Siam Commercial Bank",
+    "toAccountNum": "8144211935",
+    "toAccountName": "THAI SURE TRANSPORT CO. LTD",
+    "amount": "100",
+    "username": "Unicorn3903",
+    "password": "Uic@1234",
     "pin": "",
     "transactionId": "1111"
 }

@@ -1,0 +1,10 @@
+2025-12-22 15:37:17 | DEBUG | RawData: รับโอนจาก KBANK x8497 บจก. ยูนิคอร์น เนช|120.00 THB|8144211935
+2025-12-22 15:37:17 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KBANK x8497 บจก. ยูนิคอร์น เนช|120.00 THB|8144211935&transactionTime=1766389020000DEVBankBotIsTheBest
+2025-12-22 15:37:17 | DEBUG | MD5 Hash: 040b19465173aade6b4c43c41a0c9470
+2025-12-22 15:37:17 | INFO | API Response: {"code":"0","msg":"success","data":null}
+2025-12-22 17:21:54 | DEBUG | Transaction Time: 2025-12-22 16:21:00+07:00
+2025-12-22 17:21:54 | DEBUG | RawData: รับโอนจาก KBANK x8497 บจก. ยูนิคอร์น เนช|110.00 THB|8144211935
+2025-12-22 17:21:54 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KBANK x8497 บจก. ยูนิคอร์น เนช|110.00 THB|8144211935&transactionTime=1766395260000DEVBankBotIsTheBest
+2025-12-22 17:21:54 | DEBUG | MD5 Hash: 6136747462fbfb256738d68bdabf49d6
+2025-12-22 17:21:54 | INFO | API Response: {"code":"0","msg":"success","data":null} 
+

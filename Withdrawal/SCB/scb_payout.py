@@ -9,35 +9,17 @@ import logging
 import requests
 import subprocess
 from pathlib import Path
-from datetime import datetime
-from airtest.core.api import *
+from threading import Lock
+from flask import Flask, request, jsonify
 from dotenv import load_dotenv
 from playwright.sync_api import sync_playwright, expect
+from airtest.core.api import *
 from poco.drivers.android.uiautomation import AndroidUiautomationPoco
 
-# ================== Global Variable ==================
+# =========================== Flask apps ==============================
 
-BASE_DIR = Path(__file__).resolve().parents[1]  # → Withdrawal/
-QUEUE_FILE = BASE_DIR / "payout_queue.json"
-
-# ================== Read .env file ==================
-
-env_path = Path(__file__).parent / ".env"
-load_dotenv(dotenv_path=env_path, override=True)
-
-REQUIRED_ENV = [
-    "SCB_USERNAME",
-    "SCB_PASSWORD",
-    "SCB_DEVICE_ID",
-    "SCB_MERCHANT_CODE",
-    "SCB_MERCHANT_CODE",
-    "SCB_login_pass",
-    "SCB_digital_token",
-]
-
-for key in REQUIRED_ENV:
-    if not os.getenv(key):
-        raise RuntimeError(f"Missing required env var: {key}")
+app = Flask(__name__)
+LOCK = Lock()
 
 # ================== LOG File ==================
 
@@ -45,60 +27,29 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s | %(levelname)s | %(message)s",
 )
-logger = logging.getLogger("Bot_Logger")
+logger = logging.getLogger("SCB_Bot_Logger")
 
-# ================== Job Queue ==================
+# ================== PLAYWRIGHT SINGLETON ========================
 
-class JobQueue:
-    
-    def __init__(self, path: Path):
-        self.path = path
-
-    def load(self):
-        # File missing or empty → safe empty queue
-        if not self.path.exists() or self.path.stat().st_size == 0:
-            return []
-
-        try:
-            return json.loads(self.path.read_text(encoding="utf-8"))
-        except json.JSONDecodeError:
-            logger.warning("Queue file invalid or being written. Returning empty queue.")
-            return []
-    
-    def save(self, queue):
-        tmp = self.path.with_suffix(".tmp")
-        tmp.write_text(json.dumps(queue, indent=2), encoding="utf-8")
-        tmp.replace(self.path)
-
-    def get_next_job(self):
-        queue = self.load()
-        for job in queue:
-            if job.get("status") == "pending":
-                job["status"] = "processing"
-                job["startedAt"] = datetime.utcnow().isoformat()
-                self.save(queue)
-                return job
-        return None
-
-    def mark_done(self, txid, success=True, error=None):
-        queue = self.load()
-        for job in queue:
-            if job["transactionId"] == txid:
-                job["status"] = "done" if success else "failed"
-                job["finishedAt"] = datetime.utcnow().isoformat()
-                if error:
-                    job["error"] = str(error)
-                break
-        self.save(queue)
+PLAYWRIGHT = None
+BROWSER = None
+CONTEXT = None
+PAGE = None
 
 # ================== Chrome Settings ==================
 
 class Automation:
+    
     chrome_proc = None
 
     # Chrome CDP
     @classmethod
     def chrome_cdp(cls):
+
+        # Prevent starting Chrome more than once
+        if cls.chrome_proc:
+            return
+        
         USER_DATA_DIR = r"C:\Users\Thomas\AppData\Local\Google\Chrome\User Data\Profile99"
 
         cls.chrome_proc = subprocess.Popen([
@@ -114,7 +65,7 @@ class Automation:
         cls.wait_for_cdp_ready()
         atexit.register(cls.cleanup)
 
-    # Close Chrome Completely 
+    # Close Chrome Completely
     @classmethod
     def cleanup(cls):
         try:
@@ -136,15 +87,11 @@ class Automation:
             time.sleep(1)
         raise RuntimeError("Chrome CDP not ready")
 
-# ================== BANK BOT ==================
+# ================== SCB BANK BOT ==================
 
 class BankBot(Automation):
     
     _scb_ref = None
-    
-    # ==============================
-    # -=-=-=-=-= SCB =-=-=-=-=-=-=-=
-    # ==============================
 
     # Simulate Human Click (Faster way)
     @staticmethod
@@ -168,14 +115,31 @@ class BankBot(Automation):
 
     # Login
     @classmethod
-    def scb_login(cls, p):
-        
-        # Connect to running Chrome
-        browser = p.chromium.connect_over_cdp("http://localhost:9222")
-        context = browser.contexts[0] if browser.contexts else browser.new_context()    
+    def scb_login(cls, data):
 
-        # Open a new browser page
-        page = context.pages[0] if context.pages else context.new_page()
+        global PLAYWRIGHT, BROWSER, CONTEXT, PAGE
+
+        # Start Chrome
+        cls.chrome_cdp()
+
+        # Start Playwright ONLY ONCE
+        if PLAYWRIGHT is None:
+            PLAYWRIGHT = sync_playwright().start()
+
+        # Connect to running Chrome ONLY ONCE
+        if BROWSER is None:
+            BROWSER = PLAYWRIGHT.chromium.connect_over_cdp("http://localhost:9222")
+
+        # Reuse context
+        CONTEXT = BROWSER.contexts[0] if BROWSER.contexts else BROWSER.new_context()
+
+        # Reuse page
+        if PAGE is None or PAGE.is_closed():
+            PAGE = CONTEXT.new_page()
+            PAGE.bring_to_front()
+
+        page = PAGE
+
         page.goto("https://www.scbbusinessanywhere.com/", wait_until="domcontentloaded")
 
         # For your online security, you have been logged out of SCB Business Anywhere (please log in again.)
@@ -188,37 +152,39 @@ class BankBot(Automation):
         # if Account already login, can skip
         try: 
             # Fill "Username"
-            page.locator("//input[@name='username']").fill(os.getenv("SCB_USERNAME"), timeout=1000)
+            page.locator("//input[@name='username']").fill(str(data["username"]), timeout=1000)
 
             # Button Click "Next"
             page.locator("//span[normalize-space()='Next']").click(timeout=0) 
 
             # Fill "Password"
-            page.locator("//input[@name='password']").fill(os.getenv("SCB_PASSWORD"), timeout=0)
+            page.locator("//input[@name='password']").fill(str(data["password"]), timeout=0)
 
             # Button Click "Next"
             page.locator("//button[@type='submit']").click(timeout=0) 
         except:
             pass
         
-        # Button Click "Transfer"
-        page.locator("//p[normalize-space()='Transfers']").click(timeout=0) 
+        # only click Transfers if NOT on login page
+        if not page.locator("//input[@name='username']").is_visible():
+            # Button Click "Transfer"
+            page.locator("//p[normalize-space()='Transfers']").click(timeout=0)
 
         return page
 
     # Withdrawal
     @classmethod
-    def scb_withdrawal(cls, page, job):
+    def scb_withdrawal(cls, page, data):
 
         # Button Click "Add New Recipient"
         page.locator("//span[normalize-space()='Add New Recipient']").click(timeout=0) 
         
         # Fill Bank Name and Click
-        page.get_by_label("Bank Name *").fill(str(job["toBankCode"]), timeout=0)
-        page.get_by_text(str(job["toBankCode"]), exact=True).click(timeout=0)
+        page.get_by_label("Bank Name *").fill(str(data["toBankCode"]), timeout=0)
+        page.get_by_text(str(data["toBankCode"]), exact=True).click(timeout=0)
         
         # Fill Account No.
-        page.locator("//input[@id='accountNumber']").fill(str(job["toAccountNum"]), timeout=0)
+        page.locator("//input[@id='accountNumber']").fill(str(data["toAccountNum"]), timeout=0)
 
         # Button Click "Next"
         page.locator("//span[normalize-space()='Next']").click(timeout=0) 
@@ -228,7 +194,7 @@ class BankBot(Automation):
 
         try:
             # Fill Account Name
-            page.locator("//input[@name='accountName']").fill(str(job["toAccountName"]), timeout=2000)
+            page.locator("//input[@name='accountName']").fill(str(data["toAccountName"]), timeout=2000)
         except:
             pass
 
@@ -239,7 +205,7 @@ class BankBot(Automation):
         page.locator("//span[normalize-space()='Enter']").click(timeout=0) 
 
         # Fill Amount
-        page.locator("//input[@name='amount']").fill(str(job["amount"]), timeout=0)
+        page.locator("//input[@name='amount']").fill(str(data["amount"]), timeout=0)
 
         # Press Enter
         page.keyboard.press("Enter")
@@ -263,7 +229,7 @@ class BankBot(Automation):
         page.locator("//span[normalize-space()='OK']").click(timeout=0)
 
         # Launch Apps to Approve Transfer Request
-        BankBot.scb_Anywhere_apps()
+        BankBot.scb_Anywhere_apps(data)
 
         # Button Click "Done"
         page.locator("//span[normalize-space()='Done']").click(timeout=1000)
@@ -277,12 +243,15 @@ class BankBot(Automation):
         # Wait for MUI backdrop animation to finish
         page.locator("div.MuiBackdrop-root").wait_for(state="hidden", timeout=5000)
 
+        # Call Eric API
+        cls.eric_api(data)
+
         # Button Click Make New Transfer
         page.locator("//span[normalize-space()='Make New Transfer']").click(timeout=5000)
 
     # Read Apps OTP Code
     @classmethod
-    def scb_Anywhere_apps(cls):
+    def scb_Anywhere_apps(cls, data):
 
         # Hide Debug Log, if want view, just comment the bottom code
         logging.getLogger("airtest").setLevel(logging.WARNING)
@@ -325,7 +294,7 @@ class BankBot(Automation):
             # Wait for "Enter PIN" appear
             poco(text="Enter PIN").wait_for_appearance(timeout=2)
 
-            pin = os.getenv("SCB_login_pass")
+            pin = str(data["pin"])
             for digit in pin:
                 key = poco(f"Login_{digit}")
                 cls.human_click(poco, key)
@@ -344,7 +313,7 @@ class BankBot(Automation):
         poco("btApprove").click()
         
         # Key SCB Digital Token Pin
-        token_pin = os.getenv("SCB_digital_token")
+        token_pin = str(data["scbDigitalTokenPin"])
         for digit in token_pin:
             key = poco(f"SoftTokenInputPin_{digit}")
             cls.human_click(poco, key)
@@ -356,52 +325,78 @@ class BankBot(Automation):
         poco("btTodoList").wait_for_appearance(timeout=10)
         poco("btTodoList").click()
 
-    # Call back to ERIC API
+    # Callback ERIC API
     @classmethod
-    def callback(cls, job):
+    def eric_api(cls, data):
 
         url = "https://stg-bot-integration.cloudbdtech.com/integration-service/transaction/payoutScriptCallback"
 
+        # Create payload as a DICTIONARY (not JSON yet)
         payload = {
-            "transactionId": job["transactionId"],
-            "bankCode": job["toBankCode"],
-            "deviceId": os.getenv("SCB_DEVICE_ID"),
-            "merchantCode": os.getenv("SCB_MERCHANT_CODE"),
+            "transactionId": str(data["transactionId"]),
+            "bankCode": str(data["fromBankCode"]),
+            "deviceId": str(data["deviceId"]),
+            "merchantCode": str(data["merchantCode"]),
         }
 
-        secret = "DEVBankBotIsTheBest"
-        base = "&".join(f"{k}={v}" for k, v in payload.items()) + secret
-        hash_val = hashlib.md5(base.encode()).hexdigest()
+        # Your secret key
+        secret_key = "DEVBankBotIsTheBest"
 
-        requests.post(
-            url,
-            headers={"hash": hash_val, "Content-Type": "application/json"},
-            data=json.dumps(payload)
+        # Build the hash string (exact order required)
+        string_to_hash = (
+            f"transactionId={payload['transactionId']}&"
+            f"bankCode={payload['bankCode']}&"
+            f"deviceId={payload['deviceId']}&"
+            f"merchantCode={payload['merchantCode']}{secret_key}"
         )
+
+        # Generate MD5 hash
+        hash_result = hashlib.md5(string_to_hash.encode("utf-8")).hexdigest()
+
+        # Convert payload to JSON string AFTER hash
+        payload_json = json.dumps(payload)
+
+        # Send request
+        headers = {
+            'accept': '*/*',
+            'hash': hash_result,
+            'Content-Type': 'application/json'
+        }
+
+        response = requests.post(url, headers=headers, data=payload_json)
+
+        # 7️⃣ Debug info
+        print("Raw string to hash:", string_to_hash)
+        print("MD5 Hash:", hash_result)
+        print("Response:", response.text)
+        print("\n\n")
 
 # ================== Code Start Here ==================
 
+# Run API
+@app.route("/scb_company_web/runPython", methods=["POST"])        
+def runPython():
+    data = request.get_json(silent=True)
+    if not data:
+        return jsonify({"success": False, "message": "Invalid JSON"}), 400
+
+    with LOCK:
+        try:
+            # Run Browser
+            Automation.chrome_cdp()
+            # Login SCB
+            page = BankBot.scb_login(data)
+            logger.info(f"▶ Processing {data['transactionId']}")
+            BankBot.scb_withdrawal(page, data)
+            logger.info(f"✔ Done {data['transactionId']}")
+            return jsonify({
+                "success": True,
+                "transactionId": data["transactionId"]
+            })
+        except Exception as e:
+            logger.exception("❌ Withdrawal failed")
+            return jsonify({"success": False, "message": str(e)}), 500
+
 if __name__ == "__main__":
-    queue = JobQueue(QUEUE_FILE)
-
-    logger.info("🚀 SCB bot starting (env-based)")
-    Automation.chrome_cdp()
-
-    with sync_playwright() as p:
-        page = BankBot.scb_login(p)
-        logger.info("✅ Logged in once — waiting at transfer page")
-
-        while True:
-            job = queue.get_next_job()
-            if not job:
-                time.sleep(2)
-                continue
-            try:
-                logger.info(f"▶ Processing {job['transactionId']}")
-                BankBot.scb_withdrawal(page, job)
-                queue.mark_done(job["transactionId"], True)
-                logger.info(f"✔ Done {job['transactionId']}")
-            except Exception as e:
-                logger.exception("❌ Withdrawal failed")
-                queue.mark_done(job["transactionId"], False, e)
-
+    logger.info("🚀 SCB Local API started")
+    app.run(host="0.0.0.0", port=5001, debug=False, threaded=False, use_reloader=False)

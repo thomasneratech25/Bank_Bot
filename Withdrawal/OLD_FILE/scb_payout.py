@@ -1,3 +1,4 @@
+import re
 import os
 import json
 import time
@@ -8,14 +9,16 @@ import logging
 import requests
 import subprocess
 from pathlib import Path
+from datetime import datetime
 from airtest.core.api import *
 from dotenv import load_dotenv
 from playwright.sync_api import sync_playwright, expect
 from poco.drivers.android.uiautomation import AndroidUiautomationPoco
 
-# ================== API Base ==================
+# ================== Global Variable ==================
 
-API_BASE = "https://api.thainfo.site"   
+BASE_DIR = Path(__file__).resolve().parents[1]  # → Withdrawal/
+QUEUE_FILE = BASE_DIR / "payout_queue.json"
 
 # ================== Read .env file ==================
 
@@ -42,45 +45,55 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s | %(levelname)s | %(message)s",
 )
-logger = logging.getLogger("SCB_Bot_Logger")
+logger = logging.getLogger("Bot_Logger")
 
 # ================== Job Queue ==================
 
 class JobQueue:
     
-    def __init__(self, api_base, logger):
-        self.api_base = api_base
-        self.logger = logger
+    def __init__(self, path: Path):
+        self.path = path
 
-    def fetch_next_job(self):
-        try:
-            r = requests.post(f"{self.api_base}/jobs/next", json={"fromBankKey": os.getenv("WORKER_BANK_KEY")}, timeout=10)
-            r.raise_for_status()
-            return r.json().get("job")
-        except Exception as e:
-            self.logger.error(f"Fetch job failed: {e}")
-            return None
+    def load(self):
+        # File missing or empty → safe empty queue
+        if not self.path.exists() or self.path.stat().st_size == 0:
+            return []
 
-    def mark_done(self, txid):
         try:
-            requests.post(f"{self.api_base}/jobs/{txid}/done", timeout=10)
-        except Exception as e:
-            self.logger.error(f"Mark done failed: {e}")
+            return json.loads(self.path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            logger.warning("Queue file invalid or being written. Returning empty queue.")
+            return []
+    
+    def save(self, queue):
+        tmp = self.path.with_suffix(".tmp")
+        tmp.write_text(json.dumps(queue, indent=2), encoding="utf-8")
+        tmp.replace(self.path)
 
-    def mark_fail(self, txid, error):
-        try:
-            requests.post(
-                f"{self.api_base}/jobs/{txid}/fail",
-                json={"error": str(error)},
-                timeout=10,
-            )
-        except Exception as e:
-            self.logger.error(f"Mark fail failed: {e}")
+    def get_next_job(self):
+        queue = self.load()
+        for job in queue:
+            if job.get("status") == "pending":
+                job["status"] = "processing"
+                job["startedAt"] = datetime.utcnow().isoformat()
+                self.save(queue)
+                return job
+        return None
+
+    def mark_done(self, txid, success=True, error=None):
+        queue = self.load()
+        for job in queue:
+            if job["transactionId"] == txid:
+                job["status"] = "done" if success else "failed"
+                job["finishedAt"] = datetime.utcnow().isoformat()
+                if error:
+                    job["error"] = str(error)
+                break
+        self.save(queue)
 
 # ================== Chrome Settings ==================
 
 class Automation:
-    
     chrome_proc = None
 
     # Chrome CDP
@@ -369,26 +382,26 @@ class BankBot(Automation):
 # ================== Code Start Here ==================
 
 if __name__ == "__main__":
-    logger.info("🚀 SCB Company Web Bot starting")
-    Automation.chrome_cdp()
+    queue = JobQueue(QUEUE_FILE)
 
-    queue = JobQueue(API_BASE, logger) 
+    logger.info("🚀 SCB bot starting (env-based)")
+    Automation.chrome_cdp()
 
     with sync_playwright() as p:
         page = BankBot.scb_login(p)
-        logger.info("✅ Logged in and ready")
+        logger.info("✅ Logged in once — waiting at transfer page")
 
         while True:
-            job = queue.fetch_next_job() 
+            job = queue.get_next_job()
             if not job:
                 time.sleep(2)
                 continue
-
             try:
                 logger.info(f"▶ Processing {job['transactionId']}")
                 BankBot.scb_withdrawal(page, job)
-                queue.mark_done(job["transactionId"])  
+                queue.mark_done(job["transactionId"], True)
                 logger.info(f"✔ Done {job['transactionId']}")
             except Exception as e:
                 logger.exception("❌ Withdrawal failed")
-                queue.mark_fail(job["transactionId"], e)  
+                queue.mark_done(job["transactionId"], False, e)
+

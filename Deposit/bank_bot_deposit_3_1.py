@@ -128,10 +128,10 @@ class Bank_Bot(Automation):
     @staticmethod
     def detect_first_tx_index(rows, row_count):
         """
-        First transaction block can shift (40/41/44/45, etc.).
+        First transaction block can shift (35-56, etc.).
         Pick the first candidate that looks like a date/time pair.
         """
-        candidates = list(range(40, 46))  # search a small window for the date/time header
+        candidates = list(range(35, 56))  # search a small window for the date/time header
         for offset in candidates:
             if row_count - offset < 12:
                 continue
@@ -143,6 +143,7 @@ class Bank_Bot(Automation):
                 return offset
             except Exception:
                 continue
+        print("⚠️ Transaction start index not detected, using fallback 45")
         return 45
     
     # Extract Transactions
@@ -152,7 +153,7 @@ class Bank_Bot(Automation):
         """
         Extracts collapsed transaction data only.
         Each transaction = 12 rows.
-        First transaction may start around index 40-45.
+        First transaction may start around index 35-45.
         """
 
         # Extract all the rows (transfer name, account number, amount, date)
@@ -161,7 +162,7 @@ class Bank_Bot(Automation):
         row_count = rows.count()
         
         # Some pages render extra banner rows, so the first tx block can start
-        # anywhere in a small window (40-45). Detect the correct offset before slicing.
+        # anywhere in a small window (35-45). Detect the correct offset before slicing.
         start_index = cls.detect_first_tx_index(rows, row_count)
 
         # Rows before start_index are header / non-transaction
@@ -426,9 +427,9 @@ class Bank_Bot(Automation):
     def eric_api(cls, raw_data, timestamp_ms):
         
         # # Production
-        # url = "https://bot-integration.cloudbdtech.com/integration-service/transaction/addDepositTransaction"
+        url = "https://bot-integration.cloudbdtech.com/integration-service/transaction/addDepositTransaction"
         # Staging
-        url = "https://stg-bot-integration.cloudbdtech.com/integration-service/transaction/addDepositTransaction"
+        # url = "https://stg-bot-integration.cloudbdtech.com/integration-service/transaction/addDepositTransaction"
 
         # Create payload as a DICTIONARY (not JSON yet)
         payload = {
@@ -443,7 +444,7 @@ class Bank_Bot(Automation):
         # # Production
         # secret_key = "PRODBankBotIsTheBest"
         # Staging
-        secret_key = "DEVBankBotIsTheBest"
+        secret_key = "PRODBankBotIsTheBest"
 
         # Build the hash string (exact order required)
         string_to_hash = (
