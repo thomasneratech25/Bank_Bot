@@ -1,6 +1,7 @@
 import os 
 import json
 import time
+import ctypes
 import atexit
 import hashlib
 import logging
@@ -518,7 +519,14 @@ class Bank_Bot(Automation):
 # =========================== Main Loop ===========================
 
 if __name__ == "__main__":
+    
+    # Name CMD Title
+    title = input("CMD Title Name: ")
 
+    # Set CMD title
+    ctypes.windll.kernel32.SetConsoleTitleW(title)
+
+    # Launch Chrome
     Automation.chrome_CDP()
 
     while True:

@@ -119,6 +119,7 @@ class BankBot(Automation):
         if "PPRT" in page.url or "payment" in page.url:
             return page
 
+        # TTB Login
         page.goto("https://www.ttbbusinessone.com/auth/login", wait_until="domcontentloaded")
         page.wait_for_timeout(1500)
 
@@ -159,6 +160,16 @@ class BankBot(Automation):
     # TTB Withdrawal
     @classmethod
     def ttb_withdrawal(cls, page, data):
+
+        # Check if logged out
+        try:
+            page.locator("//header[normalize-space()='Your session is about to expire!']").wait_for(state="visible",timeout=2500)
+            # Button Click "Keep me Signed in"
+            page.locator("//button[normalize-space()='Yes, Keep me signed in']").click(timeout=0) 
+        except:
+            cls.ttb_login(data)
+        finally:
+            pass
 
         # Fill Recipient name
         page.locator("//input[@id='counterparty']").fill(str(data["toAccountName"]), timeout=0)
@@ -348,3 +359,4 @@ def runPython():
 if __name__ == "__main__":
     logger.info("🚀 TTB Local API started")
     app.run(host="0.0.0.0", port=5000, debug=False, threaded=False, use_reloader=False)
+

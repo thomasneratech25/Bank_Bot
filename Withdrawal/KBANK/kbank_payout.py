@@ -164,6 +164,13 @@ class BankBot(Automation):
     @classmethod
     def kbank_withdrawal(cls, page, data):
         
+        # Check if logged out
+        try:
+            page.locator("//span[normalize-space()='Sorry']").wait_for(state="visible",timeout=2500)
+            cls.kbank_login(data)
+        except:
+            pass
+
         # Delay 1 seconds
         time.sleep(1)
 

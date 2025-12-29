@@ -23,7 +23,7 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s | %(levelname)s | %(message)s",
 )
-logger = logging.getLogger("KMA_Bot_Logger")
+logger = logging.getLogger("KTB_Bot_Logger")
 
 # ================== PLAYWRIGHT SINGLETON ========================
 
@@ -83,11 +83,11 @@ class Automation:
             time.sleep(1)
         raise RuntimeError("Chrome CDP not ready")
 
-# ================== KMA BANK BOT ==================
+# ================== KTB BANK BOT ==================
 
 class BankBot(Automation):
     
-    _kma_ref = None
+    _ktb_ref = None
 
     # Login
     @classmethod
@@ -286,7 +286,7 @@ class BankBot(Automation):
         while True:
 
             # Read All KTB Bank Messages
-            print("🤖 Reading latest message from KMA bank...")
+            print("🤖 Reading latest message from KTB bank...")
 
             # Read All KTB Messages
             message_nodes = poco("message_list").offspring("message_text")
@@ -308,7 +308,7 @@ class BankBot(Automation):
 
             # --- Match correct Ref Code ---
             for _messages_ref_code, messages_otp_code in otp_candidates:
-                if cls._kma_ref == _messages_ref_code:
+                if cls._ktb_ref == _messages_ref_code:
                     print(f"Found matching Ref: {_messages_ref_code} | OTP: {messages_otp_code} ✅")
                     return messages_otp_code
                 
