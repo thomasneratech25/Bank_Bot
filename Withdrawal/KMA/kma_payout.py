@@ -141,7 +141,7 @@ class BankBot(Automation):
         page.select_option("#ddlBanking", str(data["toBankCode"]))
 
         # Fill in Account Number
-        page.fill("#ctl00_cphSectionData_txtAccTo", str(data["toAccountName"]))
+        page.fill("#ctl00_cphSectionData_txtAccTo", str(data["toAccountNum"]))
 
         # Fill in Amount
         page.fill("#ctl00_cphSectionData_txtAmountTransfer", str(data["amount"]))
