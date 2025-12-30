@@ -87,7 +87,7 @@ class Automation:
 
 class BankBot(Automation):
     
-    _ktb_ref = "5UWNP"
+    _ktb_web_ref_code = None
 
     # Login
     @classmethod
@@ -172,13 +172,13 @@ class BankBot(Automation):
         # Button Click "Verify"
         page.locator("//span[@class='ktb-button-label']").click()
 
-        # If "Announcement" Appear, click "OK", else pass
-        try:
-            expect(page.locator("//h2[normalize-space()='Announcement']")).to_be_visible(timeout=50000)
-            # Button Click "OK"
-            page.locator("//span[normalize-space()='OK']").click()
-        except:
-            pass
+        # # If "Announcement" Appear, click "OK", else pass
+        # try:
+        #     expect(page.locator("//h2[normalize-space()='Announcement']")).to_be_visible(timeout=50000)
+        #     # Button Click "OK"
+        #     page.locator("//span[normalize-space()='OK']").click()
+        # except:
+        #     pass
 
         # Wait for "Account Overview" Appear
         page.locator("//h4[normalize-space()='Account Overview']").wait_for(state="visible", timeout=30000)
@@ -215,50 +215,109 @@ class BankBot(Automation):
     @classmethod
     def ktb_withdrawal(cls, page, data):
 
-        # Select Bank Code
-        page.locator("#ddlBanking").wait_for(timeout=10000)
-        page.select_option("#ddlBanking", str(data["toBankCode"]))
+        # Open dropdown (# Select Bank Code)
+        bank_input = page.locator("input[formcontrolname='searchControl']")
+        bank_input.click()
+        bank_input.fill(str(data["toBankCode"]))
 
-        # Fill in Account Number
-        page.fill("#ctl00_cphSectionData_txtAccTo", str(data["toAccountName"]))
+        # Select bank
+        page.get_by_text(str(data["toBankCode"]), exact=True).wait_for(state="visible", timeout=5000)
+        page.get_by_text(str(data["toBankCode"]), exact=True).click()
 
-        # Fill in Amount
-        page.fill("#ctl00_cphSectionData_txtAmountTransfer", str(data["amount"]))
+        # Fill AccouNT Number 
+        page.get_by_placeholder("Enter account no.").click()
+        page.get_by_placeholder("Enter account no.").fill(str(data["toAccountNum"]))
+        page.keyboard.press("Tab")
 
-        # Click Submit
-        page.click("#ctl00_cphSectionData_btnSubmit")
+        # Delay 1.5 second
+        page.wait_for_timeout(1500)
 
-        # Wait for OTP Box Appear
-        page.locator(".otpbox_header").wait_for(timeout=10000)
+        # Fill Beneficiary Name
+        page.locator("//input[@placeholder='Enter name / company name (in full)']").fill(str(data["toAccountName"]))
 
-        # Capture OTP Reference Number
-        cls._ktb_ref = page.locator("//div[@class='inputbox_half_center']//div[@class='input_input_half']").first.inner_text().strip()
-        print(cls._ktb_ref)
-
-        # Run Read OTP Code
-        otp = cls.ktb_read_otp()
-        
-        # Fill OTP Code
-        page.fill("#ctl00_cphSectionData_OTPBox1_txtOTPPassword", otp)
-        
         # Delay 0.5 second
         page.wait_for_timeout(500)
-       
-        # Button Click "Confirm"
-        page.locator("//input[@id='ctl00_cphSectionData_OTPBox1_btnConfirm']").click(timeout=0)
-        page.locator("//input[@id='ctl00_cphSectionData_OTPBox1_btnConfirm']").click(timeout=0)
-       
-        # Wait for Appear withdrawal Successful
-        page.locator("#ctl00_cphSectionData_pnlSuccessMsg").wait_for(timeout=10000)
-       
+
+        # Click "Add Details"  
+        page.locator("//span[normalize-space()='Add Details']").click()
+
+        # Wait for "value date" appear
+        page.locator("//label[normalize-space()='Value Date']").wait_for(state="visible", timeout=30000)
+
+        # Delay 0.5 second
+        page.wait_for_timeout(500)
+        
+        # Fill AccouNT Number 
+        page.locator("//input[@formcontrolname='amount']").click()
+        page.locator("//input[@formcontrolname='amount']").fill(str(data["amount"]))
+
+        # Delay 2.5 second
+        page.wait_for_timeout(2500)
+
+        # Click "SAVE"
+        page.locator("//span[normalize-space()='SAVE']").click()
+
         # Delay 1 second
         page.wait_for_timeout(1000)
+
+        # Click "NEXT"
+        page.locator("//span[normalize-space()='NEXT']").click()
+
+        # Delay 1 second
+        page.wait_for_timeout(1000)
+
+        # Click "CONFIRM"
+        page.locator("//span[normalize-space()='CONFIRM']").click()
+
+        # Wait for "OTP Verification"
+        page.locator("//h4[normalize-space()='OTP Verification']").wait_for(state="visible", timeout=30000)
+
+        # Wait until the Ref element is visible
+        page.locator("//p[@class='ref ref-number-size mb-16px']").wait_for(state="visible", timeout=10000)
+
+        # Get KTB Ref Code (Comfirm Transfer there)
+        cls._ktb_web_ref_code = page.locator("//p[@class='ref ref-number-size mb-16px']").inner_text().strip()
+
+        match = re.search(r"Ref\.?\s*([A-Za-z0-9]+)", cls._ktb_web_ref_code, re.IGNORECASE)
+        if match:
+            cls._ktb_web_ref_code = match.group(1)
+            print(f"KTB Web Ref Code: {cls._ktb_web_ref_code}")
         
-        # Call Eric API
-        cls.eric_api(data)
-       
-       # Button click "Transfer other transaction"
-        page.click("#ctl00_cphSectionData_btnOtherTxn")
+        # Run Read OTP Code
+        otp = cls.ktb_read_otp()
+
+        # Fill OTP Code
+        page.locator("//input[@id='otp-input-0']").fill(otp)
+
+        # Delay 1 second
+        page.wait_for_timeout(1000)
+
+        # Button Click "Verify"
+        page.locator("//span[normalize-space()='VERIFY']").click()
+
+        # Print Withdrawal SuccessFul!!
+        print(f"Withdrawal SuccessFul!!!")
+
+        # Make Another Transfer
+        page.locator("//span[normalize-space()='MAKE ANOTHER TRANSACTION']").click()
+
+        # Button Click "New Transfer"
+        page.locator("//body/ktb-root/ui-layout[@class='ng-star-inserted']/div[@class='main-container']/ui-side-panel/ng-sidebar-container[@backdropclass='custom-backdrop']/div[@class='ng-sidebar__content ng-sidebar__content--animate']/main/div[@class='main-inner']/ktb-module-transfer-pay[@class='ng-star-inserted']/ktb-module-transfer-pay-index-page[@class='ng-star-inserted']/ui-section[@class='transfer-landing-header section-wrapper ng-star-inserted']/section[@class='is-dark']/div[@class='section-content']/ui-container/div[@class='container']/div[@class='inner']/div[@class='sub-menu-container ng-star-inserted']/ui-card-sub-menu[1]/div[1]").click(timeout=0)
+
+        # Wait for "Transfer Details" Appear
+        page.locator("//h4[normalize-space()='Transfer Details']").wait_for(state="visible", timeout=30000)
+
+        # Click "Select Payee"
+        page.locator("//div[@class='add-payee-button']").click()
+
+        # Wait for "New Account" Appear
+        page.locator("//h6[normalize-space()='New Account']").wait_for(state="visible", timeout=30000)
+
+        # Click "New Account"  
+        page.locator("//h6[normalize-space()='New Account']").click()
+
+        # Delay 3 second
+        page.wait_for_timeout(3)
 
     # Read Phone Message OTP Code
     @classmethod
@@ -320,7 +379,7 @@ class BankBot(Automation):
 
             # --- Match correct Ref Code ---
             for _messages_ref_code, messages_otp_code in otp_candidates:
-                if cls._ktb_ref == _messages_ref_code:
+                if cls._ktb_web_ref_code == _messages_ref_code:
                     print(f"Found matching Ref: {_messages_ref_code} | OTP: {messages_otp_code} ✅")
                     return messages_otp_code
                 
@@ -375,32 +434,30 @@ class BankBot(Automation):
 
 # ================== Code Start Here ==================
 
-# # Run API
-# @app.route("/ktb_company_web/runPython", methods=["POST"])        
-# def runPython():
-#     data = request.get_json(silent=True)
-#     if not data:
-#         return jsonify({"success": False, "message": "Invalid JSON"}), 400
+# Run API
+@app.route("/ktb_company_web/runPython", methods=["POST"])        
+def runPython():
+    data = request.get_json(silent=True)
+    if not data:
+        return jsonify({"success": False, "message": "Invalid JSON"}), 400
 
-#     with LOCK:
-#         try:
-#             # Run Browser
-#             Automation.chrome_cdp()
-#             # Login KTB
-#             page = BankBot.ktb_login(data)
-#             logger.info(f"▶ Processing {data['transactionId']}")
-#             BankBot.ktb_withdrawal(page, data)
-#             logger.info(f"✔ Done {data['transactionId']}")
-#             return jsonify({
-#                 "success": True,
-#                 "transactionId": data["transactionId"]
-#             })
-#         except Exception as e:
-#             logger.exception("❌ Withdrawal failed")
-#             return jsonify({"success": False, "message": str(e)}), 500
+    with LOCK:
+        try:
+            # Run Browser
+            Automation.chrome_cdp()
+            # Login KTB
+            page = BankBot.ktb_login(data)
+            logger.info(f"▶ Processing {data['transactionId']}")
+            BankBot.ktb_withdrawal(page, data)
+            logger.info(f"✔ Done {data['transactionId']}")
+            return jsonify({
+                "success": True,
+                "transactionId": data["transactionId"]
+            })
+        except Exception as e:
+            logger.exception("❌ Withdrawal failed")
+            return jsonify({"success": False, "message": str(e)}), 500
 
-# if __name__ == "__main__":
-#     logger.info("🚀 KTB Local API started")
-#     app.run(host="0.0.0.0", port=5003, debug=False, threaded=False, use_reloader=False)
-
-BankBot.ktb_read_otp()
+if __name__ == "__main__":
+    logger.info("🚀 KTB Local API started")
+    app.run(host="0.0.0.0", port=5003, debug=False, threaded=False, use_reloader=False)
