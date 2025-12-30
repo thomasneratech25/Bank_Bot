@@ -106,6 +106,54 @@
     "amount": "100",
     "username": "Unicorn3903",
     "password": "Uic@1234",
-    "pin": "",
+    "pin": "147258",
     "transactionId": "1111"
+}
+
+{   
+    "deviceId": "2312",
+    "merchantCode": "IBS",
+    "fromBankCode": "KTB_COMPANY_WEB",
+    "fromAccountNum": "0170577147",
+    "toBankCode": "Siam Commercial Bank",
+    "toAccountNum": "8144211935",
+    "toAccountName": "THAI SURE TRANSPORT CO. LTD",
+    "amount": "105",
+    "username": "Unicorn3909",
+    "password": "Uic@1234",
+    "pin": "147258",
+    "transactionId": "1111",
+    "companyId": "BSKBA28785"
+}
+
+{   
+    "deviceId": "2312",
+    "merchantCode": "IBS",
+    "fromBankCode": "KMA_COMPANY_WEB",
+    "fromAccountNum": "0170577147",
+    "toBankCode": "014",
+    "toAccountNum": "8144211935",
+    "toAccountName": "THAI SURE TRANSPORT CO. LTD",
+    "amount": "105",
+    "username": "JIN666",
+    "password": "Aaaa1111@",
+    "pin": "147258",
+    "transactionId": "1111",
+    "companyId": "BSKBA28785"
+}
+
+{   
+    "deviceId": "2312",
+    "merchantCode": "IBS",
+    "fromBankCode": "KTB_COMPANY_WEB",
+    "fromAccountNum": "0080413285",
+    "toBankCode": "ERA GOOD TRADING CO.,LTD (บริษัท อีร่า กู๊ด เทรดดิ้งจำกัด)",
+    "toAccountNum": "8144211935",
+    "toAccountName": "THAI SURE TRANSPORT CO. LTD",
+    "amount": "100",
+    "username": "eragood02",
+    "password": "MMs88990!",
+    "pin": "",
+    "transactionId": "1111",
+    "companyId": "SSKBA05794"
 }

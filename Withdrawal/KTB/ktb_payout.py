@@ -87,7 +87,7 @@ class Automation:
 
 class BankBot(Automation):
     
-    _ktb_ref = None
+    _ktb_ref = "5UWNP"
 
     # Login
     @classmethod
@@ -115,7 +115,17 @@ class BankBot(Automation):
 
         page = PAGE
 
+        # If already on transfer page, skip login
+        try:
+            page.locator("//h4[normalize-space()='Transfer Details']").wait_for(timeout=1500)
+            return page # Already Login
+        except:
+            pass
+
         page.goto("https://business.krungthai.com/#/", wait_until="domcontentloaded")
+
+        # Click Login
+        page.locator("//span[contains(text(),'เข้าสู่ระบบ / Login')]").click(timeout=0)
 
         # Change Language (English)
         page.locator("//p[@class='language-english']").click(timeout=0) 
@@ -153,11 +163,11 @@ class BankBot(Automation):
             cls._ktb_web_ref_code = match.group(1).upper().strip()
             print(f"KTB Web Ref Code: {cls._ktb_web_ref_code}")
 
-        # Call messages_OTP_4() function and Get OTP Code
-        _messages_otp_code = cls.messages_OTP_4()
+        # Run Read OTP Code
+        otp = cls.ktb_read_otp()
 
         # Fill OTP Code
-        page.locator("//input[@id='otp-input-0']").fill(_messages_otp_code)
+        page.locator("//input[@id='otp-input-0']").fill(otp)
 
         # Button Click "Verify"
         page.locator("//span[@class='ktb-button-label']").click()
@@ -223,7 +233,8 @@ class BankBot(Automation):
 
         # Capture OTP Reference Number
         cls._ktb_ref = page.locator("//div[@class='inputbox_half_center']//div[@class='input_input_half']").first.inner_text().strip()
-        
+        print(cls._ktb_ref)
+
         # Run Read OTP Code
         otp = cls.ktb_read_otp()
         
@@ -295,14 +306,15 @@ class BankBot(Automation):
             otp_candidates = []
             for i, node in reversed(list(enumerate(message_nodes))):
                 messages = node.get_text().strip()
+
                 if not messages:
                     continue
                 
                 # using regex to get Message OTP Code and Ref Code
-                match = re.search(r"\bRef\s*[:\-]?\s*(\d+)\b.*?\bOTP\s*[:\-]?\s*(\d+)\b", messages, re.IGNORECASE,)
+                match = re.search(r"\bOTP\s*(?:is|:)?\s*(\d{4,8})\b.*?\bRef\s*(?:No\.?|:)?\s*([A-Z0-9]+)\b", messages, re.IGNORECASE,)
 
                 if match:
-                    _messages_ref_code, messages_otp_code = match.groups()
+                    messages_otp_code, _messages_ref_code = match.groups()
                     otp_candidates.append((_messages_ref_code.strip(), messages_otp_code.strip()))
                     print(f"# Ref: {_messages_ref_code}, OTP: {messages_otp_code} ❌")
 
@@ -363,30 +375,32 @@ class BankBot(Automation):
 
 # ================== Code Start Here ==================
 
-# Run API
-@app.route("/ktb_company_web/runPython", methods=["POST"])        
-def runPython():
-    data = request.get_json(silent=True)
-    if not data:
-        return jsonify({"success": False, "message": "Invalid JSON"}), 400
+# # Run API
+# @app.route("/ktb_company_web/runPython", methods=["POST"])        
+# def runPython():
+#     data = request.get_json(silent=True)
+#     if not data:
+#         return jsonify({"success": False, "message": "Invalid JSON"}), 400
 
-    with LOCK:
-        try:
-            # Run Browser
-            Automation.chrome_cdp()
-            # Login KTB
-            page = BankBot.ktb_login(data)
-            logger.info(f"▶ Processing {data['transactionId']}")
-            BankBot.ktb_withdrawal(page, data)
-            logger.info(f"✔ Done {data['transactionId']}")
-            return jsonify({
-                "success": True,
-                "transactionId": data["transactionId"]
-            })
-        except Exception as e:
-            logger.exception("❌ Withdrawal failed")
-            return jsonify({"success": False, "message": str(e)}), 500
+#     with LOCK:
+#         try:
+#             # Run Browser
+#             Automation.chrome_cdp()
+#             # Login KTB
+#             page = BankBot.ktb_login(data)
+#             logger.info(f"▶ Processing {data['transactionId']}")
+#             BankBot.ktb_withdrawal(page, data)
+#             logger.info(f"✔ Done {data['transactionId']}")
+#             return jsonify({
+#                 "success": True,
+#                 "transactionId": data["transactionId"]
+#             })
+#         except Exception as e:
+#             logger.exception("❌ Withdrawal failed")
+#             return jsonify({"success": False, "message": str(e)}), 500
 
-if __name__ == "__main__":
-    logger.info("🚀 KTB Local API started")
-    app.run(host="0.0.0.0", port=5003, debug=False, threaded=False, use_reloader=False)
+# if __name__ == "__main__":
+#     logger.info("🚀 KTB Local API started")
+#     app.run(host="0.0.0.0", port=5003, debug=False, threaded=False, use_reloader=False)
+
+BankBot.ktb_read_otp()

@@ -115,6 +115,13 @@ class BankBot(Automation):
 
         page = PAGE
 
+        # If already on transfer page, skip login
+        try:
+            page.locator("//div[@class='page_header']").wait_for(timeout=1500)
+            return page # Already Login
+        except:
+            pass
+
         # Go to a webpage
         page.goto("https://www.krungsribizonline.com/BAY.KOL.Corp.WebSite/Common/Login.aspx?language=en", wait_until="domcontentloaded")
 
@@ -160,7 +167,7 @@ class BankBot(Automation):
 
         # Fill OTP Code
         page.fill("#ctl00_cphSectionData_OTPBox1_txtOTPPassword", otp)
-
+        
         # Delay 0.5 second
         page.wait_for_timeout(500)
 

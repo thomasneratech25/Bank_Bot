@@ -97,7 +97,6 @@ class BankBot(Automation):
         from airtest.core.api import touch, G
 
         pos = poco_obj.get_position()
-
         w = G.DEVICE.display_info["width"]
         h = G.DEVICE.display_info["height"]
 
@@ -107,9 +106,9 @@ class BankBot(Automation):
         offset_x = random.uniform(-0.01, 0.01) * w
         offset_y = random.uniform(-0.01, 0.01) * h
 
-        touch([abs_x + offset_x, abs_y + offset_y])
+        touch((abs_x + offset_x, abs_y + offset_y))
         time.sleep(random.uniform(0.15, 0.35))
-
+    
     # Login
     @classmethod
     def kbank_login(cls, data):
@@ -136,8 +135,15 @@ class BankBot(Automation):
 
         page = PAGE
 
+        # If already on transfer page, skip login
+        try:
+            page.locator("//h1[normalize-space()='Funds Transfer']").wait_for(timeout=1500)
+            return page # Already Login
+        except:
+            pass
+
         # Go to a webpage
-        page.goto("https://kbiz.kasikornbank.com/authen/login.jsp?lang=en", wait_until="networkidle")
+        page.goto("https://kbiz.kasikornbank.com/authen/login.jsp?lang=en", wait_until="domcontentloaded")
 
         # if Account already login, can skip
         try: 
@@ -213,7 +219,7 @@ class BankBot(Automation):
         # page.locator("//a[@class='btn fixedwidth btn-gradient f-right']").click()
 
         # Kbank Apps Approved   
-        cls.kbank_business_apps()
+        cls.kbank_business_apps(data)
 
         # Callback Eric API
         cls.eric_api(data)
@@ -287,15 +293,53 @@ class BankBot(Automation):
 
     #         # If no match, loop again
     #         print("# OTP not found yet, keep waiting... \n")
+
     
     # Apps Approved Transaction
     @classmethod
-    def kbank_business_apps(cls):
+    def kbank_business_apps(cls, data):
+
+        # Enter Login Pin
+        def enter_pin():
+
+            # Wait for keypad to be fully ready
+            poco("Enter PIN").wait_for_appearance(timeout=30)
+            poco("1").wait_for_appearance(timeout=10)
+            sleep(0.3)
+
+            # key Pin
+            for digit in str(data["pin"]):
+                key = poco(digit) 
+                cls.human_click(key)
+                sleep(0.2)
+
+        # Confirm Transaction
+        def confirm_transaction():
+            
+            # Wait for "Confirm Transaction"
+            poco(type="android.widget.TextView", text="Confirm Transaction").wait_for_appearance(timeout=20)
+            
+            # Scroll Down
+            swipe((360, 1280), (360, 320), duration=0.5)
+            swipe((360, 1280), (360, 320), duration=0.5)
+
+            # Button Click "Confirm"
+            poco("Confirm").click()
+
+            time.sleep(1)
+
+            # Button Click "Confirm"s
+            poco("Confirm").click()
 
         # Hide Debug Log, if want view, just comment the bottom code
         logging.getLogger("airtest").setLevel(logging.WARNING)
         logging.getLogger("pocoui").setLevel(logging.WARNING) 
         logging.getLogger("airtest.core.helper").setLevel(logging.WARNING)
+
+        # prepare Airtest environment
+        auto_setup(__file__)
+        # attach Android device
+        connect_device("Android:///")
 
         # Poco Assistant
         poco = AndroidUiautomationPoco(use_airtest_input=True, screenshot_each_action=False)
@@ -310,44 +354,67 @@ class BankBot(Automation):
             wake()
             wake()
         
-        # Swipe Down Notification Bar
-        swipe((0.5, 0.01), (0.5, 0.7))
-
-        # Wait for notification text name and click
-        poco(text="UNICORN NATIONAL").wait_for_appearance(timeout=30)
-        poco(text="UNICORN NATIONAL").click()
-        poco(text="UNICORN NATIONAL").click()
-
-        # Wait for Tranfers Tab and Click Passcode number, else key Passcode Number
-        try:
-            if poco("Banking\nTab 3 of 5").wait_for_appearance(timeout=3):
-                pass
-            else:
-                poco("Enter PIN").wait_for_appearance(timeout=30)
-                login_pass = "147258"
-                for digit in login_pass:
-                    key = poco(f"{digit}")
-                    cls.human_click(key)
-        except:
-            pass
-
-        # Wait for "Confirm Transaction"
-        poco(text="Confirm Transaction").wait_for_appearance(timeout=20)
-        
-        # Scroll Down
-        swipe((360, 1280), (360, 320), duration=0.5)
-        swipe((360, 1280), (360, 320), duration=0.5)
-
-        # Button Click "Confirm"
-        poco("Confirm").click()
+        # Expand Notification Bar
+        device().shell("cmd statusbar expand-notifications")  
 
         time.sleep(1)
 
-        # Button Click "Confirm"s
-        poco("Confirm").click()
+        # Wait for notification text name and click
+        poco(resourceId="com.android.systemui:id/notification_text", textMatches=r".*Confirm transaction.*Transfer to.*").click()
+        poco(resourceId="android:id/text", textMatches=r".*Confirm transaction.*Transfer to.*").wait_for_appearance(10)
+        poco(resourceId="android:id/text", textMatches=r".*Confirm transaction.*Transfer to.*").click()
 
+        # Check Session Expired or PIN Login or Transfer Page
+        while True:
+            
+            # Session Expired
+            if poco("Notice The session has expired. Do you wish to continue using K BIZ?").exists():
+
+                # Button Click Yes
+                poco(text="Yes").click()
+
+                # Wait for "Enter PIN"
+                poco("Enter PIN").wait_for_appearance(timeout=1000)
+
+                # Key PIN
+                enter_pin()
+
+                # Confirm Transaction
+                confirm_transaction()
+
+                # Exit While Loop
+                break
+
+            # else if Enter Pin Page
+            elif poco("Enter PIN").exists():
+
+                # Wait for "Enter PIN"
+                poco("Enter PIN").wait_for_appearance(timeout=1000)
+
+                # Key PIN
+                enter_pin()
+
+                # Confirm Transaction
+                confirm_transaction()
+
+                # Exit While Loop
+                break
+            
+            # Wait for "Confirm Transaction"
+            elif poco(text="Confirm Transaction").exists():   
+                
+                # Confirm Transaciton
+                confirm_transaction()
+
+                # Exit While Loop
+                break
+            
+            # Time sleep 0.5
+            sleep(0.5)
+        
         # Wait for "Back to main page"
         poco("Back to main page").wait_for_appearance(timeout=20)
+        time.sleep(1)
         poco("Back to main page").click()
         
     # Callback ERIC API

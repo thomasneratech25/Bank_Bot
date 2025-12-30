@@ -246,9 +246,12 @@ class BankBot(Automation):
         
         # Click ttbbank Chat
         # If not in inside ttbank chat, click it, else passs
-        if not poco("message_text").exists():
-            poco(text="ttbbank").click()
-        else:
+        try:
+            if not poco("message_text").exists():
+                poco(text="ttbbank").click()
+            else:
+                pass
+        except:
             pass
         
         while True:

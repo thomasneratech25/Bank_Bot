@@ -8,3 +8,300 @@
 2025-12-22 17:21:54 | DEBUG | MD5 Hash: 6136747462fbfb256738d68bdabf49d6
 2025-12-22 17:21:54 | INFO | API Response: {"code":"0","msg":"success","data":null} 
 
+2025-12-29 16:41:37 | DEBUG | Transaction Time: 2025-12-29 13:57:00+07:00
+2025-12-29 16:41:37 | DEBUG | RawData: รับโอนจาก KTB x9026 KOH ZI JIAN -|1,304.00 THB|8144211935
+2025-12-29 16:41:37 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|1,304.00 THB|8144211935&transactionTime=1766991420000DEVBankBotIsTheBest
+2025-12-29 16:41:37 | DEBUG | MD5 Hash: 1eb2a3ebc642057dd4d5a4f7d1a2f0cb
+2025-12-29 16:41:37 | INFO | API Response: {"code":"0","msg":"success","data":null} 
+
+2025-12-29 16:42:25 | DEBUG | Transaction Time: 2025-12-29 13:27:00+07:00
+2025-12-29 16:42:25 | DEBUG | RawData: รับโอนจาก BAY x4765 VIVIEN LIVE M|100.00 THB|8144211935
+2025-12-29 16:42:25 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก BAY x4765 VIVIEN LIVE M|100.00 THB|8144211935&transactionTime=1766989620000DEVBankBotIsTheBest
+2025-12-29 16:42:25 | DEBUG | MD5 Hash: c5790ffd61d28003046513b553bcdd47
+2025-12-29 16:42:25 | INFO | API Response: {"code":"0","msg":"success","data":null} 
+
+2025-12-29 16:42:25 | DEBUG | Transaction Time: 2025-12-29 13:57:00+07:00
+2025-12-29 16:42:25 | DEBUG | RawData: รับโอนจาก KTB x9026 KOH ZI JIAN -|1,304.00 THB|8144211935
+2025-12-29 16:42:25 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|1,304.00 THB|8144211935&transactionTime=1766991420000DEVBankBotIsTheBest
+2025-12-29 16:42:25 | DEBUG | MD5 Hash: 1eb2a3ebc642057dd4d5a4f7d1a2f0cb
+2025-12-29 16:42:25 | INFO | API Response: {"code":"400001","msg":"Internal error. Try later please.","data":null} 
+
+2025-12-29 16:44:02 | DEBUG | Transaction Time: 2025-12-29 13:27:00+07:00
+2025-12-29 16:44:02 | DEBUG | RawData: รับโอนจาก BAY x4765 VIVIEN LIVE M|100.00 THB|8144211935
+2025-12-29 16:44:02 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก BAY x4765 VIVIEN LIVE M|100.00 THB|8144211935&transactionTime=1766989620000DEVBankBotIsTheBest
+2025-12-29 16:44:02 | DEBUG | MD5 Hash: c5790ffd61d28003046513b553bcdd47
+2025-12-29 16:44:02 | INFO | API Response: {"code":"400001","msg":"Internal error. Try later please.","data":null} 
+
+2025-12-29 16:44:02 | DEBUG | Transaction Time: 2025-12-29 13:57:00+07:00
+2025-12-29 16:44:02 | DEBUG | RawData: รับโอนจาก KTB x9026 KOH ZI JIAN -|1,304.00 THB|8144211935
+2025-12-29 16:44:02 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|1,304.00 THB|8144211935&transactionTime=1766991420000DEVBankBotIsTheBest
+2025-12-29 16:44:02 | DEBUG | MD5 Hash: 1eb2a3ebc642057dd4d5a4f7d1a2f0cb
+2025-12-29 16:44:02 | INFO | API Response: {"code":"400001","msg":"Internal error. Try later please.","data":null} 
+
+2025-12-29 18:41:25 | DEBUG | Transaction Time: 2025-12-29 17:01:00+07:00
+2025-12-29 18:41:25 | DEBUG | RawData: รับโอนจาก KTB x9026 KOH ZI JIAN -|920.50 THB|8144211935
+2025-12-29 18:41:25 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|920.50 THB|8144211935&transactionTime=1767002460000DEVBankBotIsTheBest
+2025-12-29 18:41:25 | DEBUG | MD5 Hash: bfce04aa4974ae3f058d2d09b49f8a7a
+2025-12-29 18:41:25 | INFO | API Response: {"code":"0","msg":"success","data":null} 
+
+2025-12-29 18:41:25 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|920.50 THB|8144211935&transactionTime=1767002460000DEVBankBotIsTheBest
+2025-12-29 18:41:25 | DEBUG | MD5 Hash: bfce04aa4974ae3f058d2d09b49f8a7a
+2025-12-29 18:41:25 | INFO | API Response: {"code":"0","msg":"success","data":null}
+2025-12-29 18:42:44 | DEBUG | Transaction Time: 2025-12-29 17:01:00+07:00
+2025-12-29 18:42:44 | DEBUG | RawData: รับโอนจาก KTB x9026 KOH ZI JIAN -|920.50 THB|8144211935
+2025-12-29 18:42:44 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|920.50 THB|8144211935&transactionTime=1767002460000DEVBankBotIsTheBest
+2025-12-29 18:42:44 | DEBUG | MD5 Hash: bfce04aa4974ae3f058d2d09b49f8a7a
+2025-12-29 18:42:44 | INFO | API Response: {"code":"400001","msg":"Internal error. Try later please.","data":null} 
+
+2025-12-29 18:42:44 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|920.50 THB|8144211935&transactionTime=1767002460000DEVBankBotIsTheBest
+2025-12-29 18:42:44 | DEBUG | MD5 Hash: bfce04aa4974ae3f058d2d09b49f8a7a
+2025-12-29 18:42:44 | INFO | API Response: {"code":"400001","msg":"Internal error. Try later please.","data":null}
+2025-12-29 18:49:27 | INFO | First run detected — sending ALL transactions
+2025-12-29 18:49:28 | DEBUG | Transaction Time: 2025-12-29 17:01:00+07:00
+2025-12-29 18:49:28 | DEBUG | RawData: รับโอนจาก KTB x9026 KOH ZI JIAN -|920.50 THB|8144211935
+2025-12-29 18:49:28 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|920.50 THB|8144211935&transactionTime=1767002460000DEVBankBotIsTheBest
+2025-12-29 18:49:28 | DEBUG | MD5 Hash: bfce04aa4974ae3f058d2d09b49f8a7a
+2025-12-29 18:49:28 | INFO | API Response: {"code":"400001","msg":"Internal error. Try later please.","data":null} 
+
+2025-12-29 18:49:28 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|920.50 THB|8144211935&transactionTime=1767002460000DEVBankBotIsTheBest
+2025-12-29 18:49:28 | DEBUG | MD5 Hash: bfce04aa4974ae3f058d2d09b49f8a7a
+2025-12-29 18:49:28 | INFO | API Response: {"code":"400001","msg":"Internal error. Try later please.","data":null}
+2025-12-29 18:49:45 | INFO | First run detected — sending ALL transactions
+2025-12-29 18:49:46 | DEBUG | Transaction Time: 2025-12-29 17:01:00+07:00
+2025-12-29 18:49:46 | DEBUG | RawData: รับโอนจาก KTB x9026 KOH ZI JIAN -|920.50 THB|8144211935
+2025-12-29 18:49:46 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|920.50 THB|8144211935&transactionTime=1767002460000DEVBankBotIsTheBest
+2025-12-29 18:49:46 | DEBUG | MD5 Hash: bfce04aa4974ae3f058d2d09b49f8a7a
+2025-12-29 18:49:46 | INFO | API Response: {"code":"400001","msg":"Internal error. Try later please.","data":null} 
+
+2025-12-29 18:49:46 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|920.50 THB|8144211935&transactionTime=1767002460000DEVBankBotIsTheBest
+2025-12-29 18:49:46 | DEBUG | MD5 Hash: bfce04aa4974ae3f058d2d09b49f8a7a
+2025-12-29 18:49:46 | INFO | API Response: {"code":"400001","msg":"Internal error. Try later please.","data":null}
+2025-12-29 18:52:18 | DEBUG | Transaction Time: 2025-12-29 17:01:00+07:00
+2025-12-29 18:52:18 | DEBUG | RawData: รับโอนจาก KTB x9026 KOH ZI JIAN -|920.50 THB|8144211935
+2025-12-29 18:52:18 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|920.50 THB|8144211935&transactionTime=1767002460000DEVBankBotIsTheBest
+2025-12-29 18:52:18 | DEBUG | MD5 Hash: bfce04aa4974ae3f058d2d09b49f8a7a
+2025-12-29 18:52:18 | INFO | API Response: {"code":"400001","msg":"Internal error. Try later please.","data":null} 
+
+2025-12-29 18:52:18 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|920.50 THB|8144211935&transactionTime=1767002460000DEVBankBotIsTheBest
+2025-12-29 18:52:18 | DEBUG | MD5 Hash: bfce04aa4974ae3f058d2d09b49f8a7a
+2025-12-29 18:52:18 | INFO | API Response: {"code":"400001","msg":"Internal error. Try later please.","data":null}
+2025-12-29 18:54:10 | DEBUG | Transaction Time: 2025-12-29 17:01:00+07:00
+2025-12-29 18:54:10 | DEBUG | RawData: รับโอนจาก KTB x9026 KOH ZI JIAN -|920.50 THB|8144211935
+2025-12-29 18:54:10 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|920.50 THB|8144211935&transactionTime=1767002460000DEVBankBotIsTheBest
+2025-12-29 18:54:10 | DEBUG | MD5 Hash: bfce04aa4974ae3f058d2d09b49f8a7a
+2025-12-29 18:54:10 | INFO | API Response: {"code":"400001","msg":"Internal error. Try later please.","data":null} 
+
+2025-12-29 18:54:41 | DEBUG | Transaction Time: 2025-12-29 17:01:00+07:00
+2025-12-29 18:54:41 | DEBUG | RawData: รับโอนจาก KTB x9026 KOH ZI JIAN -|920.50 THB|8144211935
+2025-12-29 18:54:41 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|920.50 THB|8144211935&transactionTime=1767002460000DEVBankBotIsTheBest
+2025-12-29 18:54:41 | DEBUG | MD5 Hash: bfce04aa4974ae3f058d2d09b49f8a7a
+2025-12-29 18:54:41 | INFO | API Response: {"code":"400001","msg":"Internal error. Try later please.","data":null} 
+
+2025-12-29 18:55:34 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_6.py", line 437, in scb_Anywhere_web
+    dt = datetime.strptime(datetime_str, "%d/%m/%Y %H:%M")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\_strptime.py", line 567, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\_strptime.py", line 349, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+ValueError: time data ' ' does not match format '%d/%m/%Y %H:%M'
+2025-12-29 19:02:19 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_6.py", line 448, in scb_Anywhere_web
+    page.locator("//span[normalize-space()='Apply']").click(timeout=2000)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 15573, in click
+    self._sync(
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 160, in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 549, in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.click: Timeout 2000ms exceeded.
+Call log:
+  - waiting for locator("//span[normalize-space()='Apply']")
+    - locator resolved to <span class="MuiButton-label jss472">Apply</span>
+  - attempting click action
+    - waiting for element to be visible, enabled and stable
+
+2025-12-29 19:02:55 | DEBUG | Transaction Time: 2025-12-29 18:02:00+07:00
+2025-12-29 19:02:55 | DEBUG | RawData: รับโอนจาก BAY x4765 VIVIEN LIVE M|105.00 THB|8144211935
+2025-12-29 19:02:55 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก BAY x4765 VIVIEN LIVE M|105.00 THB|8144211935&transactionTime=1767006120000DEVBankBotIsTheBest
+2025-12-29 19:02:55 | DEBUG | MD5 Hash: 6b1900e1278d65c2e22c494038691869
+2025-12-29 19:02:55 | INFO | API Response: {"code":"0","msg":"success","data":null} 
+
+2025-12-29 19:03:50 | DEBUG | Transaction Time: 2025-12-29 17:01:00+07:00
+2025-12-29 19:03:50 | DEBUG | RawData: รับโอนจาก KTB x9026 KOH ZI JIAN -|920.50 THB|8144211935
+2025-12-29 19:03:50 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|920.50 THB|8144211935&transactionTime=1767002460000DEVBankBotIsTheBest
+2025-12-29 19:03:50 | DEBUG | MD5 Hash: bfce04aa4974ae3f058d2d09b49f8a7a
+2025-12-29 19:03:50 | INFO | API Response: {"code":"400001","msg":"Internal error. Try later please.","data":null} 
+
+2025-12-29 19:03:50 | DEBUG | Transaction Time: 2025-12-29 18:02:00+07:00
+2025-12-29 19:03:50 | DEBUG | RawData: รับโอนจาก BAY x4765 VIVIEN LIVE M|105.00 THB|8144211935
+2025-12-29 19:03:50 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก BAY x4765 VIVIEN LIVE M|105.00 THB|8144211935&transactionTime=1767006120000DEVBankBotIsTheBest
+2025-12-29 19:03:50 | DEBUG | MD5 Hash: 6b1900e1278d65c2e22c494038691869
+2025-12-29 19:03:50 | INFO | API Response: {"code":"400001","msg":"Internal error. Try later please.","data":null} 
+
+2025-12-29 19:04:14 | DEBUG | Transaction Time: 2025-12-29 17:01:00+07:00
+2025-12-29 19:04:14 | DEBUG | RawData: รับโอนจาก KTB x9026 KOH ZI JIAN -|920.50 THB|8144211935
+2025-12-29 19:04:14 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|920.50 THB|8144211935&transactionTime=1767002460000DEVBankBotIsTheBest
+2025-12-29 19:04:14 | DEBUG | MD5 Hash: bfce04aa4974ae3f058d2d09b49f8a7a
+2025-12-29 19:04:14 | INFO | API Response: {"code":"400001","msg":"Internal error. Try later please.","data":null} 
+
+2025-12-29 19:04:15 | DEBUG | Transaction Time: 2025-12-29 18:02:00+07:00
+2025-12-29 19:04:15 | DEBUG | RawData: รับโอนจาก BAY x4765 VIVIEN LIVE M|105.00 THB|8144211935
+2025-12-29 19:04:15 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก BAY x4765 VIVIEN LIVE M|105.00 THB|8144211935&transactionTime=1767006120000DEVBankBotIsTheBest
+2025-12-29 19:04:15 | DEBUG | MD5 Hash: 6b1900e1278d65c2e22c494038691869
+2025-12-29 19:04:15 | INFO | API Response: {"code":"400001","msg":"Internal error. Try later please.","data":null} 
+
+2025-12-29 19:05:02 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_6.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_6.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_6.py", line 218, in extract_page_transactions
+    tx_block = [rows.nth(i).inner_text().strip() for i in range(start, end)]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_6.py", line 218, in <listcomp>
+    tx_block = [rows.nth(i).inner_text().strip() for i in range(start, end)]
+                ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 17018, in inner_text
+    self._sync(self._impl_obj.inner_text(timeout=timeout))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 458, in inner_text
+    return await self._frame.inner_text(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 695, in inner_text
+    return await self._channel.send(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+Exception: Locator.inner_text: Connection closed while reading from the driver
+2025-12-29 20:06:57 | DEBUG | Transaction Time: 2025-12-29 18:42:00+07:00
+2025-12-29 20:06:57 | DEBUG | RawData: รับโอนจาก KBANK x8497 บจก. ยูนิคอร์น เนช|100.00 THB|8144211935
+2025-12-29 20:06:57 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KBANK x8497 บจก. ยูนิคอร์น เนช|100.00 THB|8144211935&transactionTime=1767008520000DEVBankBotIsTheBest
+2025-12-29 20:06:57 | DEBUG | MD5 Hash: 79d4c5dc604867fe9c63848dbb171e07
+2025-12-29 20:06:57 | INFO | API Response: {"code":"0","msg":"success","data":null} 
+
+2025-12-29 20:06:58 | DEBUG | Transaction Time: 2025-12-29 18:47:00+07:00
+2025-12-29 20:06:58 | DEBUG | RawData: รับโอนจาก KBANK x8497 บจก. ยูนิคอร์น เนช|105.00 THB|8144211935
+2025-12-29 20:06:58 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KBANK x8497 บจก. ยูนิคอร์น เนช|105.00 THB|8144211935&transactionTime=1767008820000DEVBankBotIsTheBest
+2025-12-29 20:06:58 | DEBUG | MD5 Hash: c92c0ae83c12e0209604f1c376e0f39e
+2025-12-29 20:06:58 | INFO | API Response: {"code":"0","msg":"success","data":null} 
+
+2025-12-30 19:22:35 | DEBUG | Transaction Time: 2025-12-30 11:45:00+07:00
+2025-12-30 19:22:35 | DEBUG | RawData: Transfer from SCB x8118 นางสาว วันเพ็ญ ส|102.00 THB|8144211935
+2025-12-30 19:22:35 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=Transfer from SCB x8118 นางสาว วันเพ็ญ ส|102.00 THB|8144211935&transactionTime=1767069900000DEVBankBotIsTheBest
+2025-12-30 19:22:35 | DEBUG | MD5 Hash: 6dc7991dca8bad1b1c0149aec53bb18c
+2025-12-30 19:22:35 | INFO | API Response: {"code":"0","msg":"success","data":null} 
+
+2025-12-30 19:22:36 | DEBUG | Transaction Time: 2025-12-30 11:45:00+07:00
+2025-12-30 19:22:36 | DEBUG | RawData: รับโอนจาก KTB x9026 KOH ZI JIAN -|203.00 THB|8144211935
+2025-12-30 19:22:36 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|203.00 THB|8144211935&transactionTime=1767069900000DEVBankBotIsTheBest
+2025-12-30 19:22:36 | DEBUG | MD5 Hash: d761667423129ac255895ddc6b99a435
+2025-12-30 19:22:36 | INFO | API Response: {"code":"0","msg":"success","data":null} 
+
+2025-12-30 19:22:37 | DEBUG | Transaction Time: 2025-12-30 12:48:00+07:00
+2025-12-30 19:22:37 | DEBUG | RawData: รับโอนจาก BAY x4765 VIVIEN LIVE M|105.00 THB|8144211935
+2025-12-30 19:22:37 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก BAY x4765 VIVIEN LIVE M|105.00 THB|8144211935&transactionTime=1767073680000DEVBankBotIsTheBest
+2025-12-30 19:22:37 | DEBUG | MD5 Hash: 77a9279ce7de49658d55f75a41c9ffd4
+2025-12-30 19:22:37 | INFO | API Response: {"code":"0","msg":"success","data":null} 
+
+2025-12-30 19:22:38 | DEBUG | Transaction Time: 2025-12-30 12:48:00+07:00
+2025-12-30 19:22:38 | DEBUG | RawData: รับโอนจาก BAY x4765 VIVIEN LIVE M|100.00 THB|8144211935
+2025-12-30 19:22:38 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก BAY x4765 VIVIEN LIVE M|100.00 THB|8144211935&transactionTime=1767073680000DEVBankBotIsTheBest
+2025-12-30 19:22:38 | DEBUG | MD5 Hash: 0e96818f6db76868fe98ef5199238ff0
+2025-12-30 19:22:38 | INFO | API Response: {"code":"400001","msg":"Internal error. Try later please.","data":null} 
+
+2025-12-30 19:22:39 | DEBUG | Transaction Time: 2025-12-30 14:49:00+07:00
+2025-12-30 19:22:39 | DEBUG | RawData: รับโอนจาก KBANK x8497 บจก. ยูนิคอร์น เนช|100.00 THB|8144211935
+2025-12-30 19:22:39 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KBANK x8497 บจก. ยูนิคอร์น เนช|100.00 THB|8144211935&transactionTime=1767080940000DEVBankBotIsTheBest
+2025-12-30 19:22:39 | DEBUG | MD5 Hash: cf27863b1533218edf8f56e36f539c3e
+2025-12-30 19:22:39 | INFO | API Response: {"code":"0","msg":"success","data":null} 
+
+2025-12-30 19:22:41 | DEBUG | Transaction Time: 2025-12-30 15:18:00+07:00
+2025-12-30 19:22:41 | DEBUG | RawData: รับโอนจาก KBANK x8497 บจก. ยูนิคอร์น เนช|105.00 THB|8144211935
+2025-12-30 19:22:41 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KBANK x8497 บจก. ยูนิคอร์น เนช|105.00 THB|8144211935&transactionTime=1767082680000DEVBankBotIsTheBest
+2025-12-30 19:22:41 | DEBUG | MD5 Hash: 437e0bddd83c2f91499e92dda0d9c453
+2025-12-30 19:22:41 | INFO | API Response: {"code":"0","msg":"success","data":null} 
+
+2025-12-30 19:24:18 | DEBUG | Transaction Time: 2025-12-30 11:45:00+07:00
+2025-12-30 19:24:18 | DEBUG | RawData: Transfer from SCB x8118 นางสาว วันเพ็ญ ส|102.00 THB|8144211935
+2025-12-30 19:24:18 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=Transfer from SCB x8118 นางสาว วันเพ็ญ ส|102.00 THB|8144211935&transactionTime=1767069900000DEVBankBotIsTheBest
+2025-12-30 19:24:18 | DEBUG | MD5 Hash: 6dc7991dca8bad1b1c0149aec53bb18c
+2025-12-30 19:24:18 | INFO | API Response: {"code":"400001","msg":"Internal error. Try later please.","data":null} 
+
+2025-12-30 19:24:19 | DEBUG | Transaction Time: 2025-12-30 11:45:00+07:00
+2025-12-30 19:24:19 | DEBUG | RawData: รับโอนจาก KTB x9026 KOH ZI JIAN -|203.00 THB|8144211935
+2025-12-30 19:24:19 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|203.00 THB|8144211935&transactionTime=1767069900000DEVBankBotIsTheBest
+2025-12-30 19:24:19 | DEBUG | MD5 Hash: d761667423129ac255895ddc6b99a435
+2025-12-30 19:24:19 | INFO | API Response: {"code":"400001","msg":"Internal error. Try later please.","data":null} 
+
+2025-12-30 19:24:20 | DEBUG | Transaction Time: 2025-12-30 12:48:00+07:00
+2025-12-30 19:24:20 | DEBUG | RawData: รับโอนจาก BAY x4765 VIVIEN LIVE M|105.00 THB|8144211935
+2025-12-30 19:24:20 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก BAY x4765 VIVIEN LIVE M|105.00 THB|8144211935&transactionTime=1767073680000DEVBankBotIsTheBest
+2025-12-30 19:24:20 | DEBUG | MD5 Hash: 77a9279ce7de49658d55f75a41c9ffd4
+2025-12-30 19:24:20 | INFO | API Response: {"code":"400001","msg":"Internal error. Try later please.","data":null} 
+
+2025-12-30 19:24:20 | DEBUG | Transaction Time: 2025-12-30 12:48:00+07:00
+2025-12-30 19:24:20 | DEBUG | RawData: รับโอนจาก BAY x4765 VIVIEN LIVE M|100.00 THB|8144211935
+2025-12-30 19:24:20 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก BAY x4765 VIVIEN LIVE M|100.00 THB|8144211935&transactionTime=1767073680000DEVBankBotIsTheBest
+2025-12-30 19:24:20 | DEBUG | MD5 Hash: 0e96818f6db76868fe98ef5199238ff0
+2025-12-30 19:24:20 | INFO | API Response: {"code":"400001","msg":"Internal error. Try later please.","data":null} 
+
+2025-12-30 19:24:21 | DEBUG | Transaction Time: 2025-12-30 14:49:00+07:00
+2025-12-30 19:24:21 | DEBUG | RawData: รับโอนจาก KBANK x8497 บจก. ยูนิคอร์น เนช|100.00 THB|8144211935
+2025-12-30 19:24:21 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KBANK x8497 บจก. ยูนิคอร์น เนช|100.00 THB|8144211935&transactionTime=1767080940000DEVBankBotIsTheBest
+2025-12-30 19:24:21 | DEBUG | MD5 Hash: cf27863b1533218edf8f56e36f539c3e
+2025-12-30 19:24:21 | INFO | API Response: {"code":"400001","msg":"Internal error. Try later please.","data":null} 
+
+2025-12-30 19:24:22 | DEBUG | Transaction Time: 2025-12-30 15:18:00+07:00
+2025-12-30 19:24:22 | DEBUG | RawData: รับโอนจาก KBANK x8497 บจก. ยูนิคอร์น เนช|105.00 THB|8144211935
+2025-12-30 19:24:22 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KBANK x8497 บจก. ยูนิคอร์น เนช|105.00 THB|8144211935&transactionTime=1767082680000DEVBankBotIsTheBest
+2025-12-30 19:24:22 | DEBUG | MD5 Hash: 437e0bddd83c2f91499e92dda0d9c453
+2025-12-30 19:24:22 | INFO | API Response: {"code":"400001","msg":"Internal error. Try later please.","data":null} 
+
+2025-12-30 19:26:17 | DEBUG | Transaction Time: 2025-12-30 18:26:00+07:00
+2025-12-30 19:26:17 | DEBUG | RawData: รับโอนจาก KTB x9026 KOH ZI JIAN -|105.00 THB|8144211935
+2025-12-30 19:26:17 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|105.00 THB|8144211935&transactionTime=1767093960000DEVBankBotIsTheBest
+2025-12-30 19:26:17 | DEBUG | MD5 Hash: b4eabaff532553a0b43d5ca8886b7e3c
+2025-12-30 19:26:17 | INFO | API Response: {"code":"0","msg":"success","data":null} 
+
+2025-12-30 19:38:16 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_6.py", line 448, in scb_Anywhere_web
+    page.locator("//span[normalize-space()='Apply']").click(timeout=2000)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 15573, in click
+    self._sync(
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 160, in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 549, in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+Exception: Locator.click: Connection closed while reading from the driver

@@ -86,8 +86,6 @@ class Automation:
 # ================== SCB BANK BOT ==================
 
 class BankBot(Automation):
-    
-    _scb_ref = None
 
     # Simulate Human Click (Faster way)
     @staticmethod
@@ -173,12 +171,13 @@ class BankBot(Automation):
     def scb_withdrawal(cls, page, data):
 
         # Button Click "Add New Recipient"
-        page.locator("//span[normalize-space()='Add New Recipient']").click(timeout=0) 
+        page.locator("//span[normalize-space()='Add New Recipient']").click(timeout=10000) 
         
         # Fill Bank Name and Click
         page.get_by_label("Bank Name *").fill(str(data["toBankCode"]), timeout=0)
-        page.get_by_text(str(data["toBankCode"]), exact=True).click(timeout=0)
-        
+        page.keyboard.press("ArrowDown")
+        page.keyboard.press("Enter")
+
         # Fill Account No.
         page.locator("//input[@id='accountNumber']").fill(str(data["toAccountNum"]), timeout=0)
 
@@ -272,7 +271,7 @@ class BankBot(Automation):
 
         # Inactive Too Long
         try:
-            poco(text="You have been inactive for too long").wait_for_appearance(timeout=1)
+            poco(text="You have been inactive for too long").wait_for_appearance(timeout=2)
             # Click "Confirm"
             poco(text="Continue").click()
         except:
@@ -281,14 +280,18 @@ class BankBot(Automation):
         # Session timeout
         try:
             poco(text="Session timeout").wait_for_appearance(timeout=1)
-            # Click "Log In"
-            poco(text="Log in").click()
+            # Check for "Log In" button first
+            if poco(text="Log in").exists():
+                poco(text="Log in").click()
+            else:
+                # If "Log In" is not found, click "Continue"
+                poco(text="Continue").click()
         except:
             pass
         
         try:
             # Wait for "Enter PIN" appear
-            poco(text="Enter PIN").wait_for_appearance(timeout=2)
+            poco(text="Enter PIN").wait_for_appearance(timeout=0.5)
 
             pin = str(data["pin"])
             for digit in pin:
@@ -298,7 +301,7 @@ class BankBot(Automation):
             pass
         
         # Wait and Click Notifications
-        poco(text="Notifications").wait_for_appearance(timeout=15)   
+        poco(text="Notifications").wait_for_appearance(timeout=1000)   
         poco("tabNotificationsStack").click()
 
         # Click "View request"
@@ -312,7 +315,10 @@ class BankBot(Automation):
         token_pin = str(data["scbDigitalTokenPin"])
         for digit in token_pin:
             key = poco(f"SoftTokenInputPin_{digit}")
+            key.wait_for_appearance(timeout=2)
+            time.sleep(0.15)               
             cls.human_click(poco, key)
+            time.sleep(0.25)                    
 
         time.sleep(3)
         
