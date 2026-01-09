@@ -142,13 +142,13 @@ class BankBot(Automation):
     # Withdrawal
     @classmethod
     def kma_withdrawal(cls, page, data):
-        
+
         # Select Bank Code
         page.locator("#ddlBanking").wait_for(timeout=10000)
         page.select_option("#ddlBanking", str(data["toBankCode"]))
 
         try:
-            # Wait only 5 seconds for the message
+            # Wait only 4 seconds (\4000ms) for the message
             page.wait_for_selector("//div[@class='header_error']", timeout=5000)
             
             # Print Detect Invalid Session
@@ -159,56 +159,19 @@ class BankBot(Automation):
 
             time.sleep(1)
 
-            BankBot.kma_login(data)    
-
+            # KMA Relogin
+            BankBot.kma_login(data)   
+          
             # Select Bank Code
             page.locator("#ddlBanking").wait_for(timeout=10000)
             page.select_option("#ddlBanking", str(data["toBankCode"]))
-  
+    
         except:
             pass
 
 
-        # Fill in Account Number
-        page.fill("#ctl00_cphSectionData_txtAccTo", str(data["toAccountNum"]))
 
-        # Fill in Amount
-        page.fill("#ctl00_cphSectionData_txtAmountTransfer", str(data["amount"]))
-
-        # Click Submit
-        page.click("#ctl00_cphSectionData_btnSubmit")
-
-        # Wait for OTP Box Appear
-        page.locator(".otpbox_header").wait_for(timeout=10000)
-
-        # Capture OTP Reference Number
-        cls._kma_ref = page.locator("//div[@class='inputbox_half_center']//div[@class='input_input_half']").first.inner_text().strip()
-
-        # Run Read OTP Code
-        otp = cls.kma_read_otp()
-
-        # Fill OTP Code
-        page.fill("#ctl00_cphSectionData_OTPBox1_txtOTPPassword", otp)
-        
-        # Delay 0.5 second
-        page.wait_for_timeout(500)
-
-        # Button Click "Confirm"
-        page.locator("//input[@id='ctl00_cphSectionData_OTPBox1_btnConfirm']").click(timeout=0)
-        page.locator("//input[@id='ctl00_cphSectionData_OTPBox1_btnConfirm']").click(timeout=0)
-
-        # Wait for Appear withdrawal Successful
-        page.locator("#ctl00_cphSectionData_pnlSuccessMsg").wait_for(timeout=10000)
-
-        # Delay 1 second
-        page.wait_for_timeout(1000)
-
-        # Call Eric API
-        cls.eric_api(data)
-
-        # Button click "Transfer other transaction"
-        page.click("#ctl00_cphSectionData_btnOtherTxn")
-
+ 
     # Read Phone Message OTP Code
     @classmethod
     def kma_read_otp(cls):

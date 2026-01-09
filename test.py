@@ -149,7 +149,7 @@
     "fromAccountNum": "0080413285",
     "toBankCode": "SCB",
     "toAccountNum": "8144211935",
-    "toAccountName": "ERA GOOD TRADING CO.,LTD (บริษัท อีร่า กู๊ด เทรดดิ้งจำกัด)",
+    "toAccountName": "THAI SURE TRANSPORT CO. LTD",
     "amount": "100",
     "username": "eragood02",
     "password": "MMs88990!",

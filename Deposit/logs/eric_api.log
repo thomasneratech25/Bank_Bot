@@ -305,3 +305,1948 @@ Traceback (most recent call last):
   File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
     raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
 Exception: Locator.click: Connection closed while reading from the driver
+2025-12-31 13:33:19 | DEBUG | Transaction Time: 2025-12-31 11:09:00+07:00
+2025-12-31 13:33:19 | DEBUG | RawData: รับโอนจาก KTB x9026 KOH ZI JIAN -|100.00 THB|8144211935
+2025-12-31 13:33:19 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|100.00 THB|8144211935&transactionTime=1767154140000DEVBankBotIsTheBest
+2025-12-31 13:33:19 | DEBUG | MD5 Hash: 40f5cc068ad13be24161c47708bc0d71
+2025-12-31 13:33:19 | INFO | API Response: {"code":"0","msg":"success","data":null} 
+
+2025-12-31 13:33:20 | DEBUG | Transaction Time: 2025-12-31 11:10:00+07:00
+2025-12-31 13:33:20 | DEBUG | RawData: Transfer from SCB x8118 นางสาว วันเพ็ญ ส|100.00 THB|8144211935
+2025-12-31 13:33:20 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=Transfer from SCB x8118 นางสาว วันเพ็ญ ส|100.00 THB|8144211935&transactionTime=1767154200000DEVBankBotIsTheBest
+2025-12-31 13:33:20 | DEBUG | MD5 Hash: 76c889033273c71216439bb8c638f4b5
+2025-12-31 13:33:20 | INFO | API Response: {"code":"0","msg":"success","data":null} 
+
+2025-12-31 13:34:10 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 448, in scb_Anywhere_web
+    page.locator("//span[normalize-space()='Apply']").click(timeout=2000)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 15573, in click
+    self._sync(
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 160, in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 549, in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.click: Timeout 2000ms exceeded.
+Call log:
+  - waiting for locator("//span[normalize-space()='Apply']")
+    - locator resolved to <span class="MuiButton-label jss472">Apply</span>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div aria-hidden="true"></div> from <div id="profile-menu" role="presentation" class="MuiPopover-root" data-testid="profileMenu">…</div> subtree intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div aria-hidden="true"></div> from <div id="profile-menu" role="presentation" class="MuiPopover-root" data-testid="profileMenu">…</div> subtree intercepts pointer events
+    - retrying click action
+      - waiting 100ms
+    4 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div aria-hidden="true"></div> from <div id="profile-menu" role="presentation" class="MuiPopover-root" data-testid="profileMenu">…</div> subtree intercepts pointer events
+    - retrying click action
+      - waiting 500ms
+
+2025-12-31 13:34:17 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 448, in scb_Anywhere_web
+    page.locator("//span[normalize-space()='Apply']").click(timeout=2000)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 15573, in click
+    self._sync(
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 160, in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 549, in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.click: Timeout 2000ms exceeded.
+Call log:
+  - waiting for locator("//span[normalize-space()='Apply']")
+    - locator resolved to <span class="MuiButton-label jss472">Apply</span>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div aria-hidden="true"></div> from <div id="profile-menu" role="presentation" class="MuiPopover-root" data-testid="profileMenu">…</div> subtree intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div aria-hidden="true"></div> from <div id="profile-menu" role="presentation" class="MuiPopover-root" data-testid="profileMenu">…</div> subtree intercepts pointer events
+    - retrying click action
+      - waiting 100ms
+    4 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div aria-hidden="true"></div> from <div id="profile-menu" role="presentation" class="MuiPopover-root" data-testid="profileMenu">…</div> subtree intercepts pointer events
+    - retrying click action
+      - waiting 500ms
+
+2025-12-31 13:34:25 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 448, in scb_Anywhere_web
+    page.locator("//span[normalize-space()='Apply']").click(timeout=2000)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 15573, in click
+    self._sync(
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 160, in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 549, in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.click: Timeout 2000ms exceeded.
+Call log:
+  - waiting for locator("//span[normalize-space()='Apply']")
+    - locator resolved to <span class="MuiButton-label jss472">Apply</span>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div aria-hidden="true"></div> from <div id="profile-menu" role="presentation" class="MuiPopover-root" data-testid="profileMenu">…</div> subtree intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div aria-hidden="true"></div> from <div id="profile-menu" role="presentation" class="MuiPopover-root" data-testid="profileMenu">…</div> subtree intercepts pointer events
+    - retrying click action
+      - waiting 100ms
+    4 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div aria-hidden="true"></div> from <div id="profile-menu" role="presentation" class="MuiPopover-root" data-testid="profileMenu">…</div> subtree intercepts pointer events
+    - retrying click action
+      - waiting 500ms
+
+2025-12-31 13:34:32 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 448, in scb_Anywhere_web
+    page.locator("//span[normalize-space()='Apply']").click(timeout=2000)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 15573, in click
+    self._sync(
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 160, in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 549, in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.click: Timeout 2000ms exceeded.
+Call log:
+  - waiting for locator("//span[normalize-space()='Apply']")
+    - locator resolved to <span class="MuiButton-label jss472">Apply</span>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div aria-hidden="true"></div> from <div id="profile-menu" role="presentation" class="MuiPopover-root" data-testid="profileMenu">…</div> subtree intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div aria-hidden="true"></div> from <div id="profile-menu" role="presentation" class="MuiPopover-root" data-testid="profileMenu">…</div> subtree intercepts pointer events
+    - retrying click action
+      - waiting 100ms
+    4 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div aria-hidden="true"></div> from <div id="profile-menu" role="presentation" class="MuiPopover-root" data-testid="profileMenu">…</div> subtree intercepts pointer events
+    - retrying click action
+      - waiting 500ms
+
+2025-12-31 13:34:39 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 448, in scb_Anywhere_web
+    page.locator("//span[normalize-space()='Apply']").click(timeout=2000)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 15573, in click
+    self._sync(
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 160, in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 549, in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.click: Timeout 2000ms exceeded.
+Call log:
+  - waiting for locator("//span[normalize-space()='Apply']")
+    - locator resolved to <span class="MuiButton-label jss472">Apply</span>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div aria-hidden="true"></div> from <div id="profile-menu" role="presentation" class="MuiPopover-root" data-testid="profileMenu">…</div> subtree intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div aria-hidden="true"></div> from <div id="profile-menu" role="presentation" class="MuiPopover-root" data-testid="profileMenu">…</div> subtree intercepts pointer events
+    - retrying click action
+      - waiting 100ms
+    4 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div aria-hidden="true"></div> from <div id="profile-menu" role="presentation" class="MuiPopover-root" data-testid="profileMenu">…</div> subtree intercepts pointer events
+    - retrying click action
+      - waiting 500ms
+
+2025-12-31 13:35:08 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 448, in scb_Anywhere_web
+    page.locator("//span[normalize-space()='Apply']").click(timeout=2000)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 15573, in click
+    self._sync(
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 160, in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 549, in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.click: Timeout 2000ms exceeded.
+Call log:
+  - waiting for locator("//span[normalize-space()='Apply']")
+
+2025-12-31 13:35:15 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 448, in scb_Anywhere_web
+    page.locator("//span[normalize-space()='Apply']").click(timeout=2000)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 15573, in click
+    self._sync(
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 160, in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 549, in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.click: Timeout 2000ms exceeded.
+Call log:
+  - waiting for locator("//span[normalize-space()='Apply']")
+
+2025-12-31 13:35:22 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 448, in scb_Anywhere_web
+    page.locator("//span[normalize-space()='Apply']").click(timeout=2000)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 15573, in click
+    self._sync(
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 160, in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 549, in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.click: Timeout 2000ms exceeded.
+Call log:
+  - waiting for locator("//span[normalize-space()='Apply']")
+
+2025-12-31 13:35:29 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 448, in scb_Anywhere_web
+    page.locator("//span[normalize-space()='Apply']").click(timeout=2000)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 15573, in click
+    self._sync(
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 160, in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 549, in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.click: Timeout 2000ms exceeded.
+Call log:
+  - waiting for locator("//span[normalize-space()='Apply']")
+
+2025-12-31 13:35:36 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 448, in scb_Anywhere_web
+    page.locator("//span[normalize-space()='Apply']").click(timeout=2000)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 15573, in click
+    self._sync(
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 160, in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 549, in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.click: Timeout 2000ms exceeded.
+Call log:
+  - waiting for locator("//span[normalize-space()='Apply']")
+
+2025-12-31 13:35:43 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 448, in scb_Anywhere_web
+    page.locator("//span[normalize-space()='Apply']").click(timeout=2000)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 15573, in click
+    self._sync(
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 160, in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 549, in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.click: Timeout 2000ms exceeded.
+Call log:
+  - waiting for locator("//span[normalize-space()='Apply']")
+
+2025-12-31 13:35:50 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 448, in scb_Anywhere_web
+    page.locator("//span[normalize-space()='Apply']").click(timeout=2000)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 15573, in click
+    self._sync(
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 160, in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 549, in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.click: Timeout 2000ms exceeded.
+Call log:
+  - waiting for locator("//span[normalize-space()='Apply']")
+
+2025-12-31 13:35:58 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 448, in scb_Anywhere_web
+    page.locator("//span[normalize-space()='Apply']").click(timeout=2000)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 15573, in click
+    self._sync(
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 160, in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 549, in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.click: Timeout 2000ms exceeded.
+Call log:
+  - waiting for locator("//span[normalize-space()='Apply']")
+
+2025-12-31 13:36:05 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 448, in scb_Anywhere_web
+    page.locator("//span[normalize-space()='Apply']").click(timeout=2000)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 15573, in click
+    self._sync(
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 160, in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 549, in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.click: Timeout 2000ms exceeded.
+Call log:
+  - waiting for locator("//span[normalize-space()='Apply']")
+
+2025-12-31 13:36:12 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 448, in scb_Anywhere_web
+    page.locator("//span[normalize-space()='Apply']").click(timeout=2000)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 15573, in click
+    self._sync(
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 160, in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 549, in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.click: Timeout 2000ms exceeded.
+Call log:
+  - waiting for locator("//span[normalize-space()='Apply']")
+
+2025-12-31 13:36:19 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 448, in scb_Anywhere_web
+    page.locator("//span[normalize-space()='Apply']").click(timeout=2000)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 15573, in click
+    self._sync(
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 160, in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 549, in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.click: Timeout 2000ms exceeded.
+Call log:
+  - waiting for locator("//span[normalize-space()='Apply']")
+
+2025-12-31 13:36:20 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 437, in scb_Anywhere_web
+    dt = datetime.strptime(datetime_str, "%d/%m/%Y %H:%M")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\_strptime.py", line 567, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\_strptime.py", line 349, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+ValueError: time data 'Transfer VIVIEN LIVE M' does not match format '%d/%m/%Y %H:%M'
+2025-12-31 13:36:27 | DEBUG | Transaction Time: 2025-12-31 11:09:00+07:00
+2025-12-31 13:36:27 | DEBUG | RawData: รับโอนจาก KTB x9026 KOH ZI JIAN -|100.00 THB|8144211935
+2025-12-31 13:36:27 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|100.00 THB|8144211935&transactionTime=1767154140000DEVBankBotIsTheBest
+2025-12-31 13:36:27 | DEBUG | MD5 Hash: 40f5cc068ad13be24161c47708bc0d71
+2025-12-31 13:36:27 | INFO | API Response: {"code":"400001","msg":"Internal error. Try later please.","data":null} 
+
+2025-12-31 13:36:27 | DEBUG | Transaction Time: 2025-12-31 11:10:00+07:00
+2025-12-31 13:36:27 | DEBUG | RawData: Transfer from SCB x8118 นางสาว วันเพ็ญ ส|100.00 THB|8144211935
+2025-12-31 13:36:27 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=Transfer from SCB x8118 นางสาว วันเพ็ญ ส|100.00 THB|8144211935&transactionTime=1767154200000DEVBankBotIsTheBest
+2025-12-31 13:36:27 | DEBUG | MD5 Hash: 76c889033273c71216439bb8c638f4b5
+2025-12-31 13:36:27 | INFO | API Response: {"code":"400001","msg":"Internal error. Try later please.","data":null} 
+
+2025-12-31 13:37:15 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 448, in scb_Anywhere_web
+    page.locator("//span[normalize-space()='Apply']").click(timeout=2000)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 15573, in click
+    self._sync(
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 160, in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 549, in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.click: Target page, context or browser has been closed
+2025-12-31 13:37:16 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:17 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:18 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:19 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:20 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:21 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:22 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:23 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:24 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:25 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:26 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:27 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:28 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:29 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:30 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:31 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:32 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:34 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:35 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:36 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:37 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:38 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:39 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:40 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:41 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:42 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:43 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:44 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:45 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:46 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:47 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:48 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:49 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:50 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:51 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:52 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:53 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:54 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:55 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:56 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:57 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 13:37:58 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 425, in scb_Anywhere_web
+    new_items = cls.detect_new_transactions(page)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 242, in detect_new_transactions
+    tx_list = cls.extract_page_transactions(page)  # newest → oldest
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 195, in extract_page_transactions
+    row_count = rows.count()
+                ^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 16806, in count
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.count()))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 406, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 136, in _query_count
+    return await self._channel.send("queryCount", None, {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-12-31 14:04:50 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 448, in scb_Anywhere_web
+    page.locator("//span[normalize-space()='Apply']").click(timeout=2000)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 15573, in click
+    self._sync(
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 160, in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 549, in click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.click: Timeout 2000ms exceeded.
+Call log:
+  - waiting for locator("//span[normalize-space()='Apply']")
+    - locator resolved to <span class="MuiButton-label jss472">Apply</span>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div tabindex="-1" role="none presentation" class="MuiDialog-container MuiDialog-scrollPaper">…</div> from <div role="presentation" class="MuiDialog-root jss4">…</div> subtree intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div tabindex="-1" role="none presentation" class="MuiDialog-container MuiDialog-scrollPaper">…</div> from <div role="presentation" class="MuiDialog-root jss4">…</div> subtree intercepts pointer events
+    - retrying click action
+      - waiting 100ms
+    4 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div tabindex="-1" role="none presentation" class="MuiDialog-container MuiDialog-scrollPaper">…</div> from <div role="presentation" class="MuiDialog-root jss4">…</div> subtree intercepts pointer events
+    - retrying click action
+      - waiting 500ms
+
+2025-12-31 14:06:43 | ERROR | Minor loop error recovered inside transaction loop
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Deposit\SCB_Company_Deposit_3_7.py", line 437, in scb_Anywhere_web
+    dt = datetime.strptime(datetime_str, "%d/%m/%Y %H:%M")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\_strptime.py", line 567, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\_strptime.py", line 349, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+ValueError: time data ' ' does not match format '%d/%m/%Y %H:%M'
+2025-12-31 14:06:59 | DEBUG | Transaction Time: 2025-12-31 11:09:00+07:00
+2025-12-31 14:06:59 | DEBUG | RawData: รับโอนจาก KTB x9026 KOH ZI JIAN -|100.00 THB|8144211935
+2025-12-31 14:06:59 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|100.00 THB|8144211935&transactionTime=1767154140000DEVBankBotIsTheBest
+2025-12-31 14:06:59 | DEBUG | MD5 Hash: 40f5cc068ad13be24161c47708bc0d71
+2025-12-31 14:06:59 | INFO | API Response: {"code":"400001","msg":"Internal error. Try later please.","data":null} 
+
+2025-12-31 14:07:07 | DEBUG | Transaction Time: 2025-12-31 11:09:00+07:00
+2025-12-31 14:07:07 | DEBUG | RawData: รับโอนจาก KTB x9026 KOH ZI JIAN -|100.00 THB|8144211935
+2025-12-31 14:07:07 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|100.00 THB|8144211935&transactionTime=1767154140000DEVBankBotIsTheBest
+2025-12-31 14:07:07 | DEBUG | MD5 Hash: 40f5cc068ad13be24161c47708bc0d71
+2025-12-31 14:07:07 | INFO | API Response: {"code":"400001","msg":"Internal error. Try later please.","data":null} 
+
+2025-12-31 14:07:15 | DEBUG | Transaction Time: 2025-12-31 11:09:00+07:00
+2025-12-31 14:07:15 | DEBUG | RawData: รับโอนจาก KTB x9026 KOH ZI JIAN -|100.00 THB|8144211935
+2025-12-31 14:07:15 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|100.00 THB|8144211935&transactionTime=1767154140000DEVBankBotIsTheBest
+2025-12-31 14:07:15 | DEBUG | MD5 Hash: 40f5cc068ad13be24161c47708bc0d71
+2025-12-31 14:07:15 | INFO | API Response: {"code":"400001","msg":"Internal error. Try later please.","data":null} 
+
+2025-12-31 14:07:23 | DEBUG | Transaction Time: 2025-12-31 11:09:00+07:00
+2025-12-31 14:07:23 | DEBUG | RawData: รับโอนจาก KTB x9026 KOH ZI JIAN -|100.00 THB|8144211935
+2025-12-31 14:07:23 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|100.00 THB|8144211935&transactionTime=1767154140000DEVBankBotIsTheBest
+2025-12-31 14:07:23 | DEBUG | MD5 Hash: 40f5cc068ad13be24161c47708bc0d71
+2025-12-31 14:07:23 | INFO | API Response: {"code":"400001","msg":"Internal error. Try later please.","data":null} 
+
+2025-12-31 14:07:31 | DEBUG | Transaction Time: 2025-12-31 11:09:00+07:00
+2025-12-31 14:07:31 | DEBUG | RawData: รับโอนจาก KTB x9026 KOH ZI JIAN -|100.00 THB|8144211935
+2025-12-31 14:07:31 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|100.00 THB|8144211935&transactionTime=1767154140000DEVBankBotIsTheBest
+2025-12-31 14:07:31 | DEBUG | MD5 Hash: 40f5cc068ad13be24161c47708bc0d71
+2025-12-31 14:07:31 | INFO | API Response: {"code":"400001","msg":"Internal error. Try later please.","data":null} 
+
+2025-12-31 14:07:39 | DEBUG | Transaction Time: 2025-12-31 11:09:00+07:00
+2025-12-31 14:07:39 | DEBUG | RawData: รับโอนจาก KTB x9026 KOH ZI JIAN -|100.00 THB|8144211935
+2025-12-31 14:07:39 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|100.00 THB|8144211935&transactionTime=1767154140000DEVBankBotIsTheBest
+2025-12-31 14:07:39 | DEBUG | MD5 Hash: 40f5cc068ad13be24161c47708bc0d71
+2025-12-31 14:07:39 | INFO | API Response: {"code":"400001","msg":"Internal error. Try later please.","data":null} 
+
+2025-12-31 14:07:47 | DEBUG | Transaction Time: 2025-12-31 11:09:00+07:00
+2025-12-31 14:07:47 | DEBUG | RawData: รับโอนจาก KTB x9026 KOH ZI JIAN -|100.00 THB|8144211935
+2025-12-31 14:07:47 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|100.00 THB|8144211935&transactionTime=1767154140000DEVBankBotIsTheBest
+2025-12-31 14:07:47 | DEBUG | MD5 Hash: 40f5cc068ad13be24161c47708bc0d71
+2025-12-31 14:07:47 | INFO | API Response: {"code":"400001","msg":"Internal error. Try later please.","data":null} 
+
+2025-12-31 14:07:55 | DEBUG | Transaction Time: 2025-12-31 11:09:00+07:00
+2025-12-31 14:07:55 | DEBUG | RawData: รับโอนจาก KTB x9026 KOH ZI JIAN -|100.00 THB|8144211935
+2025-12-31 14:07:55 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|100.00 THB|8144211935&transactionTime=1767154140000DEVBankBotIsTheBest
+2025-12-31 14:07:55 | DEBUG | MD5 Hash: 40f5cc068ad13be24161c47708bc0d71
+2025-12-31 14:07:55 | INFO | API Response: {"code":"400001","msg":"Internal error. Try later please.","data":null} 
+
+2025-12-31 14:12:39 | DEBUG | Transaction Time: 2025-12-31 11:09:00+07:00
+2025-12-31 14:12:39 | DEBUG | RawData: รับโอนจาก KTB x9026 KOH ZI JIAN -|100.00 THB|8144211935
+2025-12-31 14:12:39 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|100.00 THB|8144211935&transactionTime=1767154140000PRODBankBotIsTheBest
+2025-12-31 14:12:39 | DEBUG | MD5 Hash: 8a600b385effc324eb4fbfd8ed3fe35a
+2025-12-31 14:12:39 | INFO | API Response: {"code":"200028","msg":"User's merchant is disabled","data":null} 
+
+2025-12-31 14:12:39 | DEBUG | Transaction Time: 2025-12-31 11:10:00+07:00
+2025-12-31 14:12:39 | DEBUG | RawData: Transfer from SCB x8118 นางสาว วันเพ็ญ ส|100.00 THB|8144211935
+2025-12-31 14:12:39 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=Transfer from SCB x8118 นางสาว วันเพ็ญ ส|100.00 THB|8144211935&transactionTime=1767154200000PRODBankBotIsTheBest
+2025-12-31 14:12:39 | DEBUG | MD5 Hash: b431b494259c3dd1081911c0b0f28ed9
+2025-12-31 14:12:39 | INFO | API Response: {"code":"200028","msg":"User's merchant is disabled","data":null} 
+
+2025-12-31 14:19:57 | DEBUG | Transaction Time: 2025-12-31 11:09:00+07:00
+2025-12-31 14:19:57 | DEBUG | RawData: รับโอนจาก KTB x9026 KOH ZI JIAN -|100.00 THB|8144211935
+2025-12-31 14:19:57 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|100.00 THB|8144211935&transactionTime=1767154140000PRODBankBotIsTheBest
+2025-12-31 14:19:57 | DEBUG | MD5 Hash: 8a600b385effc324eb4fbfd8ed3fe35a
+2025-12-31 14:19:57 | INFO | API Response: {"code":"200028","msg":"User's merchant is disabled","data":null} 
+
+2025-12-31 14:19:58 | DEBUG | Transaction Time: 2025-12-31 11:10:00+07:00
+2025-12-31 14:19:58 | DEBUG | RawData: Transfer from SCB x8118 นางสาว วันเพ็ญ ส|100.00 THB|8144211935
+2025-12-31 14:19:58 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=Transfer from SCB x8118 นางสาว วันเพ็ญ ส|100.00 THB|8144211935&transactionTime=1767154200000PRODBankBotIsTheBest
+2025-12-31 14:19:58 | DEBUG | MD5 Hash: b431b494259c3dd1081911c0b0f28ed9
+2025-12-31 14:19:58 | INFO | API Response: {"code":"200028","msg":"User's merchant is disabled","data":null} 
+
+2025-12-31 14:22:04 | DEBUG | Transaction Time: 2025-12-31 11:09:00+07:00
+2025-12-31 14:22:04 | DEBUG | RawData: รับโอนจาก KTB x9026 KOH ZI JIAN -|100.00 THB|8144211935
+2025-12-31 14:22:04 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|100.00 THB|8144211935&transactionTime=1767154140000PRODBankBotIsTheBest
+2025-12-31 14:22:04 | DEBUG | MD5 Hash: 8a600b385effc324eb4fbfd8ed3fe35a
+2025-12-31 14:22:04 | INFO | API Response: {"code":"200028","msg":"User's merchant is disabled","data":null} 
+
+2025-12-31 14:22:05 | DEBUG | Transaction Time: 2025-12-31 11:10:00+07:00
+2025-12-31 14:22:05 | DEBUG | RawData: Transfer from SCB x8118 นางสาว วันเพ็ญ ส|100.00 THB|8144211935
+2025-12-31 14:22:05 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=Transfer from SCB x8118 นางสาว วันเพ็ญ ส|100.00 THB|8144211935&transactionTime=1767154200000PRODBankBotIsTheBest
+2025-12-31 14:22:05 | DEBUG | MD5 Hash: b431b494259c3dd1081911c0b0f28ed9
+2025-12-31 14:22:05 | INFO | API Response: {"code":"200028","msg":"User's merchant is disabled","data":null} 
+
+2025-12-31 14:24:25 | DEBUG | Transaction Time: 2025-12-31 11:09:00+07:00
+2025-12-31 14:24:25 | DEBUG | RawData: รับโอนจาก KTB x9026 KOH ZI JIAN -|100.00 THB|8144211935
+2025-12-31 14:24:25 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|100.00 THB|8144211935&transactionTime=1767154140000PRODBankBotIsTheBest
+2025-12-31 14:24:25 | DEBUG | MD5 Hash: 8a600b385effc324eb4fbfd8ed3fe35a
+2025-12-31 14:24:25 | INFO | API Response: {"code":"200028","msg":"User's merchant is disabled","data":null} 
+
+2025-12-31 14:24:26 | DEBUG | Transaction Time: 2025-12-31 11:10:00+07:00
+2025-12-31 14:24:26 | DEBUG | RawData: Transfer from SCB x8118 นางสาว วันเพ็ญ ส|100.00 THB|8144211935
+2025-12-31 14:24:26 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=Transfer from SCB x8118 นางสาว วันเพ็ญ ส|100.00 THB|8144211935&transactionTime=1767154200000PRODBankBotIsTheBest
+2025-12-31 14:24:26 | DEBUG | MD5 Hash: b431b494259c3dd1081911c0b0f28ed9
+2025-12-31 14:24:26 | INFO | API Response: {"code":"200028","msg":"User's merchant is disabled","data":null} 
+
+2025-12-31 14:25:44 | DEBUG | Transaction Time: 2025-12-31 11:09:00+07:00
+2025-12-31 14:25:44 | DEBUG | RawData: รับโอนจาก KTB x9026 KOH ZI JIAN -|100.00 THB|8144211935
+2025-12-31 14:25:44 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|100.00 THB|8144211935&transactionTime=1767154140000PRODBankBotIsTheBest
+2025-12-31 14:25:44 | DEBUG | MD5 Hash: 8a600b385effc324eb4fbfd8ed3fe35a
+2025-12-31 14:25:44 | INFO | API Response: {"code":"200028","msg":"User's merchant is disabled","data":null} 
+
+2025-12-31 14:25:45 | DEBUG | Transaction Time: 2025-12-31 11:10:00+07:00
+2025-12-31 14:25:45 | DEBUG | RawData: Transfer from SCB x8118 นางสาว วันเพ็ญ ส|100.00 THB|8144211935
+2025-12-31 14:25:45 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=Transfer from SCB x8118 นางสาว วันเพ็ญ ส|100.00 THB|8144211935&transactionTime=1767154200000PRODBankBotIsTheBest
+2025-12-31 14:25:45 | DEBUG | MD5 Hash: b431b494259c3dd1081911c0b0f28ed9
+2025-12-31 14:25:45 | INFO | API Response: {"code":"200028","msg":"User's merchant is disabled","data":null} 
+
+2025-12-31 14:28:01 | DEBUG | Transaction Time: 2025-12-31 11:09:00+07:00
+2025-12-31 14:28:01 | DEBUG | RawData: รับโอนจาก KTB x9026 KOH ZI JIAN -|100.00 THB|8144211935
+2025-12-31 14:28:01 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|100.00 THB|8144211935&transactionTime=1767154140000PRODBankBotIsTheBest
+2025-12-31 14:28:01 | DEBUG | MD5 Hash: 8a600b385effc324eb4fbfd8ed3fe35a
+2025-12-31 14:28:01 | INFO | API Response: {"code":"200028","msg":"User's merchant is disabled","data":null} 
+
+2025-12-31 14:28:02 | DEBUG | Transaction Time: 2025-12-31 11:10:00+07:00
+2025-12-31 14:28:02 | DEBUG | RawData: Transfer from SCB x8118 นางสาว วันเพ็ญ ส|100.00 THB|8144211935
+2025-12-31 14:28:02 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=Transfer from SCB x8118 นางสาว วันเพ็ญ ส|100.00 THB|8144211935&transactionTime=1767154200000PRODBankBotIsTheBest
+2025-12-31 14:28:02 | DEBUG | MD5 Hash: b431b494259c3dd1081911c0b0f28ed9
+2025-12-31 14:28:02 | INFO | API Response: {"code":"200028","msg":"User's merchant is disabled","data":null} 
+
+2025-12-31 14:59:48 | DEBUG | Transaction Time: 2025-12-31 11:09:00+07:00
+2025-12-31 14:59:48 | DEBUG | RawData: รับโอนจาก KTB x9026 KOH ZI JIAN -|100.00 THB|8144211935
+2025-12-31 14:59:48 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|100.00 THB|8144211935&transactionTime=1767154140000PRODBankBotIsTheBest
+2025-12-31 14:59:48 | DEBUG | MD5 Hash: 8a600b385effc324eb4fbfd8ed3fe35a
+2025-12-31 14:59:48 | INFO | API Response: {"code":"200028","msg":"User's merchant is disabled","data":null} 
+
+2025-12-31 14:59:49 | DEBUG | Transaction Time: 2025-12-31 11:10:00+07:00
+2025-12-31 14:59:49 | DEBUG | RawData: Transfer from SCB x8118 นางสาว วันเพ็ญ ส|100.00 THB|8144211935
+2025-12-31 14:59:49 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=Transfer from SCB x8118 นางสาว วันเพ็ญ ส|100.00 THB|8144211935&transactionTime=1767154200000PRODBankBotIsTheBest
+2025-12-31 14:59:49 | DEBUG | MD5 Hash: b431b494259c3dd1081911c0b0f28ed9
+2025-12-31 14:59:49 | INFO | API Response: {"code":"200028","msg":"User's merchant is disabled","data":null} 
+

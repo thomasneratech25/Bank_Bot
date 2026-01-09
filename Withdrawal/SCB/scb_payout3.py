@@ -5,6 +5,8 @@ import atexit
 import hashlib
 import logging
 import requests
+import queue
+import threading
 import subprocess
 from threading import Lock
 from flask import Flask, request, jsonify
@@ -17,6 +19,9 @@ from poco.drivers.android.uiautomation import AndroidUiautomationPoco
 app = Flask(__name__)
 LOCK = Lock()
 
+# IDLE 
+IDLE_SECONDS = 300 # 5 minutes
+
 # ================== LOG File ==================
 
 logging.basicConfig(
@@ -24,6 +29,91 @@ logging.basicConfig(
     format="%(asctime)s | %(levelname)s | %(message)s",
 )
 logger = logging.getLogger("SCB_Bot_Logger")
+
+# ================== PLAYWRIGHT WORKER ===========================
+
+WORKER = None
+WORKER_LOCK = Lock()
+
+class PlaywrightWorker:
+
+    def __init__(self, idle_seconds):
+        self.idle_seconds = idle_seconds
+        self.queue = queue.Queue()
+        self.thread = threading.Thread(
+            target=self._run,
+            name="playwright-worker",
+            daemon=True,
+        )
+        self.last_activity = None
+        self.idle_logged_out = False
+
+    def start(self):
+        self.thread.start()
+
+    def submit(self, func, *args, **kwargs):
+        done = threading.Event()
+        result = {"value": None, "error": None}
+        self.queue.put((func, args, kwargs, done, result))
+        done.wait()
+        if result["error"] is not None:
+            raise result["error"]
+        return result["value"]
+
+    def _run(self):
+        while True:
+            if self.idle_logged_out:
+                timeout = None
+            elif self.last_activity is None:
+                timeout = None
+            else:
+                elapsed = time.time() - self.last_activity
+                remaining = self.idle_seconds - elapsed
+                if remaining <= 0:
+                    self._idle_logout()
+                    self.last_activity = None
+                    self.idle_logged_out = True
+                    continue
+                timeout = remaining
+
+            try:
+                item = self.queue.get(timeout=timeout)
+            except queue.Empty:
+                self._idle_logout()
+                self.last_activity = time.time()
+                continue
+
+            if item is None:
+                break
+
+            func, args, kwargs, done, result = item
+            try:
+                result["value"] = func(*args, **kwargs)
+            except Exception as exc:
+                result["error"] = exc
+            finally:
+                self.last_activity = time.time()
+                self.idle_logged_out = False
+                done.set()
+
+    @staticmethod
+    def _idle_logout():
+        global PAGE
+        try:
+            if PAGE and not PAGE.is_closed():
+                logger.info("Auto logout after %ss idle", IDLE_SECONDS)
+                BankBot.scb_logout(PAGE)
+        except Exception:
+            logger.exception("Idle logout failed")
+
+def get_worker():
+    global WORKER
+    if WORKER is None:
+        with WORKER_LOCK:
+            if WORKER is None:
+                WORKER = PlaywrightWorker(IDLE_SECONDS)
+                WORKER.start()
+    return WORKER
 
 # ================== PLAYWRIGHT SINGLETON ========================
 
@@ -327,6 +417,24 @@ class BankBot(Automation):
         poco("btTodoList").wait_for_appearance(timeout=10)
         poco("btTodoList").click()
 
+    # Logout
+    @classmethod
+    def scb_logout(cls, page):
+
+        # Clear all cookies
+        page.context.clear_cookies()
+
+        # clear storage
+        page.evaluate("""
+            () => {
+                localStorage.clear();
+                sessionStorage.clear();
+            }
+        """)
+
+        # Reload page if cookies affect session
+        page.reload(wait_until="networkidle")
+
     # Callback ERIC API
     @classmethod
     def eric_api(cls, data):
@@ -375,29 +483,37 @@ class BankBot(Automation):
 
 # ================== Code Start Here ==================
 
-# Run API
-@app.route("/scb_company_web/runPython", methods=["POST"])        
+def process_withdrawal(data):
+    page = BankBot.scb_login(data)
+    logger.info(f"Processing {data['transactionId']}")
+
+    BankBot.scb_withdrawal(page, data)
+
+    logger.info(f"Done {data['transactionId']}")
+    return data["transactionId"]
+
+@app.route("/scb_company_web/runPython", methods=["POST"])
 def runPython():
     data = request.get_json(silent=True)
     if not data:
         return jsonify({"success": False, "message": "Invalid JSON"}), 400
 
+    worker = get_worker()
+
     with LOCK:
         try:
-            # Run Browser
-            Automation.chrome_cdp()
-            # Login SCB
-            page = BankBot.scb_login(data)
-            logger.info(f"▶ Processing {data['transactionId']}")
-            BankBot.scb_withdrawal(page, data)
-            logger.info(f"✔ Done {data['transactionId']}")
+            transaction_id = worker.submit(process_withdrawal, data)
+
             return jsonify({
                 "success": True,
-                "transactionId": data["transactionId"]
+                "transactionId": transaction_id
             })
+
         except Exception as e:
-            logger.exception("❌ Withdrawal failed")
+            logger.exception("Withdrawal failed")
             return jsonify({"success": False, "message": str(e)}), 500
+
+# ================== MAIN ==============================
 
 if __name__ == "__main__":
     logger.info("🚀 SCB Local API started")

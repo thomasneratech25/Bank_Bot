@@ -354,16 +354,40 @@ class BankBot(Automation):
             wake()
             wake()
         
+        ### Click K BIZ Confirm transaction ###
         # Expand Notification Bar
         device().shell("cmd statusbar expand-notifications")  
 
-        time.sleep(1)
+        # Wait for SystemUI notification container
+        poco(resourceId="com.android.systemui:id/notification_stack_scroller").wait_for_appearance(timeout=10)
 
-        # Wait for notification text name and click
-        poco(resourceId="com.android.systemui:id/notification_text", textMatches=r".*Confirm transaction.*Transfer to.*").click()
-        poco(resourceId="android:id/text", textMatches=r".*Confirm transaction.*Transfer to.*").wait_for_appearance(10)
-        poco(resourceId="android:id/text", textMatches=r".*Confirm transaction.*Transfer to.*").click()
+        # Wait for the notification to appear and then click it
+        target_text = "UNICORN NATIONAL" # or the full "Confirm transac" text
+        notification = poco(textMatches=".*" + target_text + ".*")
+        notification.click()
 
+        # Click Confirm Transaciton
+        # We use textMatches to find "Confirm transaction" and "Transfer to" 
+        target_notification = poco(textMatches="Confirm transaction: Transfer to.*")
+
+        if target_notification.exists():
+            logger.info("✔ Found transaction notification, clicking...")
+            target_notification.click()
+        else:
+            # If it's grouped/collapsed, try clicking the "UNICORN NATIONAL" header first
+            logger.info("Notification not immediately visible, trying to find by Title...")
+            unicorn_title = poco(text="UNICORN NATIONAL")
+            if unicorn_title.exists():
+                unicorn_title.click()
+                sleep(0.5)
+                # Try finding the specific sub-text again after expansion
+                target_notification = poco(textMatches="Confirm transaction: Transfer to.*")
+                if target_notification.exists():
+                    target_notification.click()
+            else:
+                logger.error("❌ Could not find the UNICORN NATIONAL notification")
+
+    
         # Check Session Expired or PIN Login or Transfer Page
         while True:
             
@@ -371,7 +395,7 @@ class BankBot(Automation):
             if poco("Notice The session has expired. Do you wish to continue using K BIZ?").exists():
 
                 # Button Click Yes
-                poco(text="Yes").click()
+                poco("Yes").click()
 
                 # Wait for "Enter PIN"
                 poco("Enter PIN").wait_for_appearance(timeout=1000)

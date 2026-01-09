@@ -8,7 +8,7 @@ import requests
 import subprocess
 from threading import Lock
 from flask import Flask, request, jsonify
-from playwright.sync_api import sync_playwright, expect
+from playwright.sync_api import sync_playwright
 from airtest.core.api import *
 from poco.drivers.android.uiautomation import AndroidUiautomationPoco
 
@@ -181,16 +181,22 @@ class BankBot(Automation):
         #     pass
 
         # Wait for "Account Overview" Appear
-        page.locator("//h4[normalize-space()='Account Overview']").wait_for(state="visible", timeout=30000)
+        page.locator("//h4[normalize-space()='Account Overview']").wait_for(state="visible", timeout=300000)
 
         # Hover to Left Menu
         page.locator("//a[@class='link active']").hover()
+
+        # Delay 1 second
+        page.wait_for_timeout(1000)
 
         # Click Transfer & Pay
         page.locator("//span[normalize-space()='Transfer & Pay']").click()
         
         # Wait for "Transfer & Bill Payment" Appear
         page.locator("//a[normalize-space()='Transfer & Bill Payment']").wait_for(state="visible", timeout=0)
+
+        # Delay 1 second
+        page.wait_for_timeout(1000)
 
         # Button Click "New Transfer"
         page.locator("//body/ktb-root/ui-layout[@class='ng-star-inserted']/div[@class='main-container']/ui-side-panel/ng-sidebar-container[@backdropclass='custom-backdrop']/div[@class='ng-sidebar__content ng-sidebar__content--animate']/main/div[@class='main-inner']/ktb-module-transfer-pay[@class='ng-star-inserted']/ktb-module-transfer-pay-index-page[@class='ng-star-inserted']/ui-section[@class='transfer-landing-header section-wrapper ng-star-inserted']/section[@class='is-dark']/div[@class='section-content']/ui-container/div[@class='container']/div[@class='inner']/div[@class='sub-menu-container ng-star-inserted']/ui-card-sub-menu[1]/div[1]").click(timeout=0)
@@ -206,6 +212,7 @@ class BankBot(Automation):
 
         # Click "New Account"  
         page.locator("//h6[normalize-space()='New Account']").click()
+
         # Delay 1 second
         page.wait_for_timeout(1000)
 
@@ -220,32 +227,38 @@ class BankBot(Automation):
         bank_input.click()
         bank_input.fill(str(data["toBankCode"]))
 
+        # Delay 1 second
+        page.wait_for_timeout(1000)
+
         # Select bank
         page.get_by_text(str(data["toBankCode"]), exact=True).wait_for(state="visible", timeout=5000)
         page.get_by_text(str(data["toBankCode"]), exact=True).click()
+
+        # Delay 1 second
+        page.wait_for_timeout(1000)
 
         # Fill AccouNT Number 
         page.get_by_placeholder("Enter account no.").click()
         page.get_by_placeholder("Enter account no.").fill(str(data["toAccountNum"]))
         page.keyboard.press("Tab")
 
-        # Delay 1.5 second
-        page.wait_for_timeout(1500)
+        # Delay 1 second
+        page.wait_for_timeout(1000)
 
-        # Fill Beneficiary Name
-        page.locator("//input[@placeholder='Enter name / company name (in full)']").fill(str(data["toAccountName"]))
-
-        # Delay 0.5 second
-        page.wait_for_timeout(500)
-
+        try:
+            # Fill Beneficiary Name
+            page.locator("//input[@placeholder='Enter name / company name (in full)']").fill(str(data["toAccountName"]), timeout=1000)
+        except:
+            pass
+            
         # Click "Add Details"  
         page.locator("//span[normalize-space()='Add Details']").click()
 
         # Wait for "value date" appear
         page.locator("//label[normalize-space()='Value Date']").wait_for(state="visible", timeout=30000)
 
-        # Delay 0.5 second
-        page.wait_for_timeout(500)
+        # Delay 1 second
+        page.wait_for_timeout(1000)
         
         # Fill AccouNT Number 
         page.locator("//input[@formcontrolname='amount']").click()
@@ -295,17 +308,29 @@ class BankBot(Automation):
         # Button Click "Verify"
         page.locator("//span[normalize-space()='VERIFY']").click()
 
+        # Delay 1 second
+        page.wait_for_timeout(1000)
+
+        # Call Eric API
+        cls.eric_api(data)
+
         # Print Withdrawal SuccessFul!!
         print(f"Withdrawal SuccessFul!!!")
 
         # Make Another Transfer
         page.locator("//span[normalize-space()='MAKE ANOTHER TRANSACTION']").click()
 
+        # Delay 1 second
+        page.wait_for_timeout(1000)
+
         # Button Click "New Transfer"
         page.locator("//body/ktb-root/ui-layout[@class='ng-star-inserted']/div[@class='main-container']/ui-side-panel/ng-sidebar-container[@backdropclass='custom-backdrop']/div[@class='ng-sidebar__content ng-sidebar__content--animate']/main/div[@class='main-inner']/ktb-module-transfer-pay[@class='ng-star-inserted']/ktb-module-transfer-pay-index-page[@class='ng-star-inserted']/ui-section[@class='transfer-landing-header section-wrapper ng-star-inserted']/section[@class='is-dark']/div[@class='section-content']/ui-container/div[@class='container']/div[@class='inner']/div[@class='sub-menu-container ng-star-inserted']/ui-card-sub-menu[1]/div[1]").click(timeout=0)
 
         # Wait for "Transfer Details" Appear
         page.locator("//h4[normalize-space()='Transfer Details']").wait_for(state="visible", timeout=30000)
+
+        # Delay 1 second
+        page.wait_for_timeout(1000)
 
         # Click "Select Payee"
         page.locator("//div[@class='add-payee-button']").click()
@@ -349,7 +374,7 @@ class BankBot(Automation):
         # Click KTB Chat
         # If not in inside KTB chat, click it, else passs
         if not poco("message_text").exists():
-            poco(text="Krungsri").click()
+            poco(text="Krungthai").click()
         else:
             pass
         
