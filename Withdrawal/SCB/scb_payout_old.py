@@ -361,27 +361,46 @@ class BankBot(Automation):
 
         # Inactive Too Long
         try:
-            poco(text="You have been inactive for too long").wait_for_appearance(timeout=2)
+            poco(text="Can't continue").wait_for_appearance(timeout=2)
             # Click "Confirm"
+            poco(text="OK").click()
+        except:
+            pass
+
+        # Inactive Too Long
+        try:
+            poco(text="You have been inactive for too long").wait_for_appearance(timeout=2)
+            # Click "Continue"
+            poco(text="Continue").click()
+            poco(text="Continue").click()
+        except:
+            pass
+
+        # Session timeout
+        try:
+            poco(text="Session timeout").wait_for_appearance(timeout=2)
+            # Click "Continue"
+            poco(text="Continue").click()
             poco(text="Continue").click()
         except:
             pass
         
         # Session timeout
         try:
-            poco(text="Session timeout").wait_for_appearance(timeout=1)
+            poco(text="Session timeout").wait_for_appearance(timeout=2)
             # Check for "Log In" button first
             if poco(text="Log in").exists():
                 poco(text="Log in").click()
             else:
                 # If "Log In" is not found, click "Continue"
                 poco(text="Continue").click()
+                poco(text="Continue").click()
         except:
             pass
         
         try:
             # Wait for "Enter PIN" appear
-            poco(text="Enter PIN").wait_for_appearance(timeout=0.5)
+            poco(text="Enter PIN").wait_for_appearance(timeout=2)
 
             pin = str(data["pin"])
             for digit in pin:
@@ -395,7 +414,7 @@ class BankBot(Automation):
         poco("tabNotificationsStack").click()
 
         # Click "View request"
-        poco(text="View request").wait_for_appearance(timeout=100)
+        poco(text="View request").wait_for_appearance(timeout=1000)
         poco(text="View request").click()
 
         # Wait and Click "Submit for approval"
@@ -439,25 +458,25 @@ class BankBot(Automation):
     @classmethod
     def eric_api(cls, data):
 
-        url = "https://stg-bot-integration.cloudbdtech.com/integration-service/transaction/payoutScriptCallback"
+        url = "https://bot-integration.cloudbdtech.com/integration-service/transaction/payoutScriptCallback"
 
         # Create payload as a DICTIONARY (not JSON yet)
         payload = {
-            "transactionId": str(data["transactionId"]),
             "bankCode": str(data["fromBankCode"]),
             "deviceId": str(data["deviceId"]),
             "merchantCode": str(data["merchantCode"]),
+            "transactionId": str(data["transactionId"]),
         }
 
         # Your secret key
-        secret_key = "DEVBankBotIsTheBest"
+        secret_key = "PRODBankBotIsTheBest"
 
         # Build the hash string (exact order required)
         string_to_hash = (
-            f"transactionId={payload['transactionId']}&"
             f"bankCode={payload['bankCode']}&"
             f"deviceId={payload['deviceId']}&"
-            f"merchantCode={payload['merchantCode']}{secret_key}"
+            f"merchantCode={payload['merchantCode']}&"
+            f"transactionId={payload['transactionId']}{secret_key}"
         )
 
         # Generate MD5 hash

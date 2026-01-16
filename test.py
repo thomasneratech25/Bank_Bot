@@ -115,15 +115,15 @@
     "merchantCode": "IBS",
     "fromBankCode": "KTB_COMPANY_WEB",
     "fromAccountNum": "0170577147",
-    "toBankCode": "Siam Commercial Bank",
+    "toBankCode": "SCB",
     "toAccountNum": "8144211935",
     "toAccountName": "THAI SURE TRANSPORT CO. LTD",
     "amount": "105",
-    "username": "Unicorn3909",
-    "password": "Uic@1234",
+    "username": "eragood02",
+    "password": "MMs88990!",
     "pin": "147258",
     "transactionId": "1111",
-    "companyId": "BSKBA28785"
+    "companyId": "SSKBA05794"
 }
 
 {   

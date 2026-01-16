@@ -5,6 +5,8 @@ import atexit
 import hashlib
 import logging
 import requests
+import queue
+import threading
 import subprocess
 from threading import Lock
 from flask import Flask, request, jsonify
@@ -17,6 +19,10 @@ from poco.drivers.android.uiautomation import AndroidUiautomationPoco
 app = Flask(__name__)
 LOCK = Lock()
 
+# IDLE 
+IDLE_SECONDS = 174 # 2.9 minutes
+SCB_APP_PACKAGE = "com.scb.corporate"
+
 # ================== LOG File ==================
 
 logging.basicConfig(
@@ -24,6 +30,92 @@ logging.basicConfig(
     format="%(asctime)s | %(levelname)s | %(message)s",
 )
 logger = logging.getLogger("SCB_Bot_Logger")
+
+# ================== PLAYWRIGHT WORKER ===========================
+
+WORKER = None
+WORKER_LOCK = Lock()
+
+class PlaywrightWorker:
+
+    def __init__(self, idle_seconds):
+        self.idle_seconds = idle_seconds
+        self.queue = queue.Queue()
+        self.thread = threading.Thread(
+            target=self._run,
+            name="playwright-worker",
+            daemon=True,
+        )
+        self.last_activity = None
+        self.idle_logged_out = False
+
+    def start(self):
+        self.thread.start()
+
+    def submit(self, func, *args, **kwargs):
+        done = threading.Event()
+        result = {"value": None, "error": None}
+        self.queue.put((func, args, kwargs, done, result))
+        done.wait()
+        if result["error"] is not None:
+            raise result["error"]
+        return result["value"]
+
+    def _run(self):
+        while True:
+            if self.idle_logged_out:
+                timeout = None
+            elif self.last_activity is None:
+                timeout = None
+            else:
+                elapsed = time.time() - self.last_activity
+                remaining = self.idle_seconds - elapsed
+                if remaining <= 0:
+                    self._idle_logout()
+                    self.last_activity = None
+                    self.idle_logged_out = True
+                    continue
+                timeout = remaining
+
+            try:
+                item = self.queue.get(timeout=timeout)
+            except queue.Empty:
+                self._idle_logout()
+                self.last_activity = time.time()
+                continue
+
+            if item is None:
+                break
+
+            func, args, kwargs, done, result = item
+            try:
+                result["value"] = func(*args, **kwargs)
+            except Exception as exc:
+                result["error"] = exc
+            finally:
+                self.last_activity = time.time()
+                self.idle_logged_out = False
+                done.set()
+
+    @staticmethod
+    def _idle_logout():
+        global PAGE
+        try:
+            logger.info("Auto cleanup after %ss idle", IDLE_SECONDS)
+            BankBot.scb_kill_apps()
+            if PAGE and not PAGE.is_closed():
+                BankBot.scb_logout(PAGE)
+        except Exception:
+            logger.exception("Idle cleanup failed")
+
+def get_worker():
+    global WORKER
+    if WORKER is None:
+        with WORKER_LOCK:
+            if WORKER is None:
+                WORKER = PlaywrightWorker(IDLE_SECONDS)
+                WORKER.start()
+    return WORKER
 
 # ================== PLAYWRIGHT SINGLETON ========================
 
@@ -267,31 +359,20 @@ class BankBot(Automation):
             wake()
 
         # Start SCB Corporate Apps
-        start_app("com.scb.corporate")
+        start_app(SCB_APP_PACKAGE)
 
         # Inactive Too Long
         try:
-            poco(text="You have been inactive for too long").wait_for_appearance(timeout=2)
-            # Click "Confirm"
+            poco(text="You have been inactive for too long").wait_for_appearance(timeout=1)
+            # Click "Continue"
             poco(text="Continue").click()
-        except:
-            pass
-        
-        # Session timeout
-        try:
-            poco(text="Session timeout").wait_for_appearance(timeout=1)
-            # Check for "Log In" button first
-            if poco(text="Log in").exists():
-                poco(text="Log in").click()
-            else:
-                # If "Log In" is not found, click "Continue"
-                poco(text="Continue").click()
+            poco(text="Continue").click()
         except:
             pass
         
         try:
             # Wait for "Enter PIN" appear
-            poco(text="Enter PIN").wait_for_appearance(timeout=0.5)
+            poco(text="Enter PIN").wait_for_appearance(timeout=3)
 
             pin = str(data["pin"])
             for digit in pin:
@@ -305,7 +386,7 @@ class BankBot(Automation):
         poco("tabNotificationsStack").click()
 
         # Click "View request"
-        poco(text="View request").wait_for_appearance(timeout=100)
+        poco(text="View request").wait_for_appearance(timeout=1000)
         poco(text="View request").click()
 
         # Wait and Click "Submit for approval"
@@ -327,29 +408,63 @@ class BankBot(Automation):
         poco("btTodoList").wait_for_appearance(timeout=10)
         poco("btTodoList").click()
 
+    # Logout
+    @classmethod
+    def scb_logout(cls, page):
+
+        # Clear all cookies
+        page.context.clear_cookies()
+
+        # clear storage
+        page.evaluate("""
+            () => {
+                localStorage.clear();
+                sessionStorage.clear();
+            }
+        """)
+
+        # Reload page if cookies affect session
+        page.reload(wait_until="networkidle")
+
+    # Kill SCB app
+    @classmethod
+    def scb_kill_apps(cls):
+        try:
+            stop_app(SCB_APP_PACKAGE)
+            logger.info("Stopped SCB app: %s", SCB_APP_PACKAGE)
+            return
+        except Exception:
+            logger.exception("stop_app failed for SCB app")
+
+        try:
+            device().adb.shell(f"am force-stop {SCB_APP_PACKAGE}")
+            logger.info("Force-stopped SCB app via adb: %s", SCB_APP_PACKAGE)
+        except Exception:
+            logger.exception("ADB force-stop failed for SCB app")
+
     # Callback ERIC API
     @classmethod
     def eric_api(cls, data):
 
-        url = "https://stg-bot-integration.cloudbdtech.com/integration-service/transaction/payoutScriptCallback"
+        url = "https://bot-integration.cloudbdtech.com/integration-service/transaction/payoutScriptCallback"
 
         # Create payload as a DICTIONARY (not JSON yet)
         payload = {
-            "transactionId": str(data["transactionId"]),
             "bankCode": str(data["fromBankCode"]),
             "deviceId": str(data["deviceId"]),
             "merchantCode": str(data["merchantCode"]),
+            "transactionId": str(data["transactionId"]),
         }
 
         # Your secret key
-        secret_key = "DEVBankBotIsTheBest"
+        secret_key = "PRODBankBotIsTheBest"
 
         # Build the hash string (exact order required)
         string_to_hash = (
-            f"transactionId={payload['transactionId']}&"
             f"bankCode={payload['bankCode']}&"
             f"deviceId={payload['deviceId']}&"
-            f"merchantCode={payload['merchantCode']}{secret_key}"
+            f"merchantCode={payload['merchantCode']}&"
+            f"transactionId={payload['transactionId']}{secret_key}"
         )
 
         # Generate MD5 hash
@@ -375,30 +490,39 @@ class BankBot(Automation):
 
 # ================== Code Start Here ==================
 
-# Run API
-@app.route("/scb_company_web/runPython", methods=["POST"])        
+def process_withdrawal(data):
+    page = BankBot.scb_login(data)
+    logger.info(f"Processing {data['transactionId']}")
+
+    BankBot.scb_withdrawal(page, data)
+
+    logger.info(f"Done {data['transactionId']}")
+    return data["transactionId"]
+
+@app.route("/scb_company_web/runPython", methods=["POST"])
 def runPython():
     data = request.get_json(silent=True)
     if not data:
         return jsonify({"success": False, "message": "Invalid JSON"}), 400
 
+    worker = get_worker()
+
     with LOCK:
         try:
-            # Run Browser
-            Automation.chrome_cdp()
-            # Login SCB
-            page = BankBot.scb_login(data)
-            logger.info(f"▶ Processing {data['transactionId']}")
-            BankBot.scb_withdrawal(page, data)
-            logger.info(f"✔ Done {data['transactionId']}")
+            transaction_id = worker.submit(process_withdrawal, data)
+
             return jsonify({
                 "success": True,
-                "transactionId": data["transactionId"]
+                "transactionId": transaction_id
             })
+
         except Exception as e:
-            logger.exception("❌ Withdrawal failed")
+            logger.exception("Withdrawal failed")
             return jsonify({"success": False, "message": str(e)}), 500
+
+# ================== MAIN ==============================
 
 if __name__ == "__main__":
     logger.info("🚀 SCB Local API started")
     app.run(host="0.0.0.0", port=5001, debug=False, threaded=False, use_reloader=False)
+

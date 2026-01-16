@@ -291,25 +291,25 @@ class BankBot(Automation):
     @classmethod
     def eric_api(cls, data):
 
-        url = "https://stg-bot-integration.cloudbdtech.com/integration-service/transaction/payoutScriptCallback"
+        url = "https://bot-integration.cloudbdtech.com/integration-service/transaction/payoutScriptCallback"
 
         # Create payload as a DICTIONARY (not JSON yet)
         payload = {
-            "transactionId": str(data["transactionId"]),
             "bankCode": str(data["fromBankCode"]),
             "deviceId": str(data["deviceId"]),
             "merchantCode": str(data["merchantCode"]),
+            "transactionId": str(data["transactionId"]),
         }
 
         # Your secret key
-        secret_key = "DEVBankBotIsTheBest"
+        secret_key = "PRODBankBotIsTheBest"
 
         # Build the hash string (exact order required)
         string_to_hash = (
-            f"transactionId={payload['transactionId']}&"
             f"bankCode={payload['bankCode']}&"
             f"deviceId={payload['deviceId']}&"
-            f"merchantCode={payload['merchantCode']}{secret_key}"
+            f"merchantCode={payload['merchantCode']}&"
+            f"transactionId={payload['transactionId']}{secret_key}"
         )
 
         # Generate MD5 hash

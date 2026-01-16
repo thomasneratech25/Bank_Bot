@@ -368,6 +368,7 @@ class BankBot(Automation):
 
         # Click Confirm Transaciton
         # We use textMatches to find "Confirm transaction" and "Transfer to" 
+        # This handles the truncated text seen in your screenshot.
         target_notification = poco(textMatches="Confirm transaction: Transfer to.*")
 
         if target_notification.exists():
@@ -395,7 +396,7 @@ class BankBot(Automation):
             if poco("Notice The session has expired. Do you wish to continue using K BIZ?").exists():
 
                 # Button Click Yes
-                poco("Yes").click()
+                poco(text="Yes").click()
 
                 # Wait for "Enter PIN"
                 poco("Enter PIN").wait_for_appearance(timeout=1000)
@@ -415,6 +416,27 @@ class BankBot(Automation):
                 # Wait for "Enter PIN"
                 poco("Enter PIN").wait_for_appearance(timeout=1000)
 
+                try:
+                    # Session Expired
+                    if poco("Notice The session has expired. Do you wish to continue using K BIZ?").exists():
+
+                        # Button Click Yes
+                        poco(text="Yes").click()
+
+                        # Wait for "Enter PIN"
+                        poco("Enter PIN").wait_for_appearance(timeout=1000)
+
+                        # Key PIN
+                        enter_pin()
+
+                        # Confirm Transaction
+                        confirm_transaction()
+
+                        # Exit While Loop
+                        break
+                except:
+                    pass
+
                 # Key PIN
                 enter_pin()
 
@@ -426,6 +448,28 @@ class BankBot(Automation):
             
             # Wait for "Confirm Transaction"
             elif poco(text="Confirm Transaction").exists():   
+
+                try:
+                    # Session Expired
+                    if poco("Notice The session has expired. Do you wish to continue using K BIZ?").exists():
+
+                        # Button Click Yes
+                        poco(text="Yes").click()
+
+                        # Wait for "Enter PIN"
+                        poco("Enter PIN").wait_for_appearance(timeout=1000)
+
+                        # Key PIN
+                        enter_pin()
+
+                        # Confirm Transaction
+                        confirm_transaction()
+
+                        # Exit While Loop
+                        break
+                except:
+                    pass
+
                 
                 # Confirm Transaciton
                 confirm_transaction()
@@ -445,25 +489,25 @@ class BankBot(Automation):
     @classmethod
     def eric_api(cls, data):
 
-        url = "https://stg-bot-integration.cloudbdtech.com/integration-service/transaction/payoutScriptCallback"
+        url = "https://bot-integration.cloudbdtech.com/integration-service/transaction/payoutScriptCallback"
 
         # Create payload as a DICTIONARY (not JSON yet)
         payload = {
-            "transactionId": str(data["transactionId"]),
             "bankCode": str(data["fromBankCode"]),
             "deviceId": str(data["deviceId"]),
             "merchantCode": str(data["merchantCode"]),
+            "transactionId": str(data["transactionId"]),
         }
 
         # Your secret key
-        secret_key = "DEVBankBotIsTheBest"
+        secret_key = "PRODBankBotIsTheBest"
 
         # Build the hash string (exact order required)
         string_to_hash = (
-            f"transactionId={payload['transactionId']}&"
             f"bankCode={payload['bankCode']}&"
             f"deviceId={payload['deviceId']}&"
-            f"merchantCode={payload['merchantCode']}{secret_key}"
+            f"merchantCode={payload['merchantCode']}&"
+            f"transactionId={payload['transactionId']}{secret_key}"
         )
 
         # Generate MD5 hash

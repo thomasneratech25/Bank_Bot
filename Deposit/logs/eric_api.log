@@ -2250,3 +2250,9 @@ ValueError: time data ' ' does not match format '%d/%m/%Y %H:%M'
 2025-12-31 14:59:49 | DEBUG | MD5 Hash: b431b494259c3dd1081911c0b0f28ed9
 2025-12-31 14:59:49 | INFO | API Response: {"code":"200028","msg":"User's merchant is disabled","data":null} 
 
+2026-01-16 14:28:04 | DEBUG | Transaction Time: 2026-01-16 11:20:00+07:00
+2026-01-16 14:28:04 | DEBUG | RawData: รับโอนจาก KTB x9026 KOH ZI JIAN -|550.00 THB|8144211935
+2026-01-16 14:28:04 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|550.00 THB|8144211935&transactionTime=1768537200000PRODBankBotIsTheBest
+2026-01-16 14:28:04 | DEBUG | MD5 Hash: 26f7aaf6c7cc19fecb3fd4af81ff0e17
+2026-01-16 14:28:04 | INFO | API Response: {"code":"200028","msg":"User's merchant is disabled","data":null} 
+
