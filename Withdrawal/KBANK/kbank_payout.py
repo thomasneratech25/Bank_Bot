@@ -1,16 +1,15 @@
-import re
 import json
 import time
-import random
 import atexit
 import hashlib
 import logging
 import requests
 import subprocess
 from threading import Lock
+from airtest.core.api import *
+from dotenv import load_dotenv
 from flask import Flask, request, jsonify
 from playwright.sync_api import sync_playwright, expect
-from airtest.core.api import *
 from poco.drivers.android.uiautomation import AndroidUiautomationPoco
 
 # =========================== Flask apps ==============================
@@ -47,7 +46,9 @@ class Automation:
         if cls.chrome_proc:
             return
         
-        USER_DATA_DIR = r"C:\Users\Thomas\AppData\Local\Google\Chrome\User Data\Profile99"
+        # Load .env file
+        load_dotenv()
+        USER_DATA_DIR = os.getenv("CHROME_PATH")
 
         cls.chrome_proc = subprocess.Popen([
             r"C:\Program Files\Google\Chrome\Application\chrome.exe",
@@ -172,13 +173,10 @@ class BankBot(Automation):
         
         # Check if logged out
         try:
-            page.locator("//span[normalize-space()='Sorry']").wait_for(state="visible",timeout=2500)
+            page.locator("//span[normalize-space()='Sorry']").wait_for(state="visible",timeout=2000)
             cls.kbank_login(data)
         except:
             pass
-
-        # Delay 1 seconds
-        time.sleep(1)
 
         # Button Click "Select Bank"
         page.locator("//span[@id='select2-id_select2_example_3-container']//div").click()
@@ -186,7 +184,12 @@ class BankBot(Automation):
         # Locate the input
         page.locator("input.select2-search__field").evaluate("el => el.removeAttribute('readonly')")
         page.locator("input.select2-search__field").fill(str(data["toBankCode"]))
-        page.locator(f"//div[span[normalize-space()='{data['toBankCode']}']]").click()
+
+        # if bank code == "Kasikornbank", then click the third element, else click first element
+        if data["toBankCode"] == "Kasikornbank":
+            page.locator(f"//div[span[normalize-space()='{data['toBankCode']}']]").nth(2).click()
+        else:
+            page.locator(f"//div[span[normalize-space()='{data['toBankCode']}']]").click()
 
         # Fill Account No.
         page.locator("//input[@placeholder='xxx-x-xxxxx-x']").fill(str(data["toAccountNum"]))
@@ -204,19 +207,6 @@ class BankBot(Automation):
             page.locator("//div[@class='mfp-content']//span[contains(text(),'Confirm')]").click()
         except:
             pass
-        
-        # # Kbank Web Ref Code
-        # cls._kbank_web_ref_code = page.locator("label.label strong").inner_text()
-        # print(f"KBank Web Ref Code: {cls._kbank_web_ref_code}")
-        
-        # # Run Read OTP Code
-        # otp = cls.kbank_read_otp()
-
-        # # Fill OTP Code
-        # page.locator("//input[@name='otp']").fill(otp)
-
-        # # Button Click "Confirm"
-        # page.locator("//a[@class='btn fixedwidth btn-gradient f-right']").click()
 
         # Kbank Apps Approved   
         cls.kbank_business_apps(data)
@@ -233,68 +223,6 @@ class BankBot(Automation):
         # wait for "Fund Transfer" to be appear
         page.locator("//h1[normalize-space()='Funds Transfer']").wait_for(state="visible", timeout=10000)
 
-    # # Read Phone Message OTP Code
-    # @classmethod
-    # def kbank_read_otp(cls):
-
-    #     # Hide Debug Log, if want view, just comment the bottom code
-    #     logging.getLogger("airtest").setLevel(logging.WARNING)
-    #     logging.getLogger("pocoui").setLevel(logging.WARNING) 
-    #     logging.getLogger("airtest.core.helper").setLevel(logging.WARNING)
-
-    #     # Poco Assistant
-    #     poco = AndroidUiautomationPoco(use_airtest_input=True, screenshot_each_action=False)
-
-    #     # Check screen state (if screenoff then wake up, else skip)
-    #     output = device().adb.shell("dumpsys power | grep -E -o 'mWakefulness=(Awake|Asleep|Dozing)'")
-
-    #     if "Awake" in output:
-    #         print("Screen already ON → pass")
-    #     else:
-    #         print("Screen is OFF → waking")
-    #         wake()
-    #         wake()
-
-    #     # Start Messages Apps
-    #     start_app("com.google.android.apps.messaging")
-        
-    #     # Click KBank Chat
-    #     # If not in inside KBank chat, click it, else passs
-    #     if not poco("message_text").exists():
-    #         poco(text="KBank").click()
-    #     else:
-    #         pass
-        
-    #     # Delay 2 seconds
-    #     time.sleep(2)
-
-    #     while True:
-    #         # Read All KBank Messages
-    #         message_nodes = poco("message_list").offspring("message_text")
-    #         for i, node in enumerate(message_nodes):
-    #             messages = node.get_text()
-
-    #             # Using Regex to get Messages Ref Code
-    #             match = re.search(r"\(Ref:\s*([A-Za-z0-9]+)\)", messages)
-                
-    #             if match:
-    #                 messages_ref_code = match.group(1)
-
-    #             # Compare Kbank Web (Ref Code) and Mobile Message (Ref Code), if is true, extract otp code, else print none
-    #             if cls._kbank_web_ref_code == messages_ref_code:
-    #                 # Using Regex to get OTP Code
-    #                 match = re.search(r'OTP\s*=\s*(\d{6})', messages)
-    #                 cls._messages_otp_code = match.group(1) if match else None   
-    #                 print(f"Ref Code: {cls._kbank_web_ref_code} = {messages_ref_code} ✅, OTP Code:{cls._messages_otp_code}")
-    #                 return cls._messages_otp_code            
-    #             else:
-    #                 print(f"Ref Code: {cls._kbank_web_ref_code} = {messages_ref_code} ❌")
-    #                 continue
-
-    #         # If no match, loop again
-    #         print("# OTP not found yet, keep waiting... \n")
-
-    
     # Apps Approved Transaction
     @classmethod
     def kbank_business_apps(cls, data):
@@ -317,8 +245,8 @@ class BankBot(Automation):
         def confirm_transaction():
             
             # Wait for "Confirm Transaction"
-            poco(type="android.widget.TextView", text="Confirm Transaction").wait_for_appearance(timeout=20)
-            
+            poco(textMatches=".*Confirm Transaction.*").wait_for_appearance(timeout=20)
+
             # Scroll Down
             swipe((360, 1280), (360, 320), duration=0.5)
             swipe((360, 1280), (360, 320), duration=0.5)
@@ -388,15 +316,17 @@ class BankBot(Automation):
             else:
                 logger.error("❌ Could not find the UNICORN NATIONAL notification")
 
-    
+        # Delay 1 second
+        time.sleep(1)
+
         # Check Session Expired or PIN Login or Transfer Page
         while True:
             
             # Session Expired
-            if poco("Notice The session has expired. Do you wish to continue using K BIZ?").exists():
-
+            if poco("Notice\nThe session has expired. Do you wish to continue using K BIZ?").exists():
+                print("asd")
                 # Button Click Yes
-                poco(text="Yes").click()
+                poco("Yes").click()
 
                 # Wait for "Enter PIN"
                 poco("Enter PIN").wait_for_appearance(timeout=1000)
@@ -406,6 +336,12 @@ class BankBot(Automation):
 
                 # Confirm Transaction
                 confirm_transaction()
+
+                # Expand Notification Bar
+                device().shell("cmd statusbar expand-notifications")  
+
+                # Click "Clear ALL" Notification
+                poco("com.android.systemui:id/notification_dismiss_view").click()
 
                 # Exit While Loop
                 break
@@ -418,7 +354,7 @@ class BankBot(Automation):
 
                 try:
                     # Session Expired
-                    if poco("Notice The session has expired. Do you wish to continue using K BIZ?").exists():
+                    if poco("Notice\nThe session has expired. Do you wish to continue using K BIZ?").exists():
 
                         # Button Click Yes
                         poco(text="Yes").click()
@@ -443,15 +379,21 @@ class BankBot(Automation):
                 # Confirm Transaction
                 confirm_transaction()
 
+                # Expand Notification Bar
+                device().shell("cmd statusbar expand-notifications")  
+
+                # Click "Clear ALL" Notification
+                poco("com.android.systemui:id/notification_dismiss_view").click()
+
                 # Exit While Loop
                 break
             
             # Wait for "Confirm Transaction"
-            elif poco(text="Confirm Transaction").exists():   
+            elif poco(textMatches=".*Confirm Transaction.*").exists():
 
                 try:
                     # Session Expired
-                    if poco("Notice The session has expired. Do you wish to continue using K BIZ?").exists():
+                    if poco("Notice\nThe session has expired. Do you wish to continue using K BIZ?").exists():
 
                         # Button Click Yes
                         poco(text="Yes").click()
@@ -465,14 +407,25 @@ class BankBot(Automation):
                         # Confirm Transaction
                         confirm_transaction()
 
+                        # Expand Notification Bar
+                        device().shell("cmd statusbar expand-notifications")  
+
+                        # Click "Clear ALL" Notification
+                        poco("com.android.systemui:id/notification_dismiss_view").click()
+
                         # Exit While Loop
                         break
                 except:
                     pass
 
-                
                 # Confirm Transaciton
                 confirm_transaction()
+
+                # Expand Notification Bar
+                device().shell("cmd statusbar expand-notifications")  
+
+                # Click "Clear ALL" Notification
+                poco("com.android.systemui:id/notification_dismiss_view").click()
 
                 # Exit While Loop
                 break

@@ -1,3 +1,4 @@
+import os
 import re
 import json
 import time
@@ -7,9 +8,10 @@ import logging
 import requests
 import subprocess
 from threading import Lock
+from airtest.core.api import *
+from dotenv import load_dotenv
 from flask import Flask, request, jsonify
 from playwright.sync_api import sync_playwright
-from airtest.core.api import *
 from poco.drivers.android.uiautomation import AndroidUiautomationPoco
 
 # =========================== Flask apps ==============================
@@ -46,7 +48,9 @@ class Automation:
         if cls.chrome_proc:
             return
         
-        USER_DATA_DIR = r"C:\Users\Thomas\AppData\Local\Google\Chrome\User Data\Profile99"
+        # Load .env file
+        load_dotenv()
+        USER_DATA_DIR = os.getenv("CHROME_PATH")
 
         cls.chrome_proc = subprocess.Popen([
             r"C:\Program Files\Google\Chrome\Application\chrome.exe",

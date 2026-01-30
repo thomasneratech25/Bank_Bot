@@ -1,3 +1,5 @@
+import os
+import sys
 import json
 import time
 import random
@@ -9,9 +11,10 @@ import queue
 import threading
 import subprocess
 from threading import Lock
+from airtest.core.api import *
+from dotenv import load_dotenv
 from flask import Flask, request, jsonify
 from playwright.sync_api import sync_playwright, expect
-from airtest.core.api import *
 from poco.drivers.android.uiautomation import AndroidUiautomationPoco
 
 # =========================== Flask apps ==============================
@@ -138,7 +141,9 @@ class Automation:
         if cls.chrome_proc:
             return
         
-        USER_DATA_DIR = r"C:\Users\Thomas\AppData\Local\Google\Chrome\User Data\Profile99"
+        # Load .env file
+        load_dotenv()
+        USER_DATA_DIR = os.getenv("CHROME_PATH")
 
         cls.chrome_proc = subprocess.Popen([
             r"C:\Program Files\Google\Chrome\Application\chrome.exe",
@@ -300,6 +305,17 @@ class BankBot(Automation):
         # Button Click "Continue to Transfer Services"
         page.locator("//span[normalize-space()='Continue to Transfer Services']").click(timeout=0) 
 
+        # if insufficient pop up appear, break
+        try:
+            page.wait_for_selector("//h2[normalize-space()='Insufficient funds in the selected account.']", timeout=1500)
+            print(("\nInsufficient Balance !!! TOP UP Please!!!!") * 20)
+            print("\n")
+
+            # Fully stop script/bot
+            sys.exit("Bot stopped: Insufficient funds detected!")
+        except:
+            pass
+
         # Button Click "Skip to Review Information"
         page.locator("//span[normalize-space()='Skip to Review Information']").click(timeout=0) 
 
@@ -360,7 +376,7 @@ class BankBot(Automation):
 
         # Start SCB Corporate Apps
         start_app(SCB_APP_PACKAGE)
-
+        
         # Inactive Too Long
         try:
             poco(text="You have been inactive for too long").wait_for_appearance(timeout=1)
@@ -370,23 +386,25 @@ class BankBot(Automation):
         except:
             pass
         
-        try:
+        # While loop to keep checking which one apeear, then do the which one first
+        while True:
             # Wait for "Enter PIN" appear
-            poco(text="Enter PIN").wait_for_appearance(timeout=3)
+            if poco(text="Enter PIN").exists():
 
-            pin = str(data["pin"])
-            for digit in pin:
-                key = poco(f"Login_{digit}")
-                cls.human_click(poco, key)
-        except:
-            pass
-        
+                pin = str(data["pin"])
+                for digit in pin:
+                    key = poco(f"Login_{digit}")
+                    cls.human_click(poco, key)
+
+            elif poco(text="Pending edit (0)").exists():
+                break
+
         # Wait and Click Notifications
-        poco(text="Notifications").wait_for_appearance(timeout=1000)   
+        poco(text="Notifications").wait_for_appearance(timeout=10000)   
         poco("tabNotificationsStack").click()
 
         # Click "View request"
-        poco(text="View request").wait_for_appearance(timeout=1000)
+        poco(text="View request").wait_for_appearance(timeout=10000)
         poco(text="View request").click()
 
         # Wait and Click "Submit for approval"
