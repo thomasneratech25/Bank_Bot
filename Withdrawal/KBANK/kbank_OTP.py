@@ -1,3 +1,4 @@
+import re
 import json
 import time
 import atexit
@@ -208,8 +209,20 @@ class BankBot(Automation):
         except:
             pass
 
-        # Kbank Apps Approved   
-        cls.kbank_business_apps(data)
+        # Kbank Web Ref Code
+        cls._kbank_web_ref_code = page.locator("label.label strong").inner_text()
+        print(f"KBank Web Ref Code: {cls._kbank_web_ref_code}")
+        
+        # Run Read OTP Code
+        otp = cls.kbank_read_otp()
+
+        # Fill OTP Code
+        page.locator("//input[@name='otp']").fill(otp)
+
+        time.sleep(1111111)
+
+        # Button Click "Confirm"
+        page.locator("//a[@class='btn fixedwidth btn-gradient f-right']").click()
 
         # Callback Eric API
         cls.eric_api(data)
@@ -438,6 +451,76 @@ class BankBot(Automation):
         time.sleep(1)
         poco("Back to main page").click()
         
+    # Read Phone Message OTP Code
+    @classmethod
+    def kbank_read_otp(cls):
+
+        # Hide Debug Log, if want view, just comment the bottom code
+        logging.getLogger("airtest").setLevel(logging.WARNING)
+        logging.getLogger("pocoui").setLevel(logging.WARNING) 
+        logging.getLogger("airtest.core.helper").setLevel(logging.WARNING)
+
+        # Poco Assistant
+        poco = AndroidUiautomationPoco(use_airtest_input=True, screenshot_each_action=False)
+
+        # Check screen state (if screenoff then wake up, else skip)
+        output = device().adb.shell("dumpsys power | grep -E -o 'mWakefulness=(Awake|Asleep|Dozing)'")
+
+        if "Awake" in output:
+            print("Screen already ON → pass")
+        else:
+            print("Screen is OFF → waking")
+            wake()
+            wake()
+
+        # Start Messages Apps
+        start_app("com.google.android.apps.messaging")
+        
+        # Click KBank Chat
+        # If not in inside KBank chat, click it, else passs
+        if not poco("message_text").exists():
+            poco(text="KBank").click()
+        else:
+            pass
+        
+        # Delay 2 seconds
+        time.sleep(2)
+
+        while True:
+
+            # Read All KTB Bank Messages
+            print("🤖 Reading latest message from KBANK bank...")
+
+            # Read All KBank Messages
+            message_nodes = poco("message_list").offspring("message_text")
+
+            # --- Collect OTP + Ref from all new messages ---
+            for i, node in reversed(list(enumerate(message_nodes))):
+                messages = node.get_text().strip()
+
+                if not messages:
+                    continue
+
+                # Using Regex to get Messages Ref Code
+                match = re.search(r"\(Ref:\s*([A-Za-z0-9]+)\)", messages, re.IGNORECASE,)
+                
+                if match:
+                    messages_ref_code = match.group(1)
+
+                # Compare Kbank Web (Ref Code) and Mobile Message (Ref Code), if is true, extract otp code, else print none
+                if cls._kbank_web_ref_code == messages_ref_code:
+                    # Using Regex to get OTP Code
+                    match = re.search(r'OTP\s*=\s*(\d{6})', messages)
+                    cls._messages_otp_code = match.group(1) if match else None   
+                    print(f"Ref Code: {cls._kbank_web_ref_code} = {messages_ref_code} ✅, OTP Code:{cls._messages_otp_code}")
+                    return cls._messages_otp_code            
+                else:
+                    print(f"Ref Code: {cls._kbank_web_ref_code} = {messages_ref_code} ❌")
+                    continue
+
+            # If no match, loop again
+            print("# OTP not found yet, keep waiting... \n")
+
     # Callback ERIC API
     @classmethod
     def eric_api(cls, data):
