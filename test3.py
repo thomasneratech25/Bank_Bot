@@ -1,15 +1,29 @@
 from airtest.core.api import *
 from poco.drivers.android.uiautomation import AndroidUiautomationPoco
 
-auto_setup(__file__)
-connect_device("Android:///")
+poco = AndroidUiautomationPoco()
 
-poco = AndroidUiautomationPoco(use_airtest_input=True)
 
-device().shell("cmd statusbar expand-notifications")
+# Expand Notification Bar
+device().shell("cmd statusbar expand-notifications")  
+
+# Swipe notification away using coordinates
+swipe((58, 719), (702, 721), duration=0.01)
+
+# Define Clear All button
+clear_all = poco("com.android.systemui:id/notification_dismiss_view")
+
+# Check if button appears
+if clear_all.exists():
+    # if exists then button click clear all
+    clear_all.click()
+    # else collapse notification bar
+else:
+    print("Clear All button NOT found, collapsing notification bar...")
+
+# Collapse Notification bar
+device().shell("cmd statusbar collapse")
+
 sleep(1)
 
-confirm_btn = poco(textMatches=".*Confirm transaction.*Transfer to.*")
-confirm_btn.wait_for_appearance(timeout=10)
-confirm_btn.click()
-confirm_btn.click()
+

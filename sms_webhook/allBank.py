@@ -1,8 +1,13 @@
 import re
-import json
+import time
+from threading import Lock
 from flask import Flask, request, jsonify
 
 app = Flask(__name__)
+
+# Store latest OTP messages in memory
+OTP_STORE = []
+OTP_LOCK = Lock()
 
 # Krungsri regex function to get Ref and OTP Code
 def krungsri_ref_otp(message_text: str):
@@ -45,9 +50,7 @@ def sms():
     if not data or "form" not in data or "content" not in data["form"]:
         return jsonify({
             "success": False,
-            "error": "Invalid payload: missing form/content",
-            "received_content_type": request.content_type,
-            "received_form_keys": list(request.form.keys()),
+            "error": "Invalid payload: missing form/content"
         }), 400
 
     form = data["form"]
@@ -57,10 +60,24 @@ def sms():
     # Store data in content variable
     # ✅ Filter: accept only Krungsri/KBank
     if sender not in BANK_HANDLERS:
-        return jsonify({"success": False, "ignored": True, "sender": sender}), 200
+        print("⚠️ Ignored SMS from:", sender)
+        return jsonify({"success": False, "ignored": True}), 200
 
+    # Run Correct regex handler
     handler, title, color = BANK_HANDLERS[sender]
     ref, otp = handler(content)
+
+    # ✅ Save OTP into memory (for Playwright to read later)
+    with OTP_LOCK:
+        OTP_STORE.append({
+            "bank": sender,
+            "ref": ref,
+            "otp": otp,
+            "ts": time.time()
+        })
+
+        # ✅ Keep only last 50 OTP records (memory limit)
+        OTP_STORE[:] = OTP_STORE[-50:]
 
     # Print result
     print("\n====================")
@@ -71,5 +88,28 @@ def sms():
 
     return jsonify({"success": True, "bank": sender, "ref": ref, "otp": otp}), 200
 
+# ============================================
+# ✅ OTP Fetch API (Playwright GET)
+# ============================================
+
+@app.route("/otp/latest", methods=["GET"])
+def get_latest_otp():
+
+    bank = request.args.get("bank", "").strip()
+
+    with OTP_LOCK:
+        # Search newest OTP first
+        for item in reversed(OTP_STORE):
+            if item["bank"] == bank:
+                return jsonify({"success": True, **item})
+
+    return jsonify({"success": False, "error": "OTP not found"}), 404
+
+# ============================================
+# ✅ Run Flask Server
+# ============================================
+
 if __name__ == "__main__":
+    print("✅ SMS Webhook Running at: http://0.0.0.0:3000")
+    print("✅ OTP Fetch Endpoint:    /otp/latest?bank=Krungsri")
     app.run(host="0.0.0.0", port=3000)

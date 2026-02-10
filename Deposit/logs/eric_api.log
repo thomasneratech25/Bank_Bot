@@ -2256,3 +2256,9 @@ ValueError: time data ' ' does not match format '%d/%m/%Y %H:%M'
 2026-01-16 14:28:04 | DEBUG | MD5 Hash: 26f7aaf6c7cc19fecb3fd4af81ff0e17
 2026-01-16 14:28:04 | INFO | API Response: {"code":"200028","msg":"User's merchant is disabled","data":null} 
 
+2026-02-05 15:55:08 | DEBUG | Transaction Time: 2026-02-05 14:44:00+07:00
+2026-02-05 15:55:08 | DEBUG | RawData: Transfer from SCB x9540 บริษัท ยูนิคอร์น|200.00 THB|8144211935
+2026-02-05 15:55:08 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=Transfer from SCB x9540 บริษัท ยูนิคอร์น|200.00 THB|8144211935&transactionTime=1770277440000PRODBankBotIsTheBest
+2026-02-05 15:55:08 | DEBUG | MD5 Hash: 84e92f685a4aabc14645cc89f00a7d08
+2026-02-05 15:55:08 | INFO | API Response: {"code":"200028","msg":"User's merchant is disabled","data":null} 
+
