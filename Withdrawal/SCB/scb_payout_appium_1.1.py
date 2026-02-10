@@ -11,11 +11,19 @@ import queue
 import threading
 import subprocess
 from threading import Lock
-from airtest.core.api import *
 from dotenv import load_dotenv
 from flask import Flask, request, jsonify
 from playwright.sync_api import sync_playwright, expect
-from poco.drivers.android.uiautomation import AndroidUiautomationPoco
+from appium import webdriver
+from appium.options.android import UiAutomator2Options
+from appium.webdriver.common.appiumby import *
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from appium.webdriver.common.appiumby import AppiumBy
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.actions import interaction
+from selenium.webdriver.common.actions.action_builder import ActionBuilder
+from selenium.webdriver.common.actions.pointer_input import PointerInput
 
 # =========================== Flask apps ==============================
 
@@ -25,6 +33,22 @@ LOCK = Lock()
 # IDLE 
 IDLE_SECONDS = 174 # 2.9 minutes
 SCB_APP_PACKAGE = "com.scb.corporate"
+
+# =========================== Appium Settings ==============================
+
+# Setup Capabilities
+options = UiAutomator2Options()
+options.platform_name = "Android"
+options.device_name = "androidtesting"
+options.automation_name = "UiAutomator2"
+options.new_command_timeout = 2000
+
+# Initialize the Driver (This defines 'driver')
+# Make sure your Appium Server is running at this URL
+driver = webdriver.Remote("http://127.0.0.1:8021", options=options)
+
+# bypass scbanyware detect using usb debugging
+driver.execute_script('mobile: shell', {'command': 'settings', 'args': ['put', 'global', 'adb_enabled', '12']})
 
 # ================== LOG File ==================
 
@@ -105,7 +129,7 @@ class PlaywrightWorker:
         global PAGE
         try:
             logger.info("Auto cleanup after %ss idle", IDLE_SECONDS)
-            BankBot.scb_kill_apps()
+            BankBot.scb_kill_apps(driver)
             if PAGE and not PAGE.is_closed():
                 BankBot.scb_logout(PAGE)
         except Exception:
@@ -183,26 +207,6 @@ class Automation:
 # ================== SCB BANK BOT ==================
 
 class BankBot(Automation):
-
-    # Simulate Human Click (Faster way)
-    @staticmethod
-    def human_click(poco, poco_obj):
-        # get position of the element
-        pos = poco_obj.get_position()
-
-        # convert to screen coords
-        w, h = poco.get_screen_size()
-        abs_x, abs_y = pos[0] * w, pos[1] * h
-
-        # random offset (human jitter)
-        offset_x = random.uniform(-0.01, 0.01) * w
-        offset_y = random.uniform(-0.01, 0.01) * h
-
-        # simulate tap
-        touch([abs_x + offset_x, abs_y + offset_y])
-
-        # small human delay
-        time.sleep(random.uniform(0.15, 0.35))
 
     # Login
     @classmethod
@@ -283,9 +287,9 @@ class BankBot(Automation):
 
         # Wait for "Recipient Details"
         page.locator("//h4[normalize-space()='Recipient Details']").wait_for(timeout=0) 
-
+        
+        # Fill Account Name
         try:
-            # Fill Account Name
             page.locator("//input[@name='accountName']").fill(str(data["toAccountName"]), timeout=2000)
         except:
             pass
@@ -332,7 +336,7 @@ class BankBot(Automation):
         page.locator("//span[normalize-space()='OK']").click(timeout=0)
 
         # Launch Apps to Approve Transfer Request
-        BankBot.scb_Anywhere_apps(data)
+        BankBot.scb_Anywhere_apps(driver, data)
 
         # Button Click "Done"
         page.locator("//span[normalize-space()='Done']").click(timeout=1000)
@@ -354,77 +358,70 @@ class BankBot(Automation):
 
     # Read Apps OTP Code
     @classmethod
-    def scb_Anywhere_apps(cls, data):
-
-        # Hide Debug Log, if want view, just comment the bottom code
-        logging.getLogger("airtest").setLevel(logging.WARNING)
-        logging.getLogger("pocoui").setLevel(logging.WARNING) 
-        logging.getLogger("airtest.core.helper").setLevel(logging.WARNING)
-
-        # Poco Assistant
-        poco = AndroidUiautomationPoco(use_airtest_input=True, screenshot_each_action=False)
-
-        # Check screen state (if screenoff then wake up, else skip)
-        output = device().adb.shell("dumpsys power | grep -E -o 'mWakefulness=(Awake|Asleep|Dozing)'")
-
-        if "Awake" in output:
-            print("Screen already ON → pass")
-        else:
-            print("Screen is OFF → waking")
-            wake()
-            wake()
-
+    def scb_Anywhere_apps(cls, driver, data):
+        
         # Start SCB Corporate Apps
-        start_app(SCB_APP_PACKAGE)
+        # Check if the app is NOT in the foreground (State 4)
+        if driver.query_app_state("com.scb.corporate") != 4:
+            print("App is not open. Opening...")
+            driver.activate_app("com.scb.corporate")
         
         # Inactive Too Long
         try:
-            poco(text="You have been inactive for too long").wait_for_appearance(timeout=1)
-            # Click "Continue"
-            poco(text="Continue").click()
-            poco(text="Continue").click()
+            # wait for text "You have been inactive too long"
+            WebDriverWait(driver, 1).until(EC.presence_of_element_located((AppiumBy.XPATH, "//*[contains(@text, 'You have been inactive for too long')]")))
+            
+            # Find "Continue" button and click continue
+            driver.find_element(AppiumBy.XPATH, "//*[contains(@text, 'Continue')]").click()
         except:
             pass
-        
-        # While loop to keep checking which one apeear, then do the which one first
-        while True:
-            # Wait for "Enter PIN" appear
-            if poco(text="Enter PIN").exists():
 
+        # Enter Pin / Pending edit (0)
+        while True:
+            try: 
+                # Wait for "Enter PIN" to appear
+                WebDriverWait(driver, 1).until(EC.visibility_of_element_located((AppiumBy.XPATH, "//*[@text='Enter PIN']")))
+            
+                # Enter Pin
                 pin = str(data["pin"])
                 for digit in pin:
-                    key = poco(f"Login_{digit}")
-                    cls.human_click(poco, key)
-
-            elif poco(text="Pending edit (0)").exists():
+                    digit_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((AppiumBy.XPATH, f"//android.widget.TextView[@text='{digit}']")))
+                    digit_button.click()
+                    print(f"PIN: {digit}")
                 break
+            except:
+                try:
+                    # Wait for "Pending edit (0)" to appear
+                    WebDriverWait(driver, 1).until(EC.visibility_of_element_located((AppiumBy.XPATH, "//*[@text='Pending edit (0)']")))
+                    break
+                except:
+                    pass
 
         # Wait and Click Notifications
-        poco(text="Notifications").wait_for_appearance(timeout=10000)   
-        poco("tabNotificationsStack").click()
+        notif = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Notifications")')))
+        notif.click()
 
         # Click "View request"
-        poco(text="View request").wait_for_appearance(timeout=10000)
-        poco(text="View request").click()
+        btn_view_request = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.ANDROID_UIAUTOMATOR,'new UiSelector().text("View request")')))
+        time.sleep(0.3)
+        driver.execute_script("mobile: clickGesture", {"elementId": btn_view_request.id})
 
         # Wait and Click "Submit for approval"
-        poco("btApprove").click()
-        
+        label = WebDriverWait(driver, 20).until(EC.presence_of_element_located((AppiumBy.ANDROID_UIAUTOMATOR,'new UiSelector().text("Submit for approval")')))
+        time.sleep(0.3)
+        driver.execute_script("mobile: clickGesture", {"elementId": label.id})
+
         # Key SCB Digital Token Pin
         token_pin = str(data["scbDigitalTokenPin"])
         for digit in token_pin:
-            key = poco(f"SoftTokenInputPin_{digit}")
-            key.wait_for_appearance(timeout=2)
-            time.sleep(0.15)               
-            cls.human_click(poco, key)
-            time.sleep(0.25)                    
+            digit_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((AppiumBy.XPATH, f"//android.widget.TextView[@text='{digit}']")))
+            digit_button.click()
+            print(f"scbDigitalTokenPIN: {digit}")        
 
-        time.sleep(3)
-        
         # Click "Go to To-do List"
-        poco(text="Approved").wait_for_appearance(timeout=15)
-        poco("btTodoList").wait_for_appearance(timeout=10)
-        poco("btTodoList").click()
+        gtdList = WebDriverWait(driver, 20).until(EC.presence_of_element_located((AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Go to To-do List")')))
+        time.sleep(3)
+        gtdList.click()
 
     # Logout
     @classmethod
@@ -446,16 +443,16 @@ class BankBot(Automation):
 
     # Kill SCB app
     @classmethod
-    def scb_kill_apps(cls):
+    def scb_kill_apps(cls, driver):
         try:
-            stop_app(SCB_APP_PACKAGE)
+            driver.terminate_app(SCB_APP_PACKAGE)
             logger.info("Stopped SCB app: %s", SCB_APP_PACKAGE)
             return
         except Exception:
             logger.exception("stop_app failed for SCB app")
 
         try:
-            device().adb.shell(f"am force-stop {SCB_APP_PACKAGE}")
+            driver.execute_script("mobile: shell", {"command": "am", "args": ["force-stop", SCB_APP_PACKAGE]})
             logger.info("Force-stopped SCB app via adb: %s", SCB_APP_PACKAGE)
         except Exception:
             logger.exception("ADB force-stop failed for SCB app")
@@ -543,4 +540,5 @@ def runPython():
 if __name__ == "__main__":
     logger.info("🚀 SCB Local API started")
     app.run(host="0.0.0.0", port=5001, debug=False, threaded=False, use_reloader=False)
+
 

@@ -90,6 +90,50 @@ class Automation:
 class BankBot(Automation):
     
     _kbank_ref = None
+
+    # Ensure Airtest device connection is ready
+    @classmethod
+    def _ensure_airtest_ready(cls):
+        try:
+            device().adb.shell("echo ping")
+            return
+        except Exception:
+            pass
+
+        auto_setup(__file__)
+        connect_device("Android:///")
+
+    # Robust Poco initializer with retry and cleanup
+    @classmethod
+    def _init_poco(cls, *, force_restart=False, retries=3, retry_delay=2):
+        cls._ensure_airtest_ready()
+
+        last_error = None
+        for attempt in range(1, retries + 1):
+            try:
+                return AndroidUiautomationPoco(
+                    use_airtest_input=True,
+                    screenshot_each_action=False,
+                    force_restart=force_restart,
+                )
+            except Exception as e:
+                last_error = e
+                logger.warning(
+                    "Poco init failed (attempt %s/%s): %s",
+                    attempt,
+                    retries,
+                    e,
+                )
+                try:
+                    # Stop Poco services to avoid stale instrumentation
+                    device().shell("am force-stop com.netease.open.pocoservice")
+                    device().shell("am force-stop com.netease.open.pocoservice.test")
+                except Exception:
+                    pass
+                time.sleep(retry_delay)
+                force_restart = True
+
+        raise last_error
     
     # Simulate Human Click (Faster way)
     @staticmethod
@@ -115,6 +159,9 @@ class BankBot(Automation):
     def kbank_login(cls, data):
         
         global PLAYWRIGHT, BROWSER, CONTEXT, PAGE
+
+        # Clean Notification Bar first
+        BankBot.kbank_business_apps_clean_notif()
 
         # Start Chrome
         cls.chrome_cdp()
@@ -178,6 +225,12 @@ class BankBot(Automation):
         except:
             pass
 
+        # wait for "Select Bank" to be appear
+        page.locator("//span[@id='select2-id_select2_example_3-container']//div").wait_for(state="visible", timeout=10000)
+
+        # Delay 1 second
+        time.sleep(1)
+        
         # Button Click "Select Bank"
         page.locator("//span[@id='select2-id_select2_example_3-container']//div").click()
 
@@ -259,29 +312,9 @@ class BankBot(Automation):
             # Button Click "Confirm"s
             poco("Confirm").click()
 
-        # Hide Debug Log, if want view, just comment the bottom code
-        logging.getLogger("airtest").setLevel(logging.WARNING)
-        logging.getLogger("pocoui").setLevel(logging.WARNING) 
-        logging.getLogger("airtest.core.helper").setLevel(logging.WARNING)
-
-        # prepare Airtest environment
-        auto_setup(__file__)
-        # attach Android device
-        connect_device("Android:///")
-
         # Poco Assistant
-        poco = AndroidUiautomationPoco(use_airtest_input=True, screenshot_each_action=False)
-
-        # Check screen state (if screenoff then wake up, else skip)
-        output = device().adb.shell("dumpsys power | grep -E -o 'mWakefulness=(Awake|Asleep|Dozing)'")
-
-        if "Awake" in output:
-            print("Screen already ON → pass")
-        else:
-            print("Screen is OFF → waking")
-            wake()
-            wake()
-        
+        poco = cls._init_poco()
+    
         ### Click K BIZ Confirm transaction ###
         # Expand Notification Bar
         device().shell("cmd statusbar expand-notifications")  
@@ -488,6 +521,56 @@ class BankBot(Automation):
         poco("Back to main page").wait_for_appearance(timeout=20)
         time.sleep(1)
         poco("Back to main page").click()
+        
+    # Clean all notification 1 round
+    @classmethod
+    def kbank_business_apps_clean_notif(cls):
+
+        # Hide Debug Log, if want view, just comment the bottom code
+        logging.getLogger("airtest").setLevel(logging.WARNING)
+        logging.getLogger("pocoui").setLevel(logging.WARNING) 
+        logging.getLogger("airtest.core.helper").setLevel(logging.WARNING)
+
+        # prepare Airtest environment / attach Android device
+        cls._ensure_airtest_ready()
+
+        # Poco Assistant
+        poco = cls._init_poco()
+
+        # Check screen state (if screenoff then wake up, else skip)
+        output = device().adb.shell("dumpsys power | grep -E -o 'mWakefulness=(Awake|Asleep|Dozing)'")
+
+        if "Awake" in output:
+            print("Screen already ON → pass")
+        else:
+            print("Screen is OFF → waking")
+            wake()
+            wake()
+        
+        # Hide Debug Log, if want view, just comment the bottom code
+        logging.getLogger("airtest").setLevel(logging.WARNING)
+        logging.getLogger("pocoui").setLevel(logging.WARNING) 
+        logging.getLogger("airtest.core.helper").setLevel(logging.WARNING)
+
+        # Expand Notification Bar
+        device().shell("cmd statusbar expand-notifications")  
+
+        # Swipe notification away using coordinates
+        swipe((58, 719), (702, 721), duration=0.01)
+    
+        # Define Clear All button
+        clear_all = poco("com.android.systemui:id/notification_dismiss_view")
+
+        # Check if button appears
+        if clear_all.exists():
+            # if exists then button click clear all
+            clear_all.click()
+            # else collapse notification bar
+        else:
+            print("Clear All button NOT found, collapsing notification bar...")
+
+        # Collapse Notification bar
+        device().shell("cmd statusbar collapse")
         
     # Callback ERIC API
     @classmethod
