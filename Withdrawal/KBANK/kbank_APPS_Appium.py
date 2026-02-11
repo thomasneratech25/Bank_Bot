@@ -1,5 +1,5 @@
-import json
 import os
+import json
 import time
 import atexit
 import hashlib
@@ -11,10 +11,18 @@ from dotenv import load_dotenv
 from flask import Flask, request, jsonify
 from playwright.sync_api import sync_playwright, expect
 from appium import webdriver
-from appium.options.android import UiAutomator2Options
+from appium.webdriver.common.appiumby import *
 from appium.webdriver.common.appiumby import AppiumBy
+from appium.options.android import UiAutomator2Options
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+
+
+# =========================== Appium Settings =========================
+
+APPIUM_DRIVER = None
+APPIUM_LOCK = Lock()
 
 # =========================== Flask apps ==============================
 
@@ -92,102 +100,7 @@ class Automation:
 # ================== KBANK BANK BOT ==================
 
 class BankBot(Automation):
-    
-    _kbank_ref = None
-    _appium_driver = None
 
-    @classmethod
-    def _get_driver(cls):
-        if cls._appium_driver is not None:
-            try:
-                cls._appium_driver.get_window_size()
-                return cls._appium_driver
-            except Exception:
-                try:
-                    cls._appium_driver.quit()
-                except Exception:
-                    pass
-                cls._appium_driver = None
-
-        load_dotenv()
-        server_url = os.getenv("APPIUM_SERVER_URL", "http://127.0.0.1:4723")
-
-        options = UiAutomator2Options()
-        options.set_capability("platformName", "Android")
-        options.set_capability("automationName", "UiAutomator2")
-        options.set_capability("deviceName", os.getenv("ANDROID_DEVICE_NAME", "Android"))
-        options.set_capability("noReset", True)
-
-        app_package = os.getenv("APPIUM_APP_PACKAGE")
-        app_activity = os.getenv("APPIUM_APP_ACTIVITY")
-        if app_package:
-            options.set_capability("appPackage", app_package)
-        if app_activity:
-            options.set_capability("appActivity", app_activity)
-
-        extra_caps = os.getenv("APPIUM_CAPS_JSON")
-        if extra_caps:
-            try:
-                for key, value in json.loads(extra_caps).items():
-                    options.set_capability(key, value)
-            except json.JSONDecodeError:
-                logger.warning("Invalid APPIUM_CAPS_JSON; ignoring.")
-
-        cls._appium_driver = webdriver.Remote(server_url, options=options)
-        return cls._appium_driver
-
-    @staticmethod
-    def _wake_device(driver):
-        try:
-            result = driver.execute_script(
-                "mobile: shell",
-                {"command": "dumpsys", "args": ["power"]},
-            )
-            output = (result or {}).get("stdout", "")
-        except Exception:
-            return
-
-        if "mWakefulness=Awake" in output:
-            return
-
-        if "mWakefulness=Asleep" in output or "mWakefulness=Dozing" in output:
-            driver.press_keycode(26)
-            time.sleep(0.5)
-
-    @staticmethod
-    def _clear_notifications(driver):
-        try:
-            driver.open_notifications()
-            WebDriverWait(driver, 5).until(
-                EC.presence_of_element_located(
-                    (AppiumBy.ID, "com.android.systemui:id/notification_stack_scroller")
-                )
-            )
-        except Exception:
-            return
-
-        size = driver.get_window_size()
-        y = int(size["height"] * 0.45)
-        driver.swipe(
-            int(size["width"] * 0.1),
-            y,
-            int(size["width"] * 0.9),
-            y,
-            200,
-        )
-
-        clear_all = driver.find_elements(
-            AppiumBy.ID, "com.android.systemui:id/notification_dismiss_view"
-        )
-        if clear_all:
-            clear_all[0].click()
-            time.sleep(0.5)
-
-        try:
-            driver.back()
-        except Exception:
-            pass
-    
     # Login
     @classmethod
     def kbank_login(cls, data):
@@ -313,127 +226,240 @@ class BankBot(Automation):
     # Apps Approved Transaction
     @classmethod
     def kbank_business_apps(cls, data):
-        driver = cls._get_driver()
-        cls._wake_device(driver)
+    # def kbank_business_apps(cls):
+        
+        global APPIUM_DRIVER
 
-        def ui(text=None, contains=None, matches=None):
-            if text is not None:
-                return (AppiumBy.ANDROID_UIAUTOMATOR, f'new UiSelector().text("{text}")')
-            if contains is not None:
-                return (
-                    AppiumBy.ANDROID_UIAUTOMATOR,
-                    f'new UiSelector().textContains("{contains}")',
-                )
-            if matches is not None:
-                return (
-                    AppiumBy.ANDROID_UIAUTOMATOR,
-                    f'new UiSelector().textMatches("{matches}")',
-                )
-            raise ValueError('ui() requires text, contains, or matches')
+        with APPIUM_LOCK:
+            if APPIUM_DRIVER is None:
+                options = UiAutomator2Options()
+                options.platform_name = "Android"
+                options.device_name = "androidtesting"
+                options.automation_name = "UiAutomator2"
+                options.new_command_timeout = 2000
+                APPIUM_DRIVER = webdriver.Remote("http://127.0.0.1:8021", options=options)
 
-        def wait_visible(locator, timeout=30):
-            return WebDriverWait(driver, timeout).until(
-                EC.visibility_of_element_located(locator)
-            )
+        driver = APPIUM_DRIVER
 
-        # Open notification shade and click the transaction notification
-        driver.open_notifications()
-        wait_visible(
-            (AppiumBy.ID, 'com.android.systemui:id/notification_stack_scroller'),
-            10,
-        )
+        # Enter Login Pin
+        def enter_pin():
 
-        target_text = 'UNICORN NATIONAL'
-        notif = driver.find_elements(*ui(contains=target_text))
-        if notif:
-            notif[0].click()
-        else:
-            logger.error("Could not find notification containing '%s'", target_text)
+            # Wait for "Enter PIN" to appear
+            WebDriverWait(driver, 30).until(EC.presence_of_element_located((AppiumBy.XPATH, "//android.view.View[@content-desc='Enter PIN']")))
 
-        confirm_locator = ui(matches='(?i).*confirm transaction.*')
-        confirm_notif = driver.find_elements(*confirm_locator)
-        if confirm_notif:
-            confirm_notif[0].click()
-        else:
-            logger.error('Could not find the confirm transaction notification')
+            # Enter Pin
+            # pin = str(data["pin"])
+            pin = str("147258")
+            for digit in pin:
+                digit_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, digit)))
+                digit_button.click()
+                print(f"PIN: {digit}")
 
-        time.sleep(1)
+        # Confirm Transaction
+        def confirm_transaction():
 
-        session_expired = ui(contains='session has expired')
-        enter_pin = ui(contains='Enter PIN')
-        confirm_screen = ui(matches='(?i).*confirm transaction.*')
-        confirm_button = ui(text='Confirm')
-        yes_button = ui(text='Yes')
-
-        pin_entered = False
-
-        def find_digit_button(digit):
-            locators = [
-                ui(text=digit),
-                (AppiumBy.ANDROID_UIAUTOMATOR, f'new UiSelector().description("{digit}")'),
-                (AppiumBy.ACCESSIBILITY_ID, digit),
-            ]
-            for locator in locators:
-                try:
-                    elems = driver.find_elements(*locator)
-                    if elems:
-                        return elems[0]
-                except Exception:
-                    continue
-            return None
-
-        while True:
-            if driver.find_elements(*session_expired):
-                try:
-                    wait_visible(yes_button, 5).click()
-                    pin_entered = False
-                except Exception:
-                    pass
-
-            if not pin_entered and driver.find_elements(*enter_pin):
-                wait_visible(enter_pin, 30)
-                for digit in str(data['pin']):
-                    if not str(digit).isdigit():
-                        raise RuntimeError(f"PIN must be numeric, got '{digit}'")
-                    button = find_digit_button(digit)
-                    if button:
-                        button.click()
-                    else:
-                        try:
-                            driver.press_keycode(7 + int(digit))
-                        except Exception as e:
-                            raise RuntimeError(f"PIN digit not found: {digit}") from e
-                    time.sleep(0.2)
-                pin_entered = True
-
-            if driver.find_elements(*confirm_screen):
-                wait_visible(confirm_screen, 20)
-
+            # Scroll Down Confirmation Transaction
+            def scroll_down(driver, times=2, duration=500):
                 size = driver.get_window_size()
-                start_x = size['width'] // 2
-                start_y = int(size['height'] * 0.8)
-                end_y = int(size['height'] * 0.2)
-                driver.swipe(start_x, start_y, start_x, end_y, 600)
-                driver.swipe(start_x, start_y, start_x, end_y, 600)
+                x = size["width"] // 2
 
-                wait_visible(confirm_button, 10).click()
-                time.sleep(1)
-                wait_visible(confirm_button, 10).click()
+                start_y = int(size["height"] * 0.80)
+                end_y = int(size["height"] * 0.25)
 
-                cls._clear_notifications(driver)
-                break
+                for _ in range(times):
+                    driver.swipe(x, start_y, x, end_y, duration)
 
-            time.sleep(0.5)
+            # Wait for "Confirm Transaction"
+            WebDriverWait(driver, 30).until(EC.presence_of_element_located((AppiumBy.XPATH, "//*[contains(@text,'Confirm Transaction')]")))
 
-        wait_visible(ui(text='Back to main page'), 20).click()
+            # Scroll Down
+            scroll_down(driver)
 
+            # Wait and Button Click "Confirm"
+            WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.XPATH, "//*[@text='Confirm']/.."))).click()
+
+            # Delay 1 second
+            time.sleep(1)
+
+            # Wait and Button Click "Confirm"s
+            WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Confirm"))).click()
+
+        ### Click K BIZ Confirm transaction ###
+        # Expand Notification Bar
+        driver.open_notifications()
+
+        # Wait for SystemUI notification container
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located((AppiumBy.ID, "com.android.systemui:id/notification_stack_scroller")))
+
+        # Click notification that contains "UNICORN NATIONAL"
+        target_text = "UNICORN NATIONAL"
+        notif_xpath = f"//*[contains(@text,'{target_text}') or contains(@content-desc,'{target_text}')]"
+        WebDriverWait(driver, 10).until(EC.element_to_be_clickable((AppiumBy.XPATH, notif_xpath))).click()
+
+        # Find + click "Confirm transaction" (if exists)
+        confirm_text = "Confirm transaction"
+        confirm_xpath = f"//*[contains(@text,'{confirm_text}') or contains(@content-desc,'{confirm_text}')]"
+
+        if driver.find_elements(AppiumBy.XPATH, confirm_xpath):
+            logger.info("✔ Found transaction notification, clicking...")
+            WebDriverWait(driver, 10).until(EC.element_to_be_clickable((AppiumBy.XPATH, confirm_xpath))).click()
+        else:
+            logger.error("❌ Could not find the UNICORN NATIONAL notification")
+        
+        # Delay 1 second
+        time.sleep(1)
+        
+        while True:
+            try:
+                if driver.find_elements(AppiumBy.XPATH, "//*[contains(@content-desc,'session has expired')]"):
+
+                    # Button Click "Yes"
+                    driver.find_element(AppiumBy.XPATH, "//android.widget.Button[@content-desc='Yes']").click()
+
+                    # Enter PIN
+                    enter_pin()
+
+                    # Confirm Transaction
+                    confirm_transaction()
+
+                    # Clean Notification Bar
+                    cls.kbank_business_apps_clean_notif()
+
+                    # Break While Loop
+                    break
+            
+                elif driver.find_elements(AppiumBy.ACCESSIBILITY_ID, "Enter PIN"):
+                    
+                    try:
+                        # Wait for "Session Expired" to appear
+                        WebDriverWait(driver, 1).until(EC.presence_of_element_located((AppiumBy.XPATH, "//*[contains(@content-desc,'session has expired')]")))
+
+                        # Button Click "Yes"
+                        driver.find_element(AppiumBy.XPATH, "//android.widget.Button[@content-desc='Yes']").click()
+
+                        # Enter PIN
+                        enter_pin()
+
+                        # Confirm Transaction
+                        confirm_transaction()
+
+                        # Clean Notification Bar
+                        cls.kbank_business_apps_clean_notif()
+
+                        # Break While Loop
+                        break
+                    except:
+                        pass
+
+                    # Enter PIN
+                    enter_pin()
+
+                    # Confirm Transaction
+                    confirm_transaction()
+
+                    # Clean Notification Bar
+                    cls.kbank_business_apps_clean_notif()
+                    
+                    # Break While Loop
+                    break
+
+                elif driver.find_elements(AppiumBy.XPATH, "//*[contains(@text,'Confirm Transaction')]"):
+                    try:
+                        if driver.find_elements(AppiumBy.XPATH, "//*[contains(@content-desc,'session has expired')]"):
+
+                            # Button Click "Yes"
+                            driver.find_element(AppiumBy.XPATH, "//android.widget.Button[@content-desc='Yes']").click()
+
+                            # Enter PIN
+                            enter_pin()
+
+                            # Confirm Transaction
+                            confirm_transaction()
+
+                            # Clean Notification Bar
+                            cls.kbank_business_apps_clean_notif()
+
+                            # Break While Loop
+                            break
+                    except:
+                        pass
+
+                    # Confirm Transaction
+                    confirm_transaction()
+                    
+                    # Clean Notification Bar
+                    cls.kbank_business_apps_clean_notif()
+
+                    # Break While Loop
+                    break
+
+            except TimeoutException:
+                continue
+
+        # Wait and Click "Back to main page"
+        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.XPATH, "//android.view.View[@content-desc='Back to main page']"))).click()
+
+                    
     # Clean all notification 1 round
     @classmethod
     def kbank_business_apps_clean_notif(cls):
-        driver = cls._get_driver()
-        cls._wake_device(driver)
-        cls._clear_notifications(driver)
 
+        global APPIUM_DRIVER
+
+        # Swipe all notification
+        def swipe_all_notifications(driver, max_swipes=1):
+            driver.open_notifications()
+
+            for _ in range(max_swipes):
+                notifs = driver.find_elements(
+                    AppiumBy.ANDROID_UIAUTOMATOR,
+                    'new UiSelector().resourceIdMatches(".*(notification|row).*")'
+                )
+                if not notifs:
+                    break
+
+                # Swipe the first one left
+                n = notifs[0]
+                r = n.rect
+                y = r["y"] + r["height"] // 2
+                start_x = r["x"] + int(r["width"] * 0.85)
+                end_x   = r["x"] + int(r["width"] * 0.15)
+
+                driver.swipe(start_x, y, end_x, y, 100)
+
+        # Setup Capabilities
+        options = UiAutomator2Options()
+        options.platform_name = "Android"
+        options.device_name = "androidtesting"
+        options.automation_name = "UiAutomator2"
+        options.new_command_timeout = 2000
+
+        # Initialize the Driver (This defines 'driver')
+        # Make sure your Appium Server is running at this URL
+        # Create driver ONCE and reuse
+        with APPIUM_LOCK:
+            if APPIUM_DRIVER is None:
+                APPIUM_DRIVER = webdriver.Remote("http://127.0.0.1:8021", options=options)
+            driver = APPIUM_DRIVER
+
+        # Expand Notification Bar
+        driver.open_notifications()
+
+        # Swipe notification away using coordinates
+        swipe_all_notifications(driver)
+
+        time.sleep(1)
+
+        # Define Clear All button
+        clear_all = driver.find_elements(AppiumBy.ID, "com.android.systemui:id/notification_dismiss_view")
+
+        # Check if button appears, if True then click X clear All button, else Close Notification Bar
+        if clear_all:
+            clear_all[0].click()
+        else:
+            # Close Notification Bar
+            driver.back()
+                
     # Callback ERIC API
     @classmethod
     def eric_api(cls, data):
@@ -474,7 +500,7 @@ class BankBot(Automation):
 
         response = requests.post(url, headers=headers, data=payload_json)
 
-        # Debug info
+        # 7️⃣ Debug info
         print("Raw string to hash:", string_to_hash)
         print("MD5 Hash:", hash_result)
         print("Response:", response.text)
@@ -495,17 +521,19 @@ def runPython():
             Automation.chrome_cdp()
             # Login KBANK
             page = BankBot.kbank_login(data)
-            logger.info(f"Processing {data['transactionId']}")
+            logger.info(f"▶ Processing {data['transactionId']}")
             BankBot.kbank_withdrawal(page, data)
-            logger.info(f"Done {data['transactionId']}")
+            logger.info(f"✔ Done {data['transactionId']}")
             return jsonify({
                 "success": True,
                 "transactionId": data["transactionId"]
             })
         except Exception as e:
-            logger.exception("Withdrawal failed")
+            logger.exception("❌ Withdrawal failed")
             return jsonify({"success": False, "message": str(e)}), 500
 
 if __name__ == "__main__":
-    logger.info("KBANK Local API started")
+    logger.info("🚀 KBANK Local API started")
     app.run(host="0.0.0.0", port=5004, debug=False, threaded=False, use_reloader=False)
+
+# BankBot.kbank_business_apps()

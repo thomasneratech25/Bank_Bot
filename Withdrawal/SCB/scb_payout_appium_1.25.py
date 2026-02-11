@@ -35,6 +35,7 @@ LOCK = Lock()
 # IDLE 
 IDLE_SECONDS = 174 # 2.9 minutes
 SCB_APP_PACKAGE = "com.scb.corporate"
+SCB_APP_ACTIVITY = ".MainActivity"
 
 # ================== LOG File ==================
 
@@ -324,6 +325,9 @@ class BankBot(Automation):
         # Button Click "OK"
         page.locator("//span[normalize-space()='OK']").click(timeout=0)
 
+        # Wait for "Please authorize transaction(s) within 5 minutes.
+        page.locator("//p[normalize-space()='Please authorize transaction(s) within 5 minutes.']").wait_for(timeout=0) 
+
         # Launch Apps to Approve Transfer Request
         BankBot.scb_Anywhere_apps(data)
 
@@ -368,13 +372,29 @@ class BankBot(Automation):
 
         # bypass scbanyware detect using usb debugging
         driver.execute_script('mobile: shell', {'command': 'settings', 'args': ['put', 'global', 'adb_enabled', '12']})
-
-        # Start SCB Corporate Apps
-        # Check if the app is NOT in the foreground (State 4)
-        if driver.query_app_state("com.scb.corporate") != 4:
-            print("App is not open. Opening...")
-            driver.activate_app("com.scb.corporate")
         
+        # Check Apps State
+        # 1 = Apps Not Running, 2 = App running in background (suspended)
+        # 3 = App running in background, 4 = Apps Running in foreground (Apps is running)    
+        state = driver.query_app_state(SCB_APP_PACKAGE)
+        print("App state:", state)
+        
+        # If state 1, open apps
+        if state == 1:
+            print("App not running → starting activity")
+            driver.execute_script("mobile: startActivity", {
+                "intent": f"{SCB_APP_PACKAGE}/{SCB_APP_ACTIVITY}",
+                "action": "android.intent.action.MAIN",
+                "category": "android.intent.category.LAUNCHER",
+            })
+        # else if 2,3, open apps
+        elif state in (2, 3):
+            print("App in background → activating")
+            driver.activate_app(SCB_APP_PACKAGE)
+        # else 4, skip
+        elif state == 4:
+            print("App already in foreground")
+
         # Inactive Too Long
         try:
             # wait for text "You have been inactive too long"
@@ -382,6 +402,19 @@ class BankBot(Automation):
             
             # Find "Continue" button and click continue
             driver.find_element(AppiumBy.XPATH, "//*[contains(@text, 'Continue')]").click()
+        except:
+            pass
+
+        # Session Timeout
+        try:
+            # wait for text "Session Timeout"
+            WebDriverWait(driver, 1).until(EC.presence_of_element_located((AppiumBy.XPATH, "//*[contains(@text, 'Session timeout')]")))
+            
+            # Find "Continue" / "Log in" button and click continue
+            try:
+                driver.find_element(AppiumBy.XPATH, "//*[contains(@text, 'Continue')]").click()
+            except:
+                driver.find_element(AppiumBy.XPATH, "//*[contains(@text, 'Log in')]").click()
         except:
             pass
 
@@ -405,30 +438,45 @@ class BankBot(Automation):
                     break
                 except:
                     pass
+        
+        # Click Notification / You have been inactive too long
+        while True:
+            try:
+                # Wait and Click Notifications
+                notif = WebDriverWait(driver, 300).until(EC.element_to_be_clickable((AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Notifications")')))
+                notif.click()
+                break
+            except:
+                try:
+                    # wait for text "You have been inactive too long"
+                    WebDriverWait(driver, 1).until(EC.presence_of_element_located((AppiumBy.XPATH, "//*[contains(@text, 'You have been inactive for too long')]")))
+                    
+                    # Find "Continue" button and click continue
+                    driver.find_element(AppiumBy.XPATH, "//*[contains(@text, 'Continue')]").click()
 
-        # Wait and Click Notifications
-        notif = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Notifications")')))
-        notif.click()
+                    break
+                except:
+                    pass
 
         # Click "View request"
-        btn_view_request = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.ANDROID_UIAUTOMATOR,'new UiSelector().text("View request")')))
+        btn_view_request = WebDriverWait(driver, 300).until(EC.element_to_be_clickable((AppiumBy.ANDROID_UIAUTOMATOR,'new UiSelector().text("View request")')))
         time.sleep(0.3)
         driver.execute_script("mobile: clickGesture", {"elementId": btn_view_request.id})
 
         # Wait and Click "Submit for approval"
-        label = WebDriverWait(driver, 20).until(EC.presence_of_element_located((AppiumBy.ANDROID_UIAUTOMATOR,'new UiSelector().text("Submit for approval")')))
+        label = WebDriverWait(driver, 300).until(EC.presence_of_element_located((AppiumBy.ANDROID_UIAUTOMATOR,'new UiSelector().text("Submit for approval")')))
         time.sleep(0.3)
         driver.execute_script("mobile: clickGesture", {"elementId": label.id})
 
-        # Key SCB Digital Token Pin
-        WebDriverWait(driver, 20).until(EC.visibility_of_element_located((AppiumBy.XPATH, "//*[@text='Enter the 8-digit\nSCB Digital Token PIN']")))
+        # Wait for SCB Digital Token Pin
+        WebDriverWait(driver, 300).until(EC.visibility_of_element_located((AppiumBy.XPATH, "//*[@text='Enter the 8-digit\nSCB Digital Token PIN']")))
         time.sleep(1)
-        
         token_pin = str(data["scbDigitalTokenPin"])
         for digit in token_pin:
             digit_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((AppiumBy.XPATH, f"//android.widget.TextView[@text='{digit}']")))
             digit_button.click()
-            print(f"scbDigitalTokenPIN: {digit}")       
+            print(f"scbDigitalTokenPIN: {digit}")   
+            time.sleep(0.5) 
 
         # Click "Go to To-do List"
         gtdList = WebDriverWait(driver, 20).until(EC.presence_of_element_located((AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Go to To-do List")')))
