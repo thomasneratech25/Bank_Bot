@@ -1,0 +1,349 @@
+2026-02-13 10:43:47,829 | INFO | Logging started: logs\kbank_payout_redmi.log
+2026-02-13 10:43:47,829 | INFO | KBANK Local API started on host=0.0.0.0 port=5004
+2026-02-13 10:43:47,835 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://10.0.0.253:5004
+2026-02-13 10:43:47,835 | INFO | [33mPress CTRL+C to quit[0m
+2026-02-13 10:43:52,696 | INFO | Received /kbank_company_web/runPython request
+2026-02-13 10:43:52,699 | INFO | Incoming payout request parsed. txn_id=1111
+2026-02-13 10:43:52,699 | INFO | LOCK acquired for payout processing. txn_id=1111
+2026-02-13 10:43:52,700 | INFO | Initializing Chrome CDP process
+2026-02-13 10:43:52,700 | INFO | Using Chrome user data dir from CHROME_PATH
+2026-02-13 10:43:52,700 | INFO | Chrome started with PID 18164
+2026-02-13 10:43:52,700 | INFO | Waiting for Chrome CDP readiness, timeout=10s
+2026-02-13 10:43:54,740 | INFO | Chrome CDP endpoint is available (attempt 1/10)
+2026-02-13 10:43:54,740 | INFO | Chrome CDP is ready
+2026-02-13 10:43:54,740 | INFO | Starting KBANK login flow. txn_id=1111
+2026-02-13 10:43:54,740 | INFO | Cleaning Android notifications before web login. txn_id=1111
+2026-02-13 10:43:54,740 | INFO | Starting notification cleanup flow
+2026-02-13 10:43:54,740 | INFO | Preparing Appium driver
+2026-02-13 10:43:54,740 | INFO | Ensuring Appium server is running
+2026-02-13 10:43:54,740 | ERROR | Withdrawal failed. txn_id=1111
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Redmi_1.2.py", line 675, in runPython
+    page = BankBot.kbank_login(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Redmi_1.2.py", line 206, in kbank_login
+    BankBot.kbank_business_apps_clean_notif()
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Redmi_1.2.py", line 579, in kbank_business_apps_clean_notif
+    driver = cls.use_appium_driver()
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Redmi_1.2.py", line 141, in use_appium_driver
+    cls.start_appium_server()
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Redmi_1.2.py", line 175, in start_appium_server
+    APPIUM_PROC = subprocess.Popen([
+                  ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+2026-02-13 10:43:54,740 | INFO | 127.0.0.1 - - [13/Feb/2026 10:43:54] "[35m[1mPOST /kbank_company_web/runPython HTTP/1.1[0m" 500 -
+2026-02-13 10:45:47,990 | INFO | Received /kbank_company_web/runPython request
+2026-02-13 10:45:47,990 | INFO | Incoming payout request parsed. txn_id=1111
+2026-02-13 10:45:47,990 | INFO | LOCK acquired for payout processing. txn_id=1111
+2026-02-13 10:45:47,998 | INFO | Initializing Chrome CDP process
+2026-02-13 10:45:47,998 | INFO | Chrome CDP process already exists, reusing current process
+2026-02-13 10:45:47,998 | INFO | Starting KBANK login flow. txn_id=1111
+2026-02-13 10:45:47,998 | INFO | Cleaning Android notifications before web login. txn_id=1111
+2026-02-13 10:45:47,998 | INFO | Starting notification cleanup flow
+2026-02-13 10:45:47,998 | INFO | Preparing Appium driver
+2026-02-13 10:45:47,998 | INFO | Ensuring Appium server is running
+2026-02-13 10:45:48,001 | ERROR | Withdrawal failed. txn_id=1111
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Redmi_1.2.py", line 675, in runPython
+    page = BankBot.kbank_login(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Redmi_1.2.py", line 206, in kbank_login
+    BankBot.kbank_business_apps_clean_notif()
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Redmi_1.2.py", line 579, in kbank_business_apps_clean_notif
+    driver = cls.use_appium_driver()
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Redmi_1.2.py", line 141, in use_appium_driver
+    cls.start_appium_server()
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Redmi_1.2.py", line 175, in start_appium_server
+    APPIUM_PROC = subprocess.Popen([
+                  ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+2026-02-13 10:45:48,001 | INFO | 127.0.0.1 - - [13/Feb/2026 10:45:48] "[35m[1mPOST /kbank_company_web/runPython HTTP/1.1[0m" 500 -
+2026-02-13 10:45:54,209 | INFO | Received /kbank_company_web/runPython request
+2026-02-13 10:45:54,209 | INFO | Incoming payout request parsed. txn_id=1111
+2026-02-13 10:45:54,209 | INFO | LOCK acquired for payout processing. txn_id=1111
+2026-02-13 10:45:54,209 | INFO | Initializing Chrome CDP process
+2026-02-13 10:45:54,209 | INFO | Chrome CDP process already exists, reusing current process
+2026-02-13 10:45:54,209 | INFO | Starting KBANK login flow. txn_id=1111
+2026-02-13 10:45:54,209 | INFO | Cleaning Android notifications before web login. txn_id=1111
+2026-02-13 10:45:54,209 | INFO | Starting notification cleanup flow
+2026-02-13 10:45:54,209 | INFO | Preparing Appium driver
+2026-02-13 10:45:54,209 | INFO | Ensuring Appium server is running
+2026-02-13 10:45:54,209 | ERROR | Withdrawal failed. txn_id=1111
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Redmi_1.2.py", line 675, in runPython
+    page = BankBot.kbank_login(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Redmi_1.2.py", line 206, in kbank_login
+    BankBot.kbank_business_apps_clean_notif()
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Redmi_1.2.py", line 579, in kbank_business_apps_clean_notif
+    driver = cls.use_appium_driver()
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Redmi_1.2.py", line 141, in use_appium_driver
+    cls.start_appium_server()
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Redmi_1.2.py", line 175, in start_appium_server
+    APPIUM_PROC = subprocess.Popen([
+                  ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+2026-02-13 10:45:54,209 | INFO | 127.0.0.1 - - [13/Feb/2026 10:45:54] "[35m[1mPOST /kbank_company_web/runPython HTTP/1.1[0m" 500 -
+2026-02-13 10:46:00,143 | INFO | Received /kbank_company_web/runPython request
+2026-02-13 10:46:00,143 | INFO | Incoming payout request parsed. txn_id=1111
+2026-02-13 10:46:00,143 | INFO | LOCK acquired for payout processing. txn_id=1111
+2026-02-13 10:46:00,143 | INFO | Initializing Chrome CDP process
+2026-02-13 10:46:00,143 | INFO | Chrome CDP process already exists, reusing current process
+2026-02-13 10:46:00,143 | INFO | Starting KBANK login flow. txn_id=1111
+2026-02-13 10:46:00,143 | INFO | Cleaning Android notifications before web login. txn_id=1111
+2026-02-13 10:46:00,143 | INFO | Starting notification cleanup flow
+2026-02-13 10:46:00,143 | INFO | Preparing Appium driver
+2026-02-13 10:46:00,143 | INFO | Ensuring Appium server is running
+2026-02-13 10:46:00,143 | ERROR | Withdrawal failed. txn_id=1111
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Redmi_1.2.py", line 675, in runPython
+    page = BankBot.kbank_login(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Redmi_1.2.py", line 206, in kbank_login
+    BankBot.kbank_business_apps_clean_notif()
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Redmi_1.2.py", line 579, in kbank_business_apps_clean_notif
+    driver = cls.use_appium_driver()
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Redmi_1.2.py", line 141, in use_appium_driver
+    cls.start_appium_server()
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Redmi_1.2.py", line 175, in start_appium_server
+    APPIUM_PROC = subprocess.Popen([
+                  ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+2026-02-13 10:46:00,143 | INFO | 127.0.0.1 - - [13/Feb/2026 10:46:00] "[35m[1mPOST /kbank_company_web/runPython HTTP/1.1[0m" 500 -
+2026-02-13 10:46:01,149 | INFO | Received /kbank_company_web/runPython request
+2026-02-13 10:46:01,157 | INFO | Incoming payout request parsed. txn_id=1111
+2026-02-13 10:46:01,157 | INFO | LOCK acquired for payout processing. txn_id=1111
+2026-02-13 10:46:01,157 | INFO | Initializing Chrome CDP process
+2026-02-13 10:46:01,157 | INFO | Chrome CDP process already exists, reusing current process
+2026-02-13 10:46:01,157 | INFO | Starting KBANK login flow. txn_id=1111
+2026-02-13 10:46:01,157 | INFO | Cleaning Android notifications before web login. txn_id=1111
+2026-02-13 10:46:01,157 | INFO | Starting notification cleanup flow
+2026-02-13 10:46:01,157 | INFO | Preparing Appium driver
+2026-02-13 10:46:01,157 | INFO | Ensuring Appium server is running
+2026-02-13 10:46:01,160 | ERROR | Withdrawal failed. txn_id=1111
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Redmi_1.2.py", line 675, in runPython
+    page = BankBot.kbank_login(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Redmi_1.2.py", line 206, in kbank_login
+    BankBot.kbank_business_apps_clean_notif()
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Redmi_1.2.py", line 579, in kbank_business_apps_clean_notif
+    driver = cls.use_appium_driver()
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Redmi_1.2.py", line 141, in use_appium_driver
+    cls.start_appium_server()
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Redmi_1.2.py", line 175, in start_appium_server
+    APPIUM_PROC = subprocess.Popen([
+                  ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+2026-02-13 10:46:01,160 | INFO | 127.0.0.1 - - [13/Feb/2026 10:46:01] "[35m[1mPOST /kbank_company_web/runPython HTTP/1.1[0m" 500 -
+2026-02-13 10:46:02,802 | INFO | Received /kbank_company_web/runPython request
+2026-02-13 10:46:02,802 | INFO | Incoming payout request parsed. txn_id=1111
+2026-02-13 10:46:02,802 | INFO | LOCK acquired for payout processing. txn_id=1111
+2026-02-13 10:46:02,802 | INFO | Initializing Chrome CDP process
+2026-02-13 10:46:02,802 | INFO | Chrome CDP process already exists, reusing current process
+2026-02-13 10:46:02,802 | INFO | Starting KBANK login flow. txn_id=1111
+2026-02-13 10:46:02,802 | INFO | Cleaning Android notifications before web login. txn_id=1111
+2026-02-13 10:46:02,802 | INFO | Starting notification cleanup flow
+2026-02-13 10:46:02,802 | INFO | Preparing Appium driver
+2026-02-13 10:46:02,802 | INFO | Ensuring Appium server is running
+2026-02-13 10:46:02,802 | ERROR | Withdrawal failed. txn_id=1111
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Redmi_1.2.py", line 675, in runPython
+    page = BankBot.kbank_login(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Redmi_1.2.py", line 206, in kbank_login
+    BankBot.kbank_business_apps_clean_notif()
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Redmi_1.2.py", line 579, in kbank_business_apps_clean_notif
+    driver = cls.use_appium_driver()
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Redmi_1.2.py", line 141, in use_appium_driver
+    cls.start_appium_server()
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Redmi_1.2.py", line 175, in start_appium_server
+    APPIUM_PROC = subprocess.Popen([
+                  ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+2026-02-13 10:46:02,813 | INFO | 127.0.0.1 - - [13/Feb/2026 10:46:02] "[35m[1mPOST /kbank_company_web/runPython HTTP/1.1[0m" 500 -
+2026-02-13 10:46:05,131 | INFO | Received /kbank_company_web/runPython request
+2026-02-13 10:46:05,131 | INFO | Incoming payout request parsed. txn_id=1111
+2026-02-13 10:46:05,131 | INFO | LOCK acquired for payout processing. txn_id=1111
+2026-02-13 10:46:05,131 | INFO | Initializing Chrome CDP process
+2026-02-13 10:46:05,131 | INFO | Chrome CDP process already exists, reusing current process
+2026-02-13 10:46:05,131 | INFO | Starting KBANK login flow. txn_id=1111
+2026-02-13 10:46:05,133 | INFO | Cleaning Android notifications before web login. txn_id=1111
+2026-02-13 10:46:05,133 | INFO | Starting notification cleanup flow
+2026-02-13 10:46:05,133 | INFO | Preparing Appium driver
+2026-02-13 10:46:05,133 | INFO | Ensuring Appium server is running
+2026-02-13 10:46:05,133 | ERROR | Withdrawal failed. txn_id=1111
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Redmi_1.2.py", line 675, in runPython
+    page = BankBot.kbank_login(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Redmi_1.2.py", line 206, in kbank_login
+    BankBot.kbank_business_apps_clean_notif()
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Redmi_1.2.py", line 579, in kbank_business_apps_clean_notif
+    driver = cls.use_appium_driver()
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Redmi_1.2.py", line 141, in use_appium_driver
+    cls.start_appium_server()
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Redmi_1.2.py", line 175, in start_appium_server
+    APPIUM_PROC = subprocess.Popen([
+                  ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+2026-02-13 10:46:05,133 | INFO | 127.0.0.1 - - [13/Feb/2026 10:46:05] "[35m[1mPOST /kbank_company_web/runPython HTTP/1.1[0m" 500 -
+2026-02-13 10:47:36,823 | INFO | Logging started: logs\kbank_payout_redmi.log
+2026-02-13 10:47:36,824 | INFO | KBANK Local API started on host=0.0.0.0 port=5004
+2026-02-13 10:47:36,833 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://10.0.0.253:5004
+2026-02-13 10:47:36,833 | INFO | [33mPress CTRL+C to quit[0m
+2026-02-13 10:47:41,109 | INFO | Received /kbank_company_web/runPython request
+2026-02-13 10:47:41,109 | INFO | Incoming payout request parsed. txn_id=1111
+2026-02-13 10:47:41,109 | INFO | LOCK acquired for payout processing. txn_id=1111
+2026-02-13 10:47:41,109 | INFO | Initializing Chrome CDP process
+2026-02-13 10:47:41,110 | INFO | Using Chrome user data dir from CHROME_PATH
+2026-02-13 10:47:41,114 | INFO | Chrome started with PID 2752
+2026-02-13 10:47:41,114 | INFO | Waiting for Chrome CDP readiness, timeout=10s
+2026-02-13 10:47:43,146 | INFO | Chrome CDP endpoint is available (attempt 1/10)
+2026-02-13 10:47:43,146 | INFO | Chrome CDP is ready
+2026-02-13 10:47:43,146 | INFO | Starting KBANK login flow. txn_id=1111
+2026-02-13 10:47:43,146 | INFO | Cleaning Android notifications before web login. txn_id=1111
+2026-02-13 10:47:43,146 | INFO | Starting notification cleanup flow
+2026-02-13 10:47:43,146 | INFO | Preparing Appium driver
+2026-02-13 10:47:43,146 | INFO | Ensuring Appium server is running
+2026-02-13 10:47:43,154 | INFO | Appium process started with PID 472
+2026-02-13 10:47:44,190 | INFO | Appium server is ready (attempt 1/10)
+2026-02-13 10:47:44,191 | INFO | Creating new Appium driver session
+2026-02-13 10:47:51,091 | INFO | Notification shade expanded
+2026-02-13 10:47:52,331 | INFO | Notification shade opened for swipe cleanup
+2026-02-13 10:47:54,065 | INFO | Swiped notification 1/1
+2026-02-13 10:48:01,371 | INFO | Logging started: logs\kbank_payout_redmi.log
+2026-02-13 10:48:01,371 | INFO | KBANK Local API started on host=0.0.0.0 port=5004
+2026-02-13 10:48:01,374 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://10.0.0.253:5004
+2026-02-13 10:48:01,374 | INFO | [33mPress CTRL+C to quit[0m
+2026-02-13 10:48:04,423 | INFO | Received /kbank_company_web/runPython request
+2026-02-13 10:48:04,423 | INFO | Incoming payout request parsed. txn_id=1111
+2026-02-13 10:48:04,423 | INFO | LOCK acquired for payout processing. txn_id=1111
+2026-02-13 10:48:04,424 | INFO | Initializing Chrome CDP process
+2026-02-13 10:48:04,424 | INFO | Using Chrome user data dir from CHROME_PATH
+2026-02-13 10:48:04,428 | INFO | Chrome started with PID 9264
+2026-02-13 10:48:04,428 | INFO | Waiting for Chrome CDP readiness, timeout=10s
+2026-02-13 10:48:06,475 | INFO | Chrome CDP endpoint is available (attempt 1/10)
+2026-02-13 10:48:06,476 | INFO | Chrome CDP is ready
+2026-02-13 10:48:06,476 | INFO | Starting KBANK login flow. txn_id=1111
+2026-02-13 10:48:06,476 | INFO | Cleaning Android notifications before web login. txn_id=1111
+2026-02-13 10:48:06,476 | INFO | Starting notification cleanup flow
+2026-02-13 10:48:06,476 | INFO | Preparing Appium driver
+2026-02-13 10:48:06,476 | INFO | Ensuring Appium server is running
+2026-02-13 10:48:06,483 | INFO | Appium process started with PID 18528
+2026-02-13 10:48:08,022 | INFO | Appium server is ready (attempt 1/10)
+2026-02-13 10:48:08,023 | INFO | Creating new Appium driver session
+2026-02-13 10:48:14,579 | INFO | Notification shade expanded
+2026-02-13 10:48:15,815 | INFO | Notification shade opened for swipe cleanup
+2026-02-13 10:48:17,545 | INFO | Swiped notification 1/1
+2026-02-13 10:48:18,776 | INFO | No 'Clear all' button found; closed notification shade
+2026-02-13 10:48:18,777 | INFO | Initializing Chrome CDP process
+2026-02-13 10:48:18,777 | INFO | Chrome CDP process already exists, reusing current process
+2026-02-13 10:48:18,777 | INFO | Starting Playwright instance. txn_id=1111
+2026-02-13 10:48:19,065 | INFO | Connecting Playwright to Chrome CDP. txn_id=1111
+2026-02-13 10:48:19,434 | INFO | Browser context ready. txn_id=1111
+2026-02-13 10:48:19,435 | INFO | Creating new browser page. txn_id=1111
+2026-02-13 10:48:20,978 | INFO | Session not at Funds Transfer page, proceeding with login. txn_id=1111
+2026-02-13 10:48:20,979 | INFO | Navigating to KBANK login page. txn_id=1111
+2026-02-13 10:48:23,299 | ERROR | Withdrawal failed. txn_id=1111
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Redmi_1.2.py", line 676, in runPython
+    page = BankBot.kbank_login(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Redmi_1.2.py", line 249, in kbank_login
+    page.goto("https://kbiz.kasikornbank.com/authen/login.jsp?lang=en", wait_until="domcontentloaded")
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 9019, in goto
+    self._sync(
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_page.py", line 555, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 153, in goto
+    await self._channel.send(
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Page.goto: Target page, context or browser has been closed
+Call log:
+  - navigating to "https://kbiz.kasikornbank.com/authen/login.jsp?lang=en", waiting until "domcontentloaded"
+
+2026-02-13 10:48:23,300 | INFO | 127.0.0.1 - - [13/Feb/2026 10:48:23] "[35m[1mPOST /kbank_company_web/runPython HTTP/1.1[0m" 500 -
+2026-02-13 11:08:34,225 | INFO | Logging started: logs\kbank_payout_redmi.log
+2026-02-13 11:08:34,226 | INFO | KBANK Local API started on host=0.0.0.0 port=5004
+2026-02-13 11:08:34,236 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://10.0.0.253:5004
+2026-02-13 11:08:34,236 | INFO | [33mPress CTRL+C to quit[0m
+2026-02-13 11:08:36,665 | INFO | Received /kbank_company_web/runPython request
+2026-02-13 11:08:36,665 | INFO | Incoming payout request parsed. txn_id=1111
+2026-02-13 11:08:36,665 | INFO | LOCK acquired for payout processing. txn_id=1111
+2026-02-13 11:08:36,665 | INFO | Initializing Chrome CDP process
+2026-02-13 11:08:36,677 | INFO | Using Chrome user data dir from CHROME_PATH
+2026-02-13 11:08:36,682 | INFO | Chrome started with PID 15368
+2026-02-13 11:08:36,682 | INFO | Waiting for Chrome CDP readiness, timeout=10s
+2026-02-13 11:08:38,708 | INFO | Chrome CDP endpoint is available (attempt 1/10)
+2026-02-13 11:08:38,708 | INFO | Chrome CDP is ready
+2026-02-13 11:08:38,708 | INFO | Starting KBANK login flow. txn_id=1111
+2026-02-13 11:08:38,708 | INFO | Cleaning Android notifications before web login. txn_id=1111
+2026-02-13 11:08:38,708 | INFO | Starting notification cleanup flow
+2026-02-13 11:08:38,708 | INFO | Preparing Appium driver
+2026-02-13 11:08:38,708 | INFO | Ensuring Appium server is running
+2026-02-13 11:08:38,728 | INFO | Appium process started with PID 5424
+2026-02-13 11:08:40,265 | INFO | Appium server is ready (attempt 1/10)
+2026-02-13 11:08:40,265 | INFO | Creating new Appium driver session

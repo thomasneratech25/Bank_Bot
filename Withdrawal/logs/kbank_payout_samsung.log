@@ -1,0 +1,18 @@
+2026-02-16 12:55:58,237 | INFO | Logging started: logs\kbank_payout_samsung.log
+2026-02-16 12:55:58,237 | INFO | Starting WS client...
+2026-02-16 12:55:58,248 | INFO | WS client started with PID 22820
+2026-02-16 12:55:58,248 | INFO | KBANK Local API started on host=0.0.0.0 port=5004
+2026-02-16 12:55:58,280 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://10.0.0.254:5004
+2026-02-16 12:55:58,282 | INFO | [33mPress CTRL+C to quit[0m
+2026-02-16 13:07:44,908 | INFO | Logging started: logs\kbank_payout_samsung.log
+2026-02-16 13:07:44,908 | INFO | Starting WS client...
+2026-02-16 13:07:44,927 | INFO | WS client started with PID 19720
+2026-02-16 13:07:44,927 | INFO | KBANK Local API started on host=0.0.0.0 port=5004
+2026-02-16 13:07:44,940 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://10.0.0.254:5004
+2026-02-16 13:07:44,940 | INFO | [33mPress CTRL+C to quit[0m

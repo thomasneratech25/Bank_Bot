@@ -8,11 +8,15 @@ import logging
 import requests
 import subprocess
 from threading import Lock
-from airtest.core.api import *
 from dotenv import load_dotenv
 from flask import Flask, request, jsonify
 from playwright.sync_api import sync_playwright
-from poco.drivers.android.uiautomation import AndroidUiautomationPoco
+from appium import webdriver
+from appium.webdriver.common.appiumby import *
+from appium.webdriver.common.appiumby import AppiumBy
+from appium.options.android import UiAutomator2Options
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 # =========================== Flask apps ==============================
 
@@ -92,6 +96,17 @@ class Automation:
 class BankBot(Automation):
     
     _kma_ref = None
+
+    # Appium Driver
+    def create_appium_driver():
+        options = UiAutomator2Options()
+        options.platform_name = "Android"
+        options.device_name = "androidtesting"
+        options.automation_name = "UiAutomator2"
+        options.new_command_timeout = 2000
+
+        # If Appium server uses /wd/hub, change URL accordingly
+        return webdriver.Remote("http://127.0.0.1:8021", options=options)
 
     # Login
     @classmethod
@@ -216,68 +231,67 @@ class BankBot(Automation):
     # Read Phone Message OTP Code
     @classmethod
     def kma_read_otp(cls):
-
-        # Hide Debug Log, if want view, just comment the bottom code
-        logging.getLogger("airtest").setLevel(logging.WARNING)
-        logging.getLogger("pocoui").setLevel(logging.WARNING) 
-        logging.getLogger("airtest.core.helper").setLevel(logging.WARNING)
-
-        # Poco Assistant
-        poco = AndroidUiautomationPoco(use_airtest_input=True, screenshot_each_action=False)
-
-        # Check screen state (if screenoff then wake up, else skip)
-        output = device().adb.shell("dumpsys power | grep -E -o 'mWakefulness=(Awake|Asleep|Dozing)'")
-
-        if "Awake" in output:
-            print("Screen already ON  pass")
-        else:
-            print("Screen is OFF waking")
-            wake()
-            wake()
-
-        time.sleep(1) 
-
-        # Start Messages Apps
-        start_app("com.google.android.apps.messaging")
         
-        # Click KMA Chat
-        # If not in inside KMA chat, click it, else passs
-        if not poco("message_text").exists():
-            poco(text="Krungsri").click()
-        else:
-            pass
-        
-        while True:
+        driver = cls.create_appium_driver()
 
-            # Read All KMA Bank Messages
-            print("🤖 Reading latest message from KMA bank...")
+        try:
+            # Start Messages Apps
+            driver.activate_app("com.google.android.apps.messaging")
+            
+            while True:
+                try:
 
-            # Read All KMA Messages
-            message_nodes = poco("message_list").offspring("message_text")
+                    # Read All KMA Bank Messages
+                    print("🤖 Reading latest message from KMA bank...")
 
-            # --- Collect OTP + Ref from all new messages ---
-            otp_candidates = []
-            for i, node in reversed(list(enumerate(message_nodes))):
-                messages = node.get_text().strip()
-                if not messages:
-                    continue
-                
-                # using regex to get Message OTP Code and Ref Code
-                match = re.search(r"\bRef\s*[:\-]?\s*(\d+)\b.*?\bOTP\s*[:\-]?\s*(\d+)\b", messages, re.IGNORECASE,)
+                    # Wait for the 'message_list' container to be visible
+                    # We use the specific XPath from your screenshot to avoid ID errors
+                    WebDriverWait(driver, 15).until(EC.visibility_of_element_located((AppiumBy.XPATH, '//android.view.View[@resource-id="message_list"]')))
 
-                if match:
-                    _messages_ref_code, messages_otp_code = match.groups()
-                    otp_candidates.append((_messages_ref_code.strip(), messages_otp_code.strip()))
-                    print(f"# Ref: {_messages_ref_code}, OTP: {messages_otp_code} ❌")
+                    # Find all 'message_text' elements that are descendants (offspring) of 'message_list'
+                    # The "//" in the middle acts as the .offspring() command
+                    message_nodes = driver.find_elements(AppiumBy.XPATH, '//android.view.View[@resource-id="message_list"]//android.widget.TextView[@resource-id="message_text"]')
+                    
+                    # Store Messages OTP
+                    otp_candidates = []
 
-            # --- Match correct Ref Code ---
-            for _messages_ref_code, messages_otp_code in otp_candidates:
-                if cls._kma_ref == _messages_ref_code:
-                    print(f"Found matching Ref: {_messages_ref_code} | OTP: {messages_otp_code} ✅")
-                    return messages_otp_code
-                
-            # If no match, loop again
-            print("# OTP not found yet, keep waiting... \n")
+                    # Process the messages (Newest first)
+                    for node in reversed(message_nodes):
+                        try:
+                            # Get the text content
+                            messages = node.text
+                            
+                            if not messages:
+                                continue
+                                
+                            # Regex to find Ref and OTP
+                            match = re.search(r"\bRef\s*[:\-]?\s*(\d+)\b.*?\bOTP\s*[:\-]?\s*(\d+)\b", messages, re.IGNORECASE)
+
+                            if match:
+                                _messages_ref_code, messages_otp_code = match.groups()
+                                otp_candidates.append((_messages_ref_code.strip(), messages_otp_code.strip()))
+                                print(f"# Ref: {_messages_ref_code}, OTP: {messages_otp_code} ❌")
+
+                        except Exception:
+                            # Ignore errors for single stale elements
+                            continue
+
+                    # Match correct Ref Code 
+                    for _messages_ref_code, messages_otp_code in otp_candidates:
+                        if cls._kma_ref == _messages_ref_code:
+                            print(f"Found matching Ref: {_messages_ref_code} | OTP: {messages_otp_code} ✅")
+                            return messages_otp_code
+                        
+                    # If no match, loop again
+                    print("# OTP not found yet, retrying... \n")
+                    time.sleep(1)
+
+                except Exception as e:
+                    print(f"⚠️ Error reading messages: {e}")
+                    time.sleep(1)
+
+        finally:
+            driver.quit() 
     
     # Callback ERIC API
     @classmethod

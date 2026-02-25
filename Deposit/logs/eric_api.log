@@ -2262,3 +2262,15 @@ ValueError: time data ' ' does not match format '%d/%m/%Y %H:%M'
 2026-02-05 15:55:08 | DEBUG | MD5 Hash: 84e92f685a4aabc14645cc89f00a7d08
 2026-02-05 15:55:08 | INFO | API Response: {"code":"200028","msg":"User's merchant is disabled","data":null} 
 
+2026-02-23 10:41:43 | DEBUG | Transaction Time: 2026-02-23 10:41:00+07:00
+2026-02-23 10:41:43 | DEBUG | RawData: รับโอนจาก KTB x9026 KOH ZI JIAN -|200.00 THB|0224053102
+2026-02-23 10:41:43 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|200.00 THB|0224053102&transactionTime=1771818060000PRODBankBotIsTheBest
+2026-02-23 10:41:43 | DEBUG | MD5 Hash: 8afcbebc4b21d26b2de07d70ac7fde81
+2026-02-23 10:41:43 | INFO | API Response: {"code":"200028","msg":"User's merchant is disabled","data":null} 
+
+2026-02-25 11:35:25 | DEBUG | Transaction Time: 2026-02-25 11:33:00+07:00
+2026-02-25 11:35:25 | DEBUG | RawData: รับโอนจาก KTB x9026 KOH ZI JIAN -|100.00 THB|0224053102
+2026-02-25 11:35:25 | DEBUG | Raw string to hash: bankCode=SCB_COMPANY_WEB&deviceId=Banana1234567890&merchantCode=N855TS&rawMessage=รับโอนจาก KTB x9026 KOH ZI JIAN -|100.00 THB|0224053102&transactionTime=1771993980000PRODBankBotIsTheBest
+2026-02-25 11:35:25 | DEBUG | MD5 Hash: b616093d8af089c93cd2e8ce87c91e45
+2026-02-25 11:35:25 | INFO | API Response: {"code":"200028","msg":"User's merchant is disabled","data":null} 
+

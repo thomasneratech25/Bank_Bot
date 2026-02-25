@@ -42,160 +42,11 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s | %(levelname)s | %(message)s",
 )
-logger = logging.getLogger("SCB_Bot_Logger")
-
-# ================== PLAYWRIGHT WORKER ===========================
-
-WORKER = None
-WORKER_LOCK = Lock()
-
-class PlaywrightWorker:
-
-    def __init__(self, idle_seconds):
-        self.idle_seconds = idle_seconds
-        self.queue = queue.Queue()
-        self.thread = threading.Thread(
-            target=self._run,
-            name="playwright-worker",
-            daemon=True,
-        )
-        self.last_activity = None
-        self.idle_logged_out = False
-
-    def start(self):
-        self.thread.start()
-
-    def submit(self, func, *args, **kwargs):
-        done = threading.Event()
-        result = {"value": None, "error": None}
-        self.queue.put((func, args, kwargs, done, result))
-        done.wait()
-        if result["error"] is not None:
-            raise result["error"]
-        return result["value"]
-
-    def _run(self):
-        while True:
-            if self.idle_logged_out:
-                timeout = None
-            elif self.last_activity is None:
-                timeout = None
-            else:
-                elapsed = time.time() - self.last_activity
-                remaining = self.idle_seconds - elapsed
-                if remaining <= 0:
-                    self._idle_logout()
-                    self.last_activity = None
-                    self.idle_logged_out = True
-                    continue
-                timeout = remaining
-
-            try:
-                item = self.queue.get(timeout=timeout)
-            except queue.Empty:
-                self._idle_logout()
-                self.last_activity = time.time()
-                continue
-
-            if item is None:
-                break
-
-            func, args, kwargs, done, result = item
-            try:
-                result["value"] = func(*args, **kwargs)
-            except Exception as exc:
-                result["error"] = exc
-            finally:
-                self.last_activity = time.time()
-                self.idle_logged_out = False
-                done.set()
-
-    @staticmethod
-    def _idle_logout():
-        global PAGE, APPIUM_DRIVER
-        try:
-            logger.info("Auto cleanup after %ss idle", IDLE_SECONDS)
-
-            # NO LOCK HERE
-            BankBot.scb_kill_apps(APPIUM_DRIVER)
-
-            if PAGE and not PAGE.is_closed():
-                BankBot.scb_logout(PAGE)
-        except Exception:
-            logger.exception("Idle cleanup failed")
-
-def get_worker():
-    global WORKER
-    if WORKER is None:
-        with WORKER_LOCK:
-            if WORKER is None:
-                WORKER = PlaywrightWorker(IDLE_SECONDS)
-                WORKER.start()
-    return WORKER
-
-# ================== PLAYWRIGHT SINGLETON ========================
-
-PLAYWRIGHT = None
-BROWSER = None
-CONTEXT = None
-PAGE = None
-
-# ================== Chrome Settings ==================
-
-class Automation:
-    
-    chrome_proc = None
-
-    # Chrome CDP
-    @classmethod
-    def chrome_cdp(cls):
-
-        # Prevent starting Chrome more than once
-        if cls.chrome_proc:
-            return
-        
-        # Load .env file
-        load_dotenv()
-        USER_DATA_DIR = os.getenv("CHROME_PATH")
-
-        cls.chrome_proc = subprocess.Popen([
-            r"C:\Program Files\Google\Chrome\Application\chrome.exe",
-            "--remote-debugging-port=9222",
-            "--disable-session-crashed-bubble",
-            "--hide-crash-restore-bubble",
-            "--no-first-run",
-            "--no-default-browser-check",
-            f"--user-data-dir={USER_DATA_DIR}",
-        ], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-
-        cls.wait_for_cdp_ready()
-        atexit.register(cls.cleanup)
-
-    # Close Chrome Completely
-    @classmethod
-    def cleanup(cls):
-        try:
-            if cls.chrome_proc and cls.chrome_proc.poll() is None:
-                logging.getLogger("bank_bot").info("Closing Chrome CDP")
-                cls.chrome_proc.terminate()
-        except Exception:
-            logging.getLogger("bank_bot").exception("Chrome cleanup error")
-
-    # Wait Chrome CDP Ready
-    @staticmethod
-    def wait_for_cdp_ready(timeout=10):
-        for _ in range(timeout):
-            try:
-                if requests.get("http://localhost:9222/json").status_code == 200:
-                    return
-            except:
-                pass
-            time.sleep(1)
-        raise RuntimeError("Chrome CDP not ready")
+logger = logging.getLogger("SCB_Company_Apps_Bot_Logger")
 
 # ================== SCB BANK BOT ==================
 
-class BankBot(Automation):
+class BankBot():
 
     # Login
     @classmethod
@@ -539,30 +390,39 @@ class BankBot(Automation):
 
                 APPIUM_DRIVER = None
 
-    # Callback ERIC API
+    # Eric API
     @classmethod
-    def eric_api(cls, data):
+    def eric_api(cls, raw_data, timestamp_ms):
+        
+        # Production
+        secret_key = "PRODBankBotIsTheBest"
+        url = "https://bot-integration.cloudbdtech.com/integration-service/transaction/addDepositTransaction"
 
-        url = "https://bot-integration.cloudbdtech.com/integration-service/transaction/payoutScriptCallback"
+        # # Staging
+        # secret_key = "DEVBankBotIsTheBest"
+        # url = "https://stg-bot-integration.cloudbdtech.com/integration-service/transaction/addDepositTransaction"
 
         # Create payload as a DICTIONARY (not JSON yet)
         payload = {
-            "bankCode": str(data["fromBankCode"]),
-            "deviceId": str(data["deviceId"]),
-            "merchantCode": str(data["merchantCode"]),
-            "transactionId": str(data["transactionId"]),
+            "bankCode": "SCB_COMPANY_WEB",
+            "deviceId": scb_web["deviceID"],
+            "merchantCode": scb_web["merchant_code"],
+            "rawMessage": raw_data,
+            "transactionTime": timestamp_ms
         }
 
-        # Your secret key
-        secret_key = "PRODBankBotIsTheBest"
 
         # Build the hash string (exact order required)
         string_to_hash = (
             f"bankCode={payload['bankCode']}&"
             f"deviceId={payload['deviceId']}&"
             f"merchantCode={payload['merchantCode']}&"
-            f"transactionId={payload['transactionId']}{secret_key}"
+            f"rawMessage={payload['rawMessage']}&"
+            f"transactionTime={payload['transactionTime']}{secret_key}"
         )
+
+        # Convert timestamp ms to "date and time"
+        dt_gmt7 = datetime.fromtimestamp(timestamp_ms / 1000, tz=timezone(timedelta(hours=7)))
 
         # Generate MD5 hash
         hash_result = hashlib.md5(string_to_hash.encode("utf-8")).hexdigest()
@@ -577,50 +437,20 @@ class BankBot(Automation):
             'Content-Type': 'application/json'
         }
 
+        # send back request (post method) to eric
         response = requests.post(url, headers=headers, data=payload_json)
 
-        # 7️⃣ Debug info
-        print("Raw string to hash:", string_to_hash)
+        # Logging
+        logger.debug("Transaction Time: %s", dt_gmt7)
+        logger.debug("RawData: %s", raw_data)
+        logger.debug("Raw string to hash: %s", string_to_hash)
+        logger.debug("MD5 Hash: %s", hash_result)
+        logger.info("API Response: %s \n", response.text)
+
+        # Debug info
+        print("\nRaw string to hash:", string_to_hash)
         print("MD5 Hash:", hash_result)
         print("Response:", response.text)
-        print("\n\n")
 
 # ================== Code Start Here ==================
-
-def process_withdrawal(data):
-    page = BankBot.scb_login(data)
-    logger.info(f"Processing {data['transactionId']}")
-
-    BankBot.scb_withdrawal(page, data)
-
-    logger.info(f"Done {data['transactionId']}")
-    return data["transactionId"]
-
-@app.route("/scb_company_web/runPython", methods=["POST"])
-def runPython():
-    data = request.get_json(silent=True)
-    if not data:
-        return jsonify({"success": False, "message": "Invalid JSON"}), 400
-
-    worker = get_worker()
-
-    with LOCK:
-        try:
-            transaction_id = worker.submit(process_withdrawal, data)
-
-            return jsonify({
-                "success": True,
-                "transactionId": transaction_id
-            })
-
-        except Exception as e:
-            logger.exception("Withdrawal failed")
-            return jsonify({"success": False, "message": str(e)}), 500
-
-# ================== MAIN ==============================
-
-if __name__ == "__main__":
-    logger.info("🚀 SCB Local API started")
-    app.run(host="0.0.0.0", port=5001, debug=False, threaded=False, use_reloader=False)
-
 
