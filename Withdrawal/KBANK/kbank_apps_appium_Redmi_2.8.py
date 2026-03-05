@@ -6,8 +6,10 @@ import atexit
 import logging
 import hashlib
 import requests
+import threading
 import traceback
 import subprocess
+import random
 from threading import Lock
 from dotenv import load_dotenv
 from flask import Flask, request, jsonify
@@ -33,10 +35,12 @@ if not os.path.exists(LOG_DIR):
     os.makedirs(LOG_DIR)
 
 logging.basicConfig(
-    filename=f'{LOG_DIR}/Kbank_payout_samsung.log', 
-    level=logging.ERROR, 
-    format='%(asctime)s - %(levelname)s - %(message)s'
+    filename=f'{LOG_DIR}/scb_payout.log', 
+    filemode='a',
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    level=logging.DEBUG
 )
+
 # =========================== Appium Settings =========================
 
 APPIUM_DRIVER = None
@@ -115,7 +119,7 @@ class Automation:
 # ================== KBANK BANK BOT ==================
 
 class BankBot(Automation):
-
+    
     # Use Appium Driver
     @classmethod
     def use_appium_driver(cls):
@@ -195,6 +199,9 @@ class BankBot(Automation):
         try:
             global PLAYWRIGHT, BROWSER, CONTEXT, PAGE
 
+            # Clean Notification Bar first
+            BankBot.kbank_business_apps_clean_notif()
+
             # Start Chrome
             cls.chrome_cdp()
 
@@ -224,6 +231,16 @@ class BankBot(Automation):
 
             # Go to a webpage
             page.goto("https://kbiz.kasikornbank.com/authen/login.jsp?lang=en", wait_until="domcontentloaded")
+
+            # If "Sorry" Appear, Button click "Go to login Page"
+            try:
+                page.wait_for_selector("//span[normalize-space()='Sorry']", timeout=1500)
+                print("Your session has expired or you are signed in on another device. appeared")
+                
+                # Button Click "Go to login Page"
+                page.locator("//span[normalize-space()='Go to login page']").click()
+            except:
+                pass
 
             # if Account already login, can skip
             try: 
@@ -302,9 +319,6 @@ class BankBot(Automation):
             except:
                 pass
 
-            # Delay 1 second
-            time.sleep(1)
-
             # Kbank Apps Approved   
             cls.kbank_business_apps(data)
 
@@ -322,30 +336,119 @@ class BankBot(Automation):
             print(f"\n[!] WITHDRAWAL EXCEPTION:\n{error_trace}")
             logging.error(f"WITHDRAWAL FAILED for Transaction {get_txn_id(data)}:\n{error_trace}")
             raise Exception(f"Withdrawal failed: {str(e)}")
-        
+
     # Apps Approved Transaction
     @classmethod
     def kbank_business_apps(cls, data):
-        
+
         try:
-            # Call Appium driver
+            # ============== Call Appium driver =======================
+            
             driver = cls.use_appium_driver()
+
+
+            # ============== Watchdog Timer ============================
+
+            watchdog = {"timer": None, "fired": False}
+
+            # if after 40 seconds exists, it will Trigger restart_and_reopen_confirm function()
+            def watchdog_fire():
+                print("Watchdog timeout triggered -> restarting app now")
+                try:
+                    restart_and_reopen_confirm()
+                except Exception as e:
+                    print("watchdog restart failed:", e)
+
+            # Start Watchdog Timer Function
+            def start_watchdog():
+                # Always cancel existing timer first
+                if watchdog["timer"]:
+                    try:
+                        watchdog["timer"].cancel()
+                    except Exception:
+                        pass
+
+                watchdog["fired"] = False
+                watchdog["timer"] = threading.Timer(40, watchdog_fire)
+                watchdog["timer"].daemon = True
+                watchdog["timer"].start()
+            
+            # Stop Watchdog Timer Function
+            def stop_watchdog():
+                if watchdog["timer"]:
+                    try:
+                        watchdog["timer"].cancel()
+                    except Exception:
+                        pass
+                    watchdog["timer"] = None
+            
+            # =============== KBank Apps Part =============================
+
+            # Restart Apps -> Key Pin -> Wait Confirm transaction and click
+            def restart_and_reopen_confirm():
+                print("40 seconds reached. Force restarting app...")
+                logging.info("Force restart after 40 seconds")
+
+                try:
+                    # Kill apps
+                    print("Kill Kbank App")
+                    logging.info("Stopped Kbank App")
+                    driver.terminate_app("com.kasikornbank.kbiz")
+
+                    # Open back apps
+                    driver.activate_app("com.kasikornbank.kbiz")
+
+                    # Wait and click "Log In"
+                    WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Log in"))).click()
+
+                    # Enter Password
+                    enter_pin()
+                
+                    # Confirm Transaction
+                    confirm_transaction()
+                    
+                except Exception as e:
+                    print("Restart failed:", e)
+
+            # The system cannot processs this transaction
+            def error_unable_process_this_transaction():
+                try:
+                    # Wait up to 5 seconds for the "Close Application" button to appear.
+                    # We look directly for the button's accessibility id from your screenshot.
+                    close_button = WebDriverWait(driver, 0.5).until(
+                        EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Close Application"))
+                    )
+                    
+                    # IF it appears, this code will run:
+                    print("Error popup detected! Clicking 'Close Application'.")
+                    close_button.click()
+                      
+                except TimeoutException:
+                    # IF the button does NOT appear within 5 seconds, it throws a TimeoutException.
+                    # The 'except' block catches it, meaning the transaction was successful!
+                    print(f'No error - Sorry Unable to proceed. Proceeding normally...')
+                    pass
 
             # Enter Login Pin
             def enter_pin():
 
                 # Wait for "Enter PIN" to appear
-                WebDriverWait(driver, 30).until(EC.presence_of_element_located((AppiumBy.XPATH, "//android.view.View[@content-desc='Enter PIN']")))
+                WebDriverWait(driver, 10).until(
+                    EC.presence_of_element_located((AppiumBy.XPATH, "//android.view.View[@content-desc='Enter PIN']"))
+                )
 
                 # Enter Pin
                 pin = str(data["pin"])
                 for digit in pin:
                     digit_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, digit)))
                     digit_button.click()
+                    print(digit)
+                    # "Sorry, Unable to proceed The system cannot proceed this transaction, please try again later.")
+                    error_unable_process_this_transaction()
 
             # Confirm Transaction
-            def confirm_transaction():
-
+            def confirm_transaction(max_retries=3):
+            
                 # Scroll Down Confirmation Transaction
                 def scroll_down(driver, times=2, duration=500):
                     size = driver.get_window_size()
@@ -357,39 +460,94 @@ class BankBot(Automation):
                     for _ in range(times):
                         driver.swipe(x, start_y, x, end_y, duration)
 
-                # Wait for "Confirm Transaction"
-                WebDriverWait(driver, 30).until(EC.presence_of_element_located((AppiumBy.XPATH, "//*[contains(@text,'Confirm Transaction')]")))
+                attempt = 0
+                while attempt < max_retries:
+                    try:
+                        print(f"Confirm attempt {attempt + 1}")
 
-                # Scroll Down
-                scroll_down(driver)
+                        # Wait for "Confirm Transaction"
+                        WebDriverWait(driver, 15).until(EC.presence_of_element_located((AppiumBy.XPATH, "//*[contains(@text,'Confirm Transaction')]")))
 
-                # Wait and Button Click "Confirm"
-                WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.XPATH, "//*[@text='Confirm']/.."))).click()
+                        # Scroll Down
+                        scroll_down(driver)
 
-                # Delay 1 second
-                time.sleep(1)
+                        # Wait and Button Click "Confirm"
+                        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.XPATH, "//*[@text='Confirm']/.."))).click()
 
-                # Wait and Button Click "Confirm"s
-                WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Confirm"))).click()
+                        # Delay 1 second
+                        time.sleep(1)
 
-            ### Click K BIZ Confirm transaction ###
+                        # Wait and Button Click "Confirm"s
+                        WebDriverWait(driver, 15).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Confirm"))).click()
+                        
+                        break
+
+                    except Exception as e:
+                        attempt += 1
+                        print(f"Confirm failed (attempt {attempt}): {e}")
+
+                        if attempt >= max_retries:
+                            print("Max confirm retries reached.")
+                            raise Exception("Failed to confirm transaction after 3 attempts")
+
+                        # Restart app before retry
+                        try:
+                            print("Restarting Kbank App...")
+                            # Kill Apps
+                            driver.terminate_app("com.kasikornbank.kbiz")
+
+                            # Start Apps
+                            driver.activate_app("com.kasikornbank.kbiz")
+                            
+                            # Click Login
+                            WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Log in"))).click()
+                            
+                            # Enter Pin
+                            enter_pin()
+
+                            # Confirm Transaction
+                            confirm_transaction()
+
+                        except Exception as restart_error:
+                            print("Restart failed:", restart_error)
+                            raise restart_error
+            
             # Expand Notification Bar
             driver.open_notifications()
 
             # Wait for SystemUI notification container
             WebDriverWait(driver, 10).until(EC.presence_of_element_located((AppiumBy.ID, "com.android.systemui:id/notification_stack_scroller")))
 
-            # Click notification that contains "Confirm transaction"
-            target_text = "Confirm transaction"
-            notif_xpath = f"//*[contains(@text,'{target_text}') or contains(@content-desc,'{target_text}')]"
-            WebDriverWait(driver, 10).until(EC.element_to_be_clickable((AppiumBy.XPATH, notif_xpath))).click()
+            # Click notification that contains "Confirmation transaction"
+            WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().textContains("Confirm transaction")'))).click()
+
+            # Find + click "Confirm transaction" (if exists)
+            confirm_text = "Confirm transaction"
+            confirm_xpath = f"//*[contains(@text,'{confirm_text}') or contains(@content-desc,'{confirm_text}')]"
+
+            if driver.find_elements(AppiumBy.XPATH, confirm_xpath):
+                WebDriverWait(driver, 10).until(EC.element_to_be_clickable((AppiumBy.XPATH, confirm_xpath))).click()
 
             # Delay 1 second
             time.sleep(1)
-            
             loop_count = 0
+
+            # Start Watchdog Timer
+            start_watchdog()
+
             while True:
                 loop_count += 1
+
+                # If watchdog triggered, restart safely in main thread
+                if watchdog["fired"]:
+                    stop_watchdog()
+                    restart_and_reopen_confirm()
+
+                    # restart watchdog again
+                    start_watchdog()
+                    # watchdog["fired"] = False
+                    continue
+                
                 try:
                     # Session Expired
                     if driver.find_elements(AppiumBy.XPATH, "//*[contains(@content-desc,'session has expired')]"):
@@ -403,15 +561,20 @@ class BankBot(Automation):
                         # Confirm Transaction
                         confirm_transaction()
 
+                        # Stop Watchdog Timer
+                        stop_watchdog() 
+
                         # Break While Loop
                         break
-                    
+
                     # else if Enter Pin Page
                     elif driver.find_elements(AppiumBy.ACCESSIBILITY_ID, "Enter PIN"):
-                        
+
                         try:
                             # Wait for "Session Expired" to appear
-                            WebDriverWait(driver, 1).until(EC.presence_of_element_located((AppiumBy.XPATH, "//*[contains(@content-desc,'session has expired')]")))
+                            WebDriverWait(driver, 1).until(
+                                EC.presence_of_element_located((AppiumBy.XPATH, "//*[contains(@content-desc,'session has expired')]"))
+                            )
 
                             # Button Click "Yes"
                             driver.find_element(AppiumBy.XPATH, "//android.widget.Button[@content-desc='Yes']").click()
@@ -432,10 +595,10 @@ class BankBot(Automation):
 
                         # Confirm Transaction
                         confirm_transaction()
-                        
+
                         # Break While Loop
                         break
-                    
+
                     # Wait for "Confirm Transaction"
                     elif driver.find_elements(AppiumBy.XPATH, "//*[contains(@text,'Confirm Transaction')]"):
                         try:
@@ -464,11 +627,9 @@ class BankBot(Automation):
                 except TimeoutException:
                     continue
 
-                        # Callback Eric API
-            
-            # Call Back Eric API
+            # Callback Eric API
             cls.eric_api(data)
-            
+
             # Wait and Click "Back to main page"
             WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.XPATH, "//android.view.View[@content-desc='Back to main page']"))).click()
 
@@ -481,33 +642,57 @@ class BankBot(Automation):
     # Clean all notification 1 round
     @classmethod
     def kbank_business_apps_clean_notif(cls):
-
+        
         try:
+            # Swipe all notification
+            def swipe_all_notifications(driver, max_swipes=1):
+                
+                # Open Notification Bar
+                driver.open_notifications()
+
+                # swipe left clear one notification
+                for swipe_index in range(1, max_swipes + 1):
+                    notifs = driver.find_elements(
+                        AppiumBy.ANDROID_UIAUTOMATOR,
+                        'new UiSelector().resourceIdMatches(".*(notification|row).*")'
+                    )
+                    if not notifs:
+                        break
+
+                    # Swipe the first one left
+                    n = notifs[0]
+                    r = n.rect
+                    y = r["y"] + r["height"] // 2
+                    start_x = r["x"] + int(r["width"] * 0.85)
+                    end_x   = r["x"] + int(r["width"] * 0.15)
+
+                    driver.swipe(start_x, y, end_x, y, 100)
 
             # Call Appium Driver
             driver = cls.use_appium_driver()
 
-            # Screen never sleep
-            driver.execute_script("mobile: shell", {"command": "settings", "args": ["put", "system", "screen_off_timeout", "2147483647"], "includeStderr": True, "timeout": 5000})
-
             # Expand Notification Bar
             driver.open_notifications()
+
+            # Swipe notification away using coordinates
+            swipe_all_notifications(driver)
 
             time.sleep(1)
 
             try:
-                # Use find_elements so "not found" doesn't throw
-                clear_buttons = driver.find_elements(AppiumBy.ACCESSIBILITY_ID, "Clear,Button")
+                # Define Clear All button
+                clear_all = driver.find_elements(AppiumBy.ID, "com.android.systemui:id/notification_dismiss_view")
 
-                if clear_buttons:
-                    clear_buttons[0].click()
+                # Check if button appears, if True then click X clear All button, else Close Notification Bar
+                if clear_all:
+                    clear_all[0].click()
 
             except Exception:
                 pass
             finally:
-                # Close notification bar
+                # Always close shade
                 driver.execute_script("mobile: shell", {"command": "cmd", "args": ["statusbar", "collapse"]})
-
+        
         except Exception as e:
             # We just log this and pass, because failing to clean notifications shouldn't crash the whole bot
             logging.warning(f"Failed to clean notifications: {str(e)}")
@@ -515,9 +700,8 @@ class BankBot(Automation):
     # Callback ERIC API
     @classmethod
     def eric_api(cls, data):
-        
-        try:
 
+        try: 
             url = "https://bot-integration.cloudbdtech.com/integration-service/transaction/payoutScriptCallback"
 
             # Create payload as a DICTIONARY (not JSON yet)
@@ -547,9 +731,9 @@ class BankBot(Automation):
 
             # Send request
             headers = {
-                'accept': '*/*',
-                'hash': hash_result,
-                'Content-Type': 'application/json'
+                "accept": "*/*",
+                "hash": hash_result,
+                "Content-Type": "application/json",
             }
 
             response = requests.post(url, headers=headers, data=payload_json)
@@ -573,33 +757,30 @@ class BankBot(Automation):
 # ================== Code Start Here ==================
 
 # Run API
-@app.route("/kbank_company_web/runPython", methods=["POST"])        
+@app.route("/kbank_company_web/runPython", methods=["POST"])
 def runPython():
     data = request.get_json(silent=True)
     if not data:
         return jsonify({"success": False, "message": "Invalid JSON"}), 400
-    
+
     with LOCK:
         try:
             # Run Browser
             Automation.chrome_cdp()
-            # Clean Notification Bar first
-            BankBot.kbank_business_apps_clean_notif()
             # Login KBANK
             page = BankBot.kbank_login(data)
-            # Perform Withdrawal and Mobile App Approval
             BankBot.kbank_withdrawal(page, data)
-
             return jsonify({
                 "success": True,
-                "transactionId": data.get("transactionId")
+                "transactionId": data["transactionId"]
             })
-
+        
         except Exception as e:
             full_trace = traceback.format_exc()
             
             # Prints to console
             print(f"\n--- CRITICAL TRANSACTION ERROR ---\n{full_trace}")
+            
             # WRITES TO LOG FILE
             logging.error(f"CRITICAL ERROR for Transaction {data.get('transactionId', 'unknown')}:\n{full_trace}\n{'-'*40}")
             
@@ -622,3 +803,4 @@ def runPython():
 if __name__ == "__main__":
     BankBot.start_ws_client()
     app.run(host="0.0.0.0", port=5004, debug=False, threaded=False, use_reloader=False)
+

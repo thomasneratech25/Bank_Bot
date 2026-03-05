@@ -77,6 +77,10 @@ class Automation:
         # Load .env file
         load_dotenv()
         USER_DATA_DIR = os.getenv("CHROME_PATH")
+        if USER_DATA_DIR:
+            pass
+        else:
+            pass
 
         cls.chrome_proc = subprocess.Popen([
             r"C:\Program Files\Google\Chrome\Application\chrome.exe",
@@ -97,6 +101,8 @@ class Automation:
         try:
             if cls.chrome_proc and cls.chrome_proc.poll() is None:
                 cls.chrome_proc.terminate()
+            else:
+                pass
         except Exception:
             pass
 
@@ -191,8 +197,9 @@ class BankBot(Automation):
     # Login
     @classmethod
     def kbank_login(cls, data):
-        
+
         try:
+        
             global PLAYWRIGHT, BROWSER, CONTEXT, PAGE
 
             # Start Chrome
@@ -201,10 +208,14 @@ class BankBot(Automation):
             # Start Playwright ONLY ONCE
             if PLAYWRIGHT is None:
                 PLAYWRIGHT = sync_playwright().start()
+            else:
+                pass
 
             # Connect to running Chrome ONLY ONCE
             if BROWSER is None:
                 BROWSER = PLAYWRIGHT.chromium.connect_over_cdp("http://localhost:9222")
+            else:
+                pass
 
             # Reuse context
             CONTEXT = BROWSER.contexts[0] if BROWSER.contexts else BROWSER.new_context()
@@ -212,6 +223,8 @@ class BankBot(Automation):
             # Reuse page
             if PAGE is None or PAGE.is_closed():
                 PAGE = CONTEXT.new_page()
+            else:
+                pass
 
             page = PAGE
 
@@ -224,6 +237,16 @@ class BankBot(Automation):
 
             # Go to a webpage
             page.goto("https://kbiz.kasikornbank.com/authen/login.jsp?lang=en", wait_until="domcontentloaded")
+
+            # If "Sorry" Appear, Button click "Go to login Page"
+            try:
+                page.wait_for_selector("//span[normalize-space()='Sorry']", timeout=1500)
+                print("Your session has expired or you are signed in on another device. appeared")
+                
+                # Button Click "Go to login Page"
+                page.locator("//span[normalize-space()='Go to login page']").click()
+            except:
+                pass
 
             # if Account already login, can skip
             try: 
@@ -262,7 +285,10 @@ class BankBot(Automation):
     @classmethod
     def kbank_withdrawal(cls, page, data):
 
-        try:
+        try: 
+            # # wait for "Select Bank" to be appear
+            # page.locator("//span[@id='select2-id_select2_example_3-container']//div").wait_for(state="visible", timeout=100000)
+
             # Delay 1 second
             time.sleep(1)
             
@@ -295,12 +321,8 @@ class BankBot(Automation):
                 page.locator("//div[@class='mfp-content']//span[contains(text(),'Confirm')]").click()
             except Exception:
                 pass
-
             # Wait for "Confirm Transaction" appear
-            try:
-                page.get_by_role("heading", name="Confirm Transaction").wait_for(timeout=3000)
-            except:
-                pass
+            page.locator("//app-notification-modal-header//h3[1]").wait_for(state="visible", timeout=100000)
 
             # Delay 1 second
             time.sleep(1)
@@ -316,7 +338,7 @@ class BankBot(Automation):
 
             # wait for "Fund Transfer" to be appear
             page.locator("//h1[normalize-space()='Funds Transfer']").wait_for(state="visible", timeout=10000)
-
+        
         except Exception as e:
             error_trace = traceback.format_exc()
             print(f"\n[!] WITHDRAWAL EXCEPTION:\n{error_trace}")
@@ -326,10 +348,29 @@ class BankBot(Automation):
     # Apps Approved Transaction
     @classmethod
     def kbank_business_apps(cls, data):
-        
+
         try:
             # Call Appium driver
             driver = cls.use_appium_driver()
+
+            # The system cannot process this transaction
+            def error_unable_process_this_transaction():
+                try:
+                    # Wait up to 5 seconds for the "Close Application" button to appear.
+                    # We look directly for the button's accessibility id from your screenshot.
+                    close_button = WebDriverWait(driver, 0.5).until(
+                        EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Close Application"))
+                    )
+                    
+                    # IF it appears, this code will run:
+                    print("Error popup detected! Clicking 'Close Application'.")
+                    close_button.click()
+                      
+                except TimeoutException:
+                    # IF the button does NOT appear within 5 seconds, it throws a TimeoutException.
+                    # The 'except' block catches it, meaning the transaction was successful!
+                    print(f'No error - Sorry Unable to proceed. Proceeding normally...')
+                    pass
 
             # Enter Login Pin
             def enter_pin():
@@ -342,6 +383,8 @@ class BankBot(Automation):
                 for digit in pin:
                     digit_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, digit)))
                     digit_button.click()
+                    # "Sorry, Unable to proceed The system cannot proceed this transaction, please try again later.")
+                    error_unable_process_this_transaction()
 
             # Confirm Transaction
             def confirm_transaction():
@@ -357,8 +400,26 @@ class BankBot(Automation):
                     for _ in range(times):
                         driver.swipe(x, start_y, x, end_y, duration)
 
-                # Wait for "Confirm Transaction"
-                WebDriverWait(driver, 30).until(EC.presence_of_element_located((AppiumBy.XPATH, "//*[contains(@text,'Confirm Transaction')]")))
+                try:
+                    # Wait for "Confirm Transaction"
+                    WebDriverWait(driver, 20).until(EC.presence_of_element_located((AppiumBy.XPATH, "//*[contains(@text,'Confirm Transaction')]")))
+                except:
+                    # Kill apps
+                    print("Kill Kbank App")
+                    logging.info("Stopped Kbank App")
+                    driver.terminate_app("com.kasikornbank.kbiz")
+
+                    # Open back apps
+                    driver.activate_app("com.kasikornbank.kbiz")
+
+                    # Wait and click "Log In"
+                    WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Log in"))).click()
+
+                    # Enter Password
+                    enter_pin()
+
+                    # Confirm Transaction
+                    confirm_transaction()
 
                 # Scroll Down
                 scroll_down(driver)
@@ -464,14 +525,15 @@ class BankBot(Automation):
                 except TimeoutException:
                     continue
 
-                        # Callback Eric API
-            
-            # Call Back Eric API
+                if loop_count % 10 == 0:
+                    pass
+
+            # Callback Eric API
             cls.eric_api(data)
-            
+
             # Wait and Click "Back to main page"
             WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.XPATH, "//android.view.View[@content-desc='Back to main page']"))).click()
-
+       
         except Exception as e:
             error_trace = traceback.format_exc()
             print(f"\n[!] APPIUM EXCEPTION:\n{error_trace}")
@@ -501,6 +563,8 @@ class BankBot(Automation):
 
                 if clear_buttons:
                     clear_buttons[0].click()
+                else:
+                    pass
 
             except Exception:
                 pass
@@ -511,13 +575,12 @@ class BankBot(Automation):
         except Exception as e:
             # We just log this and pass, because failing to clean notifications shouldn't crash the whole bot
             logging.warning(f"Failed to clean notifications: {str(e)}")
-
+           
     # Callback ERIC API
     @classmethod
     def eric_api(cls, data):
-        
-        try:
 
+        try:
             url = "https://bot-integration.cloudbdtech.com/integration-service/transaction/payoutScriptCallback"
 
             # Create payload as a DICTIONARY (not JSON yet)
@@ -568,8 +631,8 @@ class BankBot(Automation):
         except Exception as e:
             error_trace = traceback.format_exc()
             logging.error(f"ERIC API CALLBACK FAILED for Transaction {get_txn_id(data)}:\n{error_trace}")
-            raise Exception(f"API Callback failed: {str(e)}")
-
+            raise Exception(f"API Callback failed: {str(e)}")   
+        
 # ================== Code Start Here ==================
 
 # Run API
@@ -578,7 +641,7 @@ def runPython():
     data = request.get_json(silent=True)
     if not data:
         return jsonify({"success": False, "message": "Invalid JSON"}), 400
-    
+
     with LOCK:
         try:
             # Run Browser
@@ -587,19 +650,17 @@ def runPython():
             BankBot.kbank_business_apps_clean_notif()
             # Login KBANK
             page = BankBot.kbank_login(data)
-            # Perform Withdrawal and Mobile App Approval
             BankBot.kbank_withdrawal(page, data)
-
             return jsonify({
                 "success": True,
-                "transactionId": data.get("transactionId")
+                "transactionId": data["transactionId"]
             })
-
         except Exception as e:
             full_trace = traceback.format_exc()
             
             # Prints to console
             print(f"\n--- CRITICAL TRANSACTION ERROR ---\n{full_trace}")
+            
             # WRITES TO LOG FILE
             logging.error(f"CRITICAL ERROR for Transaction {data.get('transactionId', 'unknown')}:\n{full_trace}\n{'-'*40}")
             
@@ -612,13 +673,13 @@ def runPython():
             # FORCE EXIT: This stops the entire Python script and Flask server
             # Use os._exit(1) to exit immediately from the thread
             os._exit(1)
-
+            
             return jsonify({
                 "success": False,
                 "message": str(e),
                 "error_type": type(e).__name__
             }), 500
-
+        
 if __name__ == "__main__":
     BankBot.start_ws_client()
     app.run(host="0.0.0.0", port=5004, debug=False, threaded=False, use_reloader=False)

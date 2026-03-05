@@ -2,9 +2,12 @@
 import re
 import json
 import time
+import random
 import atexit
+import logging
 import hashlib
 import requests
+import traceback
 import subprocess
 from threading import Lock
 from dotenv import load_dotenv
@@ -22,6 +25,20 @@ from selenium.webdriver.support import expected_conditions as EC
 
 WS_PROC = None
 
+# =========================== Logging Settings =========================
+
+LOG_DIR = './logs'
+
+# Auto-create the logs folder if it doesn't exist
+if not os.path.exists(LOG_DIR):
+    os.makedirs(LOG_DIR)
+    
+logging.basicConfig(
+    filename='./logs/KMA_payout.log', 
+    level=logging.ERROR, 
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+
 # =========================== Appium Settings =========================
 
 APPIUM_DRIVER = None
@@ -33,7 +50,10 @@ APPIUM_LOCK = Lock()
 app = Flask(__name__)
 LOCK = Lock()
 
-
+def get_txn_id(data):
+    if isinstance(data, dict):
+        return str(data.get("transactionId", "unknown"))
+    return "unknown"
 
 # ================== PLAYWRIGHT SINGLETON ========================
 
@@ -115,10 +135,7 @@ class BankBot(Automation):
                 options.automation_name = "UiAutomator2"
                 options.new_command_timeout = 86400
 
-                APPIUM_DRIVER = webdriver.Remote(
-                    "http://127.0.0.1:8021",
-                    options=options
-                )
+                APPIUM_DRIVER = webdriver.Remote("http://127.0.0.1:8021", options=options)
 
         return APPIUM_DRIVER
     
@@ -141,7 +158,10 @@ class BankBot(Automation):
             "--port", "8021",
             "--allow-insecure", "uiautomator2:adb_shell",
             "--allow-cors"
-        ])
+        ],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL
+        )
                 
         # Wait until Appium server is ready, retry 10 times
         for attempt in range(1, 11):
@@ -172,128 +192,148 @@ class BankBot(Automation):
             cwd=workdir
         )
 
-
     # Login
     @classmethod
     def kma_login(cls, data):
-        
-        global PLAYWRIGHT, BROWSER, CONTEXT, PAGE
 
-        # Start Chrome
-        cls.chrome_cdp()
-
-        # Start Playwright ONLY ONCE
-        if PLAYWRIGHT is None:
-            PLAYWRIGHT = sync_playwright().start()
-
-        # Connect to running Chrome ONLY ONCE
-        if BROWSER is None:
-            BROWSER = PLAYWRIGHT.chromium.connect_over_cdp("http://localhost:9222")
-
-        # Reuse context
-        CONTEXT = BROWSER.contexts[0] if BROWSER.contexts else BROWSER.new_context()
-
-        # Reuse page
-        if PAGE is None or PAGE.is_closed():
-            PAGE = CONTEXT.new_page()
-
-        page = PAGE
-
-        # If already on transfer page, skip login
         try:
-            page.locator("//div[@class='page_header']").wait_for(timeout=1500)
-            return page # Already Login
-        except:
-            pass
+        
+            global PLAYWRIGHT, BROWSER, CONTEXT, PAGE
 
-        # Go to a webpage
-        page.goto("https://www.krungsribizonline.com/BAY.KOL.Corp.WebSite/Common/Login.aspx?language=en", wait_until="domcontentloaded")
+            # Start Chrome
+            cls.chrome_cdp()
 
-        # Fill in Username
-        page.fill("#ctl00_cphLoginBox_txtUsernameSME", str(data["username"]))
+            # Start Playwright ONLY ONCE
+            if PLAYWRIGHT is None:
+                PLAYWRIGHT = sync_playwright().start()
 
-        # Fill in Password
-        page.fill("#ctl00_cphLoginBox_txtPasswordSME", str(data["password"]))
+            # Connect to running Chrome ONLY ONCE
+            if BROWSER is None:
+                BROWSER = PLAYWRIGHT.chromium.connect_over_cdp("http://localhost:9222")
 
-        # Button Click Login
-        page.click("#ctl00_cphLoginBox_imgLogin")
+            # Reuse context
+            CONTEXT = BROWSER.contexts[0] if BROWSER.contexts else BROWSER.new_context()
 
-        # Click "Other Account"
-        page.locator("//div[normalize-space()='Other Account']").wait_for(timeout=15000)
-        page.locator("//div[normalize-space()='Other Account']").click()
-        return page
+            # Reuse page
+            if PAGE is None or PAGE.is_closed():
+                PAGE = CONTEXT.new_page()
+
+            page = PAGE
+
+            # If already on transfer page, skip login
+            try:
+                page.locator("//div[@class='page_header']").wait_for(timeout=1500)
+                return page # Already Login
+            except:
+                pass
+
+            # Go to a webpage
+            page.goto("https://www.krungsribizonline.com/BAY.KOL.Corp.WebSite/Common/Login.aspx?language=en", wait_until="domcontentloaded")
+
+            # Fill in Username
+            page.fill("#ctl00_cphLoginBox_txtUsernameSME", str(data["username"]))
+
+            # Fill in Password
+            page.fill("#ctl00_cphLoginBox_txtPasswordSME", str(data["password"]))
+
+            # Button Click Login
+            page.click("#ctl00_cphLoginBox_imgLogin")
+
+            # Click "Other Account"
+            page.locator("//div[normalize-space()='Other Account']").wait_for(timeout=15000)
+            page.locator("//div[normalize-space()='Other Account']").click()
+            return page
+        
+        except Exception as e:
+
+            error_trace = traceback.format_exc()
+            
+            # This prints to the terminal
+            print(f"\n[!] LOGIN EXCEPTION:\n{error_trace}")
+            
+            # THIS WRITES TO THE LOG FILE
+            logging.error(f"LOGIN FAILED for Transaction {data.get('transactionId', 'unknown')}:\n{error_trace}")
+            
+            raise Exception(f"Login failed at step: {str(e)}")
 
     # Withdrawal
     @classmethod
     def kma_withdrawal(cls, page, data):
         
-        # Select Bank Code
-        page.locator("#ddlBanking").wait_for(timeout=10000)
-        page.select_option("#ddlBanking", str(data["toBankCode"]))
 
         try:
-            # Wait only 5 seconds for the message
-            page.wait_for_selector("//div[@class='header_error']", timeout=5000)
-            
-            # Print Detect Invalid Session
-            print("Detected logout message. Redirecting to login.")
-
-            # Button Click Sign in
-            page.click("//input[@id='ctl00_cphSectionButton_btnLogin']")
-
-            time.sleep(1)
-
-            BankBot.kma_login(data)    
-
             # Select Bank Code
             page.locator("#ddlBanking").wait_for(timeout=10000)
             page.select_option("#ddlBanking", str(data["toBankCode"]))
-  
-        except:
-            pass
 
+            try:
+                # Wait only 5 seconds for the message
+                page.wait_for_selector("//div[@class='header_error']", timeout=5000)
+                
+                # Print Detect Invalid Session
+                print("Detected logout message. Redirecting to login.")
 
-        # Fill in Account Number
-        page.fill("#ctl00_cphSectionData_txtAccTo", str(data["toAccountNum"]))
+                # Button Click Sign in
+                page.click("//input[@id='ctl00_cphSectionButton_btnLogin']")
 
-        # Fill in Amount
-        page.fill("#ctl00_cphSectionData_txtAmountTransfer", str(data["amount"]))
+                time.sleep(1)
 
-        # Click Submit
-        page.click("#ctl00_cphSectionData_btnSubmit")
+                BankBot.kma_login(data)    
 
-        # Wait for OTP Box Appear
-        page.locator(".otpbox_header").wait_for(timeout=10000)
+                # Select Bank Code
+                page.locator("#ddlBanking").wait_for(timeout=10000)
+                page.select_option("#ddlBanking", str(data["toBankCode"]))
+    
+            except:
+                pass
 
-        # Capture OTP Reference Number
-        cls._kma_ref = page.locator("//div[@class='inputbox_half_center']//div[@class='input_input_half']").first.inner_text().strip()
+            # Fill in Account Number
+            page.fill("#ctl00_cphSectionData_txtAccTo", str(data["toAccountNum"]))
 
-        # Run Read OTP Code
-        otp = cls.kma_read_otp()
+            # Fill in Amount
+            page.fill("#ctl00_cphSectionData_txtAmountTransfer", str(data["amount"]))
 
-        # Fill OTP Code
-        page.fill("#ctl00_cphSectionData_OTPBox1_txtOTPPassword", otp)
-        
-        # Delay 0.5 second
-        page.wait_for_timeout(500)
+            # Click Submit
+            page.click("#ctl00_cphSectionData_btnSubmit")
 
-        time.sleep(1111111)
+            # Wait for OTP Box Appear
+            page.locator(".otpbox_header").wait_for(timeout=10000)
 
-        # Button Click "Confirm"
-        page.locator("//input[@id='ctl00_cphSectionData_OTPBox1_btnConfirm']").click(timeout=0)
-        page.locator("//input[@id='ctl00_cphSectionData_OTPBox1_btnConfirm']").click(timeout=0)
+            # Capture OTP Reference Number
+            cls._kma_ref = page.locator("//div[@class='inputbox_half_center']//div[@class='input_input_half']").first.inner_text().strip()
 
-        # Wait for Appear withdrawal Successful
-        page.locator("#ctl00_cphSectionData_pnlSuccessMsg").wait_for(timeout=10000)
+            # Run Read OTP Code
+            otp = cls.kma_read_otp()
 
-        # Delay 1 second
-        page.wait_for_timeout(1000)
+            # Fill OTP Code
+            page.fill("#ctl00_cphSectionData_OTPBox1_txtOTPPassword", otp)
+            
+            # Delay 0.5 second
+            page.wait_for_timeout(500)
 
-        # Call Eric API
-        cls.eric_api(data)
+            time.sleep(11111111)
 
-        # Button click "Transfer other transaction"
-        page.click("#ctl00_cphSectionData_btnOtherTxn")
+            # Button Click "Confirm"
+            page.locator("//input[@id='ctl00_cphSectionData_OTPBox1_btnConfirm']").click(timeout=0)
+            page.locator("//input[@id='ctl00_cphSectionData_OTPBox1_btnConfirm']").click(timeout=0)
+
+            # Wait for Appear withdrawal Successful
+            page.locator("#ctl00_cphSectionData_pnlSuccessMsg").wait_for(timeout=10000)
+
+            # Delay 1 second
+            page.wait_for_timeout(1000)
+
+            # Call Eric API
+            cls.eric_api(data)
+
+            # Button click "Transfer other transaction"
+            page.click("#ctl00_cphSectionData_btnOtherTxn")
+
+        except Exception as e:
+            error_trace = traceback.format_exc()
+            print(f"\n[!] WITHDRAWAL EXCEPTION:\n{error_trace}")
+            logging.error(f"WITHDRAWAL FAILED for Transaction {get_txn_id(data)}:\n{error_trace}")
+            raise Exception(f"Withdrawal failed: {str(e)}")
 
     # Read Phone Message OTP Code
     @classmethod
@@ -309,7 +349,8 @@ class BankBot(Automation):
                 try:
 
                     # Read All KMA Bank Messages
-                    print("ðŸ¤– Reading latest message from KMA bank...")
+                    print("🤖 Reading latest message from KMA bank...")
+
 
                     # Wait for the 'message_list' container to be visible
                     # We use the specific XPath from your screenshot to avoid ID errors
@@ -337,7 +378,7 @@ class BankBot(Automation):
                             if match:
                                 _messages_ref_code, messages_otp_code = match.groups()
                                 otp_candidates.append((_messages_ref_code.strip(), messages_otp_code.strip()))
-                                print(f"# Ref: {_messages_ref_code}, OTP: {messages_otp_code} âŒ")
+                                print(f"# Ref: {_messages_ref_code}, OTP: {messages_otp_code} ❌")
 
                         except Exception:
                             # Ignore errors for single stale elements
@@ -346,7 +387,7 @@ class BankBot(Automation):
                     # Match correct Ref Code 
                     for _messages_ref_code, messages_otp_code in otp_candidates:
                         if cls._kma_ref == _messages_ref_code:
-                            print(f"Found matching Ref: {_messages_ref_code} | OTP: {messages_otp_code} âœ…")
+                            print(f"Found matching Ref: {_messages_ref_code} | OTP: {messages_otp_code} ✅")
                             return messages_otp_code
                         
                     # If no match, loop again
@@ -364,48 +405,59 @@ class BankBot(Automation):
     @classmethod
     def eric_api(cls, data):
 
-        url = "https://bot-integration.cloudbdtech.com/integration-service/transaction/payoutScriptCallback"
+        try:
+            url = "https://bot-integration.cloudbdtech.com/integration-service/transaction/payoutScriptCallback"
 
-        # Create payload as a DICTIONARY (not JSON yet)
-        payload = {
-            "bankCode": str(data["fromBankCode"]),
-            "deviceId": str(data["deviceId"]),
-            "merchantCode": str(data["merchantCode"]),
-            "transactionId": str(data["transactionId"]),
-        }
+            # Create payload as a DICTIONARY (not JSON yet)
+            payload = {
+                "bankCode": str(data["fromBankCode"]),
+                "deviceId": str(data["deviceId"]),
+                "merchantCode": str(data["merchantCode"]),
+                "transactionId": str(data["transactionId"]),
+            }
 
-        # Your secret key
-        secret_key = "PRODBankBotIsTheBest"
+            # Your secret key
+            secret_key = "PRODBankBotIsTheBest"
 
-        # Build the hash string (exact order required)
-        string_to_hash = (
-            f"bankCode={payload['bankCode']}&"
-            f"deviceId={payload['deviceId']}&"
-            f"merchantCode={payload['merchantCode']}&"
-            f"transactionId={payload['transactionId']}{secret_key}"
-        )
+            # Build the hash string (exact order required)
+            string_to_hash = (
+                f"bankCode={payload['bankCode']}&"
+                f"deviceId={payload['deviceId']}&"
+                f"merchantCode={payload['merchantCode']}&"
+                f"transactionId={payload['transactionId']}{secret_key}"
+            )
 
-        # Generate MD5 hash
-        hash_result = hashlib.md5(string_to_hash.encode("utf-8")).hexdigest()
+            # Generate MD5 hash
+            hash_result = hashlib.md5(string_to_hash.encode("utf-8")).hexdigest()
 
-        # Convert payload to JSON string AFTER hash
-        payload_json = json.dumps(payload)
+            # Convert payload to JSON string AFTER hash
+            payload_json = json.dumps(payload)
 
-        # Send request
-        headers = {
-            'accept': '*/*',
-            'hash': hash_result,
-            'Content-Type': 'application/json'
-        }
+            # Send request
+            headers = {
+                'accept': '*/*',
+                'hash': hash_result,
+                'Content-Type': 'application/json'
+            }
 
-        response = requests.post(url, headers=headers, data=payload_json)
+            response = requests.post(url, headers=headers, data=payload_json)
+            response.raise_for_status()
 
-        # 7ï¸âƒ£ Debug info
-        print("Raw string to hash:", string_to_hash)
-        print("MD5 Hash:", hash_result)
-        print("Response:", response.text)
-        print("\n\n")
+            # Debug info
+            print("Raw string to hash:", string_to_hash)
+            print("MD5 Hash:", hash_result)
+            print("Response:", response.text)
+            print("\n\n")
 
+            logging.info("Raw string to hash: %s", string_to_hash)
+            logging.info("MD5 Hash: %s", hash_result)
+            logging.info("Response: %s", response.text)
+
+        except Exception as e:
+            error_trace = traceback.format_exc()
+            logging.error(f"ERIC API CALLBACK FAILED for Transaction {get_txn_id(data)}:\n{error_trace}")
+            raise Exception(f"API Callback failed: {str(e)}")
+        
 # ================== Code Start Here ==================
 
 # Run API
@@ -427,11 +479,30 @@ def runPython():
                 "transactionId": data["transactionId"]
             })
         except Exception as e:
-            return jsonify({"success": False, "message": str(e)}), 500
+            full_trace = traceback.format_exc()
+            
+            # Prints to console
+            print(f"\n--- CRITICAL TRANSACTION ERROR ---\n{full_trace}")
+            
+            # WRITES TO LOG FILE
+            logging.error(f"CRITICAL ERROR for Transaction {data.get('transactionId', 'unknown')}:\n{full_trace}\n{'-'*40}")
+            
+            # Kill Browser
+            try:
+                Automation.cleanup()
+            except:
+                pass
 
+            # FORCE EXIT: This stops the entire Python script and Flask server
+            # Use os._exit(1) to exit immediately from the thread
+            os._exit(1)
+            
+            return jsonify({
+                "success": False,
+                "message": str(e),
+                "error_type": type(e).__name__
+            }), 500
+        
 if __name__ == "__main__":
     BankBot.start_ws_client()
-
     app.run(host="0.0.0.0", port=5002, debug=False, threaded=False, use_reloader=False)
-
-# BankBot.use_appium_driver()

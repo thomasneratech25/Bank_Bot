@@ -165,7 +165,7 @@ class BankBot(Automation):
     def start_appium_server(cls):
         
         global APPIUM_PROC
-        logger.info("Ensuring Appium server is running")
+        logger.info("Reusing existing Appium driver session")
         
         # if appium server start already, then skip
         # Prevent starting multiple appium server

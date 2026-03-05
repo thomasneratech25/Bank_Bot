@@ -1,0 +1,437 @@
+2026-02-26 22:10:17,215 - INFO - Logging started: ./logs\scb_payout.log
+2026-02-26 22:10:17,263 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://192.168.100.70:5004
+2026-02-26 22:10:17,264 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-26 22:12:14,374 - INFO - Logging started: ./logs\scb_payout.log
+2026-02-26 22:12:14,423 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://192.168.100.70:5004
+2026-02-26 22:12:14,425 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-26 22:12:17,339 - DEBUG - Starting new HTTP connection (1): localhost:9222
+2026-02-26 22:12:19,376 - DEBUG - http://localhost:9222 "GET /json HTTP/1.1" 200 1672
+2026-02-26 22:12:19,377 - INFO - Starting For Chrome Browser...
+2026-02-26 22:12:19,391 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8021
+2026-02-26 22:12:21,462 - DEBUG - http://127.0.0.1:8021 "GET /status HTTP/1.1" 200 110
+2026-02-26 22:12:21,463 - DEBUG - POST http://127.0.0.1:8021/session {'capabilities': {'firstMatch': [{}], 'alwaysMatch': {'appium:automationName': 'UiAutomator2', 'platformName': 'Android', 'appium:deviceName': 'androidtesting', 'appium:newCommandTimeout': 86400}}}
+2026-02-26 22:12:21,463 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8021
+2026-02-26 22:12:41,617 - DEBUG - http://127.0.0.1:8021 "POST /session HTTP/1.1" 500 0
+2026-02-26 22:12:41,618 - DEBUG - Remote response: status=500 | data={"value":{"error":"unknown error","message":"Could not find a connected Android device in 20000ms","stacktrace":"UnknownError: Could not find a connected Android device in 20000ms\n    at getResponseForW3CError (C:\\Users\\Thomas\\AppData\\Roaming\\npm\\node_modules\\appium\\node_modules\\@appium\\base-driver\\build\\lib\\protocol\\errors.js:824:36)\n    at asyncHandler (C:\\Users\\Thomas\\AppData\\Roaming\\npm\\node_modules\\appium\\node_modules\\@appium\\base-driver\\build\\lib\\protocol\\protocol.js:402:77)\nThe above error is caused by\nError: Could not find a connected Android device in 20000ms\n    at ADB.getDevicesWithRetry (C:\\Users\\Thomas\\.appium\\node_modules\\appium-uiautomator2-driver\\node_modules\\appium-adb\\build\\lib\\tools\\system-calls.js:360:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async AndroidUiautomator2Driver.getDeviceInfoFromCaps (C:\\Users\\Thomas\\.appium\\node_modules\\appium-uiautomator2-driver\\node_modules\\appium-android-driver\\build\\lib\\commands\\device\\common.js:76:25)\n    at async AndroidUiautomator2Driver.createSession (C:\\Users\\Thomas\\.appium\\node_modules\\appium-uiautomator2-driver\\build\\lib\\driver.js:211:38)\n    at async AppiumDriver.createSession (C:\\Users\\Thomas\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\appium.js:324:43)"}} | headers=HTTPHeaderDict({'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, PUT, OPTIONS, DELETE', 'Access-Control-Allow-Headers': 'Cache-Control, Pragma, Origin, X-Requested-With, Content-Type, Accept, User-Agent', 'Vary': 'X-HTTP-Method-Override', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '1373', 'ETag': 'W/"55d-86QkE5LErt09NiyyYw1YRSVYYC8"', 'Date': 'Thu, 26 Feb 2026 15:12:41 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=600'})
+2026-02-26 22:12:41,618 - DEBUG - Finished Request
+2026-02-26 22:12:41,619 - WARNING - Failed to clean notifications: Message: Could not find a connected Android device in 20000ms
+Stacktrace:
+UnknownError: Could not find a connected Android device in 20000ms
+    at getResponseForW3CError (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\errors.js:824:36)
+    at asyncHandler (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\protocol.js:402:77)
+The above error is caused by
+Error: Could not find a connected Android device in 20000ms
+    at ADB.getDevicesWithRetry (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-adb\build\lib\tools\system-calls.js:360:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.getDeviceInfoFromCaps (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\device\common.js:76:25)
+    at async AndroidUiautomator2Driver.createSession (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\build\lib\driver.js:211:38)
+    at async AppiumDriver.createSession (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\build\lib\appium.js:324:43)
+2026-02-26 22:12:41,620 - INFO - Clean Phone Notification
+2026-02-26 22:12:41,620 - INFO - Starting KBANK login flow. txn_id=1111
+2026-02-26 22:12:41,621 - DEBUG - Using proactor: IocpProactor
+2026-02-26 22:12:47,239 - INFO - Go to 'https://kbiz.kasikornbank.com/authen/login.jsp?lang=en' website.
+2026-02-26 22:12:56,849 - INFO - Processing payout started. txn_id=1111
+2026-02-26 22:13:06,336 - DEBUG - POST http://127.0.0.1:8021/session {'capabilities': {'firstMatch': [{}], 'alwaysMatch': {'appium:automationName': 'UiAutomator2', 'platformName': 'Android', 'appium:deviceName': 'androidtesting', 'appium:newCommandTimeout': 86400}}}
+2026-02-26 22:13:06,339 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8021
+2026-02-26 22:13:26,492 - DEBUG - http://127.0.0.1:8021 "POST /session HTTP/1.1" 500 0
+2026-02-26 22:13:26,493 - DEBUG - Remote response: status=500 | data={"value":{"error":"unknown error","message":"Could not find a connected Android device in 20000ms","stacktrace":"UnknownError: Could not find a connected Android device in 20000ms\n    at getResponseForW3CError (C:\\Users\\Thomas\\AppData\\Roaming\\npm\\node_modules\\appium\\node_modules\\@appium\\base-driver\\build\\lib\\protocol\\errors.js:824:36)\n    at asyncHandler (C:\\Users\\Thomas\\AppData\\Roaming\\npm\\node_modules\\appium\\node_modules\\@appium\\base-driver\\build\\lib\\protocol\\protocol.js:402:77)\nThe above error is caused by\nError: Could not find a connected Android device in 20000ms\n    at ADB.getDevicesWithRetry (C:\\Users\\Thomas\\.appium\\node_modules\\appium-uiautomator2-driver\\node_modules\\appium-adb\\build\\lib\\tools\\system-calls.js:360:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async AndroidUiautomator2Driver.getDeviceInfoFromCaps (C:\\Users\\Thomas\\.appium\\node_modules\\appium-uiautomator2-driver\\node_modules\\appium-android-driver\\build\\lib\\commands\\device\\common.js:76:25)\n    at async AndroidUiautomator2Driver.createSession (C:\\Users\\Thomas\\.appium\\node_modules\\appium-uiautomator2-driver\\build\\lib\\driver.js:211:38)\n    at async AppiumDriver.createSession (C:\\Users\\Thomas\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\appium.js:324:43)"}} | headers=HTTPHeaderDict({'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, PUT, OPTIONS, DELETE', 'Access-Control-Allow-Headers': 'Cache-Control, Pragma, Origin, X-Requested-With, Content-Type, Accept, User-Agent', 'Vary': 'X-HTTP-Method-Override', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '1373', 'ETag': 'W/"55d-86QkE5LErt09NiyyYw1YRSVYYC8"', 'Date': 'Thu, 26 Feb 2026 15:13:26 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=600'})
+2026-02-26 22:13:26,493 - DEBUG - Finished Request
+2026-02-26 22:13:26,533 - ERROR - MOBILE APP FAILED for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Samsung_2.6.py", line 367, in kbank_business_apps
+    driver = cls.use_appium_driver()
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Samsung_2.6.py", line 150, in use_appium_driver
+    APPIUM_DRIVER = webdriver.Remote("http://127.0.0.1:8021", options=options)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\appium\webdriver\webdriver.py", line 249, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        command_executor=command_executor,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        client_config=client_config,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 271, in __init__
+    self.start_session(capabilities)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\appium\webdriver\webdriver.py", line 342, in start_session
+    response = self.execute(RemoteCommand.NEW_SESSION, w3c_caps)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 446, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: Could not find a connected Android device in 20000ms
+Stacktrace:
+UnknownError: Could not find a connected Android device in 20000ms
+    at getResponseForW3CError (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\errors.js:824:36)
+    at asyncHandler (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\protocol.js:402:77)
+The above error is caused by
+Error: Could not find a connected Android device in 20000ms
+    at ADB.getDevicesWithRetry (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-adb\build\lib\tools\system-calls.js:360:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.getDeviceInfoFromCaps (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\device\common.js:76:25)
+    at async AndroidUiautomator2Driver.createSession (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\build\lib\driver.js:211:38)
+    at async AppiumDriver.createSession (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\build\lib\appium.js:324:43)
+
+2026-02-26 22:13:26,542 - ERROR - WITHDRAWAL FAILED for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Samsung_2.6.py", line 367, in kbank_business_apps
+    driver = cls.use_appium_driver()
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Samsung_2.6.py", line 150, in use_appium_driver
+    APPIUM_DRIVER = webdriver.Remote("http://127.0.0.1:8021", options=options)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\appium\webdriver\webdriver.py", line 249, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        command_executor=command_executor,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        client_config=client_config,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 271, in __init__
+    self.start_session(capabilities)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\appium\webdriver\webdriver.py", line 342, in start_session
+    response = self.execute(RemoteCommand.NEW_SESSION, w3c_caps)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 446, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: Could not find a connected Android device in 20000ms
+Stacktrace:
+UnknownError: Could not find a connected Android device in 20000ms
+    at getResponseForW3CError (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\errors.js:824:36)
+    at asyncHandler (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\protocol.js:402:77)
+The above error is caused by
+Error: Could not find a connected Android device in 20000ms
+    at ADB.getDevicesWithRetry (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-adb\build\lib\tools\system-calls.js:360:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.getDeviceInfoFromCaps (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\device\common.js:76:25)
+    at async AndroidUiautomator2Driver.createSession (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\build\lib\driver.js:211:38)
+    at async AppiumDriver.createSession (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\build\lib\appium.js:324:43)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Samsung_2.6.py", line 343, in kbank_withdrawal
+    cls.kbank_business_apps(data)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Samsung_2.6.py", line 658, in kbank_business_apps
+    raise Exception(f"Mobile app approval failed: {str(e)}")
+Exception: Mobile app approval failed: Message: Could not find a connected Android device in 20000ms
+Stacktrace:
+UnknownError: Could not find a connected Android device in 20000ms
+    at getResponseForW3CError (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\errors.js:824:36)
+    at asyncHandler (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\protocol.js:402:77)
+The above error is caused by
+Error: Could not find a connected Android device in 20000ms
+    at ADB.getDevicesWithRetry (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-adb\build\lib\tools\system-calls.js:360:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.getDeviceInfoFromCaps (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\device\common.js:76:25)
+    at async AndroidUiautomator2Driver.createSession (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\build\lib\driver.js:211:38)
+    at async AppiumDriver.createSession (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\build\lib\appium.js:324:43)
+
+2026-02-26 22:13:26,545 - ERROR - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Samsung_2.6.py", line 367, in kbank_business_apps
+    driver = cls.use_appium_driver()
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Samsung_2.6.py", line 150, in use_appium_driver
+    APPIUM_DRIVER = webdriver.Remote("http://127.0.0.1:8021", options=options)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\appium\webdriver\webdriver.py", line 249, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        command_executor=command_executor,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        client_config=client_config,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 271, in __init__
+    self.start_session(capabilities)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\appium\webdriver\webdriver.py", line 342, in start_session
+    response = self.execute(RemoteCommand.NEW_SESSION, w3c_caps)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 446, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: Could not find a connected Android device in 20000ms
+Stacktrace:
+UnknownError: Could not find a connected Android device in 20000ms
+    at getResponseForW3CError (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\errors.js:824:36)
+    at asyncHandler (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\protocol.js:402:77)
+The above error is caused by
+Error: Could not find a connected Android device in 20000ms
+    at ADB.getDevicesWithRetry (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-adb\build\lib\tools\system-calls.js:360:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.getDeviceInfoFromCaps (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\device\common.js:76:25)
+    at async AndroidUiautomator2Driver.createSession (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\build\lib\driver.js:211:38)
+    at async AppiumDriver.createSession (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\build\lib\appium.js:324:43)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Samsung_2.6.py", line 343, in kbank_withdrawal
+    cls.kbank_business_apps(data)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Samsung_2.6.py", line 658, in kbank_business_apps
+    raise Exception(f"Mobile app approval failed: {str(e)}")
+Exception: Mobile app approval failed: Message: Could not find a connected Android device in 20000ms
+Stacktrace:
+UnknownError: Could not find a connected Android device in 20000ms
+    at getResponseForW3CError (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\errors.js:824:36)
+    at asyncHandler (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\protocol.js:402:77)
+The above error is caused by
+Error: Could not find a connected Android device in 20000ms
+    at ADB.getDevicesWithRetry (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-adb\build\lib\tools\system-calls.js:360:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.getDeviceInfoFromCaps (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\device\common.js:76:25)
+    at async AndroidUiautomator2Driver.createSession (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\build\lib\driver.js:211:38)
+    at async AppiumDriver.createSession (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\build\lib\appium.js:324:43)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Samsung_2.6.py", line 776, in runPython
+    BankBot.kbank_withdrawal(page, data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Samsung_2.6.py", line 358, in kbank_withdrawal
+    raise Exception(f"Withdrawal failed: {str(e)}")
+Exception: Withdrawal failed: Mobile app approval failed: Message: Could not find a connected Android device in 20000ms
+Stacktrace:
+UnknownError: Could not find a connected Android device in 20000ms
+    at getResponseForW3CError (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\errors.js:824:36)
+    at asyncHandler (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\protocol.js:402:77)
+The above error is caused by
+Error: Could not find a connected Android device in 20000ms
+    at ADB.getDevicesWithRetry (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-adb\build\lib\tools\system-calls.js:360:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.getDeviceInfoFromCaps (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\device\common.js:76:25)
+    at async AndroidUiautomator2Driver.createSession (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\build\lib\driver.js:211:38)
+    at async AppiumDriver.createSession (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\build\lib\appium.js:324:43)
+
+----------------------------------------
+2026-02-26 22:13:54,519 - INFO - Logging started: ./logs\scb_payout.log
+2026-02-26 22:13:54,566 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://192.168.100.70:5004
+2026-02-26 22:13:54,566 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-26 22:13:57,902 - DEBUG - Starting new HTTP connection (1): localhost:9222
+2026-02-26 22:13:59,927 - DEBUG - http://localhost:9222 "GET /json HTTP/1.1" 200 1672
+2026-02-26 22:13:59,928 - INFO - Starting For Chrome Browser...
+2026-02-26 22:13:59,946 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8021
+2026-02-26 22:14:01,994 - DEBUG - http://127.0.0.1:8021 "GET /status HTTP/1.1" 200 110
+2026-02-26 22:14:01,996 - DEBUG - POST http://127.0.0.1:8021/session {'capabilities': {'firstMatch': [{}], 'alwaysMatch': {'appium:automationName': 'UiAutomator2', 'platformName': 'Android', 'appium:deviceName': 'androidtesting', 'appium:newCommandTimeout': 86400}}}
+2026-02-26 22:14:01,996 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8021
+2026-02-26 22:14:23,030 - DEBUG - http://127.0.0.1:8021 "POST /session HTTP/1.1" 500 0
+2026-02-26 22:14:23,031 - DEBUG - Remote response: status=500 | data={"value":{"error":"unknown error","message":"Appium Settings app is not running after 5000ms","stacktrace":"UnknownError: Appium Settings app is not running after 5000ms\n    at getResponseForW3CError (C:\\Users\\Thomas\\AppData\\Roaming\\npm\\node_modules\\appium\\node_modules\\@appium\\base-driver\\build\\lib\\protocol\\errors.js:824:36)\n    at asyncHandler (C:\\Users\\Thomas\\AppData\\Roaming\\npm\\node_modules\\appium\\node_modules\\@appium\\base-driver\\build\\lib\\protocol\\protocol.js:402:77)\nThe above error is caused by\nError: Appium Settings app is not running after 5000ms\n    at SettingsApp.requireRunning (C:\\Users\\Thomas\\.appium\\node_modules\\appium-uiautomator2-driver\\node_modules\\io.appium.settings\\build\\lib\\client.js:76:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async AndroidUiautomator2Driver.pushSettingsApp (C:\\Users\\Thomas\\.appium\\node_modules\\appium-uiautomator2-driver\\node_modules\\appium-android-driver\\build\\lib\\commands\\device\\utils.js:189:9)\n    at async AndroidUiautomator2Driver.initDevice (C:\\Users\\Thomas\\.appium\\node_modules\\appium-uiautomator2-driver\\node_modules\\appium-android-driver\\build\\lib\\commands\\device\\common.js:234:9)"}} | headers=HTTPHeaderDict({'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, PUT, OPTIONS, DELETE', 'Access-Control-Allow-Headers': 'Cache-Control, Pragma, Origin, X-Requested-With, Content-Type, Accept, User-Agent', 'Vary': 'X-HTTP-Method-Override', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '1263', 'ETag': 'W/"4ef-y6BPPss649NazVqZpbY2WFF3LCo"', 'Date': 'Thu, 26 Feb 2026 15:14:23 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=600'})
+2026-02-26 22:14:23,032 - DEBUG - Finished Request
+2026-02-26 22:14:23,032 - WARNING - Failed to clean notifications: Message: Appium Settings app is not running after 5000ms
+Stacktrace:
+UnknownError: Appium Settings app is not running after 5000ms
+    at getResponseForW3CError (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\errors.js:824:36)
+    at asyncHandler (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\protocol.js:402:77)
+The above error is caused by
+Error: Appium Settings app is not running after 5000ms
+    at SettingsApp.requireRunning (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\io.appium.settings\build\lib\client.js:76:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.pushSettingsApp (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\device\utils.js:189:9)
+    at async AndroidUiautomator2Driver.initDevice (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\device\common.js:234:9)
+2026-02-26 22:14:23,033 - INFO - Clean Phone Notification
+2026-02-26 22:14:23,033 - INFO - Starting KBANK login flow. txn_id=1111
+2026-02-26 22:14:23,034 - DEBUG - Using proactor: IocpProactor
+2026-02-26 22:14:28,095 - INFO - Go to 'https://kbiz.kasikornbank.com/authen/login.jsp?lang=en' website.
+2026-02-26 22:14:38,513 - INFO - Processing payout started. txn_id=1111
+2026-02-26 22:14:47,866 - DEBUG - POST http://127.0.0.1:8021/session {'capabilities': {'firstMatch': [{}], 'alwaysMatch': {'appium:automationName': 'UiAutomator2', 'platformName': 'Android', 'appium:deviceName': 'androidtesting', 'appium:newCommandTimeout': 86400}}}
+2026-02-26 22:14:47,868 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8021
+2026-02-26 22:14:53,779 - DEBUG - http://127.0.0.1:8021 "POST /session HTTP/1.1" 500 0
+2026-02-26 22:14:53,780 - DEBUG - Remote response: status=500 | data={"value":{"error":"unknown error","message":"Appium Settings app is not running after 5000ms","stacktrace":"UnknownError: Appium Settings app is not running after 5000ms\n    at getResponseForW3CError (C:\\Users\\Thomas\\AppData\\Roaming\\npm\\node_modules\\appium\\node_modules\\@appium\\base-driver\\build\\lib\\protocol\\errors.js:824:36)\n    at asyncHandler (C:\\Users\\Thomas\\AppData\\Roaming\\npm\\node_modules\\appium\\node_modules\\@appium\\base-driver\\build\\lib\\protocol\\protocol.js:402:77)\nThe above error is caused by\nError: Appium Settings app is not running after 5000ms\n    at SettingsApp.requireRunning (C:\\Users\\Thomas\\.appium\\node_modules\\appium-uiautomator2-driver\\node_modules\\io.appium.settings\\build\\lib\\client.js:76:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async AndroidUiautomator2Driver.pushSettingsApp (C:\\Users\\Thomas\\.appium\\node_modules\\appium-uiautomator2-driver\\node_modules\\appium-android-driver\\build\\lib\\commands\\device\\utils.js:189:9)\n    at async AndroidUiautomator2Driver.initDevice (C:\\Users\\Thomas\\.appium\\node_modules\\appium-uiautomator2-driver\\node_modules\\appium-android-driver\\build\\lib\\commands\\device\\common.js:234:9)"}} | headers=HTTPHeaderDict({'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, PUT, OPTIONS, DELETE', 'Access-Control-Allow-Headers': 'Cache-Control, Pragma, Origin, X-Requested-With, Content-Type, Accept, User-Agent', 'Vary': 'X-HTTP-Method-Override', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '1263', 'ETag': 'W/"4ef-y6BPPss649NazVqZpbY2WFF3LCo"', 'Date': 'Thu, 26 Feb 2026 15:14:53 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=600'})
+2026-02-26 22:14:53,781 - DEBUG - Finished Request
+2026-02-26 22:14:53,787 - ERROR - MOBILE APP FAILED for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Samsung_2.6.py", line 367, in kbank_business_apps
+    driver = cls.use_appium_driver()
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Samsung_2.6.py", line 150, in use_appium_driver
+    APPIUM_DRIVER = webdriver.Remote("http://127.0.0.1:8021", options=options)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\appium\webdriver\webdriver.py", line 249, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        command_executor=command_executor,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        client_config=client_config,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 271, in __init__
+    self.start_session(capabilities)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\appium\webdriver\webdriver.py", line 342, in start_session
+    response = self.execute(RemoteCommand.NEW_SESSION, w3c_caps)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 446, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: Appium Settings app is not running after 5000ms
+Stacktrace:
+UnknownError: Appium Settings app is not running after 5000ms
+    at getResponseForW3CError (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\errors.js:824:36)
+    at asyncHandler (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\protocol.js:402:77)
+The above error is caused by
+Error: Appium Settings app is not running after 5000ms
+    at SettingsApp.requireRunning (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\io.appium.settings\build\lib\client.js:76:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.pushSettingsApp (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\device\utils.js:189:9)
+    at async AndroidUiautomator2Driver.initDevice (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\device\common.js:234:9)
+
+2026-02-26 22:14:53,795 - ERROR - WITHDRAWAL FAILED for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Samsung_2.6.py", line 367, in kbank_business_apps
+    driver = cls.use_appium_driver()
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Samsung_2.6.py", line 150, in use_appium_driver
+    APPIUM_DRIVER = webdriver.Remote("http://127.0.0.1:8021", options=options)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\appium\webdriver\webdriver.py", line 249, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        command_executor=command_executor,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        client_config=client_config,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 271, in __init__
+    self.start_session(capabilities)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\appium\webdriver\webdriver.py", line 342, in start_session
+    response = self.execute(RemoteCommand.NEW_SESSION, w3c_caps)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 446, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: Appium Settings app is not running after 5000ms
+Stacktrace:
+UnknownError: Appium Settings app is not running after 5000ms
+    at getResponseForW3CError (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\errors.js:824:36)
+    at asyncHandler (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\protocol.js:402:77)
+The above error is caused by
+Error: Appium Settings app is not running after 5000ms
+    at SettingsApp.requireRunning (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\io.appium.settings\build\lib\client.js:76:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.pushSettingsApp (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\device\utils.js:189:9)
+    at async AndroidUiautomator2Driver.initDevice (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\device\common.js:234:9)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Samsung_2.6.py", line 343, in kbank_withdrawal
+    cls.kbank_business_apps(data)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Samsung_2.6.py", line 658, in kbank_business_apps
+    raise Exception(f"Mobile app approval failed: {str(e)}")
+Exception: Mobile app approval failed: Message: Appium Settings app is not running after 5000ms
+Stacktrace:
+UnknownError: Appium Settings app is not running after 5000ms
+    at getResponseForW3CError (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\errors.js:824:36)
+    at asyncHandler (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\protocol.js:402:77)
+The above error is caused by
+Error: Appium Settings app is not running after 5000ms
+    at SettingsApp.requireRunning (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\io.appium.settings\build\lib\client.js:76:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.pushSettingsApp (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\device\utils.js:189:9)
+    at async AndroidUiautomator2Driver.initDevice (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\device\common.js:234:9)
+
+2026-02-26 22:14:53,798 - ERROR - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Samsung_2.6.py", line 367, in kbank_business_apps
+    driver = cls.use_appium_driver()
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Samsung_2.6.py", line 150, in use_appium_driver
+    APPIUM_DRIVER = webdriver.Remote("http://127.0.0.1:8021", options=options)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\appium\webdriver\webdriver.py", line 249, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        command_executor=command_executor,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        client_config=client_config,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 271, in __init__
+    self.start_session(capabilities)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\appium\webdriver\webdriver.py", line 342, in start_session
+    response = self.execute(RemoteCommand.NEW_SESSION, w3c_caps)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 446, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: Appium Settings app is not running after 5000ms
+Stacktrace:
+UnknownError: Appium Settings app is not running after 5000ms
+    at getResponseForW3CError (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\errors.js:824:36)
+    at asyncHandler (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\protocol.js:402:77)
+The above error is caused by
+Error: Appium Settings app is not running after 5000ms
+    at SettingsApp.requireRunning (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\io.appium.settings\build\lib\client.js:76:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.pushSettingsApp (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\device\utils.js:189:9)
+    at async AndroidUiautomator2Driver.initDevice (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\device\common.js:234:9)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Samsung_2.6.py", line 343, in kbank_withdrawal
+    cls.kbank_business_apps(data)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Samsung_2.6.py", line 658, in kbank_business_apps
+    raise Exception(f"Mobile app approval failed: {str(e)}")
+Exception: Mobile app approval failed: Message: Appium Settings app is not running after 5000ms
+Stacktrace:
+UnknownError: Appium Settings app is not running after 5000ms
+    at getResponseForW3CError (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\errors.js:824:36)
+    at asyncHandler (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\protocol.js:402:77)
+The above error is caused by
+Error: Appium Settings app is not running after 5000ms
+    at SettingsApp.requireRunning (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\io.appium.settings\build\lib\client.js:76:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.pushSettingsApp (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\device\utils.js:189:9)
+    at async AndroidUiautomator2Driver.initDevice (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\device\common.js:234:9)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Samsung_2.6.py", line 776, in runPython
+    BankBot.kbank_withdrawal(page, data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\KBANK\kbank_apps_appium_Samsung_2.6.py", line 358, in kbank_withdrawal
+    raise Exception(f"Withdrawal failed: {str(e)}")
+Exception: Withdrawal failed: Mobile app approval failed: Message: Appium Settings app is not running after 5000ms
+Stacktrace:
+UnknownError: Appium Settings app is not running after 5000ms
+    at getResponseForW3CError (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\errors.js:824:36)
+    at asyncHandler (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\protocol.js:402:77)
+The above error is caused by
+Error: Appium Settings app is not running after 5000ms
+    at SettingsApp.requireRunning (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\io.appium.settings\build\lib\client.js:76:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.pushSettingsApp (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\device\utils.js:189:9)
+    at async AndroidUiautomator2Driver.initDevice (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\device\common.js:234:9)
+
+----------------------------------------

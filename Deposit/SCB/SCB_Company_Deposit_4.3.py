@@ -433,20 +433,27 @@ class Bank_Bot(Automation):
             page = context.new_page() 
             page.goto("https://www.scbbusinessanywhere.com/", wait_until="domcontentloaded")
 
-            # Update your Operating System - skipped as it was commented out in original code
-            # try:
-            #     expect(page.locator("//span[contains(text(),'Enter Site/เข้าสู่เว็บไซต์')]")).to_be_visible(timeout=3000)
-            #     page.locator("//span[contains(text(),'Enter Site/เข้าสู่เว็บไซต์')]").click(timeout=0)
-            # except:
-            #     pass
+            # Wait for Username appear
+            expect(page.locator("//input[@name='username']")).to_be_visible(timeout=0)
+
+            # if "For your online security.... apppear", click relogin
+            try:
+                expect(page.locator("//h2[contains(text(),'For your online security, you have been logged out')]")).to_be_visible(timeout=1500)
+                page.locator("//span[normalize-space()='OK']").click(timeout=0) 
+            except:
+                pass
             
-            # if Account already login, can skip
-            # For your online security, you have been logged out of SCB Business Anywhere (please log in again.)
-            
+            # Update your Operating System 
+            try:
+                expect(page.locator("//span[contains(text(),'Enter Site/เข้าสู่เว็บไซต์')]")).to_be_visible(timeout=1500)
+                page.locator("//span[contains(text(),'Enter Site/เข้าสู่เว็บไซต์')]").click(timeout=0)
+            except TimeoutError:
+                pass
+                
             # If Login Page is in Thai Language, change to English
             try:
                 # Wait up to 2s for Thai label to appear
-                page.wait_for_selector("//p[contains(text(),'คู่มือการใช้งาน')]",timeout=2000)
+                page.wait_for_selector("//p[contains(text(),'คู่มือการใช้งาน')]",timeout=1000)
 
                 # Click the change language dropdown menu
                 page.locator('[data-testid="languageDropdown"] [role="button"]').click()
@@ -456,20 +463,6 @@ class Bank_Bot(Automation):
             except:
                 pass
             
-            # if "For your online security.... apppear", click relogin
-            try:
-                expect(page.locator("//h2[contains(text(),'For your online security, you have been logged out')]")).to_be_visible(timeout=1500)
-                page.locator("//span[normalize-space()='OK']").click(timeout=0) 
-
-                # Update your Operating System
-                try:
-                    expect(page.locator("//span[contains(text(),'Enter Site/เข้าสู่เว็บไซต์')]")).to_be_visible(timeout=1500)
-                    page.locator("//span[contains(text(),'Enter Site/เข้าสู่เว็บไซต์')]").click(timeout=0)
-                except:
-                    pass
-            except:
-                pass
-
             # Fill "Username"
             page.locator("//input[@name='username']").fill(scb_web["username"], timeout=1000)
 
@@ -550,13 +543,20 @@ class Bank_Bot(Automation):
 
                         try:
                             # 1. Click 'OK' on the logout popup
-                            page.locator("//span[normalize-space()='OK']").click(timeout=0)
+                            page.locator("//span[normalize-space()='OK']").click(timeout=10000)
                         except:
                             pass
 
                         # 2. Re-run the login steps:
                         # Go to the home page (which should be the login page after logout)
                         page.goto("https://www.scbbusinessanywhere.com/", wait_until="domcontentloaded")
+
+                        # Update your Operating System - skipped as it was commented out in original code
+                        try:
+                            expect(page.locator("//span[contains(text(),'Enter Site/เข้าสู่เว็บไซต์')]")).to_be_visible(timeout=1500)
+                            page.locator("//span[contains(text(),'Enter Site/เข้าสู่เว็บไซต์')]").click(timeout=0)
+                        except:
+                            pass
 
                         # Wait for "Username" to appear and fill
                         username_input = page.locator("//input[@name='username']")
@@ -629,10 +629,10 @@ class Bank_Bot(Automation):
                     page.reload()
 
                     # Button Click "View Details"
-                    page.locator("//span[normalize-space()='View Details']").click(timeout=3000) 
+                    page.locator("//span[normalize-space()='View Details']").click(timeout=10000) 
 
-                    # Delay 10 seconds
-                    time.sleep(random.uniform(7,12))
+                    # Delay 30 seconds
+                    time.sleep(30)
 
                     # Print "Wait for incoming transaction ..."
                     print(f"\nWait for Incoming Transaction... [#{counter}]\n")

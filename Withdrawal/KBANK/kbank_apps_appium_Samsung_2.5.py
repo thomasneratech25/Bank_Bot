@@ -225,6 +225,16 @@ class BankBot(Automation):
             # Go to a webpage
             page.goto("https://kbiz.kasikornbank.com/authen/login.jsp?lang=en", wait_until="domcontentloaded")
 
+            # If "Sorry" Appear, Button click "Go to login Page"
+            try:
+                page.wait_for_selector("//span[normalize-space()='Sorry']", timeout=1500)
+                print("Your session has expired or you are signed in on another device. appeared")
+                
+                # Button Click "Go to login Page"
+                page.locator("//span[normalize-space()='Go to login page']").click()
+            except:
+                pass
+
             # if Account already login, can skip
             try: 
                 # Fill "User ID"
@@ -295,7 +305,7 @@ class BankBot(Automation):
                 page.locator("//div[@class='mfp-content']//span[contains(text(),'Confirm')]").click()
             except Exception:
                 pass
-
+            
             # Wait for "Confirm Transaction" appear
             try:
                 page.get_by_role("heading", name="Confirm Transaction").wait_for(timeout=3000)
@@ -331,6 +341,25 @@ class BankBot(Automation):
             # Call Appium driver
             driver = cls.use_appium_driver()
 
+            # The system cannot process this transaction
+            def error_unable_process_this_transaction():
+                try:
+                    # Wait up to 5 seconds for the "Close Application" button to appear.
+                    # We look directly for the button's accessibility id from your screenshot.
+                    close_button = WebDriverWait(driver, 0.5).until(
+                        EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Close Application"))
+                    )
+                    
+                    # IF it appears, this code will run:
+                    print("Error popup detected! Clicking 'Close Application'.")
+                    close_button.click()
+                      
+                except TimeoutException:
+                    # IF the button does NOT appear within 5 seconds, it throws a TimeoutException.
+                    # The 'except' block catches it, meaning the transaction was successful!
+                    print(f'No error - Sorry Unable to proceed. Proceeding normally...')
+                    pass
+
             # Enter Login Pin
             def enter_pin():
 
@@ -342,6 +371,8 @@ class BankBot(Automation):
                 for digit in pin:
                     digit_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, digit)))
                     digit_button.click()
+                    # "Sorry, Unable to proceed The system cannot proceed this transaction, please try again later.")
+                    error_unable_process_this_transaction()
 
             # Confirm Transaction
             def confirm_transaction():
@@ -357,8 +388,26 @@ class BankBot(Automation):
                     for _ in range(times):
                         driver.swipe(x, start_y, x, end_y, duration)
 
-                # Wait for "Confirm Transaction"
-                WebDriverWait(driver, 30).until(EC.presence_of_element_located((AppiumBy.XPATH, "//*[contains(@text,'Confirm Transaction')]")))
+                try:
+                    # Wait for "Confirm Transaction"
+                    WebDriverWait(driver, 20).until(EC.presence_of_element_located((AppiumBy.XPATH, "//*[contains(@text,'Confirm Transaction')]")))
+                except:
+                    # Kill apps
+                    print("Kill Kbank App")
+                    logging.info("Stopped Kbank App")
+                    driver.terminate_app("com.kasikornbank.kbiz")
+
+                    # Open back apps
+                    driver.activate_app("com.kasikornbank.kbiz")
+
+                    # Wait and click "Log In"
+                    WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Log in"))).click()
+
+                    # Enter Password
+                    enter_pin()
+
+                    # Confirm Transaction
+                    confirm_transaction()
 
                 # Scroll Down
                 scroll_down(driver)

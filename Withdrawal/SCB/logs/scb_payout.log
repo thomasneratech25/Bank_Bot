@@ -1,0 +1,1979 @@
+2026-02-26 09:25:39,634 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://10.0.0.253:5001
+2026-02-26 09:25:39,634 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-26 09:26:18,015 - ERROR - MOBILE APP FAILED for Transaction 8813:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 492, in scb_Anywhere_apps
+    driver = cls.use_appium_driver()
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 232, in use_appium_driver
+    APPIUM_DRIVER = webdriver.Remote("http://127.0.0.1:8021", options=options)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\appium\webdriver\webdriver.py", line 249, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        command_executor=command_executor,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        client_config=client_config,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 271, in __init__
+    self.start_session(capabilities)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\appium\webdriver\webdriver.py", line 342, in start_session
+    response = self.execute(RemoteCommand.NEW_SESSION, w3c_caps)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 446, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: Error getting device API level. Original error: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R7AY4042S7F shell getprop ro.build.version.sdk' exited with code 1'; Command output: adb.exe: device unauthorized.
+This adb server's $ADB_VENDOR_KEYS is not set
+Try 'adb kill-server' if that seems wrong.
+Otherwise check for a confirmation dialog on your device.
+
+Stacktrace:
+UnknownError: Error getting device API level. Original error: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R7AY4042S7F shell getprop ro.build.version.sdk' exited with code 1'; Command output: adb.exe: device unauthorized.
+This adb server's $ADB_VENDOR_KEYS is not set
+Try 'adb kill-server' if that seems wrong.
+Otherwise check for a confirmation dialog on your device.
+
+    at getResponseForW3CError (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\errors.js:824:36)
+    at asyncHandler (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\protocol.js:402:77)
+The above error is caused by
+Error: Error getting device API level. Original error: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R7AY4042S7F shell getprop ro.build.version.sdk' exited with code 1'; Command output: adb.exe: device unauthorized.
+This adb server's $ADB_VENDOR_KEYS is not set
+Try 'adb kill-server' if that seems wrong.
+Otherwise check for a confirmation dialog on your device.
+
+    at ADB.getApiLevel (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-adb\build\lib\tools\general-commands.js:101:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.deleteSession (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\build\lib\driver.js:693:18)
+    at async AndroidUiautomator2Driver.createSession (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\build\lib\driver.js:258:13)
+    at async AppiumDriver.createSession (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\build\lib\appium.js:324:43)
+
+2026-02-26 09:26:18,025 - ERROR - WITHDRAWAL FAILED for Transaction 8813:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 492, in scb_Anywhere_apps
+    driver = cls.use_appium_driver()
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 232, in use_appium_driver
+    APPIUM_DRIVER = webdriver.Remote("http://127.0.0.1:8021", options=options)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\appium\webdriver\webdriver.py", line 249, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        command_executor=command_executor,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        client_config=client_config,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 271, in __init__
+    self.start_session(capabilities)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\appium\webdriver\webdriver.py", line 342, in start_session
+    response = self.execute(RemoteCommand.NEW_SESSION, w3c_caps)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 446, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: Error getting device API level. Original error: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R7AY4042S7F shell getprop ro.build.version.sdk' exited with code 1'; Command output: adb.exe: device unauthorized.
+This adb server's $ADB_VENDOR_KEYS is not set
+Try 'adb kill-server' if that seems wrong.
+Otherwise check for a confirmation dialog on your device.
+
+Stacktrace:
+UnknownError: Error getting device API level. Original error: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R7AY4042S7F shell getprop ro.build.version.sdk' exited with code 1'; Command output: adb.exe: device unauthorized.
+This adb server's $ADB_VENDOR_KEYS is not set
+Try 'adb kill-server' if that seems wrong.
+Otherwise check for a confirmation dialog on your device.
+
+    at getResponseForW3CError (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\errors.js:824:36)
+    at asyncHandler (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\protocol.js:402:77)
+The above error is caused by
+Error: Error getting device API level. Original error: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R7AY4042S7F shell getprop ro.build.version.sdk' exited with code 1'; Command output: adb.exe: device unauthorized.
+This adb server's $ADB_VENDOR_KEYS is not set
+Try 'adb kill-server' if that seems wrong.
+Otherwise check for a confirmation dialog on your device.
+
+    at ADB.getApiLevel (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-adb\build\lib\tools\general-commands.js:101:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.deleteSession (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\build\lib\driver.js:693:18)
+    at async AndroidUiautomator2Driver.createSession (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\build\lib\driver.js:258:13)
+    at async AppiumDriver.createSession (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\build\lib\appium.js:324:43)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 459, in scb_withdrawal
+    BankBot.scb_Anywhere_apps(data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 605, in scb_Anywhere_apps
+    raise Exception(f"Mobile app approval failed: {str(e)}")
+Exception: Mobile app approval failed: Message: Error getting device API level. Original error: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R7AY4042S7F shell getprop ro.build.version.sdk' exited with code 1'; Command output: adb.exe: device unauthorized.
+This adb server's $ADB_VENDOR_KEYS is not set
+Try 'adb kill-server' if that seems wrong.
+Otherwise check for a confirmation dialog on your device.
+
+Stacktrace:
+UnknownError: Error getting device API level. Original error: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R7AY4042S7F shell getprop ro.build.version.sdk' exited with code 1'; Command output: adb.exe: device unauthorized.
+This adb server's $ADB_VENDOR_KEYS is not set
+Try 'adb kill-server' if that seems wrong.
+Otherwise check for a confirmation dialog on your device.
+
+    at getResponseForW3CError (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\errors.js:824:36)
+    at asyncHandler (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\protocol.js:402:77)
+The above error is caused by
+Error: Error getting device API level. Original error: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R7AY4042S7F shell getprop ro.build.version.sdk' exited with code 1'; Command output: adb.exe: device unauthorized.
+This adb server's $ADB_VENDOR_KEYS is not set
+Try 'adb kill-server' if that seems wrong.
+Otherwise check for a confirmation dialog on your device.
+
+    at ADB.getApiLevel (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-adb\build\lib\tools\general-commands.js:101:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.deleteSession (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\build\lib\driver.js:693:18)
+    at async AndroidUiautomator2Driver.createSession (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\build\lib\driver.js:258:13)
+    at async AppiumDriver.createSession (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\build\lib\appium.js:324:43)
+
+2026-02-26 09:26:18,035 - ERROR - CRITICAL ERROR for Transaction 8813:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 492, in scb_Anywhere_apps
+    driver = cls.use_appium_driver()
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 232, in use_appium_driver
+    APPIUM_DRIVER = webdriver.Remote("http://127.0.0.1:8021", options=options)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\appium\webdriver\webdriver.py", line 249, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        command_executor=command_executor,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        client_config=client_config,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 271, in __init__
+    self.start_session(capabilities)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\appium\webdriver\webdriver.py", line 342, in start_session
+    response = self.execute(RemoteCommand.NEW_SESSION, w3c_caps)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 446, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: Error getting device API level. Original error: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R7AY4042S7F shell getprop ro.build.version.sdk' exited with code 1'; Command output: adb.exe: device unauthorized.
+This adb server's $ADB_VENDOR_KEYS is not set
+Try 'adb kill-server' if that seems wrong.
+Otherwise check for a confirmation dialog on your device.
+
+Stacktrace:
+UnknownError: Error getting device API level. Original error: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R7AY4042S7F shell getprop ro.build.version.sdk' exited with code 1'; Command output: adb.exe: device unauthorized.
+This adb server's $ADB_VENDOR_KEYS is not set
+Try 'adb kill-server' if that seems wrong.
+Otherwise check for a confirmation dialog on your device.
+
+    at getResponseForW3CError (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\errors.js:824:36)
+    at asyncHandler (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\protocol.js:402:77)
+The above error is caused by
+Error: Error getting device API level. Original error: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R7AY4042S7F shell getprop ro.build.version.sdk' exited with code 1'; Command output: adb.exe: device unauthorized.
+This adb server's $ADB_VENDOR_KEYS is not set
+Try 'adb kill-server' if that seems wrong.
+Otherwise check for a confirmation dialog on your device.
+
+    at ADB.getApiLevel (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-adb\build\lib\tools\general-commands.js:101:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.deleteSession (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\build\lib\driver.js:693:18)
+    at async AndroidUiautomator2Driver.createSession (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\build\lib\driver.js:258:13)
+    at async AppiumDriver.createSession (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\build\lib\appium.js:324:43)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 459, in scb_withdrawal
+    BankBot.scb_Anywhere_apps(data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 605, in scb_Anywhere_apps
+    raise Exception(f"Mobile app approval failed: {str(e)}")
+Exception: Mobile app approval failed: Message: Error getting device API level. Original error: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R7AY4042S7F shell getprop ro.build.version.sdk' exited with code 1'; Command output: adb.exe: device unauthorized.
+This adb server's $ADB_VENDOR_KEYS is not set
+Try 'adb kill-server' if that seems wrong.
+Otherwise check for a confirmation dialog on your device.
+
+Stacktrace:
+UnknownError: Error getting device API level. Original error: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R7AY4042S7F shell getprop ro.build.version.sdk' exited with code 1'; Command output: adb.exe: device unauthorized.
+This adb server's $ADB_VENDOR_KEYS is not set
+Try 'adb kill-server' if that seems wrong.
+Otherwise check for a confirmation dialog on your device.
+
+    at getResponseForW3CError (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\errors.js:824:36)
+    at asyncHandler (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\protocol.js:402:77)
+The above error is caused by
+Error: Error getting device API level. Original error: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R7AY4042S7F shell getprop ro.build.version.sdk' exited with code 1'; Command output: adb.exe: device unauthorized.
+This adb server's $ADB_VENDOR_KEYS is not set
+Try 'adb kill-server' if that seems wrong.
+Otherwise check for a confirmation dialog on your device.
+
+    at ADB.getApiLevel (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-adb\build\lib\tools\general-commands.js:101:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.deleteSession (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\build\lib\driver.js:693:18)
+    at async AndroidUiautomator2Driver.createSession (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\build\lib\driver.js:258:13)
+    at async AppiumDriver.createSession (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\build\lib\appium.js:324:43)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 746, in runPython
+    transaction_id = worker.submit(process_withdrawal, data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 89, in submit
+    raise result["error"]
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 120, in _run
+    result["value"] = func(*args, **kwargs)
+                      ~~~~^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 731, in process_withdrawal
+    BankBot.scb_withdrawal(page, data)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 483, in scb_withdrawal
+    raise Exception(f"Withdrawal failed: {str(e)}")
+Exception: Withdrawal failed: Mobile app approval failed: Message: Error getting device API level. Original error: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R7AY4042S7F shell getprop ro.build.version.sdk' exited with code 1'; Command output: adb.exe: device unauthorized.
+This adb server's $ADB_VENDOR_KEYS is not set
+Try 'adb kill-server' if that seems wrong.
+Otherwise check for a confirmation dialog on your device.
+
+Stacktrace:
+UnknownError: Error getting device API level. Original error: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R7AY4042S7F shell getprop ro.build.version.sdk' exited with code 1'; Command output: adb.exe: device unauthorized.
+This adb server's $ADB_VENDOR_KEYS is not set
+Try 'adb kill-server' if that seems wrong.
+Otherwise check for a confirmation dialog on your device.
+
+    at getResponseForW3CError (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\errors.js:824:36)
+    at asyncHandler (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\protocol.js:402:77)
+The above error is caused by
+Error: Error getting device API level. Original error: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R7AY4042S7F shell getprop ro.build.version.sdk' exited with code 1'; Command output: adb.exe: device unauthorized.
+This adb server's $ADB_VENDOR_KEYS is not set
+Try 'adb kill-server' if that seems wrong.
+Otherwise check for a confirmation dialog on your device.
+
+    at ADB.getApiLevel (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-adb\build\lib\tools\general-commands.js:101:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.deleteSession (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\build\lib\driver.js:693:18)
+    at async AndroidUiautomator2Driver.createSession (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\build\lib\driver.js:258:13)
+    at async AppiumDriver.createSession (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\build\lib\appium.js:324:43)
+
+----------------------------------------
+2026-02-26 09:26:18,037 - INFO - 127.0.0.1 - - [26/Feb/2026 09:26:18] "[35m[1mPOST /scb_company_web/runPython HTTP/1.1[0m" 500 -
+2026-02-26 09:26:33,505 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://10.0.0.253:5001
+2026-02-26 09:26:33,505 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-26 09:28:25,174 - ERROR - MOBILE APP FAILED for Transaction 8813:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 592, in scb_Anywhere_apps
+    digit_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((AppiumBy.XPATH, f"//android.widget.TextView[@text='{digit}']")))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\support\wait.py", line 112, in until
+    value = method(self._driver)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 515, in _predicate
+    element = visibility_of(target)(driver)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 208, in _predicate
+    return _element_if_visible(element)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 223, in _element_if_visible
+    return element if element.is_displayed() == visibility else False
+                      ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\appium\webdriver\webelement.py", line 87, in is_displayed
+    return self._execute(Command.IS_ELEMENT_DISPLAYED)['value']
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 508, in _execute
+    return self._parent.execute(command, params)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 446, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\appium\webdriver\errorhandler.py", line 125, in check_response
+    raise exception_class(msg=message, stacktrace=format_stacktrace(stacktrace))
+selenium.common.exceptions.StaleElementReferenceException: Message: The element 'By.xpath: //android.widget.TextView[@text='5']' does not exist in DOM anymore; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#staleelementreferenceexception
+Stacktrace:
+io.appium.uiautomator2.common.exceptions.StaleElementReferenceException: The element 'By.xpath: //android.widget.TextView[@text='5']' does not exist in DOM anymore
+	at io.appium.uiautomator2.model.ElementsCache.restore(ElementsCache.java:117)
+	at io.appium.uiautomator2.model.ElementsCache.get(ElementsCache.java:153)
+	at io.appium.uiautomator2.handler.GetElementAttribute.safeHandle(GetElementAttribute.java:23)
+	at io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)
+	at io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:267)
+	at io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:261)
+	at io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:107)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)
+	at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:434)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:361)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:325)
+	at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:249)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:293)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1429)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:918)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:172)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445)
+	at io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388)
+	at io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596)
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571)
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512)
+	at io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484)
+	at io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)
+	at io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:1564)
+
+
+2026-02-26 09:28:25,179 - ERROR - WITHDRAWAL FAILED for Transaction 8813:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 592, in scb_Anywhere_apps
+    digit_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((AppiumBy.XPATH, f"//android.widget.TextView[@text='{digit}']")))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\support\wait.py", line 112, in until
+    value = method(self._driver)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 515, in _predicate
+    element = visibility_of(target)(driver)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 208, in _predicate
+    return _element_if_visible(element)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 223, in _element_if_visible
+    return element if element.is_displayed() == visibility else False
+                      ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\appium\webdriver\webelement.py", line 87, in is_displayed
+    return self._execute(Command.IS_ELEMENT_DISPLAYED)['value']
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 508, in _execute
+    return self._parent.execute(command, params)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 446, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\appium\webdriver\errorhandler.py", line 125, in check_response
+    raise exception_class(msg=message, stacktrace=format_stacktrace(stacktrace))
+selenium.common.exceptions.StaleElementReferenceException: Message: The element 'By.xpath: //android.widget.TextView[@text='5']' does not exist in DOM anymore; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#staleelementreferenceexception
+Stacktrace:
+io.appium.uiautomator2.common.exceptions.StaleElementReferenceException: The element 'By.xpath: //android.widget.TextView[@text='5']' does not exist in DOM anymore
+	at io.appium.uiautomator2.model.ElementsCache.restore(ElementsCache.java:117)
+	at io.appium.uiautomator2.model.ElementsCache.get(ElementsCache.java:153)
+	at io.appium.uiautomator2.handler.GetElementAttribute.safeHandle(GetElementAttribute.java:23)
+	at io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)
+	at io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:267)
+	at io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:261)
+	at io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:107)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)
+	at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:434)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:361)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:325)
+	at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:249)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:293)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1429)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:918)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:172)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445)
+	at io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388)
+	at io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596)
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571)
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512)
+	at io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484)
+	at io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)
+	at io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:1564)
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 459, in scb_withdrawal
+    BankBot.scb_Anywhere_apps(data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 605, in scb_Anywhere_apps
+    raise Exception(f"Mobile app approval failed: {str(e)}")
+Exception: Mobile app approval failed: Message: The element 'By.xpath: //android.widget.TextView[@text='5']' does not exist in DOM anymore; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#staleelementreferenceexception
+Stacktrace:
+io.appium.uiautomator2.common.exceptions.StaleElementReferenceException: The element 'By.xpath: //android.widget.TextView[@text='5']' does not exist in DOM anymore
+	at io.appium.uiautomator2.model.ElementsCache.restore(ElementsCache.java:117)
+	at io.appium.uiautomator2.model.ElementsCache.get(ElementsCache.java:153)
+	at io.appium.uiautomator2.handler.GetElementAttribute.safeHandle(GetElementAttribute.java:23)
+	at io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)
+	at io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:267)
+	at io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:261)
+	at io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:107)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)
+	at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:434)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:361)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:325)
+	at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:249)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:293)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1429)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:918)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:172)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445)
+	at io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388)
+	at io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596)
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571)
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512)
+	at io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484)
+	at io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)
+	at io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:1564)
+
+
+2026-02-26 09:28:25,186 - ERROR - CRITICAL ERROR for Transaction 8813:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 592, in scb_Anywhere_apps
+    digit_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((AppiumBy.XPATH, f"//android.widget.TextView[@text='{digit}']")))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\support\wait.py", line 112, in until
+    value = method(self._driver)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 515, in _predicate
+    element = visibility_of(target)(driver)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 208, in _predicate
+    return _element_if_visible(element)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 223, in _element_if_visible
+    return element if element.is_displayed() == visibility else False
+                      ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\appium\webdriver\webelement.py", line 87, in is_displayed
+    return self._execute(Command.IS_ELEMENT_DISPLAYED)['value']
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 508, in _execute
+    return self._parent.execute(command, params)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 446, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\appium\webdriver\errorhandler.py", line 125, in check_response
+    raise exception_class(msg=message, stacktrace=format_stacktrace(stacktrace))
+selenium.common.exceptions.StaleElementReferenceException: Message: The element 'By.xpath: //android.widget.TextView[@text='5']' does not exist in DOM anymore; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#staleelementreferenceexception
+Stacktrace:
+io.appium.uiautomator2.common.exceptions.StaleElementReferenceException: The element 'By.xpath: //android.widget.TextView[@text='5']' does not exist in DOM anymore
+	at io.appium.uiautomator2.model.ElementsCache.restore(ElementsCache.java:117)
+	at io.appium.uiautomator2.model.ElementsCache.get(ElementsCache.java:153)
+	at io.appium.uiautomator2.handler.GetElementAttribute.safeHandle(GetElementAttribute.java:23)
+	at io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)
+	at io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:267)
+	at io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:261)
+	at io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:107)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)
+	at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:434)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:361)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:325)
+	at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:249)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:293)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1429)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:918)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:172)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445)
+	at io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388)
+	at io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596)
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571)
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512)
+	at io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484)
+	at io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)
+	at io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:1564)
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 459, in scb_withdrawal
+    BankBot.scb_Anywhere_apps(data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 605, in scb_Anywhere_apps
+    raise Exception(f"Mobile app approval failed: {str(e)}")
+Exception: Mobile app approval failed: Message: The element 'By.xpath: //android.widget.TextView[@text='5']' does not exist in DOM anymore; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#staleelementreferenceexception
+Stacktrace:
+io.appium.uiautomator2.common.exceptions.StaleElementReferenceException: The element 'By.xpath: //android.widget.TextView[@text='5']' does not exist in DOM anymore
+	at io.appium.uiautomator2.model.ElementsCache.restore(ElementsCache.java:117)
+	at io.appium.uiautomator2.model.ElementsCache.get(ElementsCache.java:153)
+	at io.appium.uiautomator2.handler.GetElementAttribute.safeHandle(GetElementAttribute.java:23)
+	at io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)
+	at io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:267)
+	at io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:261)
+	at io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:107)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)
+	at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:434)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:361)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:325)
+	at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:249)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:293)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1429)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:918)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:172)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445)
+	at io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388)
+	at io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596)
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571)
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512)
+	at io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484)
+	at io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)
+	at io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:1564)
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 746, in runPython
+    transaction_id = worker.submit(process_withdrawal, data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 89, in submit
+    raise result["error"]
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 120, in _run
+    result["value"] = func(*args, **kwargs)
+                      ~~~~^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 731, in process_withdrawal
+    BankBot.scb_withdrawal(page, data)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 483, in scb_withdrawal
+    raise Exception(f"Withdrawal failed: {str(e)}")
+Exception: Withdrawal failed: Mobile app approval failed: Message: The element 'By.xpath: //android.widget.TextView[@text='5']' does not exist in DOM anymore; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#staleelementreferenceexception
+Stacktrace:
+io.appium.uiautomator2.common.exceptions.StaleElementReferenceException: The element 'By.xpath: //android.widget.TextView[@text='5']' does not exist in DOM anymore
+	at io.appium.uiautomator2.model.ElementsCache.restore(ElementsCache.java:117)
+	at io.appium.uiautomator2.model.ElementsCache.get(ElementsCache.java:153)
+	at io.appium.uiautomator2.handler.GetElementAttribute.safeHandle(GetElementAttribute.java:23)
+	at io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)
+	at io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:267)
+	at io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:261)
+	at io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:107)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)
+	at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:434)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:361)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:325)
+	at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:249)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:293)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1429)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:918)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:172)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445)
+	at io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388)
+	at io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596)
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571)
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512)
+	at io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484)
+	at io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)
+	at io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:1564)
+
+
+----------------------------------------
+2026-02-26 09:28:25,188 - INFO - 127.0.0.1 - - [26/Feb/2026 09:28:25] "[35m[1mPOST /scb_company_web/runPython HTTP/1.1[0m" 500 -
+2026-02-26 10:37:04,713 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://10.0.0.253:5001
+2026-02-26 10:37:04,713 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-26 10:37:23,194 - ERROR - LOGIN FAILED for Transaction 8813:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 363, in scb_login
+    page.locator("//p[normalize-space()='Transfers']").click(timeout=0)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 15631, in click
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.click(
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_locator.py", line 162, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 566, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.click: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("//p[normalize-space()='Transfers']")
+
+
+2026-02-26 10:37:23,198 - ERROR - CRITICAL ERROR for Transaction 8813:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 363, in scb_login
+    page.locator("//p[normalize-space()='Transfers']").click(timeout=0)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 15631, in click
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.click(
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_locator.py", line 162, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 566, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.click: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("//p[normalize-space()='Transfers']")
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 746, in runPython
+    transaction_id = worker.submit(process_withdrawal, data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 89, in submit
+    raise result["error"]
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 120, in _run
+    result["value"] = func(*args, **kwargs)
+                      ~~~~^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 728, in process_withdrawal
+    page = BankBot.scb_login(data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 377, in scb_login
+    raise Exception(f"Login failed at step: {str(e)}")
+Exception: Login failed at step: Locator.click: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("//p[normalize-space()='Transfers']")
+
+
+----------------------------------------
+2026-02-26 10:37:23,199 - INFO - 127.0.0.1 - - [26/Feb/2026 10:37:23] "[35m[1mPOST /scb_company_web/runPython HTTP/1.1[0m" 500 -
+2026-02-26 10:40:40,593 - ERROR - Idle cleanup failed:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 109, in _run
+    item = self.queue.get(timeout=timeout)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\queue.py", line 209, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 135, in _idle_logout
+    BankBot.scb_kill_apps(APPIUM_DRIVER)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 635, in scb_kill_apps
+    driver = cls.use_appium_driver()
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 232, in use_appium_driver
+    APPIUM_DRIVER = webdriver.Remote("http://127.0.0.1:8021", options=options)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\appium\webdriver\webdriver.py", line 249, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        command_executor=command_executor,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        client_config=client_config,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 271, in __init__
+    self.start_session(capabilities)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\appium\webdriver\webdriver.py", line 342, in start_session
+    response = self.execute(RemoteCommand.NEW_SESSION, w3c_caps)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 446, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: Could not find a connected Android device in 20000ms
+Stacktrace:
+UnknownError: Could not find a connected Android device in 20000ms
+    at getResponseForW3CError (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\errors.js:824:36)
+    at asyncHandler (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\protocol.js:402:77)
+The above error is caused by
+Error: Could not find a connected Android device in 20000ms
+    at ADB.getDevicesWithRetry (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-adb\build\lib\tools\system-calls.js:360:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.getDeviceInfoFromCaps (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\device\common.js:76:25)
+    at async AndroidUiautomator2Driver.createSession (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\build\lib\driver.js:211:38)
+    at async AppiumDriver.createSession (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\build\lib\appium.js:324:43)
+
+2026-02-26 10:43:54,831 - ERROR - Idle cleanup failed:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 109, in _run
+    item = self.queue.get(timeout=timeout)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\queue.py", line 209, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 135, in _idle_logout
+    BankBot.scb_kill_apps(APPIUM_DRIVER)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 635, in scb_kill_apps
+    driver = cls.use_appium_driver()
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 232, in use_appium_driver
+    APPIUM_DRIVER = webdriver.Remote("http://127.0.0.1:8021", options=options)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\appium\webdriver\webdriver.py", line 249, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        command_executor=command_executor,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        client_config=client_config,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 271, in __init__
+    self.start_session(capabilities)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\appium\webdriver\webdriver.py", line 342, in start_session
+    response = self.execute(RemoteCommand.NEW_SESSION, w3c_caps)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 446, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: Could not find a connected Android device in 20000ms
+Stacktrace:
+UnknownError: Could not find a connected Android device in 20000ms
+    at getResponseForW3CError (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\errors.js:824:36)
+    at asyncHandler (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\protocol.js:402:77)
+The above error is caused by
+Error: Could not find a connected Android device in 20000ms
+    at ADB.getDevicesWithRetry (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-adb\build\lib\tools\system-calls.js:360:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.getDeviceInfoFromCaps (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\device\common.js:76:25)
+    at async AndroidUiautomator2Driver.createSession (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\build\lib\driver.js:211:38)
+    at async AppiumDriver.createSession (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\build\lib\appium.js:324:43)
+
+2026-02-26 10:47:09,076 - ERROR - Idle cleanup failed:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 109, in _run
+    item = self.queue.get(timeout=timeout)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\queue.py", line 209, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 135, in _idle_logout
+    BankBot.scb_kill_apps(APPIUM_DRIVER)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 635, in scb_kill_apps
+    driver = cls.use_appium_driver()
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 232, in use_appium_driver
+    APPIUM_DRIVER = webdriver.Remote("http://127.0.0.1:8021", options=options)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\appium\webdriver\webdriver.py", line 249, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        command_executor=command_executor,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        client_config=client_config,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 271, in __init__
+    self.start_session(capabilities)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\appium\webdriver\webdriver.py", line 342, in start_session
+    response = self.execute(RemoteCommand.NEW_SESSION, w3c_caps)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 446, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: Could not find a connected Android device in 20000ms
+Stacktrace:
+UnknownError: Could not find a connected Android device in 20000ms
+    at getResponseForW3CError (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\errors.js:824:36)
+    at asyncHandler (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\protocol.js:402:77)
+The above error is caused by
+Error: Could not find a connected Android device in 20000ms
+    at ADB.getDevicesWithRetry (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-adb\build\lib\tools\system-calls.js:360:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.getDeviceInfoFromCaps (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\device\common.js:76:25)
+    at async AndroidUiautomator2Driver.createSession (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\build\lib\driver.js:211:38)
+    at async AppiumDriver.createSession (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\build\lib\appium.js:324:43)
+
+2026-02-26 11:07:30,976 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://10.0.0.253:5001
+2026-02-26 11:07:30,976 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-26 11:07:43,771 - ERROR - LOGIN FAILED for Transaction 8813:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 363, in scb_login
+    page.locator("//p[normalize-space()='Transfers']").click(timeout=0)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 15631, in click
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.click(
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_locator.py", line 162, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 566, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.click: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("//p[normalize-space()='Transfers']")
+
+
+2026-02-26 11:07:43,775 - ERROR - CRITICAL ERROR for Transaction 8813:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 363, in scb_login
+    page.locator("//p[normalize-space()='Transfers']").click(timeout=0)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 15631, in click
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.click(
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_locator.py", line 162, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 566, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.click: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("//p[normalize-space()='Transfers']")
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 746, in runPython
+    transaction_id = worker.submit(process_withdrawal, data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 89, in submit
+    raise result["error"]
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 120, in _run
+    result["value"] = func(*args, **kwargs)
+                      ~~~~^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 728, in process_withdrawal
+    page = BankBot.scb_login(data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 377, in scb_login
+    raise Exception(f"Login failed at step: {str(e)}")
+Exception: Login failed at step: Locator.click: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("//p[normalize-space()='Transfers']")
+
+
+----------------------------------------
+2026-02-26 11:07:43,776 - INFO - 127.0.0.1 - - [26/Feb/2026 11:07:43] "[35m[1mPOST /scb_company_web/runPython HTTP/1.1[0m" 500 -
+2026-02-26 11:07:50,650 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://10.0.0.253:5001
+2026-02-26 11:07:50,650 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-26 11:08:02,310 - ERROR - LOGIN FAILED for Transaction 8813:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 361, in scb_login
+    if not page.locator("//input[@name='username']").is_visible():
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 17297, in is_visible
+    self._sync(self._impl_obj.is_visible(timeout=timeout))
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_locator.py", line 531, in is_visible
+    return await self._frame.is_visible(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 408, in is_visible
+    return await self._channel.send(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+        "isVisible", self._timeout, locals_to_params(locals())
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.is_visible: Target page, context or browser has been closed
+
+2026-02-26 11:08:02,312 - ERROR - CRITICAL ERROR for Transaction 8813:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 361, in scb_login
+    if not page.locator("//input[@name='username']").is_visible():
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 17297, in is_visible
+    self._sync(self._impl_obj.is_visible(timeout=timeout))
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_locator.py", line 531, in is_visible
+    return await self._frame.is_visible(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 408, in is_visible
+    return await self._channel.send(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+        "isVisible", self._timeout, locals_to_params(locals())
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.is_visible: Target page, context or browser has been closed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 746, in runPython
+    transaction_id = worker.submit(process_withdrawal, data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 89, in submit
+    raise result["error"]
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 120, in _run
+    result["value"] = func(*args, **kwargs)
+                      ~~~~^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 728, in process_withdrawal
+    page = BankBot.scb_login(data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.28.py", line 377, in scb_login
+    raise Exception(f"Login failed at step: {str(e)}")
+Exception: Login failed at step: Locator.is_visible: Target page, context or browser has been closed
+
+----------------------------------------
+2026-02-26 11:08:02,313 - INFO - 127.0.0.1 - - [26/Feb/2026 11:08:02] "[35m[1mPOST /scb_company_web/runPython HTTP/1.1[0m" 500 -
+2026-02-27 11:12:34,671 - INFO - KBANK_BOT__Samsung_Logger - Logging started: ./logs\SCB_Payout.log
+2026-02-27 11:12:34,675 - INFO - root - 🚀 SCB Local API started
+2026-02-27 11:12:34,719 - INFO - KBANK_BOT__Samsung_Logger - WS client started with PID 25488
+2026-02-27 11:12:34,734 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://10.0.0.253:5001
+2026-02-27 11:12:34,735 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-02-27 11:12:43,735 - INFO - KBANK_BOT__Samsung_Logger - Starting SCB login flow. txn_id=8813
+2026-02-27 11:12:43,750 - DEBUG - urllib3.connectionpool - Starting new HTTP connection (1): localhost:9222
+2026-02-27 11:12:45,787 - DEBUG - urllib3.connectionpool - http://localhost:9222 "GET /json HTTP/1.1" 200 1672
+2026-02-27 11:12:45,789 - INFO - KBANK_BOT__Samsung_Logger - Starting Playwright instance. txn_id=8813
+2026-02-27 11:12:45,790 - DEBUG - asyncio - Using proactor: IocpProactor
+2026-02-27 11:12:46,804 - INFO - KBANK_BOT__Samsung_Logger - Browser context ready. txn_id=8813
+2026-02-27 11:12:52,399 - INFO - KBANK_BOT__Samsung_Logger - Navigating to SCB_Businesss login page. txn_id=8813
+2026-02-27 11:12:52,456 - INFO - KBANK_BOT__Samsung_Logger - Wait for Username appear. txn_id=8813
+2026-02-27 11:12:53,144 - ERROR - root - LOGIN FAILED for Transaction 8813:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.29.py", line 411, in scb_login
+    if not page.locator("//input[@name='username']").is_visible():
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 17297, in is_visible
+    self._sync(self._impl_obj.is_visible(timeout=timeout))
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_locator.py", line 531, in is_visible
+    return await self._frame.is_visible(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 408, in is_visible
+    return await self._channel.send(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+        "isVisible", self._timeout, locals_to_params(locals())
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.is_visible: Target page, context or browser has been closed
+
+2026-02-27 11:12:53,149 - ERROR - root - CRITICAL ERROR for Transaction 8813:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.29.py", line 411, in scb_login
+    if not page.locator("//input[@name='username']").is_visible():
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 17297, in is_visible
+    self._sync(self._impl_obj.is_visible(timeout=timeout))
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_locator.py", line 531, in is_visible
+    return await self._frame.is_visible(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 408, in is_visible
+    return await self._channel.send(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+        "isVisible", self._timeout, locals_to_params(locals())
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.is_visible: Target page, context or browser has been closed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.29.py", line 838, in runPython
+    transaction_id = worker.submit(process_withdrawal, data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.29.py", line 105, in submit
+    raise result["error"]
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.29.py", line 136, in _run
+    result["value"] = func(*args, **kwargs)
+                      ~~~~^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.29.py", line 820, in process_withdrawal
+    page = BankBot.scb_login(data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.29.py", line 428, in scb_login
+    raise Exception(f"Login failed at step: {str(e)}")
+Exception: Login failed at step: Locator.is_visible: Target page, context or browser has been closed
+
+----------------------------------------
+2026-02-27 11:12:53,151 - INFO - werkzeug - 127.0.0.1 - - [27/Feb/2026 11:12:53] "[35m[1mPOST /scb_company_web/runPython HTTP/1.1[0m" 500 -
+2026-02-27 11:13:13,246 - INFO - SCB_BOT_Logger - Logging started: ./logs\SCB_Payout.log
+2026-02-27 11:13:13,248 - INFO - root - 🚀 SCB Local API started
+2026-02-27 11:13:13,262 - INFO - SCB_BOT_Logger - WS client started with PID 28480
+2026-02-27 11:13:13,273 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://10.0.0.253:5001
+2026-02-27 11:13:13,273 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-02-27 11:13:21,349 - INFO - SCB_BOT_Logger - Logging started: ./logs\SCB_Payout.log
+2026-02-27 11:13:21,352 - INFO - root - 🚀 SCB Local API started
+2026-02-27 11:13:21,366 - INFO - SCB_BOT_Logger - WS client started with PID 9124
+2026-02-27 11:13:21,377 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://10.0.0.253:5001
+2026-02-27 11:13:21,377 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-02-27 11:13:23,186 - INFO - SCB_BOT_Logger - Starting SCB login flow. txn_id=8813
+2026-02-27 11:13:25,230 - INFO - SCB_BOT_Logger - Starting Playwright instance. txn_id=8813
+2026-02-27 11:13:26,025 - INFO - SCB_BOT_Logger - Browser context ready. txn_id=8813
+2026-02-27 11:13:28,828 - INFO - SCB_BOT_Logger - Navigating to SCB_Businesss login page. txn_id=8813
+2026-02-27 11:13:28,886 - INFO - SCB_BOT_Logger - Wait for Username appear. txn_id=8813
+2026-02-27 11:13:30,468 - INFO - SCB_BOT_Logger - Update SCB Apps, Click Enter Site to continue... txn_id=8813
+2026-02-27 11:13:30,490 - INFO - SCB_BOT_Logger - Fill Account Username.. txn_id=8813
+2026-02-27 11:13:30,538 - INFO - SCB_BOT_Logger - Click Next.. txn_id=8813
+2026-02-27 11:13:31,883 - INFO - SCB_BOT_Logger - Fill Account Password.. txn_id=8813
+2026-02-27 11:13:31,938 - INFO - SCB_BOT_Logger - Click Next.. txn_id=8813
+2026-02-27 11:13:36,989 - INFO - SCB_BOT_Logger - Click to Transfer Page... txn_id=8813
+2026-02-27 11:13:36,990 - INFO - root - Processing 8813
+2026-02-27 11:13:36,990 - INFO - SCB_BOT_Logger - Starting SCB Withdrawal flow. txn_id=8813
+2026-02-27 11:13:39,858 - INFO - SCB_BOT_Logger - Click Add New Recipient... txn_id=8813
+2026-02-27 11:13:39,932 - INFO - SCB_BOT_Logger - Fill and Select Bank Name/Code Krungsri, txn_id=8813
+2026-02-27 11:13:39,961 - INFO - SCB_BOT_Logger - Fill in Account Number 2651424765, txn_id=8813
+2026-02-27 11:13:40,030 - INFO - SCB_BOT_Logger - Button Click Next ... txn_id=8813
+2026-02-27 11:13:40,897 - INFO - SCB_BOT_Logger - Waiting for Recipient Details Appear ... txn_id=8813
+2026-02-27 11:13:43,188 - ERROR - root - WITHDRAWAL FAILED for Transaction 8813:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.29.py", line 470, in scb_withdrawal
+    page.locator("//span[normalize-space()='Confirm']").click(timeout=0)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 15631, in click
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.click(
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_locator.py", line 162, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 566, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.click: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("//span[normalize-space()='Confirm']")
+
+
+2026-02-27 11:13:43,195 - ERROR - root - CRITICAL ERROR for Transaction 8813:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.29.py", line 470, in scb_withdrawal
+    page.locator("//span[normalize-space()='Confirm']").click(timeout=0)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 15631, in click
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.click(
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_locator.py", line 162, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 566, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.click: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("//span[normalize-space()='Confirm']")
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.29.py", line 838, in runPython
+    transaction_id = worker.submit(process_withdrawal, data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.29.py", line 105, in submit
+    raise result["error"]
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.29.py", line 136, in _run
+    result["value"] = func(*args, **kwargs)
+                      ~~~~^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.29.py", line 823, in process_withdrawal
+    BankBot.scb_withdrawal(page, data)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.29.py", line 560, in scb_withdrawal
+    raise Exception(f"Withdrawal failed: {str(e)}")
+Exception: Withdrawal failed: Locator.click: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("//span[normalize-space()='Confirm']")
+
+
+----------------------------------------
+2026-02-27 11:13:43,199 - INFO - werkzeug - 127.0.0.1 - - [27/Feb/2026 11:13:43] "[35m[1mPOST /scb_company_web/runPython HTTP/1.1[0m" 500 -
+2026-02-27 11:13:57,690 - INFO - SCB_BOT_Logger - Logging started: ./logs\SCB_Payout.log
+2026-02-27 11:13:57,692 - INFO - root - 🚀 SCB Local API started
+2026-02-27 11:13:57,714 - INFO - SCB_BOT_Logger - WS client started with PID 25380
+2026-02-27 11:13:57,724 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://10.0.0.253:5001
+2026-02-27 11:13:57,724 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-02-27 11:15:29,148 - INFO - SCB_BOT_Logger - Starting SCB login flow. txn_id=8813
+2026-02-27 11:15:31,211 - INFO - SCB_BOT_Logger - Starting Playwright instance. txn_id=8813
+2026-02-27 11:15:32,193 - INFO - SCB_BOT_Logger - Browser context ready. txn_id=8813
+2026-02-27 11:15:39,159 - INFO - SCB_BOT_Logger - Navigating to SCB_Businesss login page. txn_id=8813
+2026-02-27 11:15:39,209 - INFO - SCB_BOT_Logger - Wait for Username appear. txn_id=8813
+2026-02-27 11:15:40,796 - INFO - SCB_BOT_Logger - Update SCB Apps, Click Enter Site to continue... txn_id=8813
+2026-02-27 11:15:40,817 - INFO - SCB_BOT_Logger - Fill Account Username.. txn_id=8813
+2026-02-27 11:15:40,877 - INFO - SCB_BOT_Logger - Click Next.. txn_id=8813
+2026-02-27 11:15:42,262 - INFO - SCB_BOT_Logger - Fill Account Password.. txn_id=8813
+2026-02-27 11:15:42,334 - INFO - SCB_BOT_Logger - Click Next.. txn_id=8813
+2026-02-27 11:15:47,423 - INFO - SCB_BOT_Logger - Click to Transfer Page... txn_id=8813
+2026-02-27 11:15:47,424 - INFO - root - Processing 8813
+2026-02-27 11:15:47,424 - INFO - SCB_BOT_Logger - Starting SCB Withdrawal flow. txn_id=8813
+2026-02-27 11:15:50,524 - INFO - SCB_BOT_Logger - Click Add New Recipient... txn_id=8813
+2026-02-27 11:15:50,578 - INFO - SCB_BOT_Logger - Fill and Select Bank Name/Code Krungthai, txn_id=8813
+2026-02-27 11:15:50,596 - INFO - SCB_BOT_Logger - Fill in Account Number 2600319026, txn_id=8813
+2026-02-27 11:15:50,660 - INFO - SCB_BOT_Logger - Button Click Next ... txn_id=8813
+2026-02-27 11:15:51,513 - INFO - SCB_BOT_Logger - Waiting for Recipient Details Appear ... txn_id=8813
+2026-02-27 11:15:53,592 - INFO - SCB_BOT_Logger - Click Confirm ... txn_id=8813
+2026-02-27 11:15:55,910 - INFO - SCB_BOT_Logger - Click Next ... txn_id=8813
+2026-02-27 11:15:55,931 - INFO - SCB_BOT_Logger - Fill in Amount ... txn_id=8813
+2026-02-27 11:15:55,970 - INFO - SCB_BOT_Logger - Press Enter ... txn_id=8813
+2026-02-27 11:15:56,041 - INFO - SCB_BOT_Logger - Continue to Transfer ... txn_id=8813
+2026-02-27 11:15:57,551 - INFO - SCB_BOT_Logger - Sufficient Balance... Continue...
+2026-02-27 11:15:58,579 - INFO - SCB_BOT_Logger - Click Skip to Review Information ... txn_id=8813
+2026-02-27 11:15:59,959 - INFO - SCB_BOT_Logger - Wating for Review Information appear ... txn_id=8813
+2026-02-27 11:15:59,965 - INFO - SCB_BOT_Logger - Scroll down to the Bottom ... txn_id=8813
+2026-02-27 11:16:00,960 - INFO - SCB_BOT_Logger - Click Submit Button ... txn_id=8813
+2026-02-27 11:16:01,026 - INFO - SCB_BOT_Logger - Button Click OK ... txn_id=8813
+2026-02-27 11:16:03,426 - INFO - SCB_BOT_Logger - Wait for 'Please authorize transaction(s) within 5 minutes' ... txn_id=8813
+2026-02-27 11:16:03,426 - INFO - SCB_BOT_Logger - Starting SCB View Request Confirm Transaction flow. txn_id=8813
+2026-02-27 11:16:03,427 - INFO - SCB_BOT_Logger - Preparing Appium driver
+2026-02-27 11:16:03,427 - INFO - SCB_BOT_Logger - Reusing existing Appium driver session
+2026-02-27 11:16:03,440 - INFO - SCB_BOT_Logger - Appium process started with PID 20860
+2026-02-27 11:16:06,500 - INFO - SCB_BOT_Logger - Appium server is ready (attempt 2/10)
+2026-02-27 11:16:10,754 - INFO - SCB_BOT_Logger - Start Appium Driver... txn_id=8813
+2026-02-27 11:16:11,093 - INFO - SCB_BOT_Logger - App in background → activating. txn_id=8813
+2026-02-27 11:16:16,360 - INFO - SCB_BOT_Logger - Enter PIN Appear... txn_id=8813
+2026-02-27 11:16:52,255 - INFO - SCB_BOT_Logger - Successful to Approve Transfer Request!!! txn_id=8813
+2026-02-27 11:16:52,330 - INFO - SCB_BOT_Logger - Click Done... txn_id=8813
+2026-02-27 11:16:52,850 - INFO - SCB_BOT_Logger - Waiting for You have successfully submitted the transaction re... txn_id=8813
+2026-02-27 11:16:54,869 - INFO - root - Raw string to hash: bankCode=SCB Company Web&deviceId=2312&merchantCode=IBS&transactionId=8813PRODBankBotIsTheBest
+2026-02-27 11:16:54,869 - INFO - root - MD5 Hash: 07ebc75c771c6cd9c9f95b66a3d7b27c
+2026-02-27 11:16:54,870 - INFO - root - Response: {"code":"100001","msg":"[bankCode Invalid bank code] ","data":null}
+2026-02-27 11:16:54,993 - INFO - SCB_BOT_Logger - Button click Make New Transfer to wait for next withdrawal transaction request...
+2026-02-27 11:16:54,994 - INFO - root - Done 8813
+2026-02-27 11:16:54,996 - INFO - werkzeug - 127.0.0.1 - - [27/Feb/2026 11:16:54] "POST /scb_company_web/runPython HTTP/1.1" 200 -
+2026-02-27 11:17:15,533 - INFO - SCB_BOT_Logger - Starting SCB login flow. txn_id=8813
+2026-02-27 11:17:15,534 - INFO - SCB_BOT_Logger - Reusing Playwright instance. txn_id=8813
+2026-02-27 11:17:15,534 - INFO - SCB_BOT_Logger - Browser context ready. txn_id=8813
+2026-02-27 11:17:15,534 - INFO - SCB_BOT_Logger - Reusing existing browser page. txn_id=8813
+2026-02-27 11:17:22,123 - INFO - SCB_BOT_Logger - Navigating to SCB_Businesss login page. txn_id=8813
+2026-02-27 11:17:38,776 - ERROR - root - LOGIN FAILED for Transaction 8813:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.29.py", line 361, in scb_login
+    expect(page.locator("//input[@name='username']")).to_be_visible(timeout=0)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 20523, in to_be_visible
+    self._sync(self._impl_obj.to_be_visible(visible=visible, timeout=timeout))
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_assertions.py", line 765, in to_be_visible
+    await self._expect_impl(
+    ...<5 lines>...
+    )
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_assertions.py", line 85, in _expect_impl
+    raise AssertionError(
+        f"{out_message}\nActual value: {actual}{error_message} {format_call_log(result.get('log'))}"
+    )
+AssertionError: Locator expected to be visible
+Actual value: None
+Error: element(s) not found 
+Call log:
+  - Expect "to_be_visible"
+  - waiting for locator("//input[@name='username']")
+
+
+2026-02-27 11:17:38,779 - ERROR - root - CRITICAL ERROR for Transaction 8813:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.29.py", line 361, in scb_login
+    expect(page.locator("//input[@name='username']")).to_be_visible(timeout=0)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 20523, in to_be_visible
+    self._sync(self._impl_obj.to_be_visible(visible=visible, timeout=timeout))
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_assertions.py", line 765, in to_be_visible
+    await self._expect_impl(
+    ...<5 lines>...
+    )
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_assertions.py", line 85, in _expect_impl
+    raise AssertionError(
+        f"{out_message}\nActual value: {actual}{error_message} {format_call_log(result.get('log'))}"
+    )
+AssertionError: Locator expected to be visible
+Actual value: None
+Error: element(s) not found 
+Call log:
+  - Expect "to_be_visible"
+  - waiting for locator("//input[@name='username']")
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.29.py", line 838, in runPython
+    transaction_id = worker.submit(process_withdrawal, data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.29.py", line 105, in submit
+    raise result["error"]
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.29.py", line 136, in _run
+    result["value"] = func(*args, **kwargs)
+                      ~~~~^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.29.py", line 820, in process_withdrawal
+    page = BankBot.scb_login(data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.29.py", line 428, in scb_login
+    raise Exception(f"Login failed at step: {str(e)}")
+Exception: Login failed at step: Locator expected to be visible
+Actual value: None
+Error: element(s) not found 
+Call log:
+  - Expect "to_be_visible"
+  - waiting for locator("//input[@name='username']")
+
+
+----------------------------------------
+2026-02-27 11:17:38,780 - INFO - werkzeug - 127.0.0.1 - - [27/Feb/2026 11:17:38] "[35m[1mPOST /scb_company_web/runPython HTTP/1.1[0m" 500 -
+2026-02-27 11:28:48,235 - INFO - SCB_BOT_Logger - Logging started: ./logs\SCB_Payout.log
+2026-02-27 11:28:48,237 - INFO - root - 🚀 SCB Local API started
+2026-02-27 11:28:48,256 - INFO - SCB_BOT_Logger - WS client started with PID 17272
+2026-02-27 11:28:48,269 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://10.0.0.253:5001
+2026-02-27 11:28:48,270 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-02-27 11:28:52,061 - INFO - SCB_BOT_Logger - Starting SCB login flow. txn_id=8813
+2026-02-27 11:28:54,102 - INFO - SCB_BOT_Logger - Starting Playwright instance. txn_id=8813
+2026-02-27 11:28:55,054 - INFO - SCB_BOT_Logger - Browser context ready. txn_id=8813
+2026-02-27 11:28:57,805 - INFO - SCB_BOT_Logger - Navigating to SCB_Businesss login page. txn_id=8813
+2026-02-27 11:28:58,264 - INFO - SCB_BOT_Logger - Wait for Username appear. txn_id=8813
+2026-02-27 11:28:59,887 - INFO - SCB_BOT_Logger - Update SCB Apps, Click Enter Site to continue... txn_id=8813
+2026-02-27 11:28:59,910 - INFO - SCB_BOT_Logger - Fill Account Username.. txn_id=8813
+2026-02-27 11:28:59,978 - INFO - SCB_BOT_Logger - Click Next.. txn_id=8813
+2026-02-27 11:29:01,344 - INFO - SCB_BOT_Logger - Fill Account Password.. txn_id=8813
+2026-02-27 11:29:01,407 - INFO - SCB_BOT_Logger - Click Next.. txn_id=8813
+2026-02-27 11:29:06,621 - INFO - SCB_BOT_Logger - Click to Transfer Page... txn_id=8813
+2026-02-27 11:29:06,621 - INFO - root - Processing 8813
+2026-02-27 11:29:06,621 - INFO - SCB_BOT_Logger - Starting SCB Withdrawal flow. txn_id=8813
+2026-02-27 11:29:10,701 - INFO - SCB_BOT_Logger - Click Add New Recipient... txn_id=8813
+2026-02-27 11:29:10,806 - INFO - SCB_BOT_Logger - Fill and Select Bank Name/Code Krungthai, txn_id=8813
+2026-02-27 11:29:10,834 - INFO - SCB_BOT_Logger - Fill in Account Number 2600319026, txn_id=8813
+2026-02-27 11:29:10,931 - INFO - SCB_BOT_Logger - Button Click Next ... txn_id=8813
+2026-02-27 11:29:13,333 - INFO - SCB_BOT_Logger - Waiting for Recipient Details Appear ... txn_id=8813
+2026-02-27 11:29:15,402 - INFO - SCB_BOT_Logger - Click Confirm ... txn_id=8813
+2026-02-27 11:29:17,442 - INFO - SCB_BOT_Logger - Click Next ... txn_id=8813
+2026-02-27 11:29:17,461 - INFO - SCB_BOT_Logger - Fill in Amount ... txn_id=8813
+2026-02-27 11:29:17,557 - INFO - SCB_BOT_Logger - Press Enter ... txn_id=8813
+2026-02-27 11:29:17,622 - INFO - SCB_BOT_Logger - Continue to Transfer ... txn_id=8813
+2026-02-27 11:29:19,125 - INFO - SCB_BOT_Logger - Sufficient Balance... Continue...
+2026-02-27 11:29:20,428 - INFO - SCB_BOT_Logger - Click Skip to Review Information ... txn_id=8813
+2026-02-27 11:29:21,804 - INFO - SCB_BOT_Logger - Wating for Review Information appear ... txn_id=8813
+2026-02-27 11:29:21,808 - INFO - SCB_BOT_Logger - Scroll down to the Bottom ... txn_id=8813
+2026-02-27 11:29:22,802 - INFO - SCB_BOT_Logger - Click Submit Button ... txn_id=8813
+2026-02-27 11:29:22,859 - INFO - SCB_BOT_Logger - Button Click OK ... txn_id=8813
+2026-02-27 11:29:25,276 - INFO - SCB_BOT_Logger - Wait for 'Please authorize transaction(s) within 5 minutes' ... txn_id=8813
+2026-02-27 11:29:25,276 - INFO - SCB_BOT_Logger - Starting SCB View Request Confirm Transaction flow. txn_id=8813
+2026-02-27 11:29:25,277 - INFO - SCB_BOT_Logger - Preparing Appium driver
+2026-02-27 11:29:25,277 - INFO - SCB_BOT_Logger - Reusing existing Appium driver session
+2026-02-27 11:29:25,292 - INFO - SCB_BOT_Logger - Appium process started with PID 12016
+2026-02-27 11:29:28,346 - INFO - SCB_BOT_Logger - Appium server is ready (attempt 2/10)
+2026-02-27 11:29:32,510 - INFO - SCB_BOT_Logger - Start Appium Driver... txn_id=8813
+2026-02-27 11:29:32,908 - INFO - SCB_BOT_Logger - App already in foreground. txn_id=8813
+2026-02-27 11:29:34,821 - INFO - SCB_BOT_Logger - Session Timeout, Click Continue / Log in... txn_id=8813
+2026-02-27 11:29:37,949 - INFO - SCB_BOT_Logger - Enter PIN Appear... txn_id=8813
+2026-02-27 11:30:13,098 - INFO - SCB_BOT_Logger - Successful to Approve Transfer Request!!! txn_id=8813
+2026-02-27 11:30:13,179 - INFO - SCB_BOT_Logger - Click Done... txn_id=8813
+2026-02-27 11:30:13,700 - INFO - SCB_BOT_Logger - Waiting for You have successfully submitted the transaction re... txn_id=8813
+2026-02-27 11:30:16,085 - INFO - root - Raw string to hash: bankCode=SCB Company Web&deviceId=2312&merchantCode=IBS&transactionId=8813PRODBankBotIsTheBest
+2026-02-27 11:30:16,086 - INFO - root - MD5 Hash: 07ebc75c771c6cd9c9f95b66a3d7b27c
+2026-02-27 11:30:16,086 - INFO - root - Response: {"code":"100001","msg":"[bankCode Invalid bank code] ","data":null}
+2026-02-27 11:30:16,205 - INFO - SCB_BOT_Logger - Button click Make New Transfer to wait for next withdrawal transaction request...
+2026-02-27 11:30:16,206 - INFO - root - Done 8813
+2026-02-27 11:30:16,208 - INFO - werkzeug - 127.0.0.1 - - [27/Feb/2026 11:30:16] "POST /scb_company_web/runPython HTTP/1.1" 200 -
+2026-02-27 11:30:49,212 - INFO - SCB_BOT_Logger - Starting SCB login flow. txn_id=8813
+2026-02-27 11:30:49,213 - INFO - SCB_BOT_Logger - Reusing Playwright instance. txn_id=8813
+2026-02-27 11:30:49,213 - INFO - SCB_BOT_Logger - Browser context ready. txn_id=8813
+2026-02-27 11:30:49,213 - INFO - SCB_BOT_Logger - Reusing existing browser page. txn_id=8813
+2026-02-27 11:30:49,230 - INFO - SCB_BOT_Logger - Already on Transfer page, Skip login...
+2026-02-27 11:30:49,231 - INFO - root - Processing 8813
+2026-02-27 11:30:49,231 - INFO - SCB_BOT_Logger - Starting SCB Withdrawal flow. txn_id=8813
+2026-02-27 11:30:49,342 - INFO - SCB_BOT_Logger - Click Add New Recipient... txn_id=8813
+2026-02-27 11:30:49,416 - INFO - SCB_BOT_Logger - Fill and Select Bank Name/Code Krungthai, txn_id=8813
+2026-02-27 11:30:49,458 - INFO - SCB_BOT_Logger - Fill in Account Number 2600319026, txn_id=8813
+2026-02-27 11:30:49,547 - INFO - SCB_BOT_Logger - Button Click Next ... txn_id=8813
+2026-02-27 11:30:50,427 - INFO - SCB_BOT_Logger - Waiting for Recipient Details Appear ... txn_id=8813
+2026-02-27 11:30:52,487 - INFO - SCB_BOT_Logger - Click Confirm ... txn_id=8813
+2026-02-27 11:30:53,914 - INFO - SCB_BOT_Logger - Click Next ... txn_id=8813
+2026-02-27 11:30:53,946 - INFO - SCB_BOT_Logger - Fill in Amount ... txn_id=8813
+2026-02-27 11:30:54,021 - INFO - SCB_BOT_Logger - Press Enter ... txn_id=8813
+2026-02-27 11:30:54,072 - INFO - SCB_BOT_Logger - Continue to Transfer ... txn_id=8813
+2026-02-27 11:30:55,579 - INFO - SCB_BOT_Logger - Sufficient Balance... Continue...
+2026-02-27 11:30:55,676 - INFO - SCB_BOT_Logger - Click Skip to Review Information ... txn_id=8813
+2026-02-27 11:30:57,028 - INFO - SCB_BOT_Logger - Wating for Review Information appear ... txn_id=8813
+2026-02-27 11:30:57,033 - INFO - SCB_BOT_Logger - Scroll down to the Bottom ... txn_id=8813
+2026-02-27 11:30:57,522 - INFO - SCB_BOT_Logger - Click Submit Button ... txn_id=8813
+2026-02-27 11:30:57,527 - ERROR - root - WITHDRAWAL FAILED for Transaction 8813:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.29.py", line 532, in scb_withdrawal
+    page.locator("//span[normalize-space()='OK']").click(timeout=0)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 15631, in click
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.click(
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_locator.py", line 162, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 566, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.click: Target page, context or browser has been closed
+
+2026-02-27 11:30:57,532 - ERROR - root - CRITICAL ERROR for Transaction 8813:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.29.py", line 532, in scb_withdrawal
+    page.locator("//span[normalize-space()='OK']").click(timeout=0)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 15631, in click
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.click(
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_locator.py", line 162, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 566, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.click: Target page, context or browser has been closed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.29.py", line 846, in runPython
+    transaction_id = worker.submit(process_withdrawal, data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.29.py", line 105, in submit
+    raise result["error"]
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.29.py", line 136, in _run
+    result["value"] = func(*args, **kwargs)
+                      ~~~~^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.29.py", line 831, in process_withdrawal
+    BankBot.scb_withdrawal(page, data)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\Withdrawal\SCB\scb_payout_appium_1.29.py", line 568, in scb_withdrawal
+    raise Exception(f"Withdrawal failed: {str(e)}")
+Exception: Withdrawal failed: Locator.click: Target page, context or browser has been closed
+
+----------------------------------------
+2026-02-27 11:30:57,534 - INFO - werkzeug - 127.0.0.1 - - [27/Feb/2026 11:30:57] "[35m[1mPOST /scb_company_web/runPython HTTP/1.1[0m" 500 -
+2026-02-27 11:57:16,631 - INFO - SCB_BOT_Logger - Logging started: ./logs\SCB_Payout.log
+2026-02-27 11:57:16,634 - INFO - root - 🚀 SCB Local API started
+2026-02-27 11:57:16,650 - INFO - SCB_BOT_Logger - WS client started with PID 13944
+2026-02-27 11:57:16,667 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://10.0.0.253:5001
+2026-02-27 11:57:16,667 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-02-27 12:15:37,225 - INFO - SCB_BOT_Logger - Logging started: ./logs\SCB_Payout.log
+2026-02-27 12:15:37,228 - INFO - root - 🚀 SCB Local API started
+2026-02-27 12:15:37,237 - INFO - SCB_BOT_Logger - WS client started with PID 17940
+2026-02-27 12:15:37,251 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://10.0.0.253:5001
+2026-02-27 12:15:37,251 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-02-27 12:31:35,420 - INFO - SCB_BOT_Logger - Logging started: ./logs\SCB_Payout.log
+2026-02-27 12:33:18,112 - INFO - SCB_BOT_Logger - Logging started: ./logs\SCB_Payout.log
+2026-02-27 12:33:29,890 - INFO - SCB_BOT_Logger - Logging started: ./logs\SCB_Payout.log
+2026-02-27 12:35:26,758 - INFO - SCB_BOT_Logger - Logging started: ./logs\SCB_Payout.log
+2026-02-27 12:37:41,679 - INFO - SCB_BOT_Logger - Logging started: ./logs\SCB_Payout.log
+2026-02-27 12:38:09,084 - INFO - SCB_BOT_Logger - Logging started: ./logs\SCB_Payout.log
+2026-02-27 12:38:09,085 - INFO - SCB_BOT_Logger - Timeout Trigger, Processing to Kill Apps... 
+2026-02-27 12:38:09,085 - INFO - SCB_BOT_Logger - Preparing Appium driver
+2026-02-27 12:38:09,085 - INFO - SCB_BOT_Logger - Reusing existing Appium driver session
+2026-02-27 12:38:09,121 - INFO - SCB_BOT_Logger - Appium process started with PID 25616
+2026-02-27 12:38:11,161 - INFO - SCB_BOT_Logger - Appium server is ready (attempt 1/10)
+2026-02-27 12:38:15,037 - INFO - root - Stopped SCB app: com.scb.corporate
+2026-02-27 12:38:20,085 - INFO - SCB_BOT_Logger - Logging started: ./logs\SCB_Payout.log
+2026-02-27 12:38:20,086 - INFO - SCB_BOT_Logger - Timeout Trigger, Processing to Kill Apps... 
+2026-02-27 12:38:20,086 - INFO - SCB_BOT_Logger - Preparing Appium driver
+2026-02-27 12:38:20,086 - INFO - SCB_BOT_Logger - Reusing existing Appium driver session
+2026-02-27 12:38:20,099 - INFO - SCB_BOT_Logger - Appium process started with PID 17736
+2026-02-27 12:38:21,634 - INFO - SCB_BOT_Logger - Appium server is ready (attempt 1/10)
+2026-02-27 12:38:25,438 - INFO - root - Stopped SCB app: com.scb.corporate
+2026-02-27 14:15:33,466 - INFO - SCB_BOT_Logger - Logging started: ./logs\SCB_Payout.log
+2026-02-27 14:15:33,470 - INFO - root - 🚀 SCB Local API started
+2026-02-27 14:15:33,490 - INFO - SCB_BOT_Logger - WS client started with PID 10636
+2026-02-27 14:15:33,567 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://10.0.0.253:5001
+2026-02-27 14:15:33,568 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-02-27 14:15:36,701 - INFO - SCB_BOT_Logger - Logging started: ./logs\SCB_Payout.log
+2026-02-27 14:15:36,703 - INFO - root - 🚀 SCB Local API started
+2026-02-27 14:15:36,724 - INFO - SCB_BOT_Logger - WS client started with PID 14180
+2026-02-27 14:15:36,737 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://10.0.0.253:5001
+2026-02-27 14:15:36,737 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-04 18:45:24,898 - INFO - SCB_BOT_Logger - Logging started: ./logs\SCB_Payout.log
+2026-03-04 18:45:24,903 - INFO - root - 🚀 SCB Local API started
+2026-03-04 18:45:24,927 - INFO - SCB_BOT_Logger - WS client started with PID 11076
+2026-03-04 18:45:24,962 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://10.0.0.253:5001
+2026-03-04 18:45:24,962 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-04 18:49:09,427 - INFO - SCB_BOT_Logger - Starting SCB login flow. txn_id=8813
+2026-03-04 18:49:11,480 - INFO - SCB_BOT_Logger - Starting Playwright instance. txn_id=8813
+2026-03-04 18:49:13,298 - INFO - SCB_BOT_Logger - Browser context ready. txn_id=8813
+2026-03-04 18:49:16,105 - ERROR - root - LOGIN FAILED for Transaction 8813:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\SCB\scb_payout_appium_1.29.1.py", line 365, in scb_login
+    page.goto("https://www.scbbusinessanywhere.com/", wait_until="networkidle")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 9054, in goto
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.goto(
+        ^^^^^^^^^^^^^^^^^^^^
+            url=url, timeout=timeout, waitUntil=wait_until, referer=referer
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_page.py", line 552, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 153, in goto
+    await self._channel.send(
+        "goto", self._navigation_timeout, locals_to_params(locals())
+    )
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Page.goto: Target page, context or browser has been closed
+Call log:
+  - navigating to "https://www.scbbusinessanywhere.com/", waiting until "networkidle"
+
+
+2026-03-04 18:49:16,114 - ERROR - root - CRITICAL ERROR for Transaction 8813:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\SCB\scb_payout_appium_1.29.1.py", line 365, in scb_login
+    page.goto("https://www.scbbusinessanywhere.com/", wait_until="networkidle")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 9054, in goto
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.goto(
+        ^^^^^^^^^^^^^^^^^^^^
+            url=url, timeout=timeout, waitUntil=wait_until, referer=referer
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_page.py", line 552, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 153, in goto
+    await self._channel.send(
+        "goto", self._navigation_timeout, locals_to_params(locals())
+    )
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Page.goto: Target page, context or browser has been closed
+Call log:
+  - navigating to "https://www.scbbusinessanywhere.com/", waiting until "networkidle"
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\SCB\scb_payout_appium_1.29.1.py", line 864, in runPython
+    transaction_id = worker.submit(process_withdrawal, data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\SCB\scb_payout_appium_1.29.1.py", line 105, in submit
+    raise result["error"]
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\SCB\scb_payout_appium_1.29.1.py", line 136, in _run
+    result["value"] = func(*args, **kwargs)
+                      ~~~~^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\SCB\scb_payout_appium_1.29.1.py", line 846, in process_withdrawal
+    page = BankBot.scb_login(data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\SCB\scb_payout_appium_1.29.1.py", line 436, in scb_login
+    raise Exception(f"Login failed at step: {str(e)}")
+Exception: Login failed at step: Page.goto: Target page, context or browser has been closed
+Call log:
+  - navigating to "https://www.scbbusinessanywhere.com/", waiting until "networkidle"
+
+
+----------------------------------------
+2026-03-04 18:49:16,118 - INFO - werkzeug - 127.0.0.1 - - [04/Mar/2026 18:49:16] "[35m[1mPOST /scb_company_web/runPython HTTP/1.1[0m" 500 -
+2026-03-04 18:59:59,755 - INFO - SCB_BOT_Logger - Logging started: ./logs\SCB_Payout.log
+2026-03-04 18:59:59,759 - INFO - root - 🚀 SCB Local API started
+2026-03-04 18:59:59,787 - INFO - SCB_BOT_Logger - WS client started with PID 10056
+2026-03-04 18:59:59,813 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://10.0.0.253:5001
+2026-03-04 18:59:59,814 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-04 19:00:05,733 - INFO - werkzeug - 127.0.0.1 - - [04/Mar/2026 19:00:05] "[33mGET / HTTP/1.1[0m" 404 -
+2026-03-04 19:00:05,796 - INFO - werkzeug - 127.0.0.1 - - [04/Mar/2026 19:00:05] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-03-04 19:00:15,528 - INFO - werkzeug - 10.0.0.253 - - [04/Mar/2026 19:00:15] "[33mGET / HTTP/1.1[0m" 404 -
+2026-03-04 19:00:15,605 - INFO - werkzeug - 10.0.0.253 - - [04/Mar/2026 19:00:15] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-03-04 19:01:18,052 - INFO - SCB_BOT_Logger - Logging started: ./logs\SCB_Payout.log
+2026-03-04 19:01:18,055 - INFO - root - 🚀 SCB Local API started
+2026-03-04 19:01:18,079 - INFO - SCB_BOT_Logger - WS client started with PID 13384
+2026-03-04 19:01:18,108 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://10.0.0.253:5001
+2026-03-04 19:01:18,108 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-04 19:01:19,053 - INFO - werkzeug - 127.0.0.1 - - [04/Mar/2026 19:01:19] "[31m[1mGET /scb_company_web/runPython HTTP/1.1[0m" 405 -
+2026-03-04 19:01:19,135 - INFO - werkzeug - 127.0.0.1 - - [04/Mar/2026 19:01:19] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-03-04 19:01:25,836 - INFO - werkzeug - 127.0.0.1 - - [04/Mar/2026 19:01:25] "[31m[1mGET /scb_company_web/runPython HTTP/1.1[0m" 405 -
+2026-03-04 19:01:27,590 - INFO - werkzeug - 127.0.0.1 - - [04/Mar/2026 19:01:27] "[31m[1mGET /scb_company_web/runPython HTTP/1.1[0m" 405 -
+2026-03-04 19:50:46,614 - INFO - SCB_BOT_Logger - Logging started: ./logs\SCB_Payout.log
+2026-03-04 19:50:46,617 - INFO - root - 🚀 SCB Local API started
+2026-03-04 19:50:46,636 - INFO - SCB_BOT_Logger - WS client started with PID 856
+2026-03-04 19:50:46,692 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://10.0.0.253:5001
+2026-03-04 19:50:46,694 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-04 20:14:58,619 - INFO - SCB_BOT_Logger - Logging started: ./logs\SCB_Payout.log
+2026-03-04 20:14:58,626 - INFO - root - 🚀 SCB Local API started
+2026-03-04 20:14:58,638 - INFO - SCB_BOT_Logger - WS client started with PID 25588
+2026-03-04 20:14:58,662 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://10.0.0.253:5001
+2026-03-04 20:14:58,663 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-04 20:16:55,782 - INFO - SCB_BOT_Logger - Starting SCB login flow. txn_id=8813
+2026-03-04 20:16:57,847 - INFO - SCB_BOT_Logger - Starting Playwright instance. txn_id=8813
+2026-03-04 20:16:59,139 - INFO - SCB_BOT_Logger - Browser context ready. txn_id=8813
+2026-03-04 20:17:03,336 - INFO - SCB_BOT_Logger - Navigating to SCB_Businesss login page. txn_id=8813
+2026-03-04 20:17:03,417 - INFO - SCB_BOT_Logger - Wait for Username appear. txn_id=8813
+2026-03-04 20:17:05,007 - INFO - SCB_BOT_Logger - Update SCB Apps, Click Enter Site to continue... txn_id=8813
+2026-03-04 20:17:05,036 - INFO - SCB_BOT_Logger - Fill Account Username.. txn_id=8813
+2026-03-04 20:17:05,127 - INFO - SCB_BOT_Logger - Click Next.. txn_id=8813
+2026-03-04 20:17:05,376 - INFO - SCB_BOT_Logger - Fill Account Password.. txn_id=8813
+2026-03-04 20:17:05,661 - INFO - SCB_BOT_Logger - Click Next.. txn_id=8813
+2026-03-04 20:17:08,532 - INFO - SCB_BOT_Logger - Click to Transfer Page... txn_id=8813
+2026-03-04 20:17:08,533 - INFO - root - Processing 8813
+2026-03-04 20:17:08,534 - INFO - SCB_BOT_Logger - Starting SCB Withdrawal flow. txn_id=8813
+2026-03-04 20:17:10,185 - INFO - SCB_BOT_Logger - Click Add New Recipient... txn_id=8813
+2026-03-04 20:17:10,285 - INFO - SCB_BOT_Logger - Fill and Select Bank Name/Code Krungthai, txn_id=8813
+2026-03-04 20:17:10,326 - INFO - SCB_BOT_Logger - Fill in Account Number 2600319026, txn_id=8813
+2026-03-04 20:17:10,461 - INFO - SCB_BOT_Logger - Button Click Next ... txn_id=8813
+2026-03-04 20:17:11,323 - INFO - SCB_BOT_Logger - Waiting for Recipient Details Appear ... txn_id=8813
+2026-03-04 20:17:13,415 - INFO - SCB_BOT_Logger - Click Confirm ... txn_id=8813
+2026-03-04 20:17:14,104 - INFO - SCB_BOT_Logger - Click Next ... txn_id=8813
+2026-03-04 20:17:14,140 - INFO - SCB_BOT_Logger - Fill in Amount ... txn_id=8813
+2026-03-04 20:17:14,192 - INFO - SCB_BOT_Logger - Press Enter ... txn_id=8813
+2026-03-04 20:17:14,294 - INFO - SCB_BOT_Logger - Continue to Transfer ... txn_id=8813
+2026-03-04 20:17:15,809 - INFO - SCB_BOT_Logger - Sufficient Balance... Continue...
+2026-03-04 20:17:15,895 - INFO - SCB_BOT_Logger - Click Skip to Review Information ... txn_id=8813
+2026-03-04 20:17:16,770 - INFO - SCB_BOT_Logger - Wating for Review Information appear ... txn_id=8813
+2026-03-04 20:17:16,781 - INFO - SCB_BOT_Logger - Scroll down to the Bottom ... txn_id=8813
+2026-03-04 20:17:16,975 - INFO - SCB_BOT_Logger - Click Submit Button ... txn_id=8813
+2026-03-04 20:17:17,081 - INFO - SCB_BOT_Logger - Button Click OK ... txn_id=8813
+2026-03-04 20:17:18,971 - INFO - SCB_BOT_Logger - Wait for 'Please authorize transaction(s) within 5 minutes' ... txn_id=8813
+2026-03-04 20:17:18,972 - INFO - SCB_BOT_Logger - Starting SCB View Request Confirm Transaction flow. txn_id=8813
+2026-03-04 20:17:18,972 - INFO - SCB_BOT_Logger - Preparing Appium driver
+2026-03-04 20:17:18,973 - INFO - SCB_BOT_Logger - Reusing existing Appium driver session
+2026-03-04 20:17:19,046 - INFO - SCB_BOT_Logger - Appium process started with PID 28748
+2026-03-04 20:17:25,154 - INFO - SCB_BOT_Logger - Appium server is ready (attempt 3/10)
+2026-03-04 20:17:30,010 - INFO - SCB_BOT_Logger - Start Appium Driver... txn_id=8813
+2026-03-04 20:17:30,128 - INFO - SCB_BOT_Logger - Bypass USB Debugging... txn_id=8813
+2026-03-04 20:17:30,437 - INFO - SCB_BOT_Logger - App in background → activating. txn_id=8813
+2026-03-04 20:17:37,028 - INFO - SCB_BOT_Logger - Enter PIN Appear... txn_id=8813
+2026-03-04 20:17:37,028 - INFO - SCB_BOT_Logger - Start Enter PIN... txn_id=8813
+2026-03-04 20:17:42,771 - INFO - SCB_BOT_Logger - Wait and Click Notifications ... txn_id=8813
+2026-03-04 20:17:45,148 - INFO - SCB_BOT_Logger - Button click View Request... txn_id=8813
+2026-03-04 20:17:47,657 - INFO - SCB_BOT_Logger - Wait and Click Submit for Approval... txn_id=8813
+2026-03-04 20:22:48,066 - ERROR - root - MOBILE APP FAILED for Transaction 8813:
+Traceback (most recent call last):
+  File "C:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\SCB\scb_payout_appium_1.29.1.py", line 695, in scb_Anywhere_apps
+    WebDriverWait(driver, 300).until(EC.visibility_of_element_located((AppiumBy.XPATH, "//*[@text='Enter the 8-digit\nSCB Digital Token PIN']")))
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\support\wait.py", line 121, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\find.js:62:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:12:16)
+    at async AndroidUiautomator2Driver.findElement (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:27:16)
+
+2026-03-04 20:22:48,070 - ERROR - root - WITHDRAWAL FAILED for Transaction 8813:
+Traceback (most recent call last):
+  File "C:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\SCB\scb_payout_appium_1.29.1.py", line 695, in scb_Anywhere_apps
+    WebDriverWait(driver, 300).until(EC.visibility_of_element_located((AppiumBy.XPATH, "//*[@text='Enter the 8-digit\nSCB Digital Token PIN']")))
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\support\wait.py", line 121, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\find.js:62:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:12:16)
+    at async AndroidUiautomator2Driver.findElement (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:27:16)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\SCB\scb_payout_appium_1.29.1.py", line 540, in scb_withdrawal
+    BankBot.scb_Anywhere_apps(data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\SCB\scb_payout_appium_1.29.1.py", line 717, in scb_Anywhere_apps
+    raise Exception(f"Mobile app approval failed: {str(e)}")
+Exception: Mobile app approval failed: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\find.js:62:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:12:16)
+    at async AndroidUiautomator2Driver.findElement (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:27:16)
+
+2026-03-04 20:22:48,075 - ERROR - root - CRITICAL ERROR for Transaction 8813:
+Traceback (most recent call last):
+  File "C:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\SCB\scb_payout_appium_1.29.1.py", line 695, in scb_Anywhere_apps
+    WebDriverWait(driver, 300).until(EC.visibility_of_element_located((AppiumBy.XPATH, "//*[@text='Enter the 8-digit\nSCB Digital Token PIN']")))
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\support\wait.py", line 121, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\find.js:62:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:12:16)
+    at async AndroidUiautomator2Driver.findElement (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:27:16)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\SCB\scb_payout_appium_1.29.1.py", line 540, in scb_withdrawal
+    BankBot.scb_Anywhere_apps(data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\SCB\scb_payout_appium_1.29.1.py", line 717, in scb_Anywhere_apps
+    raise Exception(f"Mobile app approval failed: {str(e)}")
+Exception: Mobile app approval failed: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\find.js:62:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:12:16)
+    at async AndroidUiautomator2Driver.findElement (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:27:16)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\SCB\scb_payout_appium_1.29.1.py", line 864, in runPython
+    transaction_id = worker.submit(process_withdrawal, data)
+  File "C:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\SCB\scb_payout_appium_1.29.1.py", line 105, in submit
+    raise result["error"]
+  File "C:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\SCB\scb_payout_appium_1.29.1.py", line 136, in _run
+    result["value"] = func(*args, **kwargs)
+                      ~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\SCB\scb_payout_appium_1.29.1.py", line 849, in process_withdrawal
+    BankBot.scb_withdrawal(page, data)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\SCB\scb_payout_appium_1.29.1.py", line 568, in scb_withdrawal
+    raise Exception(f"Withdrawal failed: {str(e)}")
+Exception: Withdrawal failed: Mobile app approval failed: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\find.js:62:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:12:16)
+    at async AndroidUiautomator2Driver.findElement (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:27:16)
+
+----------------------------------------
+2026-03-04 20:22:48,077 - INFO - werkzeug - 127.0.0.1 - - [04/Mar/2026 20:22:48] "[35m[1mPOST /scb_company_web/runPython HTTP/1.1[0m" 500 -
+2026-03-04 20:25:42,077 - INFO - root - Auto cleanup after 174s idle
+2026-03-04 20:25:42,078 - INFO - SCB_BOT_Logger - Timeout Trigger, Processing to Kill Apps... 
+2026-03-04 20:25:42,080 - INFO - SCB_BOT_Logger - Preparing Appium driver
+2026-03-04 20:25:42,081 - INFO - SCB_BOT_Logger - Reusing existing Appium driver session
+2026-03-04 20:25:42,082 - INFO - SCB_BOT_Logger - Appium process already exists, skipping new start
+2026-03-04 20:25:42,083 - INFO - SCB_BOT_Logger - Reusing existing Appium driver session
+2026-03-04 20:25:42,826 - INFO - root - Stopped SCB app: com.scb.corporate
+2026-03-04 20:25:42,835 - WARNING - SCB_BOT_Logger - Failed to logout: BrowserContext.clear_cookies: Target page, context or browser has been closed
+2026-03-04 20:25:42,853 - ERROR - root - Idle cleanup failed:
+Traceback (most recent call last):
+  File "C:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\SCB\scb_payout_appium_1.29.1.py", line 154, in _idle_logout
+    BankBot.scb_logout(PAGE)
+    ~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\SCB\scb_payout_appium_1.29.1.py", line 743, in scb_logout
+    page.reload(wait_until="networkidle")
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 9097, in reload
+    self._sync(self._impl_obj.reload(timeout=timeout, waitUntil=wait_until))
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_page.py", line 560, in reload
+    await self._channel.send(
+    ...<3 lines>...
+    )
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Page.reload: Target page, context or browser has been closed
+
+2026-03-04 20:28:36,857 - INFO - root - Auto cleanup after 174s idle
+2026-03-04 20:28:36,857 - INFO - SCB_BOT_Logger - Timeout Trigger, Processing to Kill Apps... 
+2026-03-04 20:28:36,858 - INFO - SCB_BOT_Logger - Preparing Appium driver
+2026-03-04 20:28:36,858 - INFO - SCB_BOT_Logger - Reusing existing Appium driver session
+2026-03-04 20:28:36,858 - INFO - SCB_BOT_Logger - Appium process already exists, skipping new start
+2026-03-04 20:28:36,858 - INFO - SCB_BOT_Logger - Reusing existing Appium driver session
+2026-03-04 20:28:37,019 - INFO - root - Stopped SCB app: com.scb.corporate
+2026-03-04 20:31:31,029 - INFO - root - Auto cleanup after 174s idle
+2026-03-04 20:31:31,031 - INFO - SCB_BOT_Logger - Timeout Trigger, Processing to Kill Apps... 
+2026-03-04 20:31:31,031 - INFO - SCB_BOT_Logger - Preparing Appium driver
+2026-03-04 20:31:31,032 - INFO - SCB_BOT_Logger - Reusing existing Appium driver session
+2026-03-04 20:31:31,034 - INFO - SCB_BOT_Logger - Appium process already exists, skipping new start
+2026-03-04 20:31:31,035 - INFO - SCB_BOT_Logger - Reusing existing Appium driver session
+2026-03-04 20:31:31,251 - INFO - root - Stopped SCB app: com.scb.corporate
+2026-03-04 20:34:25,272 - INFO - root - Auto cleanup after 174s idle
+2026-03-04 20:34:25,273 - INFO - SCB_BOT_Logger - Timeout Trigger, Processing to Kill Apps... 
+2026-03-04 20:34:25,274 - INFO - SCB_BOT_Logger - Preparing Appium driver
+2026-03-04 20:34:25,275 - INFO - SCB_BOT_Logger - Reusing existing Appium driver session
+2026-03-04 20:34:25,276 - INFO - SCB_BOT_Logger - Appium process already exists, skipping new start
+2026-03-04 20:34:25,277 - INFO - SCB_BOT_Logger - Reusing existing Appium driver session
+2026-03-04 20:34:25,490 - INFO - root - Stopped SCB app: com.scb.corporate
+2026-03-04 20:37:19,505 - INFO - root - Auto cleanup after 174s idle
+2026-03-04 20:37:19,506 - INFO - SCB_BOT_Logger - Timeout Trigger, Processing to Kill Apps... 
+2026-03-04 20:37:19,507 - INFO - SCB_BOT_Logger - Preparing Appium driver
+2026-03-04 20:37:19,508 - INFO - SCB_BOT_Logger - Reusing existing Appium driver session
+2026-03-04 20:37:19,509 - INFO - SCB_BOT_Logger - Appium process already exists, skipping new start
+2026-03-04 20:37:19,510 - INFO - SCB_BOT_Logger - Reusing existing Appium driver session
+2026-03-04 20:37:19,717 - INFO - root - Stopped SCB app: com.scb.corporate

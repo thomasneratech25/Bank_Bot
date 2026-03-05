@@ -26,12 +26,18 @@ from selenium.webdriver.support import expected_conditions as EC
 WS_PROC = None
 
 # =========================== Logging Settings =========================
+
+LOG_DIR = './logs'
+
+# Auto-create the logs folder if it doesn't exist
+if not os.path.exists(LOG_DIR):
+    os.makedirs(LOG_DIR)
+
 logging.basicConfig(
-    filename='./logs/Kbank_payout_redmi.log', 
+    filename=f'{LOG_DIR}/Kbank_payout_redmi.log', 
     level=logging.ERROR, 
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
-
 # =========================== Appium Settings =========================
 
 APPIUM_DRIVER = None
@@ -149,7 +155,10 @@ class BankBot(Automation):
             "--port", "8021",
             "--allow-insecure", "uiautomator2:adb_shell",
             "--allow-cors"
-        ])
+        ],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL
+        )
                 
         # Wait until Appium server is ready, retry 10 times
         for attempt in range(1, 11):
@@ -258,14 +267,11 @@ class BankBot(Automation):
     def kbank_withdrawal(cls, page, data):
 
         try:
-            # wait for "Select Bank" to be appear
-            page.locator("//span[@id='select2-id_select2_example_3-container']//div").wait_for(state="visible", timeout=100000)
-
             # Delay 1 second
             time.sleep(1)
             
             # Button Click "Select Bank"
-            page.locator("//span[@id='select2-id_select2_example_3-container']//div").click()
+            page.locator("//span[@id='select2-id_select2_example_3-container']//div").click(timeout=10000)
 
             # Locate the input
             page.locator("input.select2-search__field").evaluate("el => el.removeAttribute('readonly')")
@@ -302,9 +308,6 @@ class BankBot(Automation):
 
             # Kbank Apps Approved   
             cls.kbank_business_apps(data)
-
-            # Callback Eric API
-            cls.eric_api(data)
 
             # wait for "Fund Transfer" to be appear
             page.locator("//div[@class='column-menu']//a[@id='BIZ_004']").wait_for(state="visible", timeout=10000)
@@ -472,6 +475,9 @@ class BankBot(Automation):
                 except TimeoutException:
                     continue
 
+            # Callback Eric API
+            cls.eric_api(data)
+
             # Wait and Click "Back to main page"
             WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.XPATH, "//android.view.View[@content-desc='Back to main page']"))).click()
 
@@ -581,6 +587,16 @@ class BankBot(Automation):
             response = requests.post(url, headers=headers, data=payload_json)
             response.raise_for_status()
 
+            # Debug info
+            print("Raw string to hash:", string_to_hash)
+            print("MD5 Hash:", hash_result)
+            print("Response:", response.text)
+            print("\n\n")
+
+            logging.info("Raw string to hash: %s", string_to_hash)
+            logging.info("MD5 Hash: %s", hash_result)
+            logging.info("Response: %s", response.text)
+
         except Exception as e:
             error_trace = traceback.format_exc()
             logging.error(f"ERIC API CALLBACK FAILED for Transaction {get_txn_id(data)}:\n{error_trace}")
@@ -616,6 +632,16 @@ def runPython():
             # WRITES TO LOG FILE
             logging.error(f"CRITICAL ERROR for Transaction {data.get('transactionId', 'unknown')}:\n{full_trace}\n{'-'*40}")
             
+            # Kill Browser
+            try:
+                Automation.cleanup()
+            except:
+                pass
+
+            # FORCE EXIT: This stops the entire Python script and Flask server
+            # Use os._exit(1) to exit immediately from the thread
+            os._exit(1)
+
             return jsonify({
                 "success": False,
                 "message": str(e),
