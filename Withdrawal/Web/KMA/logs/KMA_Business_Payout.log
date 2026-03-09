@@ -1,0 +1,202 @@
+2026-03-06 16:38:59,168 - INFO - KMA Business Web - Starting for Eric WS_Client ...
+2026-03-06 16:38:59,200 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://10.0.0.253:5002
+2026-03-06 16:38:59,200 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-06 16:39:08,044 - INFO - KMA Business Web - ==================================================
+2026-03-06 16:39:08,044 - INFO - KMA Business Web - 🎰 Starting KMA Business Web Login Flow ....
+2026-03-06 16:39:08,046 - INFO - KMA Business Web - ==================================================
+2026-03-06 16:39:08,047 - INFO - KMA Business Web - Browse to KMA Business Website ...
+2026-03-06 16:39:10,041 - INFO - KMA Business Web - Fill in Username ...
+2026-03-06 16:39:10,076 - INFO - KMA Business Web - Fill in Password ... 
+2026-03-06 16:39:10,089 - INFO - KMA Business Web - Click Login ... 
+2026-03-06 16:39:13,552 - INFO - KMA Business Web - Click Other Account ... 
+2026-03-06 16:39:18,048 - INFO - KMA Business Web - ==================================================
+2026-03-06 16:39:18,049 - INFO - KMA Business Web - 🎰 Starting KMA Business Web Withdrawal Flow ....
+2026-03-06 16:39:18,050 - INFO - KMA Business Web - ==================================================
+2026-03-06 16:39:18,050 - INFO - KMA Business Web - Select Bank Name ... 
+2026-03-06 16:39:24,992 - INFO - KMA Business Web - Fill in Account Number ... 
+2026-03-06 16:39:25,022 - INFO - KMA Business Web - Fill in Amount ... 
+2026-03-06 16:39:25,050 - INFO - KMA Business Web - Click Submit button ... 
+2026-03-06 16:39:25,096 - INFO - KMA Business Web - Waiting for OTP Box Appear ... 
+2026-03-06 16:39:28,416 - INFO - KMA Business Web - Capture OTP Reference Number ... 
+2026-03-06 16:39:28,434 - ERROR - kmaBusiness_payout_1.4 - Exception on /kma_company_web/runPython [POST]
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KMA\kmaBusiness_payout_1.4.py", line 352, in kma_withdrawal
+    otp = cls.kma_read_otp()
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KMA\kmaBusiness_payout_1.4.py", line 393, in kma_read_otp
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+                 ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: I/O operation on closed file
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KMA\kmaBusiness_payout_1.4.py", line 530, in runPython
+    BankBot.kma_withdrawal(page, data)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KMA\kmaBusiness_payout_1.4.py", line 384, in kma_withdrawal
+    print(f"\n[!] WITHDRAWAL EXCEPTION:\n{error_trace}")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: I/O operation on closed file.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KMA\kmaBusiness_payout_1.4.py", line 539, in runPython
+    print(f"\n--- CRITICAL TRANSACTION ERROR ---\n{full_trace}")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: I/O operation on closed file.
+2026-03-06 16:39:28,437 - INFO - werkzeug - 127.0.0.1 - - [06/Mar/2026 16:39:28] "[35m[1mPOST /kma_company_web/runPython HTTP/1.1[0m" 500 -
+2026-03-06 16:42:14,677 - INFO - KMA Business Web - Starting for Eric WS_Client ...
+2026-03-06 16:42:14,702 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://10.0.0.253:5002
+2026-03-06 16:42:14,702 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-06 16:42:22,537 - INFO - KMA Business Web - ==================================================
+2026-03-06 16:42:22,537 - INFO - KMA Business Web - 🎰 Starting KMA Business Web Login Flow ....
+2026-03-06 16:42:22,538 - INFO - KMA Business Web - ==================================================
+2026-03-06 16:42:22,538 - INFO - KMA Business Web - Browse to KMA Business Website ...
+2026-03-06 16:42:24,984 - INFO - KMA Business Web - Fill in Username ...
+2026-03-06 16:42:25,016 - INFO - KMA Business Web - Fill in Password ... 
+2026-03-06 16:42:25,030 - INFO - KMA Business Web - Click Login ... 
+2026-03-06 16:42:29,507 - INFO - KMA Business Web - Click Other Account ... 
+2026-03-06 16:42:34,355 - INFO - KMA Business Web - ==================================================
+2026-03-06 16:42:34,355 - INFO - KMA Business Web - 🎰 Starting KMA Business Web Withdrawal Flow ....
+2026-03-06 16:42:34,356 - INFO - KMA Business Web - ==================================================
+2026-03-06 16:42:34,356 - INFO - KMA Business Web - Select Bank Name ... 
+2026-03-06 16:42:41,251 - INFO - KMA Business Web - Fill in Account Number ... 
+2026-03-06 16:42:41,268 - INFO - KMA Business Web - Fill in Amount ... 
+2026-03-06 16:42:41,286 - INFO - KMA Business Web - Click Submit button ... 
+2026-03-06 16:42:41,362 - INFO - KMA Business Web - Waiting for OTP Box Appear ... 
+2026-03-06 16:42:51,369 - ERROR - kmaBusiness_payout_1.4 - Exception on /kma_company_web/runPython [POST]
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KMA\kmaBusiness_payout_1.4.py", line 345, in kma_withdrawal
+    page.locator(".otpbox_header").wait_for(timeout=10000)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 18074, in wait_for
+    self._sync(self._impl_obj.wait_for(timeout=timeout, state=state))
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_locator.py", line 710, in wait_for
+    await self._frame.wait_for_selector(
+        self._selector, strict=True, timeout=timeout, state=state
+    )
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 369, in wait_for_selector
+    await self._channel.send(
+        "waitForSelector", self._timeout, locals_to_params(locals())
+    )
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.wait_for: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator(".otpbox_header") to be visible
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KMA\kmaBusiness_payout_1.4.py", line 530, in runPython
+    BankBot.kma_withdrawal(page, data)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KMA\kmaBusiness_payout_1.4.py", line 384, in kma_withdrawal
+    print(f"\n[!] WITHDRAWAL EXCEPTION:\n{error_trace}")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: I/O operation on closed file.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KMA\kmaBusiness_payout_1.4.py", line 539, in runPython
+    print(f"\n--- CRITICAL TRANSACTION ERROR ---\n{full_trace}")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: I/O operation on closed file.
+2026-03-06 16:42:51,372 - INFO - werkzeug - 127.0.0.1 - - [06/Mar/2026 16:42:51] "[35m[1mPOST /kma_company_web/runPython HTTP/1.1[0m" 500 -
+2026-03-06 16:43:21,524 - INFO - KMA Business Web - Starting for Eric WS_Client ...
+2026-03-06 16:43:21,545 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://10.0.0.253:5002
+2026-03-06 16:43:21,545 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-06 16:43:26,643 - INFO - KMA Business Web - ==================================================
+2026-03-06 16:43:26,647 - INFO - KMA Business Web - 🎰 Starting KMA Business Web Login Flow ....
+2026-03-06 16:43:26,649 - INFO - KMA Business Web - ==================================================
+2026-03-06 16:43:26,652 - INFO - KMA Business Web - Browse to KMA Business Website ...
+2026-03-06 16:43:28,427 - INFO - KMA Business Web - Fill in Username ...
+2026-03-06 16:43:28,492 - INFO - KMA Business Web - Fill in Password ... 
+2026-03-06 16:43:28,509 - INFO - KMA Business Web - Click Login ... 
+2026-03-06 16:43:32,576 - INFO - KMA Business Web - Click Other Account ... 
+2026-03-06 16:43:37,578 - INFO - KMA Business Web - ==================================================
+2026-03-06 16:43:37,579 - INFO - KMA Business Web - 🎰 Starting KMA Business Web Withdrawal Flow ....
+2026-03-06 16:43:37,579 - INFO - KMA Business Web - ==================================================
+2026-03-06 16:43:37,579 - INFO - KMA Business Web - Select Bank Name ... 
+2026-03-06 16:43:43,945 - INFO - KMA Business Web - Fill in Account Number ... 
+2026-03-06 16:43:43,961 - INFO - KMA Business Web - Fill in Amount ... 
+2026-03-06 16:43:43,978 - INFO - KMA Business Web - Click Submit button ... 
+2026-03-06 16:43:44,054 - INFO - KMA Business Web - Waiting for OTP Box Appear ... 
+2026-03-06 16:43:48,184 - INFO - KMA Business Web - Capture OTP Reference Number ... 
+2026-03-06 16:43:48,195 - ERROR - kmaBusiness_payout_1.4 - Exception on /kma_company_web/runPython [POST]
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KMA\kmaBusiness_payout_1.4.py", line 352, in kma_withdrawal
+    otp = cls.kma_read_otp()
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KMA\kmaBusiness_payout_1.4.py", line 393, in kma_read_otp
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+                 ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: I/O operation on closed file
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KMA\kmaBusiness_payout_1.4.py", line 530, in runPython
+    BankBot.kma_withdrawal(page, data)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KMA\kmaBusiness_payout_1.4.py", line 384, in kma_withdrawal
+    print(f"\n[!] WITHDRAWAL EXCEPTION:\n{error_trace}")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: I/O operation on closed file.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KMA\kmaBusiness_payout_1.4.py", line 539, in runPython
+    print(f"\n--- CRITICAL TRANSACTION ERROR ---\n{full_trace}")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: I/O operation on closed file.
+2026-03-06 16:43:48,198 - INFO - werkzeug - 127.0.0.1 - - [06/Mar/2026 16:43:48] "[35m[1mPOST /kma_company_web/runPython HTTP/1.1[0m" 500 -

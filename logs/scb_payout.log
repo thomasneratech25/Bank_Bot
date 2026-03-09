@@ -1,10 +1,5 @@
-2026-02-25 16:13:56,376 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on all addresses (0.0.0.0)
- * Running on http://127.0.0.1:5001
- * Running on http://10.0.0.253:5001
-2026-02-25 16:13:56,377 - INFO - [33mPress CTRL+C to quit[0m
-2026-02-25 16:23:55,543 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on all addresses (0.0.0.0)
- * Running on http://127.0.0.1:5001
- * Running on http://10.0.0.253:5001
-2026-02-25 16:23:55,545 - INFO - [33mPress CTRL+C to quit[0m
+2026-03-09 11:02:40,234 - INFO - root - 🚀 SCB Local API started (Async)
+2026-03-09 11:02:40,271 - INFO - hypercorn.error - Running on http://0.0.0.0:5001 (CTRL + C to quit)
+2026-03-09 11:03:02,449 - INFO - SCB_WEB - Logging started: ./logs\SCB_Payout.log
+2026-03-09 11:03:02,451 - INFO - root - 🚀 SCB Local API started (Async)
+2026-03-09 11:03:02,489 - INFO - hypercorn.error - Running on http://0.0.0.0:5001 (CTRL + C to quit)

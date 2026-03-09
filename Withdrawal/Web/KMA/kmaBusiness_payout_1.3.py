@@ -311,8 +311,6 @@ class BankBot(Automation):
             # Delay 0.5 second
             page.wait_for_timeout(500)
 
-            time.sleep(11111111)
-
             # Button Click "Confirm"
             page.locator("//input[@id='ctl00_cphSectionData_OTPBox1_btnConfirm']").click(timeout=0)
             page.locator("//input[@id='ctl00_cphSectionData_OTPBox1_btnConfirm']").click(timeout=0)
@@ -349,8 +347,7 @@ class BankBot(Automation):
                 try:
 
                     # Read All KMA Bank Messages
-                    print("🤖 Reading latest message from KMA bank...")
-
+                    print("ðŸ¤– Reading latest message from KMA bank...")
 
                     # Wait for the 'message_list' container to be visible
                     # We use the specific XPath from your screenshot to avoid ID errors
@@ -378,7 +375,7 @@ class BankBot(Automation):
                             if match:
                                 _messages_ref_code, messages_otp_code = match.groups()
                                 otp_candidates.append((_messages_ref_code.strip(), messages_otp_code.strip()))
-                                print(f"# Ref: {_messages_ref_code}, OTP: {messages_otp_code} ❌")
+                                print(f"# Ref: {_messages_ref_code}, OTP: {messages_otp_code} âŒ")
 
                         except Exception:
                             # Ignore errors for single stale elements
@@ -387,7 +384,7 @@ class BankBot(Automation):
                     # Match correct Ref Code 
                     for _messages_ref_code, messages_otp_code in otp_candidates:
                         if cls._kma_ref == _messages_ref_code:
-                            print(f"Found matching Ref: {_messages_ref_code} | OTP: {messages_otp_code} ✅")
+                            print(f"Found matching Ref: {_messages_ref_code} | OTP: {messages_otp_code} âœ…")
                             return messages_otp_code
                         
                     # If no match, loop again
@@ -506,3 +503,4 @@ def runPython():
 if __name__ == "__main__":
     BankBot.start_ws_client()
     app.run(host="0.0.0.0", port=5002, debug=False, threaded=False, use_reloader=False)
+
