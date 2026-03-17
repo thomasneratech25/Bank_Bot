@@ -17,7 +17,9 @@ from appium.webdriver.common.appiumby import *
 from appium.webdriver.common.appiumby import AppiumBy
 from appium.options.android import UiAutomator2Options
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support import expected_conditions as EC
+
 
 # ================== Eric WS_Client Settings =================
 
@@ -45,7 +47,7 @@ def get_txn_id(data):
 LOG_DIR = "./logs"
 os.makedirs(LOG_DIR, exist_ok=True)
 
-LOG_FILE = os.path.join(LOG_DIR, "TTBTouch_Apps_Payout.log")
+LOG_FILE = os.path.join(LOG_DIR, "KBank_Company_Apps_Payout.log")
 
 # Auto-create the logs folder if it doesn't exist
 if not os.path.exists(LOG_DIR):
@@ -60,7 +62,7 @@ logging.basicConfig(
     ],
 )
 
-logger = logging.getLogger("TTB Touch Apps")
+logger = logging.getLogger("KBANK Company Apps")
 
 # ================== Appium Driver ==================
 
@@ -145,20 +147,20 @@ class Appium_Driver():
             with Appium_Driver.time_Lock:
                 elapsed = time.time() - Appium_Driver.last_TxN_Time
             
-            if elapsed > 180:
+            if elapsed > 174:
                 # Access the global APPIUM_DRIVER variable
                 global APPIUM_DRIVER
                 if APPIUM_DRIVER:
                     try:
-                        logger.info("⏳ 3 minutes of inactivity. Killing TTB app...")
-                        APPIUM_DRIVER.terminate_app("com.TMBTOUCH.PRODUCTION")
+                        logger.info("⏳ 2.9 minutes of inactivity. Killing SCB app...")
+                        APPIUM_DRIVER.terminate_app("com.kasikornbank.kbiz")
                     except Exception as e:
                         logger.error(f"Failed to kill app: {e}")
                 
                 with Appium_Driver.time_Lock:
                     Appium_Driver.last_TxN_Time = time.time()
 
-# ================== Eric Settings ==================
+# ================== Eric API ==================
 
 # Eric
 class Eric():
@@ -246,110 +248,197 @@ class Eric():
 # Apps Automation
 class BankBot(Appium_Driver, Eric):
     
-    # TTB Touch Login
+    #  Kbank Company Login
     @classmethod
-    def ttbTouch_login(cls, data):
+    def kbank_login(cls, data):
 
+        # The system cannot processs this transaction
+        def error_unable_process_this_transaction():
+            try:
+                # Wait up to 5 seconds for the "Close Application" button to appear.
+                # We look directly for the button's accessibility id from your screenshot.
+                close_button = WebDriverWait(driver, 0.5).until(
+                    EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Close Application"))
+                )
+                
+                # IF it appears, this code will run:
+                print("Error popup detected! Clicking 'Close Application'.")
+                logger.info("Error popup detected! Clicking 'Close Application'.")
+                close_button.click()
+                    
+            except TimeoutException:
+                # IF the button does NOT appear within 5 seconds, it throws a TimeoutException.
+                # The 'except' block catches it, meaning the transaction was successful!
+                logger.info("No pop up ['error - Sorry Unable to proceed.' ], Proceeding normally...")
+                pass
+
+        # Enter Login Pin
+        def enter_pin():
+
+            # Wait for "Enter PIN" to appear
+            WebDriverWait(driver, 10).until(EC.presence_of_element_located((AppiumBy.XPATH, "//android.view.View[@content-desc='Enter PIN']")))
+
+            # Enter Pin
+            pin = str(data["pin"])
+            for digit in pin:
+                digit_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, digit)))
+                digit_button.click() 
+                # "Sorry, Unable to proceed The system cannot proceed this transaction, please try again later.")
+                error_unable_process_this_transaction()
+            
+            logger.info("Enter KBank Apps Pin... txn_id=%s")
+            
         # Use Appium Driver
         driver = cls.use_appium_driver()
 
         # Forces the terminal to handle those sea creatures correctly
         sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
         logger.info("="*50)
-        logger.info("🎰 Starting TTB Touch Login Flow ....")
+        logger.info(f"🎰 Starting KBank Company Login Flow ....  {get_txn_id(data)}")
         logger.info("="*50)
 
         # ADB Shell Never Screen Timeout
         logger.info("ADB Shell Screen never Time Out ...")
         driver.execute_script("mobile: shell", {"command": "settings","args": ["put", "system", "screen_off_timeout", "2147483647"]})
 
-        # Launch TTB Touch Apps
-        logger.info("Launch TTB Touch Apps ...")
-        driver.activate_app("com.TMBTOUCH.PRODUCTION")     
+        # Check Apps State
+        # 1 = Not Running, 2 = Suspended, 3 = Background, 4 = Foreground
+        state = driver.query_app_state("com.kasikornbank.kbiz")
+        logger.info(f"Current App state: {state}")
 
-        # Click Transfer
-        logger.info('Click Transfer ...')   
-        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "//android.widget.TextView[@text='Transfer']"))).click()
+        # Open Apps
+        if state == 4:
+            logger.info("App already in foreground. Proceeding...")
+        else:
+            # If state is 1, 2, or 3, we want a CLEAN launch to prevent crashes
+            logger.info(f"App state is {state}. Performing a clean restart to prevent auto-crash.")
+            
+            # Force terminate first to clear any hung background sessions
+            driver.terminate_app("com.kasikornbank.kbiz")
+            time.sleep(1) 
+            
+            # Open Apps
+            driver.activate_app("com.kasikornbank.kbiz")
+            time.sleep(3) 
+            
+            # Check if Apps is Crash
+            if driver.query_app_state("com.kasikornbank.kbiz") != 4:
+                logger.error("App failed to reach foreground. Retrying once...")
+                driver.activate_app("com.kasikornbank.kbiz")
 
-        # Wait for Enter Pin
-        logger.info("Waiting for Enter Pin ...")
-        WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.ID, "com.TMBTOUCH.PRODUCTION:id/title_pin")))
-        
-        # Click Passcode Number
-        logger.info('Key Login Passcode ...')
-        for digit in str(data["password"]):
-            driver.find_element(By.ID, f"com.TMBTOUCH.PRODUCTION:id/key_0{digit}").click()
-        logger.info("Successfully Login ...")
+        # Wait and Button Click "Login"
+        logger.info("Click Login")
+        WebDriverWait(driver, 30).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Log in"))).click()
 
-        # TTBTouch Withdrawal
-        cls.ttbTouch_withdrawal(data)
-        
-    # TTB Touch Withdrawal
+        # Enter PIN
+        enter_pin()
+
+        # KBank Withdrawal
+        cls.kbank_withdrawal(data)
+
+    # Kbank Company Withdrawal
     @classmethod
-    def ttbTouch_withdrawal(cls, data):
+    def kbank_withdrawal(cls, data):
 
         # Forces the terminal to handle those sea creatures correctly
         logger.info("="*50)
-        logger.info("🎰 Starting TTB Touch Withdrawal Flow ....")
+        logger.info(f"🎰 Starting KBANK Company Withdrawal Flow .... {get_txn_id(data)}")
         logger.info("="*50)
 
         # Use Appium Driver
         driver = cls.use_appium_driver()
+
+        # Wait and Button Click "Banking"
+        logger.info("Click Banking (QR Code)")
+        WebDriverWait(driver, 30).until(EC.element_to_be_clickable((AppiumBy.XPATH, '//android.widget.Button[contains(@content-desc,"Banking")]'))).click()
+
+        # Wait and Button Click "Transfer"
+        logger.info("Click Transfer")
+        WebDriverWait(driver, 30).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Transfer"))).click()
         
-        # Wait and Button Click "Other Accounts"
-        logger.info("Click 'Other Accounts' ...")
-        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@resource-id="com.TMBTOUCH.PRODUCTION:id/menu_name" and @text="Other Accounts"]'))).click()
+        # Wait "From"
+        logger.info("Wait 'From' ...")
+        WebDriverWait(driver,20).until(EC.visibility_of_element_located((AppiumBy.ANDROID_UIAUTOMATOR,'new UiSelector().text("From")')))
 
-        # Select Bank Name (Drop Down Menu)
-        logger.info("Click Select Bank ... (Drop Down Menu)")
-        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "com.TMBTOUCH.PRODUCTION:id/to_account_layout"))).click()
+        time.sleep(1)
 
-        # Wait for Select Bank MENU
-        logger.info("Wait for Select Bank Menu ...")
-        WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.ID, "com.TMBTOUCH.PRODUCTION:id/title_text")))
+        # Select Bank (Drop Down Menu)
+        logger.info("Select Bank (Drop Down Menu)")
+        WebDriverWait(driver, 30).until(EC.presence_of_element_located((AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().className("android.widget.Spinner").textContains("Kasikornbank")'))).click()
 
-        # Select Bank
-        logger.info("Select Bank ....")
-        driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, f'new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().text(str(data["toBankCode"])))').click()
-
-        # Wait and Fill Account Number
-        logger.info("Fill Account No ...")
-        WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.ID, "com.TMBTOUCH.PRODUCTION:id/edt_account_no"))).send_keys(str(data["password"]))
+        time.sleep(1)
         
-        # Wait and Fill Amount
-        logger.info("Fill Amount ...")
-        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "com.TMBTOUCH.PRODUCTION:id/edt_amount"))).send_keys(f"{str(data["amount"])}")
+        # Click Based on coordinates
+        logger.info("Mouse click X: 328, Y: 1100")
+        driver.execute_script("mobile: clickGesture", {
+            "x": 328,
+            "y": 1100
+        })
 
-        # Scroll Down 
-        logger.info("Scroll Down ...")
+        time.sleep(1)
+
+        # Text Bank Name
+        logger.info(f"Text Bank Name ... {str(data["toBankCode"])}")
+        WebDriverWait(driver,10).until(EC.presence_of_element_located((AppiumBy.CLASS_NAME, "android.widget.EditText"))).send_keys(data["toBankCode"])
+
+        time.sleep(1)
+
+        # Press Enter
+        logger.info("Press Enter ")
+        driver.press_keycode(66)
+
+        # Fill Account Number
+        logger.info(f"Fill Account Number {str(data["toAccountNum"])} ...")
+        WebDriverWait(driver,20).until(EC.element_to_be_clickable((AppiumBy.ANDROID_UIAUTOMATOR,'new UiSelector().className("android.widget.EditText").instance(0)'))).send_keys(str(data["toAccountNum"]))
+
+        # Press Enter
+        logger.info("Press Enter ")
+        driver.press_keycode(66)
+        
+        # Fill Amount
+        logger.info(f"Fill Amount {str(data["amount"])} ...")
+        WebDriverWait(driver,20).until(EC.element_to_be_clickable((AppiumBy.ANDROID_UIAUTOMATOR,'new UiSelector().className("android.widget.EditText").instance(1)'))).send_keys(str(data["amount"]))
+        
+        # Press Enter 
+        if driver.is_keyboard_shown():
+            driver.hide_keyboard()
+
+        # Scroll Down
+        logger.info("Scroll Down ")
         driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,'new UiScrollable(new UiSelector().scrollable(true)).scrollForward()')
         
-        # Button Click Next
-        logger.info("Click Next ...")
-        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "com.TMBTOUCH.PRODUCTION:id/btn_next"))).click()
-        
-        # Button Click Confirm
-        logger.info("Click Confirm Transaction ...")
-        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "com.TMBTOUCH.PRODUCTION:id/btn_confirm"))).click()
+        # Click Next
+        logger.info("Click Next ")
+        WebDriverWait(driver,20).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID,"Next"))).click()
 
-        # Wait for Enter Pin
-        logger.info("Waiting for Enter Pin ...")
-        WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.ID, "com.TMBTOUCH.PRODUCTION:id/title_pin")))
-        
-        # Click Passcode Number
-        logger.info('Key Login Passcode ...')
-        for digit in str(data["password"]):
-            driver.find_element(By.ID, f"com.TMBTOUCH.PRODUCTION:id/pin_key_{digit}").click()
+        # Wait for Confirm Transaction Title
+        logger.info("Wait for 'Confirm Transaction' ")
+        WebDriverWait(driver, 15).until(EC.presence_of_element_located((AppiumBy.XPATH, "//*[contains(@text,'Confirm Transaction')]")))
 
-        # Call Back Eric API
+        # Scroll Down
+        logger.info("Scroll Down ")
+        driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,'new UiScrollable(new UiSelector().scrollable(true)).scrollForward()')
+
+        # Wait and Button Click "Confirm"
+        logger.info("Click Confirm ")
+        driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().textContains("Confirm")').click()
+        driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Confirm")').click()
+
+        # Wait and Button Click "Confirm"
+        logger.info("Click Confirm again ")
+        WebDriverWait(driver,20).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID,"Confirm"))).click()
+
+        # Call Eric API
         cls.eric_api(data)
 
-        logger.info("Withdrawal Completed ...")
-        
+        # Wait and Button Click "Back to main page"
+        logger.info("Click Back to Main Page ")
+        WebDriverWait(driver,20).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID,"Back to main page"))).click()
+
 # ================== Code Start Here ==================
 
 # Run API
-@app.route("/ttb_touch_apps/runPython", methods=["POST"])
+@app.route("/kbank_company/runPython", methods=["POST"])
 def runPython():
 
     # Count Inactivity Transaction Timer
@@ -362,7 +451,7 @@ def runPython():
     with LOCK:
         try:
             # Perform Withdrawal
-            BankBot.ttbTouch_login(data)
+            BankBot.kbank_login(data)
 
             # Return Successful, if withdrawal Successful
             return jsonify({"success": True,"transactionId": data.get("transactionId")})
@@ -381,6 +470,6 @@ if __name__ == "__main__":
     inactivity_thread.start()
 
     Eric.start_ws_client()
-    app.run(host="0.0.0.0", port=5100, debug=False, threaded=False, use_reloader=False)
+    app.run(host="0.0.0.0", port=5104, debug=False, threaded=False, use_reloader=False)
 
-
+BankBot.kbank_login(data=False)

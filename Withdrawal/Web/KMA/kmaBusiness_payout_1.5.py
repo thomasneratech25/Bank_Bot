@@ -1,4 +1,4 @@
-﻿import os
+import os
 import io
 import re
 import sys
@@ -72,63 +72,9 @@ BROWSER = None
 CONTEXT = None
 PAGE = None
 
-# ================== Chrome Settings ==================
+# ================== Appium Driver ==================
 
-class Automation:
-    
-    chrome_proc = None
-
-    # Chrome CDP
-    @classmethod
-    def chrome_cdp(cls):
-
-        # Prevent starting Chrome more than once
-        if cls.chrome_proc:
-            return
-        
-        # Load .env file
-        load_dotenv()
-        USER_DATA_DIR = os.getenv("CHROME_PATH")
-
-        cls.chrome_proc = subprocess.Popen([
-            r"C:\Program Files\Google\Chrome\Application\chrome.exe",
-            "--remote-debugging-port=9222",
-            "--disable-session-crashed-bubble",
-            "--hide-crash-restore-bubble",
-            "--no-first-run",
-            "--no-default-browser-check",
-            f"--user-data-dir={USER_DATA_DIR}",
-        ], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-
-        cls.wait_for_cdp_ready()
-        atexit.register(cls.cleanup)
-
-    # Close Chrome Completely
-    @classmethod
-    def cleanup(cls):
-        try:
-            if cls.chrome_proc and cls.chrome_proc.poll() is None:
-                cls.chrome_proc.terminate()
-        except Exception:
-            pass
-
-    # Wait Chrome CDP Ready
-    @staticmethod
-    def wait_for_cdp_ready(timeout=10):
-        for _ in range(timeout):
-            try:
-                if requests.get("http://localhost:9222/json").status_code == 200:
-                    return
-            except:
-                pass
-            time.sleep(1)
-        raise RuntimeError("Chrome CDP not ready")
-
-# ================== KMA BANK BOT ==================
-
-class BankBot(Automation):
-    
-    _kma_ref = None
+class Appium_Driver():
 
     # Use Appium Driver
     @classmethod
@@ -195,6 +141,69 @@ class BankBot(Automation):
         logger.error("Appium server did not become ready after 10 attempts")
         raise RuntimeError("Appium not started")
 
+# ================== Eric Settings ==================
+
+class Eric():
+
+    # Callback ERIC API
+    @classmethod
+    def eric_api(cls, data):
+
+        try:
+            url = "https://bot-integration.cloudbdtech.com/integration-service/transaction/payoutScriptCallback"
+
+            # Create payload as a DICTIONARY (not JSON yet)
+            payload = {
+                "bankCode": str(data["fromBankCode"]),
+                "deviceId": str(data["deviceId"]),
+                "merchantCode": str(data["merchantCode"]),
+                "transactionId": str(data["transactionId"]),
+            }
+
+            # Your secret key
+            secret_key = "PRODBankBotIsTheBest"
+
+            # Build the hash string (exact order required)
+            string_to_hash = (
+                f"bankCode={payload['bankCode']}&"
+                f"deviceId={payload['deviceId']}&"
+                f"merchantCode={payload['merchantCode']}&"
+                f"transactionId={payload['transactionId']}{secret_key}"
+            )
+
+            # Generate MD5 hash
+            hash_result = hashlib.md5(string_to_hash.encode("utf-8")).hexdigest()
+
+            # Convert payload to JSON string AFTER hash
+            payload_json = json.dumps(payload)
+
+            # Send request
+            headers = {
+                'accept': '*/*',
+                'hash': hash_result,
+                'Content-Type': 'application/json'
+            }
+
+            response = requests.post(url, headers=headers, data=payload_json)
+            response.raise_for_status()
+
+            # Debug info
+            print("Raw string to hash:", string_to_hash)
+            print("MD5 Hash:", hash_result)
+            print("Response:", response.text)
+            print("\n\n")
+
+            logger.info("\n\n")
+            logging.info("Raw string to hash: %s", string_to_hash)
+            logging.info("MD5 Hash: %s", hash_result)
+            logging.info("Response: %s", response.text)
+            logger.info("\n\n")
+
+        except Exception as e:
+            error_trace = traceback.format_exc()
+            logging.error(f"ERIC API CALLBACK FAILED for Transaction {get_txn_id(data)}:\n{error_trace}")
+            raise Exception(f"API Callback failed: {str(e)}")
+        
     # Start Eric Server (ws_client)
     @classmethod
     def start_ws_client(cls):
@@ -214,12 +223,69 @@ class BankBot(Automation):
             cwd=workdir
         )
 
+# ================== Chrome Settings ================
+
+class Automation:
+    
+    chrome_proc = None
+
+    # Chrome CDP
+    @classmethod
+    def chrome_cdp(cls):
+
+        # Prevent starting Chrome more than once
+        if cls.chrome_proc:
+            return
+        
+        # Load .env file
+        load_dotenv()
+        USER_DATA_DIR = os.getenv("CHROME_PATH")
+
+        cls.chrome_proc = subprocess.Popen([
+            r"C:\Program Files\Google\Chrome\Application\chrome.exe",
+            "--remote-debugging-port=9222",
+            "--disable-session-crashed-bubble",
+            "--hide-crash-restore-bubble",
+            "--no-first-run",
+            "--no-default-browser-check",
+            f"--user-data-dir={USER_DATA_DIR}",
+        ], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+        cls.wait_for_cdp_ready()
+        atexit.register(cls.cleanup)
+
+    # Close Chrome Completely
+    @classmethod
+    def cleanup(cls):
+        try:
+            if cls.chrome_proc and cls.chrome_proc.poll() is None:
+                cls.chrome_proc.terminate()
+        except Exception:
+            pass
+
+    # Wait Chrome CDP Ready
+    @staticmethod
+    def wait_for_cdp_ready(timeout=10):
+        for _ in range(timeout):
+            try:
+                if requests.get("http://localhost:9222/json").status_code == 200:
+                    return
+            except:
+                pass
+            time.sleep(1)
+        raise RuntimeError("Chrome CDP not ready")
+
+# ================== KMA BANK BOT ===================
+
+class BankBot(Automation, Appium_Driver, Eric):
+    
+    _kma_ref = None
+
     # Login
     @classmethod
     def kma_login(cls, data):
 
         try:
-        
             global PLAYWRIGHT, BROWSER, CONTEXT, PAGE
 
             # Start Chrome
@@ -293,8 +359,7 @@ class BankBot(Automation):
     @classmethod
     def kma_withdrawal(cls, page, data):
 
-        # Forces the terminal to handle those sea creatures correctly
-        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+        # Withdrawal Process
         logger.info("="*50)
         logger.info("🎰 Starting KMA Business Web Withdrawal Flow ....")
         logger.info("="*50)
@@ -315,7 +380,6 @@ class BankBot(Automation):
                 # Button Click Sign in
                 logger.info("Click Sign in ...")
                 page.click("//input[@id='ctl00_cphSectionButton_btnLogin']")
-
                 time.sleep(1)
 
                 BankBot.kma_login(data)    
@@ -353,7 +417,7 @@ class BankBot(Automation):
             logger.info("Successful Get OTP-Code ...")
 
             # Fill OTP Code
-            logger.info("Fill in OTP Code ... ")
+            logger.info(f"Fill in OTP Code = {otp} ")
             page.fill("#ctl00_cphSectionData_OTPBox1_txtOTPPassword", otp)
 
             # Delay 0.5 second
@@ -388,9 +452,8 @@ class BankBot(Automation):
     # Read Phone Message OTP Code
     @classmethod
     def kma_read_otp(cls):
-
-        # Forces the terminal to handle those sea creatures correctly
-        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+        
+        # Read OTP
         logger.info("="*50)
         logger.info("🎰 Starting Read Phone SMS OTP-Code Flow ....")
         logger.info("="*50)
@@ -399,7 +462,12 @@ class BankBot(Automation):
 
         # Start Messages Apps
         driver.activate_app("com.google.android.apps.messaging")
-        
+
+        # ADB Shell Never Screen Timeout
+        logger.info("ADB Shell Screen never Time Out ...")
+        driver.execute_script("mobile: shell", {"command": "settings","args": ["put", "system", "screen_off_timeout", "2147483647"]})
+
+    
         while True:
             try:
 
@@ -452,66 +520,7 @@ class BankBot(Automation):
                 logger.info(f"❌ Error reading messages: {e}")
                 time.sleep(1)
 
-    # Callback ERIC API
-    @classmethod
-    def eric_api(cls, data):
-
-        try:
-            url = "https://bot-integration.cloudbdtech.com/integration-service/transaction/payoutScriptCallback"
-
-            # Create payload as a DICTIONARY (not JSON yet)
-            payload = {
-                "bankCode": str(data["fromBankCode"]),
-                "deviceId": str(data["deviceId"]),
-                "merchantCode": str(data["merchantCode"]),
-                "transactionId": str(data["transactionId"]),
-            }
-
-            # Your secret key
-            secret_key = "PRODBankBotIsTheBest"
-
-            # Build the hash string (exact order required)
-            string_to_hash = (
-                f"bankCode={payload['bankCode']}&"
-                f"deviceId={payload['deviceId']}&"
-                f"merchantCode={payload['merchantCode']}&"
-                f"transactionId={payload['transactionId']}{secret_key}"
-            )
-
-            # Generate MD5 hash
-            hash_result = hashlib.md5(string_to_hash.encode("utf-8")).hexdigest()
-
-            # Convert payload to JSON string AFTER hash
-            payload_json = json.dumps(payload)
-
-            # Send request
-            headers = {
-                'accept': '*/*',
-                'hash': hash_result,
-                'Content-Type': 'application/json'
-            }
-
-            response = requests.post(url, headers=headers, data=payload_json)
-            response.raise_for_status()
-
-            # Debug info
-            print("Raw string to hash:", string_to_hash)
-            print("MD5 Hash:", hash_result)
-            print("Response:", response.text)
-            print("\n\n")
-
-            logger.info("\n\n")
-            logging.info("Raw string to hash: %s", string_to_hash)
-            logging.info("MD5 Hash: %s", hash_result)
-            logging.info("Response: %s", response.text)
-            logger.info("\n\n")
-
-        except Exception as e:
-            error_trace = traceback.format_exc()
-            logging.error(f"ERIC API CALLBACK FAILED for Transaction {get_txn_id(data)}:\n{error_trace}")
-            raise Exception(f"API Callback failed: {str(e)}")
-        
-# ================== Code Start Here ==================
+# ================== Code Start Here ================
 
 # Run API
 @app.route("/kma_company_web/runPython", methods=["POST"])        

@@ -200,3 +200,407 @@ Traceback (most recent call last):
     ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ValueError: I/O operation on closed file.
 2026-03-06 16:43:48,198 - INFO - werkzeug - 127.0.0.1 - - [06/Mar/2026 16:43:48] "[35m[1mPOST /kma_company_web/runPython HTTP/1.1[0m" 500 -
+2026-03-11 15:08:16,145 - INFO - KMA Business Web - Starting for Eric WS_Client ...
+2026-03-11 15:08:16,212 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://10.0.0.253:5002
+2026-03-11 15:08:16,212 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-11 15:08:23,895 - INFO - KMA Business Web - Starting for Eric WS_Client ...
+2026-03-11 15:08:23,921 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://10.0.0.253:5002
+2026-03-11 15:08:23,921 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-11 16:31:29,437 - INFO - KMA Business Web - Starting for Eric WS_Client ...
+2026-03-11 16:31:29,471 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://10.0.0.253:5002
+2026-03-11 16:31:29,472 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-11 16:31:55,664 - INFO - KMA Business Web - Starting for Eric WS_Client ...
+2026-03-11 16:31:55,691 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://10.0.0.253:5002
+2026-03-11 16:31:55,691 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-11 16:35:53,523 - INFO - KMA Business Web - Starting for Eric WS_Client ...
+2026-03-11 16:35:53,570 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://10.0.0.253:5002
+2026-03-11 16:35:53,570 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-11 16:37:00,093 - INFO - KMA Business Web - Starting for Eric WS_Client ...
+2026-03-11 16:37:00,125 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://10.0.0.253:5002
+2026-03-11 16:37:00,126 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-11 16:37:08,677 - INFO - KMA Business Web - ==================================================
+2026-03-11 16:37:08,678 - INFO - KMA Business Web - 🎰 Starting KMA Business Web Login Flow ....
+2026-03-11 16:37:08,678 - INFO - KMA Business Web - ==================================================
+2026-03-11 16:37:08,678 - INFO - KMA Business Web - Browse to KMA Business Website ...
+2026-03-11 16:37:10,468 - INFO - KMA Business Web - Fill in Username ...
+2026-03-11 16:37:10,543 - INFO - KMA Business Web - Fill in Password ... 
+2026-03-11 16:37:10,561 - INFO - KMA Business Web - Click Login ... 
+2026-03-11 16:37:13,911 - INFO - KMA Business Web - Click Other Account ... 
+2026-03-11 16:37:17,689 - INFO - KMA Business Web - ==================================================
+2026-03-11 16:37:17,689 - INFO - KMA Business Web - 🎰 Starting KMA Business Web Withdrawal Flow ....
+2026-03-11 16:37:17,690 - INFO - KMA Business Web - ==================================================
+2026-03-11 16:37:17,690 - INFO - KMA Business Web - Select Bank Name ... 
+2026-03-11 16:37:24,159 - INFO - KMA Business Web - Fill in Account Number ... 
+2026-03-11 16:37:24,188 - INFO - KMA Business Web - Fill in Amount ... 
+2026-03-11 16:37:24,204 - INFO - KMA Business Web - Click Submit button ... 
+2026-03-11 16:37:24,298 - INFO - KMA Business Web - Waiting for OTP Box Appear ... 
+2026-03-11 16:37:26,512 - INFO - KMA Business Web - Capture OTP Reference Number ... 
+2026-03-11 16:37:26,542 - ERROR - kmaBusiness_payout_1.5 - Exception on /kma_company_web/runPython [POST]
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KMA\kmaBusiness_payout_1.5.py", line 417, in kma_withdrawal
+    otp = cls.kma_read_otp()
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KMA\kmaBusiness_payout_1.5.py", line 458, in kma_read_otp
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+                 ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: I/O operation on closed file
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KMA\kmaBusiness_payout_1.5.py", line 536, in runPython
+    BankBot.kma_withdrawal(page, data)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KMA\kmaBusiness_payout_1.5.py", line 449, in kma_withdrawal
+    print(f"\n[!] WITHDRAWAL EXCEPTION:\n{error_trace}")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: I/O operation on closed file.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KMA\kmaBusiness_payout_1.5.py", line 545, in runPython
+    print(f"\n--- CRITICAL TRANSACTION ERROR ---\n{full_trace}")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: I/O operation on closed file.
+2026-03-11 16:37:26,546 - INFO - werkzeug - 127.0.0.1 - - [11/Mar/2026 16:37:26] "[35m[1mPOST /kma_company_web/runPython HTTP/1.1[0m" 500 -
+2026-03-11 16:51:33,910 - INFO - KMA Business Web - Starting for Eric WS_Client ...
+2026-03-11 16:51:33,947 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://10.0.0.253:5002
+2026-03-11 16:51:33,947 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-11 16:51:41,802 - INFO - KMA Business Web - ==================================================
+2026-03-11 16:51:41,803 - INFO - KMA Business Web - 🎰 Starting KMA Business Web Login Flow ....
+2026-03-11 16:51:41,804 - INFO - KMA Business Web - ==================================================
+2026-03-11 16:51:41,804 - INFO - KMA Business Web - Browse to KMA Business Website ...
+2026-03-11 16:51:44,080 - INFO - KMA Business Web - Fill in Username ...
+2026-03-11 16:51:44,163 - INFO - KMA Business Web - Fill in Password ... 
+2026-03-11 16:51:44,193 - INFO - KMA Business Web - Click Login ... 
+2026-03-11 16:51:47,752 - INFO - KMA Business Web - Click Other Account ... 
+2026-03-11 16:51:52,396 - INFO - KMA Business Web - ==================================================
+2026-03-11 16:51:52,397 - INFO - KMA Business Web - 🎰 Starting KMA Business Web Withdrawal Flow ....
+2026-03-11 16:51:52,397 - INFO - KMA Business Web - ==================================================
+2026-03-11 16:51:52,397 - INFO - KMA Business Web - Select Bank Name ... 
+2026-03-11 16:51:58,882 - INFO - KMA Business Web - Fill in Account Number ... 
+2026-03-11 16:51:58,915 - INFO - KMA Business Web - Fill in Amount ... 
+2026-03-11 16:51:58,961 - INFO - KMA Business Web - Click Submit button ... 
+2026-03-11 16:51:59,108 - INFO - KMA Business Web - Waiting for OTP Box Appear ... 
+2026-03-11 16:52:01,201 - INFO - KMA Business Web - Capture OTP Reference Number ... 
+2026-03-11 16:52:01,247 - ERROR - kmaBusiness_payout_1.5 - Exception on /kma_company_web/runPython [POST]
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KMA\kmaBusiness_payout_1.5.py", line 417, in kma_withdrawal
+    otp = cls.kma_read_otp()
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KMA\kmaBusiness_payout_1.5.py", line 458, in kma_read_otp
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+                 ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: I/O operation on closed file
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KMA\kmaBusiness_payout_1.5.py", line 540, in runPython
+    BankBot.kma_withdrawal(page, data)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KMA\kmaBusiness_payout_1.5.py", line 449, in kma_withdrawal
+    print(f"\n[!] WITHDRAWAL EXCEPTION:\n{error_trace}")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: I/O operation on closed file.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KMA\kmaBusiness_payout_1.5.py", line 549, in runPython
+    print(f"\n--- CRITICAL TRANSACTION ERROR ---\n{full_trace}")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: I/O operation on closed file.
+2026-03-11 16:52:01,251 - INFO - werkzeug - 127.0.0.1 - - [11/Mar/2026 16:52:01] "[35m[1mPOST /kma_company_web/runPython HTTP/1.1[0m" 500 -
+2026-03-11 16:57:26,681 - INFO - KMA Business Web - Starting for Eric WS_Client ...
+2026-03-11 16:57:26,710 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://10.0.0.253:5002
+2026-03-11 16:57:26,710 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-11 16:59:54,502 - INFO - KMA Business Web - Starting for Eric WS_Client ...
+2026-03-11 16:59:54,538 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://10.0.0.253:5002
+2026-03-11 16:59:54,538 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-11 17:08:11,266 - INFO - KMA Business Web - Starting for Eric WS_Client ...
+2026-03-11 17:08:11,353 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://10.0.0.253:5002
+2026-03-11 17:08:11,353 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-11 17:10:22,941 - INFO - KMA Business Web - Starting for Eric WS_Client ...
+2026-03-11 17:10:22,975 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://10.0.0.253:5002
+2026-03-11 17:10:22,975 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-11 17:10:30,120 - INFO - KMA Business Web - ==================================================
+2026-03-11 17:10:30,121 - INFO - KMA Business Web - 🎰 Starting KMA Business Web Login Flow ....
+2026-03-11 17:10:30,121 - INFO - KMA Business Web - ==================================================
+2026-03-11 17:10:30,121 - INFO - KMA Business Web - Browse to KMA Business Website ...
+2026-03-11 17:10:31,769 - INFO - KMA Business Web - Fill in Username ...
+2026-03-11 17:10:31,815 - INFO - KMA Business Web - Fill in Password ... 
+2026-03-11 17:10:31,833 - INFO - KMA Business Web - Click Login ... 
+2026-03-11 17:10:36,139 - INFO - KMA Business Web - Click Other Account ... 
+2026-03-11 17:10:40,497 - INFO - KMA Business Web - ==================================================
+2026-03-11 17:10:40,498 - INFO - KMA Business Web - 🎰 Starting KMA Business Web Withdrawal Flow ....
+2026-03-11 17:10:40,498 - INFO - KMA Business Web - ==================================================
+2026-03-11 17:10:40,498 - INFO - KMA Business Web - Select Bank Name ... 
+2026-03-11 17:10:48,014 - INFO - KMA Business Web - Fill in Account Number ... 
+2026-03-11 17:10:48,037 - INFO - KMA Business Web - Fill in Amount ... 
+2026-03-11 17:10:48,052 - INFO - KMA Business Web - Click Submit button ... 
+2026-03-11 17:10:48,108 - INFO - KMA Business Web - Waiting for OTP Box Appear ... 
+2026-03-11 17:10:51,451 - INFO - KMA Business Web - Capture OTP Reference Number ... 
+2026-03-11 17:10:51,466 - INFO - KMA Business Web - ==================================================
+2026-03-11 17:10:51,467 - INFO - KMA Business Web - 🎰 Starting Read Phone SMS OTP-Code Flow ....
+2026-03-11 17:10:51,467 - INFO - KMA Business Web - ==================================================
+2026-03-11 17:10:51,467 - INFO - KMA Business Web - Preparing Appium driver
+2026-03-11 17:10:51,467 - INFO - KMA Business Web - Reusing existing Appium driver session
+2026-03-11 17:10:51,487 - INFO - KMA Business Web - Appium process started with PID 19868
+2026-03-11 17:10:53,030 - INFO - KMA Business Web - Appium server is ready (attempt 1/10)
+2026-03-11 17:10:57,681 - INFO - KMA Business Web - ADB Shell Screen never Time Out ...
+2026-03-11 17:10:57,796 - INFO - KMA Business Web - 🤖 Reading latest message from KMA bank...
+2026-03-11 17:10:58,692 - INFO - KMA Business Web - # Ref: 1038, OTP: 550251 ❌
+2026-03-11 17:10:58,718 - INFO - KMA Business Web - # Ref: 2215, OTP: 812054 ❌
+2026-03-11 17:10:58,742 - INFO - KMA Business Web - # Ref: 4110, OTP: 196611 ❌
+2026-03-11 17:10:58,766 - INFO - KMA Business Web - # Ref: 1637, OTP: 217317 ❌
+2026-03-11 17:10:58,791 - INFO - KMA Business Web - # Ref: 8626, OTP: 760516 ❌
+2026-03-11 17:10:58,816 - INFO - KMA Business Web - # Ref: 7193, OTP: 389940 ❌
+2026-03-11 17:10:58,841 - INFO - KMA Business Web - # Ref: 7582, OTP: 790121 ❌
+2026-03-11 17:10:58,872 - INFO - KMA Business Web - # Ref: 5957, OTP: 418838 ❌
+2026-03-11 17:10:58,895 - INFO - KMA Business Web - # Ref: 4533, OTP: 124335 ❌
+2026-03-11 17:10:58,918 - INFO - KMA Business Web - # Ref: 5173, OTP: 365766 ❌
+2026-03-11 17:10:58,941 - INFO - KMA Business Web - # Ref: 8497, OTP: 727768 ❌
+2026-03-11 17:10:58,941 - INFO - KMA Business Web - Found matching Ref: 8497 | OTP: 727768 ✅
+2026-03-11 17:10:58,942 - INFO - KMA Business Web - Successful Get OTP-Code ...
+2026-03-11 17:10:58,942 - INFO - KMA Business Web - Fill in OTP Code = 727768 
+2026-03-11 17:10:58,962 - INFO - KMA Business Web - Call Back Eric API ...
+2026-03-11 17:11:00,296 - INFO - KMA Business Web - 
+
+
+2026-03-11 17:11:00,296 - INFO - root - Raw string to hash: bankCode=KMA_COMPANY_WEB&deviceId=2312&merchantCode=IBS&transactionId=1111PRODBankBotIsTheBest
+2026-03-11 17:11:00,297 - INFO - root - MD5 Hash: b6ef35c823f1e888f5d43fa4d585c6e2
+2026-03-11 17:11:00,298 - INFO - root - Response: {"code":"400003","msg":"Device is not binded in backoffice yet","data":null}
+2026-03-11 17:11:00,298 - INFO - KMA Business Web - 
+
+
+2026-03-11 17:11:00,302 - INFO - werkzeug - 127.0.0.1 - - [11/Mar/2026 17:11:00] "POST /kma_company_web/runPython HTTP/1.1" 200 -
+2026-03-11 17:11:15,271 - INFO - KMA Business Web - ==================================================
+2026-03-11 17:11:15,272 - INFO - KMA Business Web - 🎰 Starting KMA Business Web Withdrawal Flow ....
+2026-03-11 17:11:15,272 - INFO - KMA Business Web - ==================================================
+2026-03-11 17:11:15,272 - INFO - KMA Business Web - Select Bank Name ... 
+2026-03-11 17:11:20,352 - INFO - KMA Business Web - Fill in Account Number ... 
+2026-03-11 17:11:20,387 - INFO - KMA Business Web - Fill in Amount ... 
+2026-03-11 17:11:20,424 - INFO - KMA Business Web - Click Submit button ... 
+2026-03-11 17:11:20,666 - INFO - KMA Business Web - Waiting for OTP Box Appear ... 
+2026-03-11 17:11:22,729 - INFO - KMA Business Web - Capture OTP Reference Number ... 
+2026-03-11 17:11:22,749 - INFO - KMA Business Web - ==================================================
+2026-03-11 17:11:22,749 - INFO - KMA Business Web - 🎰 Starting Read Phone SMS OTP-Code Flow ....
+2026-03-11 17:11:22,749 - INFO - KMA Business Web - ==================================================
+2026-03-11 17:11:22,750 - INFO - KMA Business Web - Preparing Appium driver
+2026-03-11 17:11:22,750 - INFO - KMA Business Web - Reusing existing Appium driver session
+2026-03-11 17:11:22,750 - INFO - KMA Business Web - Appium process already exists, skipping new start
+2026-03-11 17:11:22,750 - INFO - KMA Business Web - Reusing existing Appium driver session
+2026-03-11 17:11:22,949 - INFO - KMA Business Web - ADB Shell Screen never Time Out ...
+2026-03-11 17:11:23,034 - INFO - KMA Business Web - 🤖 Reading latest message from KMA bank...
+2026-03-11 17:11:23,517 - INFO - KMA Business Web - # Ref: 1038, OTP: 550251 ❌
+2026-03-11 17:11:23,547 - INFO - KMA Business Web - # Ref: 2215, OTP: 812054 ❌
+2026-03-11 17:11:23,573 - INFO - KMA Business Web - # Ref: 4110, OTP: 196611 ❌
+2026-03-11 17:11:23,602 - INFO - KMA Business Web - # Ref: 1637, OTP: 217317 ❌
+2026-03-11 17:11:23,632 - INFO - KMA Business Web - # Ref: 8626, OTP: 760516 ❌
+2026-03-11 17:11:23,665 - INFO - KMA Business Web - # Ref: 7193, OTP: 389940 ❌
+2026-03-11 17:11:23,691 - INFO - KMA Business Web - # Ref: 7582, OTP: 790121 ❌
+2026-03-11 17:11:23,721 - INFO - KMA Business Web - # Ref: 5957, OTP: 418838 ❌
+2026-03-11 17:11:23,748 - INFO - KMA Business Web - # Ref: 4533, OTP: 124335 ❌
+2026-03-11 17:11:23,779 - INFO - KMA Business Web - # Ref: 5173, OTP: 365766 ❌
+2026-03-11 17:11:23,810 - INFO - KMA Business Web - # Ref: 8497, OTP: 727768 ❌
+2026-03-11 17:11:23,811 - INFO - KMA Business Web - # OTP not found yet, retrying... 
+
+2026-03-11 17:11:24,811 - INFO - KMA Business Web - 🤖 Reading latest message from KMA bank...
+2026-03-11 17:11:25,336 - INFO - KMA Business Web - # Ref: 2215, OTP: 812054 ❌
+2026-03-11 17:11:25,361 - INFO - KMA Business Web - # Ref: 4110, OTP: 196611 ❌
+2026-03-11 17:11:25,384 - INFO - KMA Business Web - # Ref: 1637, OTP: 217317 ❌
+2026-03-11 17:11:25,415 - INFO - KMA Business Web - # Ref: 8626, OTP: 760516 ❌
+2026-03-11 17:11:25,445 - INFO - KMA Business Web - # Ref: 7193, OTP: 389940 ❌
+2026-03-11 17:11:25,477 - INFO - KMA Business Web - # Ref: 7582, OTP: 790121 ❌
+2026-03-11 17:11:25,506 - INFO - KMA Business Web - # Ref: 5957, OTP: 418838 ❌
+2026-03-11 17:11:25,533 - INFO - KMA Business Web - # Ref: 4533, OTP: 124335 ❌
+2026-03-11 17:11:25,595 - INFO - KMA Business Web - # Ref: 5173, OTP: 365766 ❌
+2026-03-11 17:11:25,624 - INFO - KMA Business Web - # Ref: 8497, OTP: 727768 ❌
+2026-03-11 17:11:25,661 - INFO - KMA Business Web - # Ref: 3697, OTP: 770382 ❌
+2026-03-11 17:11:25,661 - INFO - KMA Business Web - Found matching Ref: 3697 | OTP: 770382 ✅
+2026-03-11 17:11:25,661 - INFO - KMA Business Web - Successful Get OTP-Code ...
+2026-03-11 17:11:25,661 - INFO - KMA Business Web - Fill in OTP Code = 770382 
+2026-03-11 17:11:25,726 - INFO - KMA Business Web - Call Back Eric API ...
+2026-03-11 17:11:26,450 - INFO - KMA Business Web - 
+
+
+2026-03-11 17:11:26,450 - INFO - root - Raw string to hash: bankCode=KMA_COMPANY_WEB&deviceId=2312&merchantCode=IBS&transactionId=1111PRODBankBotIsTheBest
+2026-03-11 17:11:26,450 - INFO - root - MD5 Hash: b6ef35c823f1e888f5d43fa4d585c6e2
+2026-03-11 17:11:26,451 - INFO - root - Response: {"code":"400003","msg":"Device is not binded in backoffice yet","data":null}
+2026-03-11 17:11:26,451 - INFO - KMA Business Web - 
+
+
+2026-03-11 17:11:26,453 - INFO - werkzeug - 127.0.0.1 - - [11/Mar/2026 17:11:26] "POST /kma_company_web/runPython HTTP/1.1" 200 -
+2026-03-11 17:11:52,667 - INFO - KMA Business Web - ==================================================
+2026-03-11 17:11:52,668 - INFO - KMA Business Web - 🎰 Starting KMA Business Web Withdrawal Flow ....
+2026-03-11 17:11:52,668 - INFO - KMA Business Web - ==================================================
+2026-03-11 17:11:52,668 - INFO - KMA Business Web - Select Bank Name ... 
+2026-03-11 17:11:57,730 - INFO - KMA Business Web - Fill in Account Number ... 
+2026-03-11 17:11:57,761 - INFO - KMA Business Web - Fill in Amount ... 
+2026-03-11 17:11:57,791 - INFO - KMA Business Web - Click Submit button ... 
+2026-03-11 17:11:57,983 - INFO - KMA Business Web - Waiting for OTP Box Appear ... 
+2026-03-11 17:11:58,878 - ERROR - root - WITHDRAWAL FAILED for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KMA\kmaBusiness_payout_1.5.py", line 409, in kma_withdrawal
+    page.locator(".otpbox_header").wait_for(timeout=10000)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 18074, in wait_for
+    self._sync(self._impl_obj.wait_for(timeout=timeout, state=state))
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_locator.py", line 710, in wait_for
+    await self._frame.wait_for_selector(
+        self._selector, strict=True, timeout=timeout, state=state
+    )
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 369, in wait_for_selector
+    await self._channel.send(
+        "waitForSelector", self._timeout, locals_to_params(locals())
+    )
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.wait_for: Target page, context or browser has been closed
+Call log:
+  - waiting for locator(".otpbox_header") to be visible
+
+
+2026-03-11 17:11:58,882 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KMA\kmaBusiness_payout_1.5.py", line 409, in kma_withdrawal
+    page.locator(".otpbox_header").wait_for(timeout=10000)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 18074, in wait_for
+    self._sync(self._impl_obj.wait_for(timeout=timeout, state=state))
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_locator.py", line 710, in wait_for
+    await self._frame.wait_for_selector(
+        self._selector, strict=True, timeout=timeout, state=state
+    )
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 369, in wait_for_selector
+    await self._channel.send(
+        "waitForSelector", self._timeout, locals_to_params(locals())
+    )
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.wait_for: Target page, context or browser has been closed
+Call log:
+  - waiting for locator(".otpbox_header") to be visible
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KMA\kmaBusiness_payout_1.5.py", line 538, in runPython
+    BankBot.kma_withdrawal(page, data)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KMA\kmaBusiness_payout_1.5.py", line 450, in kma_withdrawal
+    raise Exception(f"Withdrawal failed: {str(e)}")
+Exception: Withdrawal failed: Locator.wait_for: Target page, context or browser has been closed
+Call log:
+  - waiting for locator(".otpbox_header") to be visible
+
+
+----------------------------------------
+2026-03-11 17:18:59,481 - INFO - KMA Business Web - Starting for Eric WS_Client ...
+2026-03-11 17:18:59,514 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://10.0.0.253:5002
+2026-03-11 17:18:59,514 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-11 17:19:09,614 - INFO - KMA Business Web - Starting for Eric WS_Client ...
+2026-03-11 17:19:09,645 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://10.0.0.253:5002
+2026-03-11 17:19:09,646 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-11 17:19:14,070 - INFO - KMA Business Web - Starting for Eric WS_Client ...
+2026-03-11 17:19:14,109 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://10.0.0.253:5002
+2026-03-11 17:19:14,110 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-11 17:21:42,165 - INFO - KMA Business Web - Starting for Eric WS_Client ...
+2026-03-11 17:21:42,195 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://10.0.0.253:5002
+2026-03-11 17:21:42,196 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-11 17:21:48,395 - INFO - KMA Business Web - Starting for Eric WS_Client ...
+2026-03-11 17:21:48,428 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://10.0.0.253:5002
+2026-03-11 17:21:48,428 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-11 17:21:55,934 - INFO - KMA Business Web - Starting for Eric WS_Client ...
+2026-03-11 17:21:55,971 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://10.0.0.253:5002
+2026-03-11 17:21:55,971 - INFO - werkzeug - [33mPress CTRL+C to quit[0m

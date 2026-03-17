@@ -19,6 +19,11 @@ from appium.options.android import UiAutomator2Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+# ================== Version Change =========================
+
+# - 1.0.1 
+# Fix SCB Login, cannot key password...
+
 # ================== Eric WS_Client Settings =================
 
 WS_PROC = None
@@ -145,20 +150,20 @@ class Appium_Driver():
             with Appium_Driver.time_Lock:
                 elapsed = time.time() - Appium_Driver.last_TxN_Time
             
-            if elapsed > 180:
+            if elapsed > 174:
                 # Access the global APPIUM_DRIVER variable
                 global APPIUM_DRIVER
                 if APPIUM_DRIVER:
                     try:
-                        logger.info("⏳ 3 minutes of inactivity. Killing TTB app...")
-                        APPIUM_DRIVER.terminate_app("com.TMBTOUCH.PRODUCTION")
+                        logger.info("⏳ 2.9 minutes of inactivity. Killing SCB app...")
+                        APPIUM_DRIVER.terminate_app("com.scb.corporate")
                     except Exception as e:
                         logger.error(f"Failed to kill app: {e}")
                 
                 with Appium_Driver.time_Lock:
                     Appium_Driver.last_TxN_Time = time.time()
 
-# ================== Eric Settings ==================
+# ================== Eric API ==================
 
 # Eric
 class Eric():
@@ -246,9 +251,9 @@ class Eric():
 # Apps Automation
 class BankBot(Appium_Driver, Eric):
     
-    # TTB Touch Login
+    # SCB Anywhere Login
     @classmethod
-    def ttbTouch_login(cls, data):
+    def scbAnywhere_login(cls, data):
 
         # Use Appium Driver
         driver = cls.use_appium_driver()
@@ -256,100 +261,209 @@ class BankBot(Appium_Driver, Eric):
         # Forces the terminal to handle those sea creatures correctly
         sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
         logger.info("="*50)
-        logger.info("🎰 Starting TTB Touch Login Flow ....")
+        logger.info("🎰 Starting SCB Company Login Flow ....")
         logger.info("="*50)
+        
+        # If already on Quick Transfer, skip login
+        try:
+            WebDriverWait(driver, 1).until(EC.presence_of_element_located((AppiumBy.ACCESSIBILITY_ID, "PromptPay")))
+            logger.info("Already on Transfer page, Skip login...")
+
+            # Withdrawal Process
+            cls.scbAnywhere_withdrawal(data)
+
+        except Exception:
+            logger.info("Not in Quick Transfer page, Continue ...")
+            pass
 
         # ADB Shell Never Screen Timeout
         logger.info("ADB Shell Screen never Time Out ...")
         driver.execute_script("mobile: shell", {"command": "settings","args": ["put", "system", "screen_off_timeout", "2147483647"]})
+ 
+        # bypass scbanyware detect using usb debugging
+        driver.execute_script('mobile: shell', {'command': 'settings', 'args': ['put', 'global', 'adb_enabled', '12']})
+        logger.info("Bypass USB Debugging...")
 
-        # Launch TTB Touch Apps
-        logger.info("Launch TTB Touch Apps ...")
-        driver.activate_app("com.TMBTOUCH.PRODUCTION")     
+        # Check Apps State
+        # 1 = Not Running, 2 = Suspended, 3 = Background, 4 = Foreground
+        state = driver.query_app_state("com.scb.corporate")
+        logger.info(f"Current App state: {state}")
 
-        # Click Transfer
-        logger.info('Click Transfer ...')   
-        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "//android.widget.TextView[@text='Transfer']"))).click()
+        # Open Apps
+        if state == 4:
+            logger.info("App already in foreground. Proceeding...")
+        else:
+            # If state is 1, 2, or 3, we want a CLEAN launch to prevent crashes
+            logger.info(f"App state is {state}. Performing a clean restart to prevent auto-crash.")
+            
+            # Force terminate first to clear any hung background sessions
+            driver.terminate_app("com.scb.corporate")
+            time.sleep(1) 
+            
+            # Open Apps
+            driver.activate_app("com.scb.corporate")
+            time.sleep(3) 
+            
+            # Check if Apps is Crash
+            if driver.query_app_state("com.scb.corporate") != 4:
+                logger.error("App failed to reach foreground. Retrying once...")
+                driver.activate_app("com.scb.corporate")
 
-        # Wait for Enter Pin
-        logger.info("Waiting for Enter Pin ...")
-        WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.ID, "com.TMBTOUCH.PRODUCTION:id/title_pin")))
+        # Inactive Too Long
+        try:
+            # wait for text "You have been inactive too long"
+            WebDriverWait(driver, 1).until(EC.presence_of_element_located((AppiumBy.XPATH, "//*[contains(@text, 'You have been inactive for too long')]")))
+            
+            # Find "Continue" button and click continue
+            driver.find_element(AppiumBy.XPATH, "//*[contains(@text, 'Continue')]").click()
+            logger.info("You have been inactive too long, Click Continue...")
+        except:
+            pass
+
+        # Session Timeout
+        try:
+            # wait for text "Session Timeout"
+            WebDriverWait(driver, 1).until(EC.presence_of_element_located((AppiumBy.XPATH, "//*[contains(@text, 'Session timeout')]")))
+            logger.info("Session Timeout, Click Continue / Log in...")
+
+            # Find "Continue" / "Log in" button and click continue
+            try:
+                driver.find_element(AppiumBy.XPATH, "//*[contains(@text, 'Continue')]").click()
+                logger.info("Click Continue ....")
+            except:
+                driver.find_element(AppiumBy.XPATH, "//*[contains(@text, 'Log in')]").click()
+                logger.info("Click Log in ....")
+        except:
+            logger.info("No Session Timeout, Skip ...")
+            pass
+
+        # Enter Pin / Pending edit (0)
+        while True:
+            try: 
+                # Wait for "Enter PIN" to appear
+                WebDriverWait(driver, 1).until(EC.visibility_of_element_located((AppiumBy.XPATH, "//*[@text='Enter PIN']")))
+                logger.info("Enter PIN Appear...")
+                logger.info("Start Enter PIN...")
+            
+                # Enter Pin
+                pin = str(data["pin"])
+                for digit in pin:
+                    digit_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((AppiumBy.XPATH, f"//android.widget.TextView[@text='{digit}']")))
+                    digit_button.click()
+                break
+            except:
+                try:
+                    # Wait for "Pending edit (0)" to appear
+                    WebDriverWait(driver, 1).until(EC.visibility_of_element_located((AppiumBy.XPATH, "//*[@text='Pending edit (0)']")))
+                    logger.info("Wait for Pending edit (0) appear ...")
+                    break
+                except:
+                    pass
         
-        # Click Passcode Number
-        logger.info('Key Login Passcode ...')
-        for digit in str(data["password"]):
-            driver.find_element(By.ID, f"com.TMBTOUCH.PRODUCTION:id/key_0{digit}").click()
-        logger.info("Successfully Login ...")
+        # Wait and Button click "Services"
+        logger.info("Click 'Services' ...")
+        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Services"))).click()
 
-        # TTBTouch Withdrawal
-        cls.ttbTouch_withdrawal(data)
-        
-    # TTB Touch Withdrawal
+        # Wait for "Manage your transactions"
+        logger.info("Wait for 'Manage your transaction appear' ...")
+        WebDriverWait(driver, 20).until(EC.visibility_of_element_located((AppiumBy.XPATH, '//android.widget.TextView[@text="Manage your transactions"]')))
+        time.sleep(1)
+
+        # Wait and Button click "Quick Transfer"
+        logger.info("Button click 'Quick Transfer' ...")
+        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Quick Transfer"))).click()
+
+        # Proceed to withdrawal
+        cls.scbAnywhere_withdrawal(data)
+
+    # SCB Anywhere Withdrawal
     @classmethod
-    def ttbTouch_withdrawal(cls, data):
+    def scbAnywhere_withdrawal(cls, data):
 
         # Forces the terminal to handle those sea creatures correctly
         logger.info("="*50)
-        logger.info("🎰 Starting TTB Touch Withdrawal Flow ....")
+        logger.info("🎰 Starting SCB Company Withdrawal Flow ....")
         logger.info("="*50)
 
         # Use Appium Driver
         driver = cls.use_appium_driver()
+
+        # Wait for "Account No."
+        logger.info("Wait for 'Account No.' ...")
+        WebDriverWait(driver, 20).until(EC.presence_of_element_located((AppiumBy.ACCESSIBILITY_ID, "PromptPay")))
+        time.sleep(1)
+
+        # Select Bank (If not found, scroll down until it found)
+        logger.info("Select Bank ...")
+        driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,f'new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().text("{data.get("toBankCode")}"))')
+        WebDriverWait(driver, 10).until(EC.element_to_be_clickable((AppiumBy.XPATH, f'//android.widget.TextView[@text="{data.get("toBankCode")}"]/..'))).click()
         
-        # Wait and Button Click "Other Accounts"
-        logger.info("Click 'Other Accounts' ...")
-        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@resource-id="com.TMBTOUCH.PRODUCTION:id/menu_name" and @text="Other Accounts"]'))).click()
+        # Wait for Recipient Details
+        WebDriverWait(driver, 20).until(EC.presence_of_element_located((AppiumBy.XPATH, '//android.widget.TextView[@text="Recipient details"]')))
+        logger.info("Wait for 'Recipient Details' appear ...")
+        time.sleep(1)
 
-        # Select Bank Name (Drop Down Menu)
-        logger.info("Click Select Bank ... (Drop Down Menu)")
-        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "com.TMBTOUCH.PRODUCTION:id/to_account_layout"))).click()
+        # Fill Account No
+        logger.info('Fill Account No ...')
+        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.XPATH, '//android.widget.EditText[@resource-id="tfAccountNo"]'))).send_keys(str(data["toAccountNum"]))
 
-        # Wait for Select Bank MENU
-        logger.info("Wait for Select Bank Menu ...")
-        WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.ID, "com.TMBTOUCH.PRODUCTION:id/title_text")))
+        # Fill Amount
+        logger.info('Fill Amount ...')
+        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.XPATH, '//android.widget.EditText[@resource-id="transactionAmount"]'))).send_keys(str(data["amount"]))
 
-        # Select Bank
-        logger.info("Select Bank ....")
-        driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, f'new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().text("{str(data["toBankCode"])}"))').click()
+        # Wait and Button Click "Next"
+        logger.info('Click Next ...')
+        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Next"))).click()
 
-        # Wait and Fill Account Number
-        logger.info("Fill Account No ...")
-        WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.ID, "com.TMBTOUCH.PRODUCTION:id/edt_account_no"))).send_keys(f"{str(data["password"])}")
-        
-        # Wait and Fill Amount
-        logger.info("Fill Amount ...")
-        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "com.TMBTOUCH.PRODUCTION:id/edt_amount"))).send_keys(f"{str(data["amount"])}")
+        # Wait for Review Information 
+        logger.info('Wait for Review Information ...')
+        WebDriverWait(driver, 20).until(EC.presence_of_element_located((AppiumBy.XPATH, '//android.widget.TextView[@text="Review information"]')))
+        time.sleep(1)
 
-        # Scroll Down 
-        logger.info("Scroll Down ...")
-        driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,'new UiScrollable(new UiSelector().scrollable(true)).scrollForward()')
-        
-        # Button Click Next
-        logger.info("Click Next ...")
-        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "com.TMBTOUCH.PRODUCTION:id/btn_next"))).click()
-        
-        # Button Click Confirm
-        logger.info("Click Confirm Transaction ...")
-        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "com.TMBTOUCH.PRODUCTION:id/btn_confirm"))).click()
+        # Wait and Button Click "Submit"
+        logger.info('Click Submit ...')
+        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Submit"))).click()
 
-        # Wait for Enter Pin
-        logger.info("Waiting for Enter Pin ...")
-        WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.ID, "com.TMBTOUCH.PRODUCTION:id/title_pin")))
-        
-        # Click Passcode Number
-        logger.info('Key Login Passcode ...')
-        for digit in str(data["password"]):
-            driver.find_element(By.ID, f"com.TMBTOUCH.PRODUCTION:id/pin_key_{digit}").click()
+        # Wait for SCB Digital Token Pin
+        logger.info("Wait For 'SCB Digital Token Pin' appear ...")
+        WebDriverWait(driver, 300).until(EC.visibility_of_element_located((AppiumBy.XPATH, "//*[@text='Enter the 8-digit\nSCB Digital Token PIN']")))
+        logger.info("Key in SCB Digital Token PIN...")
+        time.sleep(1)
+
+        token_pin = str(data["scbDigitalTokenPin"])
+        for digit in token_pin:
+            digit_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((AppiumBy.XPATH, f"//android.widget.TextView[@text='{digit}']")))
+            digit_button.click()
 
         # Call Back Eric API
         cls.eric_api(data)
 
-        logger.info("Withdrawal Completed ...")
+        # Click "Share payment slip"
+        logger.info("Wait for 'Share payment slip' ...")
+        WebDriverWait(driver, 30).until(EC.presence_of_element_located((AppiumBy.ACCESSIBILITY_ID, "Share payment slip")))
         
+        time.sleep(1)
+
+        # Click Back
+        logger.info("Click Back ...")
+        WebDriverWait(driver, 30).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Back"))).click()
+
+        time.sleep(1)
+
+        # Wait for Success
+        logger.info("Wait for Success ...")
+        WebDriverWait(driver, 30).until(EC.presence_of_element_located((AppiumBy.XPATH, '//android.widget.TextView[@text="Success"]')))
+
+        time.sleep(1)
+
+        # Button Click "Make another transfer"
+        logger.info("Withdrawal Completed Make Another Transfer ...")
+        WebDriverWait(driver, 30).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Make another transfer"))).click()
+
 # ================== Code Start Here ==================
 
 # Run API
-@app.route("/ttb_touch_apps/runPython", methods=["POST"])
+@app.route("/scb_company/runPython", methods=["POST"])
 def runPython():
 
     # Count Inactivity Transaction Timer
@@ -362,7 +476,7 @@ def runPython():
     with LOCK:
         try:
             # Perform Withdrawal
-            BankBot.ttbTouch_login(data)
+            BankBot.scbAnywhere_login(data)
 
             # Return Successful, if withdrawal Successful
             return jsonify({"success": True,"transactionId": data.get("transactionId")})
@@ -381,4 +495,5 @@ if __name__ == "__main__":
     inactivity_thread.start()
 
     Eric.start_ws_client()
-    app.run(host="0.0.0.0", port=5100, debug=False, threaded=False, use_reloader=False)
+    app.run(host="0.0.0.0", port=5101, debug=False, threaded=False, use_reloader=False)
+

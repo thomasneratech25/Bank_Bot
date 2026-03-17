@@ -1,0 +1,54 @@
+2026-03-17 16:44:40,017 - INFO - TTB Touch Apps - Starting for Eric WS_Client ...
+2026-03-17 16:44:40,059 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.0.0.253:5100
+2026-03-17 16:44:40,060 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-17 16:50:28,018 - INFO - TTB Touch Apps - Starting for Eric WS_Client ...
+2026-03-17 16:50:28,053 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.0.0.253:5100
+2026-03-17 16:50:28,054 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-17 17:43:53,513 - INFO - TTB Touch Apps - Starting for Eric WS_Client ...
+2026-03-17 17:43:53,551 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.0.0.253:5100
+2026-03-17 17:43:53,551 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-17 17:58:28,119 - INFO - TTB Touch Apps - Starting for Eric WS_Client ...
+2026-03-17 17:58:28,191 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.0.0.253:5100
+2026-03-17 17:58:28,192 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-17 18:00:03,824 - INFO - TTB Touch Apps - Preparing Appium driver
+2026-03-17 18:00:03,825 - INFO - TTB Touch Apps - Reusing existing Appium driver session
+2026-03-17 18:00:03,909 - INFO - TTB Touch Apps - Appium process started with PID 28612
+2026-03-17 18:00:07,750 - INFO - TTB Touch Apps - Preparing Appium driver
+2026-03-17 18:00:07,751 - INFO - TTB Touch Apps - Reusing existing Appium driver session
+2026-03-17 18:00:07,773 - INFO - TTB Touch Apps - Appium process started with PID 15236
+2026-03-17 18:00:10,839 - INFO - TTB Touch Apps - Appium server is ready (attempt 2/10)
+2026-03-17 18:00:15,474 - INFO - TTB Touch Apps - ==================================================
+2026-03-17 18:00:15,475 - INFO - TTB Touch Apps - 🎰 Starting TTB Touch Login Flow ....
+2026-03-17 18:00:15,476 - INFO - TTB Touch Apps - ==================================================
+2026-03-17 18:00:15,477 - INFO - TTB Touch Apps - ADB Shell Screen never Time Out ...
+2026-03-17 18:00:15,605 - INFO - TTB Touch Apps - Launch TTB Touch Apps ...
+2026-03-17 18:00:15,861 - INFO - TTB Touch Apps - Click Transfer ...
+2026-03-17 18:00:22,657 - INFO - TTB Touch Apps - Waiting for Enter Pin ...
+2026-03-17 18:00:23,155 - INFO - TTB Touch Apps - Key Login Passcode ...
+2026-03-17 18:00:25,335 - INFO - TTB Touch Apps - Successfully Login ...
+2026-03-17 18:00:25,335 - INFO - TTB Touch Apps - ==================================================
+2026-03-17 18:00:25,336 - INFO - TTB Touch Apps - 🎰 Starting TTB Touch Withdrawal Flow ....
+2026-03-17 18:00:25,336 - INFO - TTB Touch Apps - ==================================================
+2026-03-17 18:00:25,336 - INFO - TTB Touch Apps - Preparing Appium driver
+2026-03-17 18:00:25,336 - INFO - TTB Touch Apps - Reusing existing Appium driver session
+2026-03-17 18:00:25,337 - INFO - TTB Touch Apps - Appium process already exists, skipping new start
+2026-03-17 18:00:25,337 - INFO - TTB Touch Apps - Reusing existing Appium driver session
+2026-03-17 18:00:25,338 - INFO - TTB Touch Apps - Click 'Other Accounts' ...
+2026-03-17 18:00:44,072 - INFO - TTB Touch Apps - Starting for Eric WS_Client ...
+2026-03-17 18:00:44,124 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.0.0.253:5100
+2026-03-17 18:00:44,125 - INFO - werkzeug - [33mPress CTRL+C to quit[0m

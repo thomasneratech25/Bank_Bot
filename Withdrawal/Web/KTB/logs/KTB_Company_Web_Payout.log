@@ -1,0 +1,1459 @@
+2026-03-12 11:34:38,699 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 11:34:38,700 - INFO - KTB COMPANY WEB - 🎰 Starting Read Phone SMS OTP-Code Flow ....
+2026-03-12 11:34:38,700 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 11:35:40,630 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 11:35:40,630 - INFO - KTB COMPANY WEB - 🎰 Starting Read Phone SMS OTP-Code Flow ....
+2026-03-12 11:35:40,630 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 11:35:40,631 - INFO - KTB COMPANY WEB - Preparing Appium driver
+2026-03-12 11:35:40,631 - INFO - KTB COMPANY WEB - Reusing existing Appium driver session
+2026-03-12 11:35:51,353 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 11:35:51,354 - INFO - KTB COMPANY WEB - 🎰 Starting Read Phone SMS OTP-Code Flow ....
+2026-03-12 11:35:51,354 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 11:35:51,354 - INFO - KTB COMPANY WEB - Preparing Appium driver
+2026-03-12 11:35:51,354 - INFO - KTB COMPANY WEB - Reusing existing Appium driver session
+2026-03-12 11:36:17,354 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 11:36:17,354 - INFO - KTB COMPANY WEB - 🎰 Starting Read Phone SMS OTP-Code Flow ....
+2026-03-12 11:36:17,354 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 11:36:17,354 - INFO - KTB COMPANY WEB - Preparing Appium driver
+2026-03-12 11:36:17,354 - INFO - KTB COMPANY WEB - Reusing existing Appium driver session
+2026-03-12 11:36:21,632 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 11:36:21,633 - INFO - KTB COMPANY WEB - 🎰 Starting Read Phone SMS OTP-Code Flow ....
+2026-03-12 11:36:21,633 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 11:36:21,633 - INFO - KTB COMPANY WEB - Preparing Appium driver
+2026-03-12 11:36:21,633 - INFO - KTB COMPANY WEB - Reusing existing Appium driver session
+2026-03-12 11:39:20,583 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 11:39:20,583 - INFO - KTB COMPANY WEB - 🎰 Starting Read Phone SMS OTP-Code Flow ....
+2026-03-12 11:39:20,583 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 11:39:20,583 - INFO - KTB COMPANY WEB - Preparing Appium driver
+2026-03-12 11:39:20,583 - INFO - KTB COMPANY WEB - Reusing existing Appium driver session
+2026-03-12 11:39:20,678 - INFO - KTB COMPANY WEB - Appium process started with PID 18908
+2026-03-12 11:39:26,798 - INFO - KTB COMPANY WEB - Appium server is ready (attempt 3/10)
+2026-03-12 11:44:10,877 - INFO - KTB COMPANY WEB - Starting for Eric WS_Client ...
+2026-03-12 11:44:12,196 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5003
+ * Running on http://10.0.0.253:5003
+2026-03-12 11:44:12,196 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-12 11:50:03,791 - INFO - KTB COMPANY WEB - Starting for Eric WS_Client ...
+2026-03-12 11:50:05,107 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5003
+ * Running on http://10.0.0.253:5003
+2026-03-12 11:50:05,107 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-12 11:50:11,578 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KTB\ktb_payout_appium_1.0.0.py", line 686, in runPython
+    page = BankBot.ktb_login(data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KTB\ktb_payout_appium_1.0.0.py", line 300, in ktb_login
+    if PLAYWRIGHT is None:
+       ^^^^^^^^^^
+NameError: name 'PLAYWRIGHT' is not defined
+
+----------------------------------------
+2026-03-12 11:50:11,600 - INFO - bank_bot - Closing Chrome CDP
+2026-03-12 11:52:30,208 - INFO - KTB COMPANY WEB - Starting for Eric WS_Client ...
+2026-03-12 11:52:31,521 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5003
+ * Running on http://10.0.0.253:5003
+2026-03-12 11:52:31,521 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-12 11:52:53,333 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 11:52:53,334 - INFO - KTB COMPANY WEB - 🎰 Starting KTB Company Web Login Flow ....
+2026-03-12 11:52:53,335 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 11:52:54,936 - INFO - KTB COMPANY WEB - Browse to Krungthai Website ...
+2026-03-12 11:52:58,298 - INFO - KTB COMPANY WEB - Force change to English Language ...
+2026-03-12 11:53:00,483 - INFO - KTB COMPANY WEB - Perform Login ...
+2026-03-12 11:53:00,485 - INFO - KTB COMPANY WEB - Fill in Company ID ...
+2026-03-12 11:53:00,543 - INFO - KTB COMPANY WEB - Fill in User ID ...
+2026-03-12 11:53:00,587 - INFO - KTB COMPANY WEB - Fill in Password ...
+2026-03-12 11:53:01,128 - INFO - KTB COMPANY WEB - Click Login ...
+2026-03-12 11:53:01,222 - INFO - KTB COMPANY WEB - Wait for OTP Verification ...
+2026-03-12 11:53:03,115 - INFO - KTB COMPANY WEB - Read KTB Ref Code ...
+2026-03-12 11:53:03,132 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 11:53:03,133 - INFO - KTB COMPANY WEB - 🎰 Starting Read Phone SMS OTP-Code Flow ....
+2026-03-12 11:53:03,136 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 11:53:03,138 - INFO - KTB COMPANY WEB - Preparing Appium driver
+2026-03-12 11:53:03,140 - INFO - KTB COMPANY WEB - Reusing existing Appium driver session
+2026-03-12 11:53:03,174 - INFO - KTB COMPANY WEB - Appium process started with PID 7244
+2026-03-12 11:53:08,267 - INFO - KTB COMPANY WEB - Appium server is ready (attempt 2/10)
+2026-03-12 11:53:15,605 - INFO - KTB COMPANY WEB - Get OTP-Code Successful ....
+2026-03-12 11:53:15,606 - INFO - KTB COMPANY WEB - Fill in OTP-Code ...
+2026-03-12 11:53:15,639 - INFO - KTB COMPANY WEB - Button click 'Verify' ...
+2026-03-12 11:53:15,718 - INFO - KTB COMPANY WEB - Wait for 'Account Overview' Appear ... 
+2026-03-12 11:53:27,727 - INFO - KTB COMPANY WEB - Hover to left Menu ...
+2026-03-12 11:53:28,740 - INFO - KTB COMPANY WEB - Click 'Transfer & Pay' ... 
+2026-03-12 11:53:28,830 - INFO - KTB COMPANY WEB - Wait for 'Transfer & Bill Payment' ... 
+2026-03-12 11:53:30,716 - INFO - KTB COMPANY WEB - Click 'New Transfer' ... 
+2026-03-12 11:53:48,949 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KTB\ktb_payout_appium_1.0.0.py", line 693, in runPython
+    page = BankBot.ktb_login(data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KTB\ktb_payout_appium_1.0.0.py", line 424, in ktb_login
+    page.locator("//body/ktb-root/ui-layout[@class='ng-star-inserted']/div[@class='main-container']/ui-side-panel/ng-sidebar-container[@backdropclass='custom-backdrop']/div[@class='ng-sidebar__content ng-sidebar__content--animate']/main/div[@class='main-inner']/ktb-module-transfer-pay[@class='ng-star-inserted']/ktb-module-transfer-pay-index-page[@class='ng-star-inserted']/ui-section[@class='transfer-landing-header section-wrapper ng-star-inserted']/section[@class='is-dark']/div[@class='section-content']/ui-container/div[@class='container']/div[@class='inner']/div[@class='sub-menu-container ng-star-inserted']/ui-card-sub-menu[1]/div[1]").click(timeout=0)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 15631, in click
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.click(
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_locator.py", line 162, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 566, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+Exception: Locator.click: Connection closed while reading from the driver
+
+----------------------------------------
+2026-03-12 11:53:48,949 - INFO - bank_bot - Closing Chrome CDP
+2026-03-12 11:58:40,451 - INFO - KTB COMPANY WEB - Starting for Eric WS_Client ...
+2026-03-12 11:58:41,757 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5003
+ * Running on http://10.0.0.253:5003
+2026-03-12 11:58:41,758 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-12 11:58:49,200 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 11:58:49,200 - INFO - KTB COMPANY WEB - 🎰 Starting KTB Company Web Login Flow ....
+2026-03-12 11:58:49,201 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 11:58:50,724 - INFO - KTB COMPANY WEB - Browse to Krungthai Website ...
+2026-03-12 11:59:20,741 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KTB\ktb_payout_appium_1.0.0.py", line 693, in runPython
+    page = BankBot.ktb_login(data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KTB\ktb_payout_appium_1.0.0.py", line 338, in ktb_login
+    page.goto("https://business.krungthai.com/#/login", wait_until="domcontentloaded")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 9054, in goto
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.goto(
+        ^^^^^^^^^^^^^^^^^^^^
+            url=url, timeout=timeout, waitUntil=wait_until, referer=referer
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_page.py", line 552, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 153, in goto
+    await self._channel.send(
+        "goto", self._navigation_timeout, locals_to_params(locals())
+    )
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://business.krungthai.com/#/login", waiting until "domcontentloaded"
+
+
+----------------------------------------
+2026-03-12 11:59:20,745 - INFO - bank_bot - Closing Chrome CDP
+2026-03-12 11:59:38,466 - INFO - KTB COMPANY WEB - Starting for Eric WS_Client ...
+2026-03-12 11:59:39,752 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5003
+ * Running on http://10.0.0.253:5003
+2026-03-12 11:59:39,752 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-12 11:59:47,039 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 11:59:47,040 - INFO - KTB COMPANY WEB - 🎰 Starting KTB Company Web Login Flow ....
+2026-03-12 11:59:47,040 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 11:59:48,553 - INFO - KTB COMPANY WEB - Browse to Krungthai Website ...
+2026-03-12 12:00:18,572 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KTB\ktb_payout_appium_1.0.0.py", line 693, in runPython
+    page = BankBot.ktb_login(data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KTB\ktb_payout_appium_1.0.0.py", line 338, in ktb_login
+    page.goto("https://business.krungthai.com/#/login", wait_until="domcontentloaded")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 9054, in goto
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.goto(
+        ^^^^^^^^^^^^^^^^^^^^
+            url=url, timeout=timeout, waitUntil=wait_until, referer=referer
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_page.py", line 552, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 153, in goto
+    await self._channel.send(
+        "goto", self._navigation_timeout, locals_to_params(locals())
+    )
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://business.krungthai.com/#/login", waiting until "domcontentloaded"
+
+
+----------------------------------------
+2026-03-12 12:00:18,575 - INFO - bank_bot - Closing Chrome CDP
+2026-03-12 12:00:28,845 - INFO - KTB COMPANY WEB - Starting for Eric WS_Client ...
+2026-03-12 12:00:30,136 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5003
+ * Running on http://10.0.0.253:5003
+2026-03-12 12:00:30,136 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-12 12:00:35,479 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:00:35,479 - INFO - KTB COMPANY WEB - 🎰 Starting KTB Company Web Login Flow ....
+2026-03-12 12:00:35,479 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:00:36,998 - INFO - KTB COMPANY WEB - Browse to Krungthai Website ...
+2026-03-12 12:00:42,306 - INFO - KTB COMPANY WEB - Force change to English Language ...
+2026-03-12 12:00:43,872 - INFO - KTB COMPANY WEB - Perform Login ...
+2026-03-12 12:00:43,873 - INFO - KTB COMPANY WEB - Fill in Company ID ...
+2026-03-12 12:00:43,907 - INFO - KTB COMPANY WEB - Fill in User ID ...
+2026-03-12 12:00:43,946 - INFO - KTB COMPANY WEB - Fill in Password ...
+2026-03-12 12:00:44,490 - INFO - KTB COMPANY WEB - Click Login ...
+2026-03-12 12:00:44,588 - INFO - KTB COMPANY WEB - Wait for OTP Verification ...
+2026-03-12 12:00:46,507 - INFO - KTB COMPANY WEB - Read KTB Ref Code ...
+2026-03-12 12:00:46,524 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:00:46,527 - INFO - KTB COMPANY WEB - 🎰 Starting Read Phone SMS OTP-Code Flow ....
+2026-03-12 12:00:46,528 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:00:46,528 - INFO - KTB COMPANY WEB - Preparing Appium driver
+2026-03-12 12:00:46,530 - INFO - KTB COMPANY WEB - Reusing existing Appium driver session
+2026-03-12 12:00:46,575 - INFO - KTB COMPANY WEB - Appium process started with PID 10760
+2026-03-12 12:00:49,636 - INFO - KTB COMPANY WEB - Appium server is ready (attempt 2/10)
+2026-03-12 12:00:56,701 - INFO - KTB COMPANY WEB - Get OTP-Code Successful ....
+2026-03-12 12:00:56,702 - INFO - KTB COMPANY WEB - Fill in OTP-Code ...
+2026-03-12 12:00:56,738 - INFO - KTB COMPANY WEB - Button click 'Verify' ...
+2026-03-12 12:00:56,835 - INFO - KTB COMPANY WEB - Wait for 'Account Overview' Appear ... 
+2026-03-12 12:01:11,214 - INFO - KTB COMPANY WEB - Hover to left Menu ...
+2026-03-12 12:01:12,223 - INFO - KTB COMPANY WEB - Click 'Transfer & Pay' ... 
+2026-03-12 12:01:12,299 - INFO - KTB COMPANY WEB - Wait for 'Transfer & Bill Payment' ... 
+2026-03-12 12:01:14,170 - INFO - KTB COMPANY WEB - Click 'New Transfer' ... 
+2026-03-12 12:01:14,227 - INFO - KTB COMPANY WEB - Wait for 'Transfer Details' ...
+2026-03-12 12:01:15,199 - INFO - KTB COMPANY WEB - Select Payee ...
+2026-03-12 12:01:16,883 - INFO - KTB COMPANY WEB - Wait for 'New Account' Appear ...
+2026-03-12 12:01:16,903 - INFO - KTB COMPANY WEB - Click 'New Account' ...
+2026-03-12 12:01:18,952 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:01:18,953 - INFO - KTB COMPANY WEB - 🎰 Starting KTB Company Web Withdrawal Flow ....
+2026-03-12 12:01:18,954 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:01:18,955 - INFO - KTB COMPANY WEB - Open 'Select Bank' Drop Down Menu ...
+2026-03-12 12:01:20,119 - INFO - KTB COMPANY WEB - Select Bank ...
+2026-03-12 12:01:21,234 - INFO - KTB COMPANY WEB - Fill Account Number ...
+2026-03-12 12:01:22,441 - INFO - KTB COMPANY WEB - Fill Account Name ...
+2026-03-12 12:01:22,473 - INFO - KTB COMPANY WEB - Click 'Add Details' ....
+2026-03-12 12:01:52,506 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KTB\ktb_payout_appium_1.0.0.py", line 696, in runPython
+    BankBot.ktb_withdrawal(page, data)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KTB\ktb_payout_appium_1.0.0.py", line 491, in ktb_withdrawal
+    page.locator("//span[normalize-space()='Add Details']").click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 15631, in click
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.click(
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_locator.py", line 162, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 566, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("//span[normalize-space()='Add Details']")
+    - locator resolved to <span class="ktb-button-label"> Add Details </span>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is not enabled
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not enabled
+    - retrying click action
+      - waiting 100ms
+    17 × waiting for element to be visible, enabled and stable
+       - element is not enabled
+     - retrying click action
+       - waiting 500ms
+    - waiting for element to be visible, enabled and stable
+    - element is not stable
+  38 × retrying click action
+       - waiting 500ms
+       - waiting for element to be visible, enabled and stable
+       - element is not enabled
+  - retrying click action
+    - waiting 500ms
+
+
+----------------------------------------
+2026-03-12 12:01:52,510 - INFO - bank_bot - Closing Chrome CDP
+2026-03-12 12:19:00,578 - INFO - KTB COMPANY WEB - Starting for Eric WS_Client ...
+2026-03-12 12:19:00,627 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5003
+ * Running on http://10.0.0.253:5003
+2026-03-12 12:19:00,628 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-12 12:19:05,168 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:19:05,170 - INFO - KTB COMPANY WEB - 🎰 Starting KTB Company Web Login Flow ....
+2026-03-12 12:19:05,171 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:19:06,685 - INFO - KTB COMPANY WEB - Browse to Krungthai Website ...
+2026-03-12 12:19:13,078 - INFO - KTB COMPANY WEB - Force change to English Language ...
+2026-03-12 12:19:15,182 - INFO - KTB COMPANY WEB - Perform Login ...
+2026-03-12 12:19:15,183 - INFO - KTB COMPANY WEB - Fill in Company ID ...
+2026-03-12 12:19:15,217 - INFO - KTB COMPANY WEB - Fill in User ID ...
+2026-03-12 12:19:15,254 - INFO - KTB COMPANY WEB - Fill in Password ...
+2026-03-12 12:19:15,793 - INFO - KTB COMPANY WEB - Click Login ...
+2026-03-12 12:19:15,886 - INFO - KTB COMPANY WEB - Wait for OTP Verification ...
+2026-03-12 12:19:17,791 - INFO - KTB COMPANY WEB - Read KTB Ref Code ...
+2026-03-12 12:19:47,809 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KTB\ktb_payout_appium_1.0.0.py", line 693, in runPython
+    page = BankBot.ktb_login(data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KTB\ktb_payout_appium_1.0.0.py", line 382, in ktb_login
+    cls._ktb_web_ref_code = page.locator("//p[@class='ref ref-number-size mb-16px']").inner_text().strip()
+                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 17087, in inner_text
+    self._sync(self._impl_obj.inner_text(timeout=timeout))
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_locator.py", line 476, in inner_text
+    return await self._frame.inner_text(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 712, in inner_text
+    return await self._channel.send(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+        "innerText", self._timeout, locals_to_params(locals())
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("//p[@class='ref ref-number-size mb-16px']")
+
+
+----------------------------------------
+2026-03-12 12:19:47,812 - INFO - bank_bot - Closing Chrome CDP
+2026-03-12 12:27:37,734 - INFO - KTB COMPANY WEB - Starting for Eric WS_Client ...
+2026-03-12 12:27:37,770 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5003
+ * Running on http://10.0.0.253:5003
+2026-03-12 12:27:37,770 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-12 12:28:07,110 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:28:07,110 - INFO - KTB COMPANY WEB - 🎰 Starting KTB Company Web Login Flow ....
+2026-03-12 12:28:07,111 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:28:08,686 - INFO - KTB COMPANY WEB - Browse to Krungthai Website ...
+2026-03-12 12:28:14,141 - INFO - KTB COMPANY WEB - Force change to English Language ...
+2026-03-12 12:28:15,160 - INFO - KTB COMPANY WEB - Perform Login ...
+2026-03-12 12:28:15,163 - INFO - KTB COMPANY WEB - Fill in Company ID ...
+2026-03-12 12:28:15,201 - INFO - KTB COMPANY WEB - Fill in User ID ...
+2026-03-12 12:28:15,249 - INFO - KTB COMPANY WEB - Fill in Password ...
+2026-03-12 12:28:15,811 - INFO - KTB COMPANY WEB - Click Login ...
+2026-03-12 12:28:15,909 - INFO - KTB COMPANY WEB - Wait for OTP Verification ...
+2026-03-12 12:28:17,289 - INFO - KTB COMPANY WEB - Read KTB Ref Code ...
+2026-03-12 12:28:17,305 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:28:17,306 - INFO - KTB COMPANY WEB - 🎰 Starting Read Phone SMS OTP-Code Flow ....
+2026-03-12 12:28:17,307 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:28:17,308 - INFO - KTB COMPANY WEB - Preparing Appium driver
+2026-03-12 12:28:17,308 - INFO - KTB COMPANY WEB - Reusing existing Appium driver session
+2026-03-12 12:28:17,409 - INFO - KTB COMPANY WEB - Appium process started with PID 12676
+2026-03-12 12:28:21,510 - INFO - KTB COMPANY WEB - Appium server is ready (attempt 2/10)
+2026-03-12 12:28:43,934 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KTB\ktb_payout_appium_1.0.0.py", line 693, in runPython
+    page = BankBot.ktb_login(data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KTB\ktb_payout_appium_1.0.0.py", line 389, in ktb_login
+    otp = cls.ktb_read_otp()
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KTB\ktb_payout_appium_1.0.0.py", line 624, in ktb_read_otp
+    driver = cls.use_appium_driver()
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KTB\ktb_payout_appium_1.0.0.py", line 98, in use_appium_driver
+    APPIUM_DRIVER = webdriver.Remote("http://127.0.0.1:8021", options=options)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\appium\webdriver\webdriver.py", line 249, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        command_executor=command_executor,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        client_config=client_config,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 271, in __init__
+    self.start_session(capabilities)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\appium\webdriver\webdriver.py", line 342, in start_session
+    response = self.execute(RemoteCommand.NEW_SESSION, w3c_caps)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 446, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: Could not find a connected Android device in 20000ms
+Stacktrace:
+UnknownError: Could not find a connected Android device in 20000ms
+    at getResponseForW3CError (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\errors.js:824:36)
+    at asyncHandler (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\protocol.js:402:77)
+The above error is caused by
+Error: Could not find a connected Android device in 20000ms
+    at ADB.getDevicesWithRetry (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-adb\build\lib\tools\system-calls.js:360:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.getDeviceInfoFromCaps (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\device\common.js:76:25)
+    at async AndroidUiautomator2Driver.createSession (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\build\lib\driver.js:211:38)
+    at async AppiumDriver.createSession (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\build\lib\appium.js:324:43)
+
+----------------------------------------
+2026-03-12 12:28:43,935 - INFO - bank_bot - Closing Chrome CDP
+2026-03-12 12:39:51,306 - INFO - KTB COMPANY WEB - Starting for Eric WS_Client ...
+2026-03-12 12:39:51,331 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5003
+ * Running on http://10.0.0.253:5003
+2026-03-12 12:39:51,331 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-12 12:39:54,824 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:39:54,825 - INFO - KTB COMPANY WEB - 🎰 Starting KTB Company Web Login Flow ....
+2026-03-12 12:39:54,825 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:39:56,338 - INFO - KTB COMPANY WEB - Browse to Krungthai Website ...
+2026-03-12 12:39:57,279 - INFO - KTB COMPANY WEB - Force change to English Language ...
+2026-03-12 12:39:58,525 - INFO - KTB COMPANY WEB - Perform Login ...
+2026-03-12 12:39:58,526 - INFO - KTB COMPANY WEB - Fill in Company ID ...
+2026-03-12 12:39:58,561 - INFO - KTB COMPANY WEB - Fill in User ID ...
+2026-03-12 12:39:58,591 - INFO - KTB COMPANY WEB - Fill in Password ...
+2026-03-12 12:39:59,118 - INFO - KTB COMPANY WEB - Click Login ...
+2026-03-12 12:39:59,177 - INFO - KTB COMPANY WEB - Wait for OTP Verification ...
+2026-03-12 12:40:01,028 - INFO - KTB COMPANY WEB - Read KTB Ref Code ...
+2026-03-12 12:40:01,040 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:40:01,041 - INFO - KTB COMPANY WEB - 🎰 Starting Read Phone SMS OTP-Code Flow ....
+2026-03-12 12:40:01,041 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:40:01,041 - INFO - KTB COMPANY WEB - Preparing Appium driver
+2026-03-12 12:40:01,042 - INFO - KTB COMPANY WEB - Reusing existing Appium driver session
+2026-03-12 12:40:01,063 - INFO - KTB COMPANY WEB - Appium process started with PID 22492
+2026-03-12 12:40:03,094 - INFO - KTB COMPANY WEB - Appium server is ready (attempt 1/10)
+2026-03-12 12:40:12,404 - INFO - KTB COMPANY WEB - Get OTP-Code Successful ....
+2026-03-12 12:40:12,405 - INFO - KTB COMPANY WEB - Fill in OTP-Code ...
+2026-03-12 12:40:12,428 - INFO - KTB COMPANY WEB - Button click 'Verify' ...
+2026-03-12 12:40:12,479 - INFO - KTB COMPANY WEB - Wait for 'Account Overview' Appear ... 
+2026-03-12 12:40:24,069 - INFO - KTB COMPANY WEB - Hover to left Menu ...
+2026-03-12 12:40:25,086 - INFO - KTB COMPANY WEB - Click 'Transfer & Pay' ... 
+2026-03-12 12:40:25,148 - INFO - KTB COMPANY WEB - Wait for 'Transfer & Bill Payment' ... 
+2026-03-12 12:40:26,490 - INFO - KTB COMPANY WEB - Click 'New Transfer' ... 
+2026-03-12 12:40:26,525 - INFO - KTB COMPANY WEB - Wait for 'Transfer Details' ...
+2026-03-12 12:40:26,970 - INFO - KTB COMPANY WEB - Select Payee ...
+2026-03-12 12:40:28,013 - INFO - KTB COMPANY WEB - Wait for 'New Account' Appear ...
+2026-03-12 12:40:28,026 - INFO - KTB COMPANY WEB - Click 'New Account' ...
+2026-03-12 12:40:29,984 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:40:29,986 - INFO - KTB COMPANY WEB - 🎰 Starting KTB Company Web Withdrawal Flow ....
+2026-03-12 12:40:29,987 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:40:29,987 - INFO - KTB COMPANY WEB - Open 'Select Bank' Drop Down Menu ...
+2026-03-12 12:40:31,152 - INFO - KTB COMPANY WEB - Select Bank ...
+2026-03-12 12:40:32,223 - INFO - KTB COMPANY WEB - Fill Account Number ...
+2026-03-12 12:40:33,306 - INFO - KTB COMPANY WEB - Fill Account Name ...
+2026-03-12 12:40:33,325 - INFO - KTB COMPANY WEB - Click 'Add Details' ....
+2026-03-12 12:40:44,344 - INFO - KTB COMPANY WEB - Wait for 'Value Date' ...
+2026-03-12 12:40:45,371 - INFO - KTB COMPANY WEB - Fill Account Number ...
+2026-03-12 12:40:49,457 - INFO - KTB COMPANY WEB - Click Save ...
+2026-03-12 12:40:50,553 - INFO - KTB COMPANY WEB - Click Next ...
+2026-03-12 12:40:55,834 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KTB\ktb_payout_appium_1.0.0.py", line 696, in runPython
+    BankBot.ktb_withdrawal(page, data)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KTB\ktb_payout_appium_1.0.0.py", line 517, in ktb_withdrawal
+    page.locator("//span[normalize-space()='NEXT']").click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 15631, in click
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.click(
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_locator.py", line 162, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 566, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.click: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("//span[normalize-space()='NEXT']")
+    - locator resolved to <span class="ktb-button-label"> NEXT </span>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is not enabled
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not enabled
+    - retrying click action
+      - waiting 100ms
+    7 × waiting for element to be visible, enabled and stable
+      - element is not enabled
+    - retrying click action
+      - waiting 500ms
+    - waiting for element to be visible, enabled and stable
+    - element is not stable
+  2 × retrying click action
+      - waiting 500ms
+      - waiting for element to be visible, enabled and stable
+      - element is not enabled
+  - retrying click action
+    - waiting 500ms
+
+
+----------------------------------------
+2026-03-12 12:40:55,836 - INFO - bank_bot - Closing Chrome CDP
+2026-03-12 12:41:12,124 - INFO - KTB COMPANY WEB - Starting for Eric WS_Client ...
+2026-03-12 12:41:12,149 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5003
+ * Running on http://10.0.0.253:5003
+2026-03-12 12:41:12,149 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-12 12:41:17,120 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:41:17,120 - INFO - KTB COMPANY WEB - 🎰 Starting KTB Company Web Login Flow ....
+2026-03-12 12:41:17,120 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:41:18,639 - INFO - KTB COMPANY WEB - Browse to Krungthai Website ...
+2026-03-12 12:41:25,308 - INFO - KTB COMPANY WEB - Force change to English Language ...
+2026-03-12 12:41:26,436 - INFO - KTB COMPANY WEB - Perform Login ...
+2026-03-12 12:41:26,437 - INFO - KTB COMPANY WEB - Fill in Company ID ...
+2026-03-12 12:41:26,462 - INFO - KTB COMPANY WEB - Fill in User ID ...
+2026-03-12 12:41:26,487 - INFO - KTB COMPANY WEB - Fill in Password ...
+2026-03-12 12:41:27,022 - INFO - KTB COMPANY WEB - Click Login ...
+2026-03-12 12:41:27,107 - INFO - KTB COMPANY WEB - Wait for OTP Verification ...
+2026-03-12 12:41:28,490 - INFO - KTB COMPANY WEB - Read KTB Ref Code ...
+2026-03-12 12:41:28,499 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:41:28,500 - INFO - KTB COMPANY WEB - 🎰 Starting Read Phone SMS OTP-Code Flow ....
+2026-03-12 12:41:28,500 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:41:28,500 - INFO - KTB COMPANY WEB - Preparing Appium driver
+2026-03-12 12:41:28,500 - INFO - KTB COMPANY WEB - Reusing existing Appium driver session
+2026-03-12 12:41:28,521 - INFO - KTB COMPANY WEB - Appium process started with PID 5740
+2026-03-12 12:41:31,586 - INFO - KTB COMPANY WEB - Appium server is ready (attempt 2/10)
+2026-03-12 12:41:38,188 - INFO - KTB COMPANY WEB - Get OTP-Code Successful ....
+2026-03-12 12:41:38,188 - INFO - KTB COMPANY WEB - Fill in OTP-Code ...
+2026-03-12 12:41:38,212 - INFO - KTB COMPANY WEB - Button click 'Verify' ...
+2026-03-12 12:41:38,265 - INFO - KTB COMPANY WEB - Wait for 'Account Overview' Appear ... 
+2026-03-12 12:41:42,773 - INFO - KTB COMPANY WEB - Hover to left Menu ...
+2026-03-12 12:41:43,794 - INFO - KTB COMPANY WEB - Click 'Transfer & Pay' ... 
+2026-03-12 12:41:43,857 - INFO - KTB COMPANY WEB - Wait for 'Transfer & Bill Payment' ... 
+2026-03-12 12:41:45,106 - INFO - KTB COMPANY WEB - Click 'New Transfer' ... 
+2026-03-12 12:41:45,148 - INFO - KTB COMPANY WEB - Wait for 'Transfer Details' ...
+2026-03-12 12:41:45,588 - INFO - KTB COMPANY WEB - Select Payee ...
+2026-03-12 12:41:46,641 - INFO - KTB COMPANY WEB - Wait for 'New Account' Appear ...
+2026-03-12 12:41:46,657 - INFO - KTB COMPANY WEB - Click 'New Account' ...
+2026-03-12 12:41:48,634 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:41:48,635 - INFO - KTB COMPANY WEB - 🎰 Starting KTB Company Web Withdrawal Flow ....
+2026-03-12 12:41:48,635 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:41:48,635 - INFO - KTB COMPANY WEB - Open 'Select Bank' Drop Down Menu ...
+2026-03-12 12:41:49,783 - INFO - KTB COMPANY WEB - Select Bank ...
+2026-03-12 12:41:50,849 - INFO - KTB COMPANY WEB - Fill Account Number ...
+2026-03-12 12:41:53,964 - INFO - KTB COMPANY WEB - Fill Account Name ...
+2026-03-12 12:41:53,981 - INFO - KTB COMPANY WEB - Click 'Add Details' ....
+2026-03-12 12:41:59,633 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KTB\ktb_payout_appium_1.0.0.py", line 696, in runPython
+    BankBot.ktb_withdrawal(page, data)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KTB\ktb_payout_appium_1.0.0.py", line 491, in ktb_withdrawal
+    page.locator("//span[normalize-space()='Add Details']").click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 15631, in click
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.click(
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_locator.py", line 162, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 566, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+Exception: Locator.click: Connection closed while reading from the driver
+
+----------------------------------------
+2026-03-12 12:41:59,633 - INFO - bank_bot - Closing Chrome CDP
+2026-03-12 12:42:19,551 - INFO - KTB COMPANY WEB - Starting for Eric WS_Client ...
+2026-03-12 12:42:19,576 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5003
+ * Running on http://10.0.0.253:5003
+2026-03-12 12:42:19,576 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-12 12:42:27,887 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:42:27,887 - INFO - KTB COMPANY WEB - 🎰 Starting KTB Company Web Login Flow ....
+2026-03-12 12:42:27,888 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:42:29,395 - INFO - KTB COMPANY WEB - Browse to Krungthai Website ...
+2026-03-12 12:42:30,248 - INFO - KTB COMPANY WEB - Force change to English Language ...
+2026-03-12 12:42:31,466 - INFO - KTB COMPANY WEB - Perform Login ...
+2026-03-12 12:42:31,467 - INFO - KTB COMPANY WEB - Fill in Company ID ...
+2026-03-12 12:42:31,495 - INFO - KTB COMPANY WEB - Fill in User ID ...
+2026-03-12 12:42:31,519 - INFO - KTB COMPANY WEB - Fill in Password ...
+2026-03-12 12:42:32,059 - INFO - KTB COMPANY WEB - Click Login ...
+2026-03-12 12:42:32,114 - INFO - KTB COMPANY WEB - Wait for OTP Verification ...
+2026-03-12 12:42:33,972 - INFO - KTB COMPANY WEB - Read KTB Ref Code ...
+2026-03-12 12:42:33,981 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:42:33,981 - INFO - KTB COMPANY WEB - 🎰 Starting Read Phone SMS OTP-Code Flow ....
+2026-03-12 12:42:33,982 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:42:33,982 - INFO - KTB COMPANY WEB - Preparing Appium driver
+2026-03-12 12:42:33,983 - INFO - KTB COMPANY WEB - Reusing existing Appium driver session
+2026-03-12 12:42:34,002 - INFO - KTB COMPANY WEB - Appium process started with PID 3188
+2026-03-12 12:42:35,526 - INFO - KTB COMPANY WEB - Appium server is ready (attempt 1/10)
+2026-03-12 12:42:41,943 - INFO - KTB COMPANY WEB - Get OTP-Code Successful ....
+2026-03-12 12:42:41,943 - INFO - KTB COMPANY WEB - Fill in OTP-Code ...
+2026-03-12 12:42:41,961 - INFO - KTB COMPANY WEB - Button click 'Verify' ...
+2026-03-12 12:42:42,017 - INFO - KTB COMPANY WEB - Wait for 'Account Overview' Appear ... 
+2026-03-12 12:42:47,040 - INFO - KTB COMPANY WEB - Hover to left Menu ...
+2026-03-12 12:42:48,047 - INFO - KTB COMPANY WEB - Click 'Transfer & Pay' ... 
+2026-03-12 12:42:48,087 - INFO - KTB COMPANY WEB - Wait for 'Transfer & Bill Payment' ... 
+2026-03-12 12:42:49,339 - INFO - KTB COMPANY WEB - Click 'New Transfer' ... 
+2026-03-12 12:42:49,390 - INFO - KTB COMPANY WEB - Wait for 'Transfer Details' ...
+2026-03-12 12:42:49,834 - INFO - KTB COMPANY WEB - Select Payee ...
+2026-03-12 12:42:50,884 - INFO - KTB COMPANY WEB - Wait for 'New Account' Appear ...
+2026-03-12 12:42:50,898 - INFO - KTB COMPANY WEB - Click 'New Account' ...
+2026-03-12 12:42:52,836 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:42:52,837 - INFO - KTB COMPANY WEB - 🎰 Starting KTB Company Web Withdrawal Flow ....
+2026-03-12 12:42:52,837 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:42:52,837 - INFO - KTB COMPANY WEB - Open 'Select Bank' Drop Down Menu ...
+2026-03-12 12:42:53,981 - INFO - KTB COMPANY WEB - Select Bank ...
+2026-03-12 12:42:55,038 - INFO - KTB COMPANY WEB - Fill Account Number ...
+2026-03-12 12:42:56,103 - INFO - KTB COMPANY WEB - Fill Account Name ...
+2026-03-12 12:42:56,125 - INFO - KTB COMPANY WEB - Click 'Add Details' ....
+2026-03-12 12:43:14,108 - INFO - KTB COMPANY WEB - Wait for 'Value Date' ...
+2026-03-12 12:43:15,153 - INFO - KTB COMPANY WEB - Fill Account Number ...
+2026-03-12 12:43:17,278 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KTB\ktb_payout_appium_1.0.0.py", line 695, in runPython
+    BankBot.ktb_withdrawal(page, data)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KTB\ktb_payout_appium_1.0.0.py", line 501, in ktb_withdrawal
+    page.locator("//input[@formcontrolname='amount']").click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 15631, in click
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.click(
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_locator.py", line 162, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 566, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.click: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("//input[@formcontrolname='amount']")
+    - locator resolved to <input uiinput="" type="text" maxlength="16" placeholder="0.00" uiinputcurrencymask="" formcontrolname="amount" _ngcontent-ng-c2876991777="" class="ng-untouched ng-pristine ng-invalid ktb-input ng-star-inserted"/>
+  - attempting click action
+    - waiting for element to be visible, enabled and stable
+    - element is visible, enabled and stable
+    - scrolling into view if needed
+    - done scrolling
+    - <p class="ng-star-inserted">You cannot proceed this transaction due to the pr…</p> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
+  - retrying click action
+    - waiting for element to be visible, enabled and stable
+    - element is visible, enabled and stable
+    - scrolling into view if needed
+    - done scrolling
+    - <div class="cdk-overlay-backdrop cdk-overlay-dark-backdrop cdk-overlay-backdrop-showing"></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
+  - retrying click action
+    - waiting 20ms
+    - waiting for element to be visible, enabled and stable
+    - element is visible, enabled and stable
+    - scrolling into view if needed
+    - done scrolling
+    - <p class="ng-star-inserted">You cannot proceed this transaction due to the pr…</p> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
+  2 × retrying click action
+      - waiting 100ms
+      - waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div class="dialog-wrapper">…</div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
+  - retrying click action
+    - waiting 500ms
+    - waiting for element to be visible, enabled and stable
+    - element is visible, enabled and stable
+    - scrolling into view if needed
+    - done scrolling
+    - <div class="cdk-overlay-backdrop cdk-overlay-dark-backdrop cdk-overlay-backdrop-showing"></div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
+  - retrying click action
+    - waiting 500ms
+    - waiting for element to be visible, enabled and stable
+    - element is visible, enabled and stable
+    - scrolling into view if needed
+    - done scrolling
+    - <p _ngcontent-ng-c694059111="" class="error-code ng-star-inserted">Error Code: 20000</p> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
+  - retrying click action
+    - waiting 500ms
+    - waiting for element to be visible, enabled and stable
+    - element is visible, enabled and stable
+    - scrolling into view if needed
+    - done scrolling
+    - <div class="dialog-wrapper">…</div> from <div class="cdk-overlay-container">…</div> subtree intercepts pointer events
+  - retrying click action
+    - waiting 500ms
+
+
+----------------------------------------
+2026-03-12 12:43:17,279 - INFO - bank_bot - Closing Chrome CDP
+2026-03-12 12:43:40,161 - INFO - KTB COMPANY WEB - Starting for Eric WS_Client ...
+2026-03-12 12:43:40,188 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5003
+ * Running on http://10.0.0.253:5003
+2026-03-12 12:43:40,188 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-12 12:43:54,103 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KTB\ktb_payout_appium_1.0.0.py", line 692, in runPython
+    page = BankBot.ktb_login(data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KTB\ktb_payout_appium_1.0.0.py", line 308, in ktb_login
+    PLAYWRIGHT = sync_playwright().start()
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_context_manager.py", line 84, in start
+    return self.__enter__()
+           ~~~~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_context_manager.py", line 79, in __enter__
+    playwright = self._playwright
+                 ^^^^^^^^^^^^^^^^
+AttributeError: 'PlaywrightContextManager' object has no attribute '_playwright'
+
+----------------------------------------
+2026-03-12 12:44:07,464 - INFO - KTB COMPANY WEB - Starting for Eric WS_Client ...
+2026-03-12 12:44:07,519 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5003
+ * Running on http://10.0.0.253:5003
+2026-03-12 12:44:07,521 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-12 12:44:21,395 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:44:21,396 - INFO - KTB COMPANY WEB - 🎰 Starting KTB Company Web Login Flow ....
+2026-03-12 12:44:21,396 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:44:22,953 - INFO - KTB COMPANY WEB - Browse to Krungthai Website ...
+2026-03-12 12:44:24,408 - INFO - KTB COMPANY WEB - Force change to English Language ...
+2026-03-12 12:44:25,285 - INFO - KTB COMPANY WEB - Perform Login ...
+2026-03-12 12:44:25,286 - INFO - KTB COMPANY WEB - Fill in Company ID ...
+2026-03-12 12:44:25,313 - INFO - KTB COMPANY WEB - Fill in User ID ...
+2026-03-12 12:44:25,326 - INFO - KTB COMPANY WEB - Fill in Password ...
+2026-03-12 12:44:25,851 - INFO - KTB COMPANY WEB - Click Login ...
+2026-03-12 12:44:25,912 - INFO - KTB COMPANY WEB - Wait for OTP Verification ...
+2026-03-12 12:44:27,274 - INFO - KTB COMPANY WEB - Read KTB Ref Code ...
+2026-03-12 12:44:27,286 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:44:27,287 - INFO - KTB COMPANY WEB - 🎰 Starting Read Phone SMS OTP-Code Flow ....
+2026-03-12 12:44:27,288 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:44:27,288 - INFO - KTB COMPANY WEB - Preparing Appium driver
+2026-03-12 12:44:27,289 - INFO - KTB COMPANY WEB - Reusing existing Appium driver session
+2026-03-12 12:44:27,346 - INFO - KTB COMPANY WEB - Appium process started with PID 15368
+2026-03-12 12:44:28,874 - INFO - KTB COMPANY WEB - Appium server is ready (attempt 1/10)
+2026-03-12 12:44:34,593 - INFO - KTB COMPANY WEB - Get OTP-Code Successful ....
+2026-03-12 12:44:34,594 - INFO - KTB COMPANY WEB - Fill in OTP-Code ...
+2026-03-12 12:44:34,614 - INFO - KTB COMPANY WEB - Button click 'Verify' ...
+2026-03-12 12:44:34,670 - INFO - KTB COMPANY WEB - Wait for 'Account Overview' Appear ... 
+2026-03-12 12:44:39,081 - INFO - KTB COMPANY WEB - Hover to left Menu ...
+2026-03-12 12:44:40,100 - INFO - KTB COMPANY WEB - Click 'Transfer & Pay' ... 
+2026-03-12 12:44:40,146 - INFO - KTB COMPANY WEB - Wait for 'Transfer & Bill Payment' ... 
+2026-03-12 12:44:41,384 - INFO - KTB COMPANY WEB - Click 'New Transfer' ... 
+2026-03-12 12:44:41,427 - INFO - KTB COMPANY WEB - Wait for 'Transfer Details' ...
+2026-03-12 12:44:42,266 - INFO - KTB COMPANY WEB - Select Payee ...
+2026-03-12 12:44:42,575 - INFO - KTB COMPANY WEB - Wait for 'New Account' Appear ...
+2026-03-12 12:44:42,588 - INFO - KTB COMPANY WEB - Click 'New Account' ...
+2026-03-12 12:44:44,566 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:44:44,566 - INFO - KTB COMPANY WEB - 🎰 Starting KTB Company Web Withdrawal Flow ....
+2026-03-12 12:44:44,567 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:44:44,567 - INFO - KTB COMPANY WEB - Open 'Select Bank' Drop Down Menu ...
+2026-03-12 12:44:45,705 - INFO - KTB COMPANY WEB - Select Bank ...
+2026-03-12 12:44:46,790 - INFO - KTB COMPANY WEB - Fill Account Number ...
+2026-03-12 12:44:51,857 - INFO - KTB COMPANY WEB - Fill Account Name ...
+2026-03-12 12:44:51,881 - INFO - KTB COMPANY WEB - Click 'Add Details' ....
+2026-03-12 12:45:21,901 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KTB\ktb_payout_appium_1.0.0.py", line 695, in runPython
+    BankBot.ktb_withdrawal(page, data)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KTB\ktb_payout_appium_1.0.0.py", line 490, in ktb_withdrawal
+    page.locator("//span[normalize-space()='Add Details']").click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 15631, in click
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.click(
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_locator.py", line 162, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 566, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("//span[normalize-space()='Add Details']")
+    - locator resolved to <span class="ktb-button-label"> Add Details </span>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div _ngcontent-ng-c2524572874="" class="ng-tns-c2524572874-0 ng-trigger ng-trigger-showHide spinner-container is-fullscreen is-dark is-overlay-visible is-transparent ng-star-inserted ng-animating">…</div> from <ui-spinner theme="dark" mode="fullscreen" _nghost-ng-c2524572874="" _ngcontent-ng-c2217909244="" class="ng-tns-c2524572874-0">…</ui-spinner> subtree intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not enabled
+    - retrying click action
+      - waiting 100ms
+    56 × waiting for element to be visible, enabled and stable
+       - element is not enabled
+     - retrying click action
+       - waiting 500ms
+
+
+----------------------------------------
+2026-03-12 12:45:21,902 - INFO - bank_bot - Closing Chrome CDP
+2026-03-12 12:45:30,154 - INFO - KTB COMPANY WEB - Starting for Eric WS_Client ...
+2026-03-12 12:45:30,183 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5003
+ * Running on http://10.0.0.253:5003
+2026-03-12 12:45:30,183 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-12 12:57:45,757 - INFO - KTB COMPANY WEB - Starting for Eric WS_Client ...
+2026-03-12 12:57:45,794 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5003
+ * Running on http://10.0.0.253:5003
+2026-03-12 12:57:45,794 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-12 12:59:08,272 - INFO - KTB COMPANY WEB - Starting for Eric WS_Client ...
+2026-03-12 12:59:08,304 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5003
+ * Running on http://10.0.0.253:5003
+2026-03-12 12:59:08,304 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-12 12:59:15,200 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:59:15,200 - INFO - KTB COMPANY WEB - 🎰 Starting KTB Company Web Login Flow ....
+2026-03-12 12:59:15,202 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:59:16,715 - INFO - KTB COMPANY WEB - Browse to Krungthai Website ...
+2026-03-12 12:59:18,006 - INFO - KTB COMPANY WEB - Force change to English Language ...
+2026-03-12 12:59:19,451 - INFO - KTB COMPANY WEB - Perform Login ...
+2026-03-12 12:59:19,454 - INFO - KTB COMPANY WEB - Fill in Company ID ...
+2026-03-12 12:59:19,512 - INFO - KTB COMPANY WEB - Fill in User ID ...
+2026-03-12 12:59:19,546 - INFO - KTB COMPANY WEB - Fill in Password ...
+2026-03-12 12:59:20,081 - INFO - KTB COMPANY WEB - Click Login ...
+2026-03-12 12:59:20,151 - INFO - KTB COMPANY WEB - Wait for OTP Verification ...
+2026-03-12 12:59:22,030 - INFO - KTB COMPANY WEB - Read KTB Ref Code ...
+2026-03-12 12:59:22,047 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:59:22,048 - INFO - KTB COMPANY WEB - 🎰 Starting Read Phone SMS OTP-Code Flow ....
+2026-03-12 12:59:22,048 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 12:59:22,049 - INFO - KTB COMPANY WEB - Preparing Appium driver
+2026-03-12 12:59:22,052 - INFO - KTB COMPANY WEB - Reusing existing Appium driver session
+2026-03-12 12:59:22,080 - INFO - KTB COMPANY WEB - Appium process started with PID 10056
+2026-03-12 12:59:23,609 - INFO - KTB COMPANY WEB - Appium server is ready (attempt 1/10)
+2026-03-12 12:59:49,631 - INFO - KTB COMPANY WEB - Get OTP-Code Successful ....
+2026-03-12 12:59:49,632 - INFO - KTB COMPANY WEB - Fill in OTP-Code ...
+2026-03-12 12:59:49,663 - INFO - KTB COMPANY WEB - Button click 'Verify' ...
+2026-03-12 12:59:49,742 - INFO - KTB COMPANY WEB - Wait for 'Account Overview' Appear ... 
+2026-03-12 12:59:54,794 - INFO - KTB COMPANY WEB - Hover to left Menu ...
+2026-03-12 12:59:55,816 - INFO - KTB COMPANY WEB - Click 'Transfer & Pay' ... 
+2026-03-12 12:59:55,889 - INFO - KTB COMPANY WEB - Wait for 'Transfer & Bill Payment' ... 
+2026-03-12 12:59:57,249 - INFO - KTB COMPANY WEB - Click 'New Transfer' ... 
+2026-03-12 12:59:57,311 - INFO - KTB COMPANY WEB - Wait for 'Transfer Details' ...
+2026-03-12 12:59:58,201 - INFO - KTB COMPANY WEB - Select Payee ...
+2026-03-12 12:59:58,562 - INFO - KTB COMPANY WEB - Wait for 'New Account' Appear ...
+2026-03-12 12:59:58,594 - INFO - KTB COMPANY WEB - Click 'New Account' ...
+2026-03-12 13:00:00,593 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 13:00:00,594 - INFO - KTB COMPANY WEB - 🎰 Starting KTB Company Web Withdrawal Flow ....
+2026-03-12 13:00:00,595 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 13:00:00,596 - INFO - KTB COMPANY WEB - Open 'Select Bank' Drop Down Menu ...
+2026-03-12 13:00:01,829 - INFO - KTB COMPANY WEB - Select Bank ...
+2026-03-12 13:00:02,943 - INFO - KTB COMPANY WEB - Fill Account Number ...
+2026-03-12 13:00:04,124 - INFO - KTB COMPANY WEB - Fill Account Name ...
+2026-03-12 13:00:04,157 - INFO - KTB COMPANY WEB - Click 'Add Details' ....
+2026-03-12 13:00:12,207 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KTB\ktb_payout_appium_1.0.0.py", line 702, in runPython
+    BankBot.ktb_withdrawal(page, data)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KTB\ktb_payout_appium_1.0.0.py", line 497, in ktb_withdrawal
+    page.locator("//span[normalize-space()='Add Details']").click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 15631, in click
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.click(
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_locator.py", line 162, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 566, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.click: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("//span[normalize-space()='Add Details']")
+    - locator resolved to <span class="ktb-button-label"> Add Details </span>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is not enabled
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not enabled
+    - retrying click action
+      - waiting 100ms
+    15 × waiting for element to be visible, enabled and stable
+       - element is not enabled
+     - retrying click action
+       - waiting 500ms
+
+
+----------------------------------------
+2026-03-12 13:00:12,209 - INFO - bank_bot - Closing Chrome CDP
+2026-03-12 13:00:41,598 - INFO - KTB COMPANY WEB - Starting for Eric WS_Client ...
+2026-03-12 13:00:41,633 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5003
+ * Running on http://10.0.0.253:5003
+2026-03-12 13:00:41,634 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-12 13:00:50,096 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 13:00:50,096 - INFO - KTB COMPANY WEB - 🎰 Starting KTB Company Web Login Flow ....
+2026-03-12 13:00:50,097 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 13:00:51,618 - INFO - KTB COMPANY WEB - Browse to Krungthai Website ...
+2026-03-12 13:00:54,354 - INFO - KTB COMPANY WEB - Force change to English Language ...
+2026-03-12 13:00:55,587 - INFO - KTB COMPANY WEB - Perform Login ...
+2026-03-12 13:00:55,588 - INFO - KTB COMPANY WEB - Fill in Company ID ...
+2026-03-12 13:00:55,621 - INFO - KTB COMPANY WEB - Fill in User ID ...
+2026-03-12 13:00:55,646 - INFO - KTB COMPANY WEB - Fill in Password ...
+2026-03-12 13:00:56,175 - INFO - KTB COMPANY WEB - Click Login ...
+2026-03-12 13:00:56,255 - INFO - KTB COMPANY WEB - Wait for OTP Verification ...
+2026-03-12 13:00:58,151 - INFO - KTB COMPANY WEB - Read KTB Ref Code ...
+2026-03-12 13:00:58,164 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 13:00:58,165 - INFO - KTB COMPANY WEB - 🎰 Starting Read Phone SMS OTP-Code Flow ....
+2026-03-12 13:00:58,165 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 13:00:58,166 - INFO - KTB COMPANY WEB - Preparing Appium driver
+2026-03-12 13:00:58,166 - INFO - KTB COMPANY WEB - Reusing existing Appium driver session
+2026-03-12 13:00:58,197 - INFO - KTB COMPANY WEB - Appium process started with PID 6812
+2026-03-12 13:01:00,244 - INFO - KTB COMPANY WEB - Appium server is ready (attempt 1/10)
+2026-03-12 13:01:07,265 - INFO - KTB COMPANY WEB - Get OTP-Code Successful ....
+2026-03-12 13:01:07,267 - INFO - KTB COMPANY WEB - Fill in OTP-Code ...
+2026-03-12 13:01:07,294 - INFO - KTB COMPANY WEB - Button click 'Verify' ...
+2026-03-12 13:01:07,358 - INFO - KTB COMPANY WEB - Wait for 'Account Overview' Appear ... 
+2026-03-12 13:01:11,368 - INFO - KTB COMPANY WEB - Hover to left Menu ...
+2026-03-12 13:01:12,385 - INFO - KTB COMPANY WEB - Click 'Transfer & Pay' ... 
+2026-03-12 13:01:12,464 - INFO - KTB COMPANY WEB - Wait for 'Transfer & Bill Payment' ... 
+2026-03-12 13:01:13,719 - INFO - KTB COMPANY WEB - Click 'New Transfer' ... 
+2026-03-12 13:01:13,778 - INFO - KTB COMPANY WEB - Wait for 'Transfer Details' ...
+2026-03-12 13:01:14,647 - INFO - KTB COMPANY WEB - Select Payee ...
+2026-03-12 13:01:15,652 - INFO - KTB COMPANY WEB - Wait for 'New Account' Appear ...
+2026-03-12 13:01:15,670 - INFO - KTB COMPANY WEB - Click 'New Account' ...
+2026-03-12 13:01:17,657 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 13:01:17,661 - INFO - KTB COMPANY WEB - 🎰 Starting KTB Company Web Withdrawal Flow ....
+2026-03-12 13:01:17,662 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 13:01:17,662 - INFO - KTB COMPANY WEB - Open 'Select Bank' Drop Down Menu ...
+2026-03-12 13:01:18,848 - INFO - KTB COMPANY WEB - Select Bank ...
+2026-03-12 13:01:19,938 - INFO - KTB COMPANY WEB - Fill Account Number ...
+2026-03-12 13:01:23,112 - INFO - KTB COMPANY WEB - Fill Account Name ...
+2026-03-12 13:01:23,144 - INFO - KTB COMPANY WEB - Click 'Add Details' ....
+2026-03-12 13:01:53,164 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KTB\ktb_payout_appium_1.0.0.py", line 705, in runPython
+    BankBot.ktb_withdrawal(page, data)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KTB\ktb_payout_appium_1.0.0.py", line 500, in ktb_withdrawal
+    page.locator("//span[normalize-space()='Add Details']").click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 15631, in click
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.click(
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_locator.py", line 162, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 566, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("//span[normalize-space()='Add Details']")
+    - locator resolved to <span class="ktb-button-label"> Add Details </span>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is not enabled
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not enabled
+    - retrying click action
+      - waiting 100ms
+    56 × waiting for element to be visible, enabled and stable
+       - element is not enabled
+     - retrying click action
+       - waiting 500ms
+
+
+----------------------------------------
+2026-03-12 13:01:53,166 - INFO - bank_bot - Closing Chrome CDP
+2026-03-12 13:06:38,927 - INFO - KTB COMPANY WEB - Starting for Eric WS_Client ...
+2026-03-12 13:06:38,958 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5003
+ * Running on http://10.0.0.253:5003
+2026-03-12 13:06:38,958 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-12 13:06:50,898 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 13:06:50,899 - INFO - KTB COMPANY WEB - 🎰 Starting KTB Company Web Login Flow ....
+2026-03-12 13:06:50,900 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 13:06:52,415 - INFO - KTB COMPANY WEB - Browse to Krungthai Website ...
+2026-03-12 13:06:53,515 - INFO - KTB COMPANY WEB - Force change to English Language ...
+2026-03-12 13:06:54,788 - INFO - KTB COMPANY WEB - Perform Login ...
+2026-03-12 13:06:54,790 - INFO - KTB COMPANY WEB - Fill in Company ID ...
+2026-03-12 13:06:54,823 - INFO - KTB COMPANY WEB - Fill in User ID ...
+2026-03-12 13:06:54,848 - INFO - KTB COMPANY WEB - Fill in Password ...
+2026-03-12 13:06:55,391 - INFO - KTB COMPANY WEB - Click Login ...
+2026-03-12 13:06:55,472 - INFO - KTB COMPANY WEB - Wait for OTP Verification ...
+2026-03-12 13:06:56,860 - INFO - KTB COMPANY WEB - Read KTB Ref Code ...
+2026-03-12 13:06:56,875 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 13:06:56,876 - INFO - KTB COMPANY WEB - 🎰 Starting Read Phone SMS OTP-Code Flow ....
+2026-03-12 13:06:56,876 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 13:06:56,877 - INFO - KTB COMPANY WEB - Preparing Appium driver
+2026-03-12 13:06:56,877 - INFO - KTB COMPANY WEB - Reusing existing Appium driver session
+2026-03-12 13:06:56,907 - INFO - KTB COMPANY WEB - Appium process started with PID 18728
+2026-03-12 13:06:58,953 - INFO - KTB COMPANY WEB - Appium server is ready (attempt 1/10)
+2026-03-12 13:07:06,003 - INFO - KTB COMPANY WEB - Get OTP-Code Successful ....
+2026-03-12 13:07:06,004 - INFO - KTB COMPANY WEB - Fill in OTP-Code ...
+2026-03-12 13:07:06,035 - INFO - KTB COMPANY WEB - Button click 'Verify' ...
+2026-03-12 13:07:06,096 - INFO - KTB COMPANY WEB - Wait for 'Account Overview' Appear ... 
+2026-03-12 13:07:12,166 - INFO - KTB COMPANY WEB - Hover to left Menu ...
+2026-03-12 13:07:13,185 - INFO - KTB COMPANY WEB - Click 'Transfer & Pay' ... 
+2026-03-12 13:07:13,276 - INFO - KTB COMPANY WEB - Wait for 'Transfer & Bill Payment' ... 
+2026-03-12 13:07:14,537 - INFO - KTB COMPANY WEB - Click 'New Transfer' ... 
+2026-03-12 13:07:14,619 - INFO - KTB COMPANY WEB - Wait for 'Transfer Details' ...
+2026-03-12 13:07:15,161 - INFO - KTB COMPANY WEB - Select Payee ...
+2026-03-12 13:07:16,194 - INFO - KTB COMPANY WEB - Wait for 'New Account' Appear ...
+2026-03-12 13:07:16,218 - INFO - KTB COMPANY WEB - Click 'New Account' ...
+2026-03-12 13:07:18,268 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 13:07:18,270 - INFO - KTB COMPANY WEB - 🎰 Starting KTB Company Web Withdrawal Flow ....
+2026-03-12 13:07:18,271 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 13:07:18,271 - INFO - KTB COMPANY WEB - Open 'Select Bank' Drop Down Menu ...
+2026-03-12 13:07:19,474 - INFO - KTB COMPANY WEB - Select Bank ...
+2026-03-12 13:07:20,592 - INFO - KTB COMPANY WEB - Fill Account Number ...
+2026-03-12 13:07:21,751 - INFO - KTB COMPANY WEB - Fill Account Name ...
+2026-03-12 13:07:21,785 - INFO - KTB COMPANY WEB - Click 'Add Details' ....
+2026-03-12 13:07:51,803 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KTB\ktb_payout_appium_1.0.0.py", line 696, in runPython
+    BankBot.ktb_withdrawal(page, data)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KTB\ktb_payout_appium_1.0.0.py", line 491, in ktb_withdrawal
+    page.locator("//span[normalize-space()='Add Details']").click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 15631, in click
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.click(
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_locator.py", line 162, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 566, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("//span[normalize-space()='Add Details']")
+    - locator resolved to <span class="ktb-button-label"> Add Details </span>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is not enabled
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not enabled
+    - retrying click action
+      - waiting 100ms
+    13 × waiting for element to be visible, enabled and stable
+       - element is not enabled
+     - retrying click action
+       - waiting 500ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not stable
+    - retrying click action
+      - waiting 500ms
+    41 × waiting for element to be visible, enabled and stable
+       - element is not enabled
+     - retrying click action
+       - waiting 500ms
+
+
+----------------------------------------
+2026-03-12 13:07:51,805 - INFO - bank_bot - Closing Chrome CDP
+2026-03-12 13:13:45,960 - INFO - KTB COMPANY WEB - Starting for Eric WS_Client ...
+2026-03-12 13:13:45,987 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5003
+ * Running on http://10.0.0.253:5003
+2026-03-12 13:13:45,987 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-12 13:13:53,877 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 13:13:53,878 - INFO - KTB COMPANY WEB - 🎰 Starting KTB Company Web Login Flow ....
+2026-03-12 13:13:53,878 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 13:13:55,389 - INFO - KTB COMPANY WEB - Browse to Krungthai Website ...
+2026-03-12 13:13:57,113 - INFO - KTB COMPANY WEB - Force change to English Language ...
+2026-03-12 13:13:58,350 - INFO - KTB COMPANY WEB - Perform Login ...
+2026-03-12 13:13:58,351 - INFO - KTB COMPANY WEB - Fill in Company ID ...
+2026-03-12 13:13:58,375 - INFO - KTB COMPANY WEB - Fill in User ID ...
+2026-03-12 13:13:58,398 - INFO - KTB COMPANY WEB - Fill in Password ...
+2026-03-12 13:13:58,925 - INFO - KTB COMPANY WEB - Click Login ...
+2026-03-12 13:13:58,997 - INFO - KTB COMPANY WEB - Wait for OTP Verification ...
+2026-03-12 13:14:00,869 - INFO - KTB COMPANY WEB - Read KTB Ref Code ...
+2026-03-12 13:14:00,879 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 13:14:00,880 - INFO - KTB COMPANY WEB - 🎰 Starting Read Phone SMS OTP-Code Flow ....
+2026-03-12 13:14:00,880 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 13:14:00,881 - INFO - KTB COMPANY WEB - Preparing Appium driver
+2026-03-12 13:14:00,881 - INFO - KTB COMPANY WEB - Reusing existing Appium driver session
+2026-03-12 13:14:00,911 - INFO - KTB COMPANY WEB - Appium process started with PID 14060
+2026-03-12 13:14:02,457 - INFO - KTB COMPANY WEB - Appium server is ready (attempt 1/10)
+2026-03-12 13:14:09,389 - INFO - KTB COMPANY WEB - Get OTP-Code Successful ....
+2026-03-12 13:14:09,390 - INFO - KTB COMPANY WEB - Fill in OTP-Code ...
+2026-03-12 13:14:09,417 - INFO - KTB COMPANY WEB - Button click 'Verify' ...
+2026-03-12 13:14:09,490 - INFO - KTB COMPANY WEB - Wait for 'Account Overview' Appear ... 
+2026-03-12 13:14:14,674 - INFO - KTB COMPANY WEB - Hover to left Menu ...
+2026-03-12 13:14:15,693 - INFO - KTB COMPANY WEB - Click 'Transfer & Pay' ... 
+2026-03-12 13:14:15,767 - INFO - KTB COMPANY WEB - Wait for 'Transfer & Bill Payment' ... 
+2026-03-12 13:14:17,011 - INFO - KTB COMPANY WEB - Click 'New Transfer' ... 
+2026-03-12 13:14:17,076 - INFO - KTB COMPANY WEB - Wait for 'Transfer Details' ...
+2026-03-12 13:14:17,538 - INFO - KTB COMPANY WEB - Select Payee ...
+2026-03-12 13:14:18,581 - INFO - KTB COMPANY WEB - Wait for 'New Account' Appear ...
+2026-03-12 13:14:18,610 - INFO - KTB COMPANY WEB - Click 'New Account' ...
+2026-03-12 13:14:20,654 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 13:14:20,655 - INFO - KTB COMPANY WEB - 🎰 Starting KTB Company Web Withdrawal Flow ....
+2026-03-12 13:14:20,656 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 13:14:20,656 - INFO - KTB COMPANY WEB - Open 'Select Bank' Drop Down Menu ...
+2026-03-12 13:14:21,881 - INFO - KTB COMPANY WEB - Select Bank ...
+2026-03-12 13:14:22,993 - INFO - KTB COMPANY WEB - Fill Account Number ...
+2026-03-12 13:14:24,169 - INFO - KTB COMPANY WEB - Fill Account Name ...
+2026-03-12 13:14:24,208 - INFO - KTB COMPANY WEB - Click 'Add Details' ....
+2026-03-12 13:14:54,226 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KTB\ktb_payout_appium_1.0.0.py", line 697, in runPython
+    BankBot.ktb_withdrawal(page, data)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KTB\ktb_payout_appium_1.0.0.py", line 492, in ktb_withdrawal
+    page.locator("//span[normalize-space()='Add Details']").click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 15631, in click
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.click(
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_locator.py", line 162, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 566, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("//span[normalize-space()='Add Details']")
+    - locator resolved to <span class="ktb-button-label"> Add Details </span>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is not enabled
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not enabled
+    - retrying click action
+      - waiting 100ms
+    7 × waiting for element to be visible, enabled and stable
+      - element is not enabled
+    - retrying click action
+      - waiting 500ms
+    - waiting for element to be visible, enabled and stable
+  - element was detached from the DOM, retrying
+    - locator resolved to <span class="ktb-button-label"> Add Details </span>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is not enabled
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not enabled
+    - retrying click action
+      - waiting 100ms
+    33 × waiting for element to be visible, enabled and stable
+       - element is not enabled
+     - retrying click action
+       - waiting 500ms
+
+
+----------------------------------------
+2026-03-12 13:14:54,229 - INFO - bank_bot - Closing Chrome CDP
+2026-03-12 13:16:05,358 - INFO - KTB COMPANY WEB - Starting for Eric WS_Client ...
+2026-03-12 13:16:05,392 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5003
+ * Running on http://10.0.0.253:5003
+2026-03-12 13:16:05,392 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-12 13:16:11,442 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 13:16:11,443 - INFO - KTB COMPANY WEB - 🎰 Starting KTB Company Web Login Flow ....
+2026-03-12 13:16:11,444 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 13:16:12,956 - INFO - KTB COMPANY WEB - Browse to Krungthai Website ...
+2026-03-12 13:16:15,050 - INFO - KTB COMPANY WEB - Force change to English Language ...
+2026-03-12 13:16:16,630 - INFO - KTB COMPANY WEB - Perform Login ...
+2026-03-12 13:16:16,639 - INFO - KTB COMPANY WEB - Fill in Company ID ...
+2026-03-12 13:16:16,679 - INFO - KTB COMPANY WEB - Fill in User ID ...
+2026-03-12 13:16:16,708 - INFO - KTB COMPANY WEB - Fill in Password ...
+2026-03-12 13:16:17,249 - INFO - KTB COMPANY WEB - Click Login ...
+2026-03-12 13:16:17,348 - INFO - KTB COMPANY WEB - Wait for OTP Verification ...
+2026-03-12 13:16:19,246 - INFO - KTB COMPANY WEB - Read KTB Ref Code ...
+2026-03-12 13:16:19,262 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 13:16:19,263 - INFO - KTB COMPANY WEB - 🎰 Starting Read Phone SMS OTP-Code Flow ....
+2026-03-12 13:16:19,263 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 13:16:19,264 - INFO - KTB COMPANY WEB - Preparing Appium driver
+2026-03-12 13:16:19,264 - INFO - KTB COMPANY WEB - Reusing existing Appium driver session
+2026-03-12 13:16:19,300 - INFO - KTB COMPANY WEB - Appium process started with PID 13344
+2026-03-12 13:16:20,835 - INFO - KTB COMPANY WEB - Appium server is ready (attempt 1/10)
+2026-03-12 13:16:27,524 - INFO - KTB COMPANY WEB - Get OTP-Code Successful ....
+2026-03-12 13:16:27,524 - INFO - KTB COMPANY WEB - Fill in OTP-Code ...
+2026-03-12 13:16:27,554 - INFO - KTB COMPANY WEB - Button click 'Verify' ...
+2026-03-12 13:16:27,606 - INFO - KTB COMPANY WEB - Wait for 'Account Overview' Appear ... 
+2026-03-12 13:16:35,387 - INFO - KTB COMPANY WEB - Hover to left Menu ...
+2026-03-12 13:16:36,396 - INFO - KTB COMPANY WEB - Click 'Transfer & Pay' ... 
+2026-03-12 13:16:36,459 - INFO - KTB COMPANY WEB - Wait for 'Transfer & Bill Payment' ... 
+2026-03-12 13:16:37,714 - INFO - KTB COMPANY WEB - Click 'New Transfer' ... 
+2026-03-12 13:16:37,762 - INFO - KTB COMPANY WEB - Wait for 'Transfer Details' ...
+2026-03-12 13:16:38,187 - INFO - KTB COMPANY WEB - Select Payee ...
+2026-03-12 13:16:39,324 - INFO - KTB COMPANY WEB - Wait for 'New Account' Appear ...
+2026-03-12 13:16:39,346 - INFO - KTB COMPANY WEB - Click 'New Account' ...
+2026-03-12 13:16:41,418 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 13:16:41,419 - INFO - KTB COMPANY WEB - 🎰 Starting KTB Company Web Withdrawal Flow ....
+2026-03-12 13:16:41,420 - INFO - KTB COMPANY WEB - ==================================================
+2026-03-12 13:16:41,421 - INFO - KTB COMPANY WEB - Open 'Select Bank' Drop Down Menu ...
+2026-03-12 13:16:42,617 - INFO - KTB COMPANY WEB - Select Bank ...
+2026-03-12 13:16:43,754 - INFO - KTB COMPANY WEB - Fill Account Number ...
+2026-03-12 13:16:44,931 - INFO - KTB COMPANY WEB - Fill Account Name ...
+2026-03-12 13:16:44,961 - INFO - KTB COMPANY WEB - Click 'Add Details' ....
+2026-03-12 13:17:14,996 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KTB\ktb_payout_appium_1.0.0.py", line 698, in runPython
+    BankBot.ktb_withdrawal(page, data)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KTB\ktb_payout_appium_1.0.0.py", line 493, in ktb_withdrawal
+    page.locator("//span[normalize-space()='Add Details']").click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 15631, in click
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.click(
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_locator.py", line 162, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 566, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("//span[normalize-space()='Add Details']")
+    - locator resolved to <span class="ktb-button-label"> Add Details </span>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is not enabled
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not enabled
+    - retrying click action
+      - waiting 100ms
+    56 × waiting for element to be visible, enabled and stable
+       - element is not enabled
+     - retrying click action
+       - waiting 500ms
+
+
+----------------------------------------
+2026-03-12 13:17:14,998 - INFO - bank_bot - Closing Chrome CDP

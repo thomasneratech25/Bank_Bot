@@ -1,4 +1,5 @@
 import os
+import io
 import sys
 import json
 import time
@@ -322,7 +323,12 @@ class BankBot(Automation):
 
         # Get Transaction ID
         txn_id = get_txn_id(data)
-        logger.info("Starting SCB login flow. txn_id=%s", txn_id)
+
+        # Forces the terminal to handle those sea creatures correctly
+        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+        logger.info("="*50)
+        logger.info(f"🎰 Starting SCB Company Login Flow .... {txn_id}")
+        logger.info("="*50)
 
         try:
 
@@ -443,7 +449,11 @@ class BankBot(Automation):
 
         # Get Transaction ID
         txn_id = get_txn_id(data)
-        logger.info("Starting SCB Withdrawal flow.")
+
+        # Forces the terminal to handle those sea creatures correctly
+        logger.info("="*50)
+        logger.info(f"🎰 Starting SCB Company Withdrawal Flow .... {txn_id}")
+        logger.info("="*50)
 
         try:
 

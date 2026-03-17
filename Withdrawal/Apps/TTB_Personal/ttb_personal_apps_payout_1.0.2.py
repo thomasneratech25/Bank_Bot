@@ -45,7 +45,7 @@ def get_txn_id(data):
 LOG_DIR = "./logs"
 os.makedirs(LOG_DIR, exist_ok=True)
 
-LOG_FILE = os.path.join(LOG_DIR, "SCBAnywhere_Apps_Payout.log")
+LOG_FILE = os.path.join(LOG_DIR, "TTBTouch_Apps_Payout.log")
 
 # Auto-create the logs folder if it doesn't exist
 if not os.path.exists(LOG_DIR):
@@ -60,7 +60,7 @@ logging.basicConfig(
     ],
 )
 
-logger = logging.getLogger("SCB Company Apps")
+logger = logging.getLogger("TTB Touch Apps")
 
 # ================== Appium Driver ==================
 
@@ -277,7 +277,8 @@ class BankBot(Appium_Driver, Eric):
         
         # Click Passcode Number
         logger.info('Key Login Passcode ...')
-        for digit in str(data["password"]):
+        pin = str(data["pin"])
+        for digit in pin:
             driver.find_element(By.ID, f"com.TMBTOUCH.PRODUCTION:id/key_0{digit}").click()
         logger.info("Successfully Login ...")
 
@@ -314,11 +315,11 @@ class BankBot(Appium_Driver, Eric):
 
         # Wait and Fill Account Number
         logger.info("Fill Account No ...")
-        WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.ID, "com.TMBTOUCH.PRODUCTION:id/edt_account_no"))).send_keys(f"{str(data["password"])}")
+        WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.ID, "com.TMBTOUCH.PRODUCTION:id/edt_account_no"))).send_keys(str(data["toAccountNum"]))
         
         # Wait and Fill Amount
         logger.info("Fill Amount ...")
-        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "com.TMBTOUCH.PRODUCTION:id/edt_amount"))).send_keys(f"{str(data["amount"])}")
+        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "com.TMBTOUCH.PRODUCTION:id/edt_amount"))).send_keys(str(data["amount"]))
 
         # Scroll Down 
         logger.info("Scroll Down ...")
@@ -338,7 +339,8 @@ class BankBot(Appium_Driver, Eric):
         
         # Click Passcode Number
         logger.info('Key Login Passcode ...')
-        for digit in str(data["password"]):
+        pin = str(data["pin"])
+        for digit in pin:
             driver.find_element(By.ID, f"com.TMBTOUCH.PRODUCTION:id/pin_key_{digit}").click()
 
         # Call Back Eric API
@@ -349,7 +351,7 @@ class BankBot(Appium_Driver, Eric):
 # ================== Code Start Here ==================
 
 # Run API
-@app.route("/ttb_touch_apps/runPython", methods=["POST"])
+@app.route("/ttb_personal/runPython", methods=["POST"])
 def runPython():
 
     # Count Inactivity Transaction Timer

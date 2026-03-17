@@ -1,0 +1,6 @@
+2026-03-17 16:45:22,864 - INFO - TTB Touch Apps - Starting for Eric WS_Client ...
+2026-03-17 16:45:22,898 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.0.0.253:5100
+2026-03-17 16:45:22,898 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
