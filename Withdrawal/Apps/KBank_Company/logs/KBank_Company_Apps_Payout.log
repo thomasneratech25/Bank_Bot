@@ -1,0 +1,451 @@
+2026-03-18 17:32:47,705 - INFO - KBANK Company Apps - Starting for Eric WS_Client ...
+2026-03-18 17:32:47,736 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5104
+ * Running on http://10.0.0.253:5104
+2026-03-18 17:32:47,736 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-18 17:33:20,954 - INFO - KBANK Company Apps - Starting for Eric WS_Client ...
+2026-03-18 17:33:20,979 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5104
+ * Running on http://10.0.0.253:5104
+2026-03-18 17:33:20,979 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-18 17:36:30,076 - INFO - KBANK Company Apps - Starting for Eric WS_Client ...
+2026-03-18 17:36:30,099 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5104
+ * Running on http://10.0.0.253:5104
+2026-03-18 17:36:30,100 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-18 17:38:02,342 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 17:38:02,343 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 17:38:02,394 - INFO - KBANK Company Apps - Appium process started with PID 24204
+2026-03-18 17:38:05,426 - INFO - KBANK Company Apps - Appium server is ready (attempt 2/10)
+2026-03-18 17:38:12,185 - INFO - KBANK Company Apps - ==================================================
+2026-03-18 17:38:12,185 - INFO - KBANK Company Apps - 🎰 Starting KBank Company Login Flow ....  1111
+2026-03-18 17:38:12,185 - INFO - KBANK Company Apps - ==================================================
+2026-03-18 17:38:12,185 - INFO - KBANK Company Apps - ADB Shell Screen never Time Out ...
+2026-03-18 17:38:12,438 - INFO - KBANK Company Apps - Current App state: 1
+2026-03-18 17:38:12,438 - INFO - KBANK Company Apps - App state is 1. Performing a clean restart to prevent auto-crash.
+2026-03-18 17:38:16,961 - INFO - KBANK Company Apps - Click Login
+2026-03-18 17:38:19,048 - INFO - KBANK Company Apps - No pop up ['error - Sorry Unable to proceed.' ], Proceeding normally...
+2026-03-18 17:38:19,709 - INFO - KBANK Company Apps - No pop up ['error - Sorry Unable to proceed.' ], Proceeding normally...
+2026-03-18 17:38:20,367 - INFO - KBANK Company Apps - No pop up ['error - Sorry Unable to proceed.' ], Proceeding normally...
+2026-03-18 17:38:21,026 - INFO - KBANK Company Apps - No pop up ['error - Sorry Unable to proceed.' ], Proceeding normally...
+2026-03-18 17:38:21,700 - INFO - KBANK Company Apps - No pop up ['error - Sorry Unable to proceed.' ], Proceeding normally...
+2026-03-18 17:38:22,401 - INFO - KBANK Company Apps - No pop up ['error - Sorry Unable to proceed.' ], Proceeding normally...
+2026-03-18 17:38:22,401 - INFO - KBANK Company Apps - Enter KBank Apps Pin... txn_id=%s
+2026-03-18 17:38:22,401 - INFO - KBANK Company Apps - ==================================================
+2026-03-18 17:38:22,401 - INFO - KBANK Company Apps - 🎰 Starting KBANK Company Withdrawal Flow .... 1111
+2026-03-18 17:38:22,401 - INFO - KBANK Company Apps - ==================================================
+2026-03-18 17:38:22,401 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 17:38:22,401 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 17:38:22,401 - INFO - KBANK Company Apps - Appium process already exists, skipping new start
+2026-03-18 17:38:22,401 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 17:38:22,401 - INFO - KBANK Company Apps - Click Banking (QR Code)
+2026-03-18 17:38:24,391 - INFO - KBANK Company Apps - Click Transfer
+2026-03-18 17:38:24,712 - INFO - KBANK Company Apps - Wait 'From' ...
+2026-03-18 17:38:27,716 - INFO - KBANK Company Apps - Select Bank (Drop Down Menu)
+2026-03-18 17:38:28,930 - INFO - KBANK Company Apps - Click to fill Bank Code
+2026-03-18 17:38:28,930 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Apps\KBank_Company\kbank_company_Apps_payout.py", line 480, in runPython
+    BankBot.kbank_login(data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Apps\KBank_Company\kbank_company_Apps_payout.py", line 337, in kbank_login
+    cls.kbank_withdrawal(data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Apps\KBank_Company\kbank_company_Apps_payout.py", line 402, in kbank_withdrawal
+    cls.click_by_ratio(driver, 328, 1100)
+    ^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'BankBot' has no attribute 'click_by_ratio'
+
+----------------------------------------
+2026-03-18 17:38:28,930 - INFO - werkzeug - 127.0.0.1 - - [18/Mar/2026 17:38:28] "[35m[1mPOST /kbank_company/runPython HTTP/1.1[0m" 500 -
+2026-03-18 17:39:39,719 - INFO - KBANK Company Apps - Starting for Eric WS_Client ...
+2026-03-18 17:39:39,742 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5104
+ * Running on http://10.0.0.253:5104
+2026-03-18 17:39:39,742 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-18 17:39:47,216 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 17:39:47,216 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 17:39:47,227 - INFO - KBANK Company Apps - Appium process started with PID 24656
+2026-03-18 17:39:48,768 - INFO - KBANK Company Apps - Appium server is ready (attempt 1/10)
+2026-03-18 17:39:52,591 - INFO - KBANK Company Apps - ==================================================
+2026-03-18 17:39:52,591 - INFO - KBANK Company Apps - 🎰 Starting KBank Company Login Flow ....  1111
+2026-03-18 17:39:52,591 - INFO - KBANK Company Apps - ==================================================
+2026-03-18 17:39:52,591 - INFO - KBANK Company Apps - ADB Shell Screen never Time Out ...
+2026-03-18 17:39:52,839 - INFO - KBANK Company Apps - Current App state: 1
+2026-03-18 17:39:52,839 - INFO - KBANK Company Apps - App state is 1. Performing a clean restart to prevent auto-crash.
+2026-03-18 17:39:57,364 - INFO - KBANK Company Apps - Click Login
+2026-03-18 17:39:59,605 - INFO - KBANK Company Apps - No pop up ['error - Sorry Unable to proceed.' ], Proceeding normally...
+2026-03-18 17:40:00,272 - INFO - KBANK Company Apps - No pop up ['error - Sorry Unable to proceed.' ], Proceeding normally...
+2026-03-18 17:40:00,957 - INFO - KBANK Company Apps - No pop up ['error - Sorry Unable to proceed.' ], Proceeding normally...
+2026-03-18 17:40:01,722 - INFO - KBANK Company Apps - No pop up ['error - Sorry Unable to proceed.' ], Proceeding normally...
+2026-03-18 17:40:02,456 - INFO - KBANK Company Apps - No pop up ['error - Sorry Unable to proceed.' ], Proceeding normally...
+2026-03-18 17:40:03,185 - INFO - KBANK Company Apps - No pop up ['error - Sorry Unable to proceed.' ], Proceeding normally...
+2026-03-18 17:40:03,185 - INFO - KBANK Company Apps - Enter KBank Apps Pin... txn_id=%s
+2026-03-18 17:40:03,185 - INFO - KBANK Company Apps - ==================================================
+2026-03-18 17:40:03,185 - INFO - KBANK Company Apps - 🎰 Starting KBANK Company Withdrawal Flow .... 1111
+2026-03-18 17:40:03,185 - INFO - KBANK Company Apps - ==================================================
+2026-03-18 17:40:03,185 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 17:40:03,185 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 17:40:03,185 - INFO - KBANK Company Apps - Appium process already exists, skipping new start
+2026-03-18 17:40:03,185 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 17:40:03,185 - INFO - KBANK Company Apps - Click Banking (QR Code)
+2026-03-18 17:40:05,242 - INFO - KBANK Company Apps - Click Transfer
+2026-03-18 17:40:05,558 - INFO - KBANK Company Apps - Wait 'From' ...
+2026-03-18 17:40:08,487 - INFO - KBANK Company Apps - Select Bank (Drop Down Menu)
+2026-03-18 17:40:09,717 - INFO - KBANK Company Apps - Click to fill Bank Code
+2026-03-18 17:40:09,738 - INFO - KBANK Company Apps - Ratio Click -> Original(328,1100) scaled to Screen(720x1600) -> Target(218,733)
+2026-03-18 17:40:10,818 - INFO - KBANK Company Apps - Text Bank Name ... Krung Thai Bank
+2026-03-18 17:40:12,032 - INFO - KBANK Company Apps - Press Enter 
+2026-03-18 17:40:12,184 - INFO - KBANK Company Apps - Fill Account Number 2600319026 ...
+2026-03-18 17:40:12,393 - INFO - KBANK Company Apps - Press Enter 
+2026-03-18 17:40:12,664 - INFO - KBANK Company Apps - Fill Amount 10 ...
+2026-03-18 17:40:13,679 - INFO - KBANK Company Apps - Scroll Down 
+2026-03-18 17:40:14,850 - INFO - KBANK Company Apps - Click Next 
+2026-03-18 17:40:15,089 - INFO - KBANK Company Apps - Wait for 'Confirm Transaction' 
+2026-03-18 17:40:16,801 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Apps\KBank_Company\kbank_company_Apps_payout.py", line 482, in runPython
+    BankBot.kbank_login(data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Apps\KBank_Company\kbank_company_Apps_payout.py", line 337, in kbank_login
+    cls.kbank_withdrawal(data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Apps\KBank_Company\kbank_company_Apps_payout.py", line 442, in kbank_withdrawal
+    WebDriverWait(driver, 15).until(EC.presence_of_element_located((AppiumBy.XPATH, "//*[contains(@text,'Confirm Transaction')]")))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\support\wait.py", line 112, in until
+    value = method(self._driver)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 92, in _predicate
+    return driver.find_element(*locator)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 802, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 432, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\appium\webdriver\errorhandler.py", line 125, in check_response
+    raise exception_class(msg=message, stacktrace=format_stacktrace(stacktrace))
+selenium.common.exceptions.WebDriverException: Message: 'POST /element' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+Stacktrace:
+UnknownError: 'POST /element' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+    at UIA2Proxy.command (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\jsonwp-proxy\proxy.js:310:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.doFindElementOrEls (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\build\lib\commands\find.js:24:13)
+    at async doFind (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\find.js:24:23)
+    at async wrappedCondFn (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\timeout.js:97:20)
+    at async spin (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\node_modules\asyncbox\build\lib\asyncbox.js:166:24)
+    at async waitForCondition (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\node_modules\asyncbox\build\lib\asyncbox.js:184:12)
+    at async AndroidUiautomator2Driver.implicitWaitForCondition (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\timeout.js:99:16)
+    at async AndroidUiautomator2Driver.findElOrEls (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\find.js:45:9)
+    at async AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:12:16)
+    at async AndroidUiautomator2Driver.findElement (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:27:16)
+
+----------------------------------------
+2026-03-18 17:40:16,802 - INFO - werkzeug - 127.0.0.1 - - [18/Mar/2026 17:40:16] "[35m[1mPOST /kbank_company/runPython HTTP/1.1[0m" 500 -
+2026-03-18 17:42:49,732 - INFO - KBANK Company Apps - ⏳ 2.9 minutes of inactivity. Killing SCB app...
+2026-03-18 17:45:50,209 - INFO - KBANK Company Apps - ⏳ 2.9 minutes of inactivity. Killing SCB app...
+2026-03-18 17:48:50,742 - INFO - KBANK Company Apps - ⏳ 2.9 minutes of inactivity. Killing SCB app...
+2026-03-18 17:51:50,132 - INFO - KBANK Company Apps - Starting for Eric WS_Client ...
+2026-03-18 17:51:50,159 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5104
+ * Running on http://10.0.0.253:5104
+2026-03-18 17:51:50,159 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-18 17:51:58,194 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 17:51:58,194 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 17:51:58,236 - INFO - KBANK Company Apps - Appium process started with PID 24372
+2026-03-18 17:51:59,774 - INFO - KBANK Company Apps - Appium server is ready (attempt 1/10)
+2026-03-18 17:52:03,712 - INFO - KBANK Company Apps - ==================================================
+2026-03-18 17:52:03,712 - INFO - KBANK Company Apps - 🎰 Starting KBank Company Login Flow ....  1111
+2026-03-18 17:52:03,712 - INFO - KBANK Company Apps - ==================================================
+2026-03-18 17:52:03,712 - INFO - KBANK Company Apps - ADB Shell Screen never Time Out ...
+2026-03-18 17:52:03,993 - INFO - KBANK Company Apps - Current App state: 1
+2026-03-18 17:52:03,993 - INFO - KBANK Company Apps - App state is 1. Performing a clean restart to prevent auto-crash.
+2026-03-18 17:52:08,444 - INFO - KBANK Company Apps - Click Login
+2026-03-18 17:52:11,084 - INFO - KBANK Company Apps - No pop up ['error - Sorry Unable to proceed.' ], Proceeding normally...
+2026-03-18 17:52:11,822 - INFO - KBANK Company Apps - No pop up ['error - Sorry Unable to proceed.' ], Proceeding normally...
+2026-03-18 17:52:12,561 - INFO - KBANK Company Apps - No pop up ['error - Sorry Unable to proceed.' ], Proceeding normally...
+2026-03-18 17:52:13,355 - INFO - KBANK Company Apps - No pop up ['error - Sorry Unable to proceed.' ], Proceeding normally...
+2026-03-18 17:52:14,130 - INFO - KBANK Company Apps - No pop up ['error - Sorry Unable to proceed.' ], Proceeding normally...
+2026-03-18 17:52:14,876 - INFO - KBANK Company Apps - No pop up ['error - Sorry Unable to proceed.' ], Proceeding normally...
+2026-03-18 17:52:14,876 - INFO - KBANK Company Apps - Enter KBank Apps Pin... txn_id=%s
+2026-03-18 17:52:14,876 - INFO - KBANK Company Apps - ==================================================
+2026-03-18 17:52:14,876 - INFO - KBANK Company Apps - 🎰 Starting KBANK Company Withdrawal Flow .... 1111
+2026-03-18 17:52:14,880 - INFO - KBANK Company Apps - ==================================================
+2026-03-18 17:52:14,880 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 17:52:14,880 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 17:52:14,880 - INFO - KBANK Company Apps - Appium process already exists, skipping new start
+2026-03-18 17:52:14,880 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 17:52:14,880 - INFO - KBANK Company Apps - Click Banking (QR Code)
+2026-03-18 17:52:17,058 - INFO - KBANK Company Apps - Click Transfer
+2026-03-18 17:52:17,500 - INFO - KBANK Company Apps - Wait 'From' ...
+2026-03-18 17:52:20,529 - INFO - KBANK Company Apps - Select Bank (Drop Down Menu)
+2026-03-18 17:52:21,826 - INFO - KBANK Company Apps - Mouse click X: 328, Y: 1100
+2026-03-18 17:52:23,082 - INFO - KBANK Company Apps - Text Bank Name ... Krung Thai Bank
+2026-03-18 17:52:24,254 - INFO - KBANK Company Apps - Press Enter 
+2026-03-18 17:52:24,365 - INFO - KBANK Company Apps - Fill Account Number 2600319026 ...
+2026-03-18 17:52:24,535 - INFO - KBANK Company Apps - Press Enter 
+2026-03-18 17:52:24,674 - INFO - KBANK Company Apps - Fill Amount 10 ...
+2026-03-18 17:52:25,039 - INFO - KBANK Company Apps - Scroll Down 
+2026-03-18 17:52:26,497 - INFO - KBANK Company Apps - Click Next 
+2026-03-18 17:52:26,748 - INFO - KBANK Company Apps - Wait for 'Confirm Transaction' 
+2026-03-18 17:52:42,112 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Apps\KBank_Company\kbank_company_Apps_payout.py", line 451, in runPython
+    BankBot.kbank_login(data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Apps\KBank_Company\kbank_company_Apps_payout.py", line 337, in kbank_login
+    cls.kbank_withdrawal(data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Apps\KBank_Company\kbank_company_Apps_payout.py", line 413, in kbank_withdrawal
+    WebDriverWait(driver, 15).until(EC.presence_of_element_located((AppiumBy.XPATH, "//*[contains(@text,'Confirm Transaction')]")))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\support\wait.py", line 121, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\find.js:62:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:12:16)
+    at async AndroidUiautomator2Driver.findElement (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:27:16)
+
+----------------------------------------
+2026-03-18 17:52:42,113 - INFO - werkzeug - 127.0.0.1 - - [18/Mar/2026 17:52:42] "[35m[1mPOST /kbank_company/runPython HTTP/1.1[0m" 500 -
+2026-03-18 17:53:28,608 - INFO - KBANK Company Apps - Starting for Eric WS_Client ...
+2026-03-18 17:53:28,638 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5104
+ * Running on http://10.0.0.253:5104
+2026-03-18 17:53:28,638 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-18 17:53:35,154 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 17:53:35,154 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 17:53:35,220 - INFO - KBANK Company Apps - Appium process started with PID 10416
+2026-03-18 17:53:38,283 - INFO - KBANK Company Apps - Appium server is ready (attempt 2/10)
+2026-03-18 17:53:42,675 - INFO - KBANK Company Apps - Mouse click X: 328, Y: 1100
+2026-03-18 17:53:56,858 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 17:53:56,858 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 17:53:56,873 - INFO - KBANK Company Apps - Appium process started with PID 27924
+2026-03-18 17:53:58,406 - INFO - KBANK Company Apps - Appium server is ready (attempt 1/10)
+2026-03-18 17:54:01,988 - INFO - KBANK Company Apps - Mouse click X: 328, Y: 1100
+2026-03-18 17:54:10,754 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 17:54:10,754 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 17:54:10,769 - INFO - KBANK Company Apps - Appium process started with PID 22380
+2026-03-18 17:54:12,302 - INFO - KBANK Company Apps - Appium server is ready (attempt 1/10)
+2026-03-18 17:54:15,901 - INFO - KBANK Company Apps - Mouse click X: 328, Y: 1100
+2026-03-18 17:55:27,811 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 17:55:27,812 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 17:55:27,826 - INFO - KBANK Company Apps - Appium process started with PID 28764
+2026-03-18 17:55:29,366 - INFO - KBANK Company Apps - Appium server is ready (attempt 1/10)
+2026-03-18 17:55:32,944 - INFO - KBANK Company Apps - Mouse click X: 328, Y: 1100
+2026-03-18 17:57:56,001 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 17:57:56,001 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 17:57:56,044 - INFO - KBANK Company Apps - Appium process started with PID 24712
+2026-03-18 17:57:57,567 - INFO - KBANK Company Apps - Appium server is ready (attempt 1/10)
+2026-03-18 17:58:01,275 - INFO - KBANK Company Apps - Mouse click X: 328, Y: 1100
+2026-03-18 17:58:38,554 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 17:58:38,554 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 17:58:38,570 - INFO - KBANK Company Apps - Appium process started with PID 28168
+2026-03-18 17:58:38,576 - INFO - KBANK Company Apps - Appium server is ready (attempt 1/10)
+2026-03-18 17:58:42,246 - INFO - KBANK Company Apps - Mouse click X: 328, Y: 1100
+2026-03-18 17:59:36,052 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 17:59:36,052 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 17:59:36,067 - INFO - KBANK Company Apps - Appium process started with PID 9968
+2026-03-18 17:59:37,596 - INFO - KBANK Company Apps - Appium server is ready (attempt 1/10)
+2026-03-18 17:59:41,419 - INFO - KBANK Company Apps - Mouse click X: 328, Y: 1100
+2026-03-18 17:59:52,316 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 17:59:52,316 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 17:59:52,331 - INFO - KBANK Company Apps - Appium process started with PID 12932
+2026-03-18 17:59:53,870 - INFO - KBANK Company Apps - Appium server is ready (attempt 1/10)
+2026-03-18 18:00:07,665 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 18:00:07,665 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 18:00:07,683 - INFO - KBANK Company Apps - Appium process started with PID 23240
+2026-03-18 18:00:09,227 - INFO - KBANK Company Apps - Appium server is ready (attempt 1/10)
+2026-03-18 18:00:25,222 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 18:00:25,222 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 18:00:25,268 - INFO - KBANK Company Apps - Appium process started with PID 8108
+2026-03-18 18:00:26,796 - INFO - KBANK Company Apps - Appium server is ready (attempt 1/10)
+2026-03-18 18:00:40,071 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 18:00:40,072 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 18:00:40,086 - INFO - KBANK Company Apps - Appium process started with PID 15620
+2026-03-18 18:00:41,616 - INFO - KBANK Company Apps - Appium server is ready (attempt 1/10)
+2026-03-18 18:00:54,820 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 18:00:54,820 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 18:00:54,836 - INFO - KBANK Company Apps - Appium process started with PID 716
+2026-03-18 18:00:56,377 - INFO - KBANK Company Apps - Appium server is ready (attempt 1/10)
+2026-03-18 18:01:11,040 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 18:01:11,041 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 18:01:11,054 - INFO - KBANK Company Apps - Appium process started with PID 26996
+2026-03-18 18:01:12,580 - INFO - KBANK Company Apps - Appium server is ready (attempt 1/10)
+2026-03-18 18:02:12,130 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 18:02:12,130 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 18:02:12,145 - INFO - KBANK Company Apps - Appium process started with PID 15424
+2026-03-18 18:02:12,152 - INFO - KBANK Company Apps - Appium server is ready (attempt 1/10)
+2026-03-18 18:02:25,029 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 18:02:25,029 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 18:02:25,044 - INFO - KBANK Company Apps - Appium process started with PID 8120
+2026-03-18 18:02:26,569 - INFO - KBANK Company Apps - Appium server is ready (attempt 1/10)
+2026-03-18 18:05:44,262 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 18:05:44,262 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 18:05:44,277 - INFO - KBANK Company Apps - Appium process started with PID 27696
+2026-03-18 18:05:45,805 - INFO - KBANK Company Apps - Appium server is ready (attempt 1/10)
+2026-03-18 18:06:23,237 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 18:06:23,237 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 18:06:23,249 - INFO - KBANK Company Apps - Appium process started with PID 22748
+2026-03-18 18:06:24,766 - INFO - KBANK Company Apps - Appium server is ready (attempt 1/10)
+2026-03-18 18:07:30,790 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 18:07:30,790 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 18:07:30,806 - INFO - KBANK Company Apps - Appium process started with PID 224
+2026-03-18 18:07:32,348 - INFO - KBANK Company Apps - Appium server is ready (attempt 1/10)
+2026-03-18 18:07:50,811 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 18:07:50,811 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 18:07:50,824 - INFO - KBANK Company Apps - Appium process started with PID 20736
+2026-03-18 18:07:52,357 - INFO - KBANK Company Apps - Appium server is ready (attempt 1/10)
+2026-03-18 18:08:24,108 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 18:08:24,108 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 18:08:24,122 - INFO - KBANK Company Apps - Appium process started with PID 13612
+2026-03-18 18:08:25,679 - INFO - KBANK Company Apps - Appium server is ready (attempt 1/10)
+2026-03-18 18:10:17,156 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 18:10:17,157 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 18:10:17,169 - INFO - KBANK Company Apps - Appium process started with PID 18228
+2026-03-18 18:10:18,705 - INFO - KBANK Company Apps - Appium server is ready (attempt 1/10)
+2026-03-18 18:10:59,168 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 18:10:59,168 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 18:10:59,183 - INFO - KBANK Company Apps - Appium process started with PID 16364
+2026-03-18 18:10:59,189 - INFO - KBANK Company Apps - Appium server is ready (attempt 1/10)
+2026-03-18 18:11:11,247 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 18:11:11,248 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 18:11:11,264 - INFO - KBANK Company Apps - Appium process started with PID 28552
+2026-03-18 18:11:11,270 - INFO - KBANK Company Apps - Appium server is ready (attempt 1/10)
+2026-03-18 18:14:15,106 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 18:14:15,106 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 18:14:15,117 - INFO - KBANK Company Apps - Appium process started with PID 14260
+2026-03-18 18:14:16,648 - INFO - KBANK Company Apps - Appium server is ready (attempt 1/10)
+2026-03-18 18:14:23,668 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 18:14:23,668 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 18:14:23,682 - INFO - KBANK Company Apps - Appium process started with PID 1960
+2026-03-18 18:14:25,199 - INFO - KBANK Company Apps - Appium server is ready (attempt 1/10)
+2026-03-18 18:14:32,878 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 18:14:32,878 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 18:14:32,894 - INFO - KBANK Company Apps - Appium process started with PID 2552
+2026-03-18 18:14:32,901 - INFO - KBANK Company Apps - Appium server is ready (attempt 1/10)
+2026-03-18 18:14:50,952 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 18:14:50,953 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 18:14:50,967 - INFO - KBANK Company Apps - Appium process started with PID 29476
+2026-03-18 18:14:52,506 - INFO - KBANK Company Apps - Appium server is ready (attempt 1/10)
+2026-03-18 18:15:48,310 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 18:15:48,311 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 18:15:48,326 - INFO - KBANK Company Apps - Appium process started with PID 416
+2026-03-18 18:15:49,856 - INFO - KBANK Company Apps - Appium server is ready (attempt 1/10)
+2026-03-18 18:16:21,779 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 18:16:21,780 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 18:16:21,793 - INFO - KBANK Company Apps - Appium process started with PID 15464
+2026-03-18 18:16:23,312 - INFO - KBANK Company Apps - Appium server is ready (attempt 1/10)
+2026-03-18 18:17:35,148 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 18:17:35,148 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 18:17:35,162 - INFO - KBANK Company Apps - Appium process started with PID 26512
+2026-03-18 18:17:36,681 - INFO - KBANK Company Apps - Appium server is ready (attempt 1/10)
+2026-03-18 18:18:38,380 - INFO - KBANK Company Apps - Starting for Eric WS_Client ...
+2026-03-18 18:18:38,410 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5104
+ * Running on http://10.0.0.253:5104
+2026-03-18 18:18:38,410 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-18 18:18:46,409 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 18:18:46,410 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 18:18:46,426 - INFO - KBANK Company Apps - Appium process started with PID 1424
+2026-03-18 18:18:47,956 - INFO - KBANK Company Apps - Appium server is ready (attempt 1/10)
+2026-03-18 18:18:51,655 - INFO - KBANK Company Apps - ==================================================
+2026-03-18 18:18:51,656 - INFO - KBANK Company Apps - 🎰 Starting KBank Company Login Flow ....  1111
+2026-03-18 18:18:51,657 - INFO - KBANK Company Apps - ==================================================
+2026-03-18 18:18:51,657 - INFO - KBANK Company Apps - ADB Shell Screen never Time Out ...
+2026-03-18 18:18:51,936 - INFO - KBANK Company Apps - Current App state: 1
+2026-03-18 18:18:51,936 - INFO - KBANK Company Apps - App state is 1. Performing a clean restart to prevent auto-crash.
+2026-03-18 18:18:56,438 - INFO - KBANK Company Apps - Click Login
+2026-03-18 18:18:58,430 - INFO - KBANK Company Apps - No pop up ['error - Sorry Unable to proceed.' ], Proceeding normally...
+2026-03-18 18:18:59,088 - INFO - KBANK Company Apps - No pop up ['error - Sorry Unable to proceed.' ], Proceeding normally...
+2026-03-18 18:18:59,817 - INFO - KBANK Company Apps - No pop up ['error - Sorry Unable to proceed.' ], Proceeding normally...
+2026-03-18 18:19:00,532 - INFO - KBANK Company Apps - No pop up ['error - Sorry Unable to proceed.' ], Proceeding normally...
+2026-03-18 18:19:01,295 - INFO - KBANK Company Apps - No pop up ['error - Sorry Unable to proceed.' ], Proceeding normally...
+2026-03-18 18:19:02,057 - INFO - KBANK Company Apps - No pop up ['error - Sorry Unable to proceed.' ], Proceeding normally...
+2026-03-18 18:19:02,058 - INFO - KBANK Company Apps - Enter KBank Apps Pin... txn_id=%s
+2026-03-18 18:19:02,058 - INFO - KBANK Company Apps - ==================================================
+2026-03-18 18:19:02,059 - INFO - KBANK Company Apps - 🎰 Starting KBANK Company Withdrawal Flow .... 1111
+2026-03-18 18:19:02,059 - INFO - KBANK Company Apps - ==================================================
+2026-03-18 18:19:02,059 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 18:19:02,059 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 18:19:02,060 - INFO - KBANK Company Apps - Appium process already exists, skipping new start
+2026-03-18 18:19:02,060 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 18:19:02,060 - INFO - KBANK Company Apps - Click Banking (QR Code)
+2026-03-18 18:19:04,310 - INFO - KBANK Company Apps - Click Transfer
+2026-03-18 18:19:04,647 - INFO - KBANK Company Apps - Wait 'From' ...
+2026-03-18 18:19:07,707 - INFO - KBANK Company Apps - Select Bank (Drop Down Menu)
+2026-03-18 18:19:10,151 - INFO - KBANK Company Apps - Press Enter 
+2026-03-18 18:19:10,252 - INFO - KBANK Company Apps - Fill Account Number 2600319026 ...
+2026-03-18 18:19:10,408 - INFO - KBANK Company Apps - Press Enter 
+2026-03-18 18:19:10,580 - INFO - KBANK Company Apps - Fill Amount 10 ...
+2026-03-18 18:19:11,167 - INFO - KBANK Company Apps - Scroll Down 
+2026-03-18 18:19:12,260 - INFO - KBANK Company Apps - Click Next 
+2026-03-18 18:19:12,453 - INFO - KBANK Company Apps - Wait for 'Confirm Transaction' 
+2026-03-18 18:19:28,072 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Apps\KBank_Company\kbank_company_Apps_payout.py", line 444, in runPython
+    BankBot.kbank_login(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Apps\KBank_Company\kbank_company_Apps_payout.py", line 337, in kbank_login
+    cls.kbank_withdrawal(data)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Apps\KBank_Company\kbank_company_Apps_payout.py", line 406, in kbank_withdrawal
+    WebDriverWait(driver, 15).until(EC.presence_of_element_located((AppiumBy.XPATH, "//*[contains(@text,'Confirm Transaction')]")))
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\support\wait.py", line 121, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\find.js:62:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:12:16)
+    at async AndroidUiautomator2Driver.findElement (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:27:16)
+
+----------------------------------------
+2026-03-18 18:19:28,075 - INFO - werkzeug - 127.0.0.1 - - [18/Mar/2026 18:19:28] "[35m[1mPOST /kbank_company/runPython HTTP/1.1[0m" 500 -
+2026-03-18 18:22:20,140 - INFO - KBANK Company Apps - Starting for Eric WS_Client ...
+2026-03-18 18:22:20,161 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5104
+ * Running on http://10.0.0.253:5104
+2026-03-18 18:22:20,162 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-18 18:22:27,098 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 18:22:27,098 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 18:22:27,107 - INFO - KBANK Company Apps - Appium process started with PID 19092
+2026-03-18 18:22:29,139 - INFO - KBANK Company Apps - Appium server is ready (attempt 1/10)
+2026-03-18 18:22:33,191 - INFO - KBANK Company Apps - ==================================================
+2026-03-18 18:22:33,191 - INFO - KBANK Company Apps - 🎰 Starting KBank Company Login Flow ....  1111
+2026-03-18 18:22:33,192 - INFO - KBANK Company Apps - ==================================================
+2026-03-18 18:22:33,192 - INFO - KBANK Company Apps - ADB Shell Screen never Time Out ...
+2026-03-18 18:22:33,446 - INFO - KBANK Company Apps - Current App state: 1
+2026-03-18 18:22:33,446 - INFO - KBANK Company Apps - App state is 1. Performing a clean restart to prevent auto-crash.
+2026-03-18 18:22:37,959 - INFO - KBANK Company Apps - Click Login
+2026-03-18 18:22:40,681 - INFO - KBANK Company Apps - No pop up ['error - Sorry Unable to proceed.' ], Proceeding normally...
+2026-03-18 18:22:41,405 - INFO - KBANK Company Apps - No pop up ['error - Sorry Unable to proceed.' ], Proceeding normally...
+2026-03-18 18:22:42,186 - INFO - KBANK Company Apps - No pop up ['error - Sorry Unable to proceed.' ], Proceeding normally...
+2026-03-18 18:22:42,943 - INFO - KBANK Company Apps - No pop up ['error - Sorry Unable to proceed.' ], Proceeding normally...
+2026-03-18 18:22:43,738 - INFO - KBANK Company Apps - No pop up ['error - Sorry Unable to proceed.' ], Proceeding normally...
+2026-03-18 18:22:44,430 - INFO - KBANK Company Apps - No pop up ['error - Sorry Unable to proceed.' ], Proceeding normally...
+2026-03-18 18:22:44,431 - INFO - KBANK Company Apps - Enter KBank Apps Pin... txn_id=%s
+2026-03-18 18:22:44,431 - INFO - KBANK Company Apps - ==================================================
+2026-03-18 18:22:44,431 - INFO - KBANK Company Apps - 🎰 Starting KBANK Company Withdrawal Flow .... 1111
+2026-03-18 18:22:44,431 - INFO - KBANK Company Apps - ==================================================
+2026-03-18 18:22:44,431 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-03-18 18:22:44,432 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 18:22:44,432 - INFO - KBANK Company Apps - Appium process already exists, skipping new start
+2026-03-18 18:22:44,432 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-03-18 18:22:44,432 - INFO - KBANK Company Apps - Click Banking (QR Code)
+2026-03-18 18:22:46,374 - INFO - KBANK Company Apps - Click Transfer
+2026-03-18 18:22:46,734 - INFO - KBANK Company Apps - Wait 'From' ...
+2026-03-18 18:22:49,645 - INFO - KBANK Company Apps - Select Bank (Drop Down Menu)
+2026-03-18 18:22:52,133 - INFO - KBANK Company Apps - Press Enter 
+2026-03-18 18:22:52,251 - INFO - KBANK Company Apps - Fill Account Number 2600319026 ...
+2026-03-18 18:22:52,396 - INFO - KBANK Company Apps - Press Enter 
+2026-03-18 18:22:52,502 - INFO - KBANK Company Apps - Fill Amount 10 ...
+2026-03-18 18:22:52,990 - INFO - KBANK Company Apps - Scroll Down 
+2026-03-18 18:22:54,005 - INFO - KBANK Company Apps - Click Next 
+2026-03-18 18:22:54,257 - INFO - KBANK Company Apps - Wait for 'Confirm Transaction' 
