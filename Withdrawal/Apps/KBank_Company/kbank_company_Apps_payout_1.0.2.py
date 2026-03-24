@@ -20,6 +20,11 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support import expected_conditions as EC
 
+# ================== Version Change ==========================
+
+# 1.0.2
+# - Fix cannot proceed to withdrawal 
+
 
 # ================== Eric WS_Client Settings =================
 
@@ -325,16 +330,21 @@ class BankBot(Appium_Driver, Eric):
             if driver.query_app_state("com.kasikornbank.kbiz") != 4:
                 logger.error("App failed to reach foreground. Retrying once...")
                 driver.activate_app("com.kasikornbank.kbiz")
-
+        
+        # If already on Main Page, Skip login
+        try:
+            WebDriverWait(driver, 10).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Loans")))
+            logger.info("Already login, Skipped!")
+            return  # Already Login
+        except:
+            pass
+        
         # Wait and Button Click "Login"
         logger.info("Click Login")
         WebDriverWait(driver, 30).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Log in"))).click()
 
         # Enter PIN
         enter_pin()
-
-        # KBank Withdrawal
-        cls.kbank_withdrawal(data)
 
     # Kbank Company Withdrawal
     @classmethod
@@ -386,7 +396,7 @@ class BankBot(Appium_Driver, Eric):
         driver.press_keycode(66)
         
         # Fill Amount
-        logger.info(f"Fill Amount {str(data["amount"])} ...")
+        logger.info(f"Fill Amount {str(data['amount'])} ...")
         WebDriverWait(driver,20).until(EC.element_to_be_clickable((AppiumBy.ANDROID_UIAUTOMATOR,'new UiSelector().className("android.widget.EditText").instance(1)'))).send_keys(str(data["amount"]))
         
         # Press Enter 
@@ -445,8 +455,11 @@ def runPython():
 
     with LOCK:
         try:
-            # Perform Withdrawal
+            # Perform Login
             BankBot.kbank_login(data)
+
+            # Perform Withdrawal
+            BankBot.kbank_withdrawal(data)
 
             # Return Successful, if withdrawal Successful
             return jsonify({"success": True,"transactionId": data.get("transactionId")})
