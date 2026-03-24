@@ -1096,3 +1096,993 @@ Exception: Withdrawal failed: Stopping code: Insufficient balance detected.
  * Running on http://127.0.0.1:5004
  * Running on http://10.0.0.253:5004
 2026-03-16 13:05:47,906 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-19 18:19:54,301 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-19 18:19:54,330 - INFO - KBank_Samsung - WS client started with PID 7324
+2026-03-19 18:19:54,342 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://10.0.0.253:5004
+2026-03-19 18:19:54,342 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-19 18:20:22,078 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-19 18:20:22,094 - INFO - KBank_Samsung - WS client started with PID 23584
+2026-03-19 18:20:22,126 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://10.0.0.253:5004
+2026-03-19 18:20:22,126 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-19 18:21:03,189 - INFO - KBank_Samsung - Starting For Chrome Browser...
+2026-03-19 18:21:03,189 - INFO - KBank_Samsung - Starting Cleaning Notification Bar...
+2026-03-19 18:21:03,190 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-19 18:21:03,190 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-19 18:21:03,274 - INFO - KBank_Samsung - Appium process started with PID 15920
+2026-03-19 18:21:03,510 - INFO - KBank_Samsung - Appium server is ready (attempt 1/10)
+2026-03-19 18:21:12,112 - INFO - KBank_Samsung - Clean Phone Notification
+2026-03-19 18:21:12,112 - INFO - KBank_Samsung - Starting KBANK login flow. txn_id=1111
+2026-03-19 18:21:12,112 - INFO - KBank_Samsung - Starting Playwright instance. txn_id=1111
+2026-03-19 18:21:26,000 - INFO - KBank_Samsung - Connecting Playwright to Chrome CDP. txn_id=1111
+2026-03-19 18:21:26,492 - INFO - KBank_Samsung - Browser context ready. txn_id=1111
+2026-03-19 18:21:26,496 - INFO - KBank_Samsung - Creating new browser page. txn_id=1111
+2026-03-19 18:21:29,119 - ERROR - root - LOGIN FAILED for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 268, in kbank_login
+    page.goto("https://kbiz.kasikornbank.com/authen/login.jsp?lang=en", wait_until="domcontentloaded")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 9054, in goto
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.goto(
+        ^^^^^^^^^^^^^^^^^^^^
+            url=url, timeout=timeout, waitUntil=wait_until, referer=referer
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_page.py", line 552, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 153, in goto
+    await self._channel.send(
+        "goto", self._navigation_timeout, locals_to_params(locals())
+    )
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Page.goto: Target page, context or browser has been closed
+Call log:
+  - navigating to "https://kbiz.kasikornbank.com/authen/login.jsp?lang=en", waiting until "domcontentloaded"
+
+
+2026-03-19 18:21:29,121 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 268, in kbank_login
+    page.goto("https://kbiz.kasikornbank.com/authen/login.jsp?lang=en", wait_until="domcontentloaded")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 9054, in goto
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.goto(
+        ^^^^^^^^^^^^^^^^^^^^
+            url=url, timeout=timeout, waitUntil=wait_until, referer=referer
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_page.py", line 552, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 153, in goto
+    await self._channel.send(
+        "goto", self._navigation_timeout, locals_to_params(locals())
+    )
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Page.goto: Target page, context or browser has been closed
+Call log:
+  - navigating to "https://kbiz.kasikornbank.com/authen/login.jsp?lang=en", waiting until "domcontentloaded"
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 863, in runPython
+    page = BankBot.kbank_login(data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 319, in kbank_login
+    raise Exception(f"Login failed at step: {str(e)}")
+Exception: Login failed at step: Page.goto: Target page, context or browser has been closed
+Call log:
+  - navigating to "https://kbiz.kasikornbank.com/authen/login.jsp?lang=en", waiting until "domcontentloaded"
+
+
+----------------------------------------
+2026-03-19 18:21:36,870 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-19 18:21:36,891 - INFO - KBank_Samsung - WS client started with PID 14220
+2026-03-19 18:21:36,908 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://10.0.0.253:5004
+2026-03-19 18:21:36,908 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-19 18:21:41,055 - INFO - KBank_Samsung - Starting For Chrome Browser...
+2026-03-19 18:21:41,055 - INFO - KBank_Samsung - Starting Cleaning Notification Bar...
+2026-03-19 18:21:41,055 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-19 18:21:41,055 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-19 18:21:41,078 - INFO - KBank_Samsung - Appium process started with PID 1940
+2026-03-19 18:21:41,086 - INFO - KBank_Samsung - Appium server is ready (attempt 1/10)
+2026-03-19 18:21:45,869 - INFO - KBank_Samsung - Clean Phone Notification
+2026-03-19 18:21:45,869 - INFO - KBank_Samsung - Starting KBANK login flow. txn_id=1111
+2026-03-19 18:21:45,869 - INFO - KBank_Samsung - Starting Playwright instance. txn_id=1111
+2026-03-19 18:21:50,238 - INFO - KBank_Samsung - Connecting Playwright to Chrome CDP. txn_id=1111
+2026-03-19 18:21:50,779 - INFO - KBank_Samsung - Browser context ready. txn_id=1111
+2026-03-19 18:21:50,779 - INFO - KBank_Samsung - Creating new browser page. txn_id=1111
+2026-03-19 18:21:53,193 - INFO - KBank_Samsung - Navigating to KBANK login page. txn_id=1111
+2026-03-19 18:21:55,228 - INFO - KBank_Samsung - Login Account...
+2026-03-19 18:21:59,957 - INFO - KBank_Samsung - Button click for 'Fund Transfer', txn_id=1111
+2026-03-19 18:22:01,294 - INFO - KBank_Samsung - Wait for navigate to 'Fund Transfer' Title/Page, txn_id=1111
+2026-03-19 18:22:01,294 - INFO - KBank_Samsung - Processing payout started. txn_id=1111
+2026-03-19 18:22:02,300 - INFO - KBank_Samsung - Starting withdrawal flow. txn_id=1111 to_bank=Krung Thai Bank to_account=2600319026 amount=105
+2026-03-19 18:22:03,509 - INFO - KBank_Samsung - Open Bank Menu....., txn_id=1111
+2026-03-19 18:22:03,582 - INFO - KBank_Samsung - Fill in Bank Name Krung Thai Bank, txn_id=1111
+2026-03-19 18:22:03,621 - INFO - KBank_Samsung - Select the Bank Name/Code Krung Thai Bank, txn_id=1111
+2026-03-19 18:22:03,640 - INFO - KBank_Samsung - Fill in Account Number 2600319026, txn_id=1111
+2026-03-19 18:22:03,662 - INFO - KBank_Samsung - Fill in Amount 105, txn_id=1111
+2026-03-19 18:22:03,762 - INFO - KBank_Samsung - Click Next, txn_id=1111
+2026-03-19 18:22:04,772 - ERROR - root - WITHDRAWAL FAILED for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 365, in kbank_withdrawal
+    if page.locator("//span[normalize-space()='There is insufficient balance in your account.']").is_visible():
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 17297, in is_visible
+    self._sync(self._impl_obj.is_visible(timeout=timeout))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 531, in is_visible
+    return await self._frame.is_visible(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 408, in is_visible
+    return await self._channel.send(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.is_visible: Target page, context or browser has been closed
+
+2026-03-19 18:22:04,772 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 365, in kbank_withdrawal
+    if page.locator("//span[normalize-space()='There is insufficient balance in your account.']").is_visible():
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 17297, in is_visible
+    self._sync(self._impl_obj.is_visible(timeout=timeout))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 531, in is_visible
+    return await self._frame.is_visible(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 408, in is_visible
+    return await self._channel.send(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.is_visible: Target page, context or browser has been closed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 867, in runPython
+    BankBot.kbank_withdrawal(page, data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 411, in kbank_withdrawal
+    raise Exception(f"Withdrawal failed: {str(e)}")
+Exception: Withdrawal failed: Locator.is_visible: Target page, context or browser has been closed
+
+----------------------------------------
+2026-03-19 18:22:16,097 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-19 18:22:16,111 - INFO - KBank_Samsung - WS client started with PID 9928
+2026-03-19 18:22:16,124 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://10.0.0.253:5004
+2026-03-19 18:22:16,125 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-19 18:22:23,563 - INFO - KBank_Samsung - Starting For Chrome Browser...
+2026-03-19 18:22:23,563 - INFO - KBank_Samsung - Starting Cleaning Notification Bar...
+2026-03-19 18:22:23,563 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-19 18:22:23,563 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-19 18:22:23,574 - INFO - KBank_Samsung - Appium process started with PID 8860
+2026-03-19 18:22:23,579 - INFO - KBank_Samsung - Appium server is ready (attempt 1/10)
+2026-03-19 18:22:28,344 - INFO - KBank_Samsung - Clean Phone Notification
+2026-03-19 18:22:28,345 - INFO - KBank_Samsung - Starting KBANK login flow. txn_id=1111
+2026-03-19 18:22:28,345 - INFO - KBank_Samsung - Starting Playwright instance. txn_id=1111
+2026-03-19 18:22:28,699 - INFO - KBank_Samsung - Connecting Playwright to Chrome CDP. txn_id=1111
+2026-03-19 18:22:29,064 - INFO - KBank_Samsung - Browser context ready. txn_id=1111
+2026-03-19 18:22:29,064 - INFO - KBank_Samsung - Creating new browser page. txn_id=1111
+2026-03-19 18:22:31,424 - INFO - KBank_Samsung - Navigating to KBANK login page. txn_id=1111
+2026-03-19 18:22:33,575 - INFO - KBank_Samsung - Login Account...
+2026-03-19 18:22:34,642 - ERROR - root - LOGIN FAILED for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_15_2.9.py", line 301, in kbank_login
+    page.locator("//div[@class='column-menu']//a[@id='BIZ_004']").click(timeout=100000)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 15631, in click
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.click(
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_locator.py", line 162, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 566, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+Exception: Locator.click: Connection closed while reading from the driver
+
+2026-03-19 18:22:34,645 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_15_2.9.py", line 301, in kbank_login
+    page.locator("//div[@class='column-menu']//a[@id='BIZ_004']").click(timeout=100000)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 15631, in click
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.click(
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_locator.py", line 162, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 566, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+Exception: Locator.click: Connection closed while reading from the driver
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_15_2.9.py", line 863, in runPython
+    page = BankBot.kbank_login(data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_15_2.9.py", line 320, in kbank_login
+    raise Exception(f"Login failed at step: {str(e)}")
+Exception: Login failed at step: Locator.click: Connection closed while reading from the driver
+
+----------------------------------------
+2026-03-19 18:22:37,109 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-19 18:22:37,123 - INFO - KBank_Samsung - WS client started with PID 18232
+2026-03-19 18:22:37,132 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://10.0.0.253:5004
+2026-03-19 18:22:37,132 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-19 18:22:46,235 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-19 18:22:46,249 - INFO - KBank_Samsung - WS client started with PID 9548
+2026-03-19 18:22:46,259 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://10.0.0.253:5004
+2026-03-19 18:22:46,259 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-19 18:23:05,071 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-19 18:23:05,084 - INFO - KBank_Samsung - WS client started with PID 27768
+2026-03-19 18:23:05,093 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://10.0.0.253:5004
+2026-03-19 18:23:05,093 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-19 18:23:18,613 - INFO - KBank_Samsung - Starting For Chrome Browser...
+2026-03-19 18:23:18,613 - INFO - KBank_Samsung - Starting Cleaning Notification Bar...
+2026-03-19 18:23:18,613 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-19 18:23:18,613 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-19 18:23:18,624 - INFO - KBank_Samsung - Appium process started with PID 16416
+2026-03-19 18:23:18,629 - INFO - KBank_Samsung - Appium server is ready (attempt 1/10)
+2026-03-19 18:23:23,543 - INFO - KBank_Samsung - Clean Phone Notification
+2026-03-19 18:23:23,544 - INFO - KBank_Samsung - Starting KBANK login flow. txn_id=1111
+2026-03-19 18:23:23,544 - INFO - KBank_Samsung - Starting Playwright instance. txn_id=1111
+2026-03-19 18:23:23,888 - INFO - KBank_Samsung - Connecting Playwright to Chrome CDP. txn_id=1111
+2026-03-19 18:23:24,273 - INFO - KBank_Samsung - Browser context ready. txn_id=1111
+2026-03-19 18:23:24,273 - INFO - KBank_Samsung - Creating new browser page. txn_id=1111
+2026-03-19 18:23:26,650 - INFO - KBank_Samsung - Navigating to KBANK login page. txn_id=1111
+2026-03-19 18:23:28,732 - INFO - KBank_Samsung - Login Account...
+2026-03-19 18:23:31,486 - ERROR - root - LOGIN FAILED for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_15_2.9.py", line 301, in kbank_login
+    page.locator("//div[@class='column-menu']//a[@id='BIZ_004']").click(timeout=100000)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 15631, in click
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.click(
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_locator.py", line 162, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 566, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+Exception: Locator.click: Connection closed while reading from the driver
+
+2026-03-19 18:23:31,489 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_15_2.9.py", line 301, in kbank_login
+    page.locator("//div[@class='column-menu']//a[@id='BIZ_004']").click(timeout=100000)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 15631, in click
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.click(
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_locator.py", line 162, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 566, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+Exception: Locator.click: Connection closed while reading from the driver
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_15_2.9.py", line 863, in runPython
+    page = BankBot.kbank_login(data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_15_2.9.py", line 320, in kbank_login
+    raise Exception(f"Login failed at step: {str(e)}")
+Exception: Login failed at step: Locator.click: Connection closed while reading from the driver
+
+----------------------------------------
+2026-03-19 18:23:50,397 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-19 18:23:50,412 - INFO - KBank_Samsung - WS client started with PID 27008
+2026-03-19 18:23:50,421 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://10.0.0.253:5004
+2026-03-19 18:23:50,421 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-19 18:24:31,867 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-19 18:24:31,888 - INFO - KBank_Samsung - WS client started with PID 16248
+2026-03-19 18:24:31,902 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://10.0.0.253:5004
+2026-03-19 18:24:31,902 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-19 18:24:43,356 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-19 18:24:43,371 - INFO - KBank_Samsung - WS client started with PID 24844
+2026-03-19 18:24:43,381 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://10.0.0.253:5004
+2026-03-19 18:24:43,381 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-19 18:24:59,540 - INFO - KBank_Samsung - Starting For Chrome Browser...
+2026-03-19 18:24:59,541 - INFO - KBank_Samsung - Starting Cleaning Notification Bar...
+2026-03-19 18:24:59,541 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-19 18:24:59,541 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-19 18:24:59,562 - INFO - KBank_Samsung - Appium process started with PID 5036
+2026-03-19 18:24:59,569 - INFO - KBank_Samsung - Appium server is ready (attempt 1/10)
+2026-03-19 18:25:05,370 - INFO - KBank_Samsung - Clean Phone Notification
+2026-03-19 18:25:05,370 - INFO - KBank_Samsung - Starting KBANK login flow. txn_id=1111
+2026-03-19 18:25:05,370 - INFO - KBank_Samsung - Starting Playwright instance. txn_id=1111
+2026-03-19 18:25:05,785 - INFO - KBank_Samsung - Connecting Playwright to Chrome CDP. txn_id=1111
+2026-03-19 18:25:06,164 - INFO - KBank_Samsung - Browser context ready. txn_id=1111
+2026-03-19 18:25:06,164 - INFO - KBank_Samsung - Creating new browser page. txn_id=1111
+2026-03-19 18:25:08,456 - INFO - KBank_Samsung - Navigating to KBANK login page. txn_id=1111
+2026-03-19 18:25:10,483 - INFO - KBank_Samsung - Login Account...
+2026-03-19 18:25:13,077 - INFO - KBank_Samsung - Button click for 'Fund Transfer', txn_id=1111
+2026-03-19 18:25:13,921 - INFO - KBank_Samsung - Wait for navigate to 'Fund Transfer' Title/Page, txn_id=1111
+2026-03-19 18:25:13,922 - INFO - KBank_Samsung - Processing payout started. txn_id=1111
+2026-03-19 18:25:14,923 - INFO - KBank_Samsung - Starting withdrawal flow. txn_id=1111 to_bank=Krung Thai Bank to_account=2600319026 amount=105
+2026-03-19 18:25:14,991 - INFO - KBank_Samsung - Open Bank Menu....., txn_id=1111
+2026-03-19 18:25:15,048 - INFO - KBank_Samsung - Fill in Bank Name Krung Thai Bank, txn_id=1111
+2026-03-19 18:25:15,080 - INFO - KBank_Samsung - Select the Bank Name/Code Krung Thai Bank, txn_id=1111
+2026-03-19 18:25:15,097 - INFO - KBank_Samsung - Fill in Account Number 2600319026, txn_id=1111
+2026-03-19 18:25:15,117 - INFO - KBank_Samsung - Fill in Amount 105, txn_id=1111
+2026-03-19 18:25:15,217 - INFO - KBank_Samsung - Click Next, txn_id=1111
+2026-03-19 18:25:16,229 - INFO - KBank_Samsung - Sufficient Balance... Continue...
+2026-03-19 18:25:21,319 - INFO - KBank_Samsung - Moving to mobile approval Confirm transaction. txn_id=1111
+2026-03-19 18:25:21,320 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-19 18:25:21,321 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-19 18:25:21,321 - INFO - KBank_Samsung - Appium process already exists, skipping new start
+2026-03-19 18:25:21,322 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-19 18:25:21,322 - INFO - KBank_Samsung - Start Appium Driver... txn_id=1111
+2026-03-19 18:25:21,684 - INFO - KBank_Samsung - Open Notification Bar... txn_id=1111
+2026-03-19 18:25:27,212 - INFO - KBank_Samsung - Click KBank Confirm Transaction notification... txn_id=1111
+2026-03-19 18:25:28,215 - INFO - KBank_Samsung - Start Watchdog Timer, txn_id=1111
+2026-03-19 18:25:28,216 - INFO - KBank_Samsung - Start WatchDog Timer (40s)... txn_id=1111
+2026-03-19 18:25:28,217 - INFO - KBank_Samsung - If Withdrawal cannot complete within 40s, Restart apps and click confirm transaction, txn_id=1111
+2026-03-19 18:25:32,511 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-19 18:25:33,782 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-19 18:25:35,159 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-19 18:25:36,487 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-19 18:25:37,815 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-19 18:25:39,464 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-19 18:25:39,464 - INFO - KBank_Samsung - Enter KBank Apps Pin... txn_id=1111
+2026-03-19 18:25:39,464 - INFO - KBank_Samsung - Starting Apps confirm transaction sequence. txn_id=1111
+2026-03-20 09:56:45,195 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-20 09:56:45,215 - INFO - KBank_Samsung - WS client started with PID 6856
+2026-03-20 09:56:45,243 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://10.0.0.253:5004
+2026-03-20 09:56:45,244 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-20 09:57:04,304 - INFO - KBank_Samsung - Starting For Chrome Browser...
+2026-03-20 09:57:04,307 - INFO - KBank_Samsung - Starting Cleaning Notification Bar...
+2026-03-20 09:57:04,309 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-20 09:57:04,310 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-20 09:57:04,367 - INFO - KBank_Samsung - Appium process started with PID 20596
+2026-03-20 09:57:05,901 - INFO - KBank_Samsung - Appium server is ready (attempt 1/10)
+2026-03-20 09:57:11,847 - INFO - KBank_Samsung - Clean Phone Notification
+2026-03-20 09:57:11,848 - INFO - KBank_Samsung - Starting KBANK login flow. txn_id=1111
+2026-03-20 09:57:11,848 - INFO - KBank_Samsung - Starting Playwright instance. txn_id=1111
+2026-03-20 09:57:12,458 - INFO - KBank_Samsung - Connecting Playwright to Chrome CDP. txn_id=1111
+2026-03-20 09:57:12,868 - INFO - KBank_Samsung - Browser context ready. txn_id=1111
+2026-03-20 09:57:12,869 - INFO - KBank_Samsung - Creating new browser page. txn_id=1111
+2026-03-20 09:57:15,585 - INFO - KBank_Samsung - Navigating to KBANK login page. txn_id=1111
+2026-03-20 09:57:17,750 - INFO - KBank_Samsung - Login Account...
+2026-03-20 09:57:20,755 - INFO - KBank_Samsung - Button click for 'Fund Transfer', txn_id=1111
+2026-03-20 09:57:21,600 - INFO - KBank_Samsung - Wait for navigate to 'Fund Transfer' Title/Page, txn_id=1111
+2026-03-20 09:57:21,604 - INFO - KBank_Samsung - Processing payout started. txn_id=1111
+2026-03-20 09:57:22,605 - INFO - KBank_Samsung - Starting withdrawal flow. txn_id=1111 to_bank=Krung Thai Bank to_account=2600319026 amount=105
+2026-03-20 09:57:22,728 - INFO - KBank_Samsung - Open Bank Menu....., txn_id=1111
+2026-03-20 09:57:22,780 - INFO - KBank_Samsung - Fill in Bank Name Krung Thai Bank, txn_id=1111
+2026-03-20 09:57:22,840 - INFO - KBank_Samsung - Select the Bank Name/Code Krung Thai Bank, txn_id=1111
+2026-03-20 09:57:22,870 - INFO - KBank_Samsung - Fill in Account Number 2600319026, txn_id=1111
+2026-03-20 09:57:22,898 - INFO - KBank_Samsung - Fill in Amount 105, txn_id=1111
+2026-03-20 09:57:23,026 - INFO - KBank_Samsung - Click Next, txn_id=1111
+2026-03-20 09:57:24,038 - INFO - KBank_Samsung - Sufficient Balance... Continue...
+2026-03-20 09:57:29,124 - INFO - KBank_Samsung - Moving to mobile approval Confirm transaction. txn_id=1111
+2026-03-20 09:57:29,126 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-20 09:57:29,127 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-20 09:57:29,128 - INFO - KBank_Samsung - Appium process already exists, skipping new start
+2026-03-20 09:57:29,128 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-20 09:57:29,129 - INFO - KBank_Samsung - Start Appium Driver... txn_id=1111
+2026-03-20 09:57:29,982 - INFO - KBank_Samsung - Open Notification Bar... txn_id=1111
+2026-03-20 09:57:35,097 - INFO - KBank_Samsung - Click KBank Confirm Transaction notification... txn_id=1111
+2026-03-20 09:57:36,100 - INFO - KBank_Samsung - Start Watchdog Timer, txn_id=1111
+2026-03-20 09:57:36,101 - INFO - KBank_Samsung - Start WatchDog Timer (40s)... txn_id=1111
+2026-03-20 09:57:36,102 - INFO - KBank_Samsung - If Withdrawal cannot complete within 40s, Restart apps and click confirm transaction, txn_id=1111
+2026-03-20 09:57:40,336 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-20 09:57:41,615 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-20 09:57:43,019 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-20 09:57:44,390 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-20 09:57:45,733 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-20 09:57:47,497 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-20 09:57:47,497 - INFO - KBank_Samsung - Enter KBank Apps Pin... txn_id=1111
+2026-03-20 09:57:47,498 - INFO - KBank_Samsung - Starting Apps confirm transaction sequence. txn_id=1111
+2026-03-20 10:12:16,756 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-20 10:12:16,773 - INFO - KBank_Samsung - WS client started with PID 14988
+2026-03-20 10:12:16,795 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://10.0.0.253:5004
+2026-03-20 10:12:16,795 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-20 10:12:55,021 - INFO - KBank_Samsung - Starting For Chrome Browser...
+2026-03-20 10:12:55,022 - INFO - KBank_Samsung - Starting Cleaning Notification Bar...
+2026-03-20 10:12:55,023 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-20 10:12:55,023 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-20 10:12:55,044 - INFO - KBank_Samsung - Appium process started with PID 28944
+2026-03-20 10:12:57,115 - INFO - KBank_Samsung - Appium server is ready (attempt 1/10)
+2026-03-20 10:13:03,432 - INFO - KBank_Samsung - Clean Phone Notification
+2026-03-20 10:13:03,432 - INFO - KBank_Samsung - Starting KBANK login flow. txn_id=1111
+2026-03-20 10:13:03,433 - INFO - KBank_Samsung - Starting Playwright instance. txn_id=1111
+2026-03-20 10:13:03,953 - INFO - KBank_Samsung - Connecting Playwright to Chrome CDP. txn_id=1111
+2026-03-20 10:13:04,393 - INFO - KBank_Samsung - Browser context ready. txn_id=1111
+2026-03-20 10:13:04,394 - INFO - KBank_Samsung - Creating new browser page. txn_id=1111
+2026-03-20 10:13:09,952 - INFO - KBank_Samsung - Navigating to KBANK login page. txn_id=1111
+2026-03-20 10:13:12,292 - INFO - KBank_Samsung - Login Account...
+2026-03-20 10:13:22,266 - ERROR - root - LOGIN FAILED for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 300, in kbank_login
+    page.locator("//div[@class='column-menu']//a[@id='BIZ_004']").click(timeout=100000)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 15631, in click
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.click(
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_locator.py", line 162, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 566, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.click: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("//div[@class='column-menu']//a[@id='BIZ_004']")
+    - waiting for" https://kbiz.kasikornbank.com/authen/ib/redirectToIB.jsp" navigation to finish...
+    - navigated to "https://kbiz.kasikornbank.com/authen/logout.do?cmd=success"
+    - waiting for" https://kbiz.kasikornbank.com/authen/login.jsp?lang=th" navigation to finish...
+    - navigated to "https://kbiz.kasikornbank.com/authen/login.jsp?lang=th"
+
+
+2026-03-20 10:13:22,269 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 300, in kbank_login
+    page.locator("//div[@class='column-menu']//a[@id='BIZ_004']").click(timeout=100000)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 15631, in click
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.click(
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_locator.py", line 162, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 566, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.click: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("//div[@class='column-menu']//a[@id='BIZ_004']")
+    - waiting for" https://kbiz.kasikornbank.com/authen/ib/redirectToIB.jsp" navigation to finish...
+    - navigated to "https://kbiz.kasikornbank.com/authen/logout.do?cmd=success"
+    - waiting for" https://kbiz.kasikornbank.com/authen/login.jsp?lang=th" navigation to finish...
+    - navigated to "https://kbiz.kasikornbank.com/authen/login.jsp?lang=th"
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 863, in runPython
+    page = BankBot.kbank_login(data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 319, in kbank_login
+    raise Exception(f"Login failed at step: {str(e)}")
+Exception: Login failed at step: Locator.click: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("//div[@class='column-menu']//a[@id='BIZ_004']")
+    - waiting for" https://kbiz.kasikornbank.com/authen/ib/redirectToIB.jsp" navigation to finish...
+    - navigated to "https://kbiz.kasikornbank.com/authen/logout.do?cmd=success"
+    - waiting for" https://kbiz.kasikornbank.com/authen/login.jsp?lang=th" navigation to finish...
+    - navigated to "https://kbiz.kasikornbank.com/authen/login.jsp?lang=th"
+
+
+----------------------------------------
+2026-03-20 10:13:30,485 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-20 10:13:30,505 - INFO - KBank_Samsung - WS client started with PID 30600
+2026-03-20 10:13:30,517 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://10.0.0.253:5004
+2026-03-20 10:13:30,517 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-20 10:13:33,088 - INFO - KBank_Samsung - Starting For Chrome Browser...
+2026-03-20 10:13:33,088 - INFO - KBank_Samsung - Starting Cleaning Notification Bar...
+2026-03-20 10:13:33,089 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-20 10:13:33,090 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-20 10:13:33,108 - INFO - KBank_Samsung - Appium process started with PID 17816
+2026-03-20 10:13:35,164 - INFO - KBank_Samsung - Appium server is ready (attempt 1/10)
+2026-03-20 10:13:41,434 - INFO - KBank_Samsung - Clean Phone Notification
+2026-03-20 10:13:41,435 - INFO - KBank_Samsung - Starting KBANK login flow. txn_id=1111
+2026-03-20 10:13:41,436 - INFO - KBank_Samsung - Starting Playwright instance. txn_id=1111
+2026-03-20 10:13:41,840 - INFO - KBank_Samsung - Connecting Playwright to Chrome CDP. txn_id=1111
+2026-03-20 10:13:42,241 - INFO - KBank_Samsung - Browser context ready. txn_id=1111
+2026-03-20 10:13:42,242 - INFO - KBank_Samsung - Creating new browser page. txn_id=1111
+2026-03-20 10:13:46,834 - INFO - KBank_Samsung - Navigating to KBANK login page. txn_id=1111
+2026-03-20 10:13:49,054 - INFO - KBank_Samsung - Login Account...
+2026-03-20 10:13:59,739 - ERROR - root - LOGIN FAILED for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 300, in kbank_login
+    page.locator("//div[@class='column-menu']//a[@id='BIZ_004']").click(timeout=100000)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 15631, in click
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.click(
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_locator.py", line 162, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 566, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.click: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("//div[@class='column-menu']//a[@id='BIZ_004']")
+    - waiting for" https://kbiz.kasikornbank.com/authen/ib/redirectToIB.jsp" navigation to finish...
+    - navigated to "https://kbiz.kasikornbank.com/authen/logout.do?cmd=success"
+    - waiting for" https://kbiz.kasikornbank.com/authen/login.jsp?lang=th" navigation to finish...
+    - navigated to "https://kbiz.kasikornbank.com/authen/login.jsp?lang=th"
+
+
+2026-03-20 10:13:59,746 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 300, in kbank_login
+    page.locator("//div[@class='column-menu']//a[@id='BIZ_004']").click(timeout=100000)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 15631, in click
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.click(
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_locator.py", line 162, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 566, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.click: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("//div[@class='column-menu']//a[@id='BIZ_004']")
+    - waiting for" https://kbiz.kasikornbank.com/authen/ib/redirectToIB.jsp" navigation to finish...
+    - navigated to "https://kbiz.kasikornbank.com/authen/logout.do?cmd=success"
+    - waiting for" https://kbiz.kasikornbank.com/authen/login.jsp?lang=th" navigation to finish...
+    - navigated to "https://kbiz.kasikornbank.com/authen/login.jsp?lang=th"
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 863, in runPython
+    page = BankBot.kbank_login(data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 319, in kbank_login
+    raise Exception(f"Login failed at step: {str(e)}")
+Exception: Login failed at step: Locator.click: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("//div[@class='column-menu']//a[@id='BIZ_004']")
+    - waiting for" https://kbiz.kasikornbank.com/authen/ib/redirectToIB.jsp" navigation to finish...
+    - navigated to "https://kbiz.kasikornbank.com/authen/logout.do?cmd=success"
+    - waiting for" https://kbiz.kasikornbank.com/authen/login.jsp?lang=th" navigation to finish...
+    - navigated to "https://kbiz.kasikornbank.com/authen/login.jsp?lang=th"
+
+
+----------------------------------------
+2026-03-20 10:14:40,338 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-20 10:14:40,360 - INFO - KBank_Samsung - WS client started with PID 10420
+2026-03-20 10:14:40,373 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://10.0.0.253:5004
+2026-03-20 10:14:40,373 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-20 10:14:44,420 - INFO - KBank_Samsung - Starting For Chrome Browser...
+2026-03-20 10:14:44,422 - INFO - KBank_Samsung - Starting Cleaning Notification Bar...
+2026-03-20 10:14:44,423 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-20 10:14:44,423 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-20 10:14:44,473 - INFO - KBank_Samsung - Appium process started with PID 22116
+2026-03-20 10:14:46,519 - INFO - KBank_Samsung - Appium server is ready (attempt 1/10)
+2026-03-20 10:14:51,820 - INFO - KBank_Samsung - Clean Phone Notification
+2026-03-20 10:14:51,821 - INFO - KBank_Samsung - Starting KBANK login flow. txn_id=1111
+2026-03-20 10:14:51,821 - INFO - KBank_Samsung - Starting Playwright instance. txn_id=1111
+2026-03-20 10:14:52,349 - INFO - KBank_Samsung - Connecting Playwright to Chrome CDP. txn_id=1111
+2026-03-20 10:14:52,743 - INFO - KBank_Samsung - Browser context ready. txn_id=1111
+2026-03-20 10:14:52,744 - INFO - KBank_Samsung - Creating new browser page. txn_id=1111
+2026-03-20 10:14:57,366 - INFO - KBank_Samsung - Navigating to KBANK login page. txn_id=1111
+2026-03-20 10:14:59,817 - INFO - KBank_Samsung - Login Account...
+2026-03-20 10:15:05,674 - INFO - KBank_Samsung - Button click for 'Fund Transfer', txn_id=1111
+2026-03-20 10:15:08,080 - INFO - KBank_Samsung - Wait for navigate to 'Fund Transfer' Title/Page, txn_id=1111
+2026-03-20 10:15:08,086 - INFO - KBank_Samsung - Processing payout started. txn_id=1111
+2026-03-20 10:15:09,087 - INFO - KBank_Samsung - Starting withdrawal flow. txn_id=1111 to_bank=Krung Thai Bank to_account=2600319026 amount=105
+2026-03-20 10:15:09,235 - INFO - KBank_Samsung - Open Bank Menu....., txn_id=1111
+2026-03-20 10:15:09,335 - INFO - KBank_Samsung - Fill in Bank Name Krung Thai Bank, txn_id=1111
+2026-03-20 10:15:09,436 - INFO - KBank_Samsung - Select the Bank Name/Code Krung Thai Bank, txn_id=1111
+2026-03-20 10:15:09,469 - INFO - KBank_Samsung - Fill in Account Number 2600319026, txn_id=1111
+2026-03-20 10:15:09,514 - INFO - KBank_Samsung - Fill in Amount 105, txn_id=1111
+2026-03-20 10:15:09,640 - INFO - KBank_Samsung - Click Next, txn_id=1111
+2026-03-20 10:15:10,657 - INFO - KBank_Samsung - Sufficient Balance... Continue...
+2026-03-20 10:15:15,722 - INFO - KBank_Samsung - Moving to mobile approval Confirm transaction. txn_id=1111
+2026-03-20 10:15:15,723 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-20 10:15:15,723 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-20 10:15:15,724 - INFO - KBank_Samsung - Appium process already exists, skipping new start
+2026-03-20 10:15:15,724 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-20 10:15:15,724 - INFO - KBank_Samsung - Start Appium Driver... txn_id=1111
+2026-03-20 10:15:15,767 - INFO - KBank_Samsung - Open Notification Bar... txn_id=1111
+2026-03-20 10:15:20,707 - INFO - KBank_Samsung - Click KBank Confirm Transaction notification... txn_id=1111
+2026-03-20 10:15:21,713 - INFO - KBank_Samsung - Start Watchdog Timer, txn_id=1111
+2026-03-20 10:15:21,713 - INFO - KBank_Samsung - Start WatchDog Timer (120s)... txn_id=1111
+2026-03-20 10:15:21,715 - INFO - KBank_Samsung - If Withdrawal cannot complete within 120s, Restart apps and click confirm transaction, txn_id=1111
+2026-03-20 10:15:26,274 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-20 10:15:27,576 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-20 10:15:28,976 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-20 10:15:30,361 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-20 10:15:31,714 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-20 10:15:33,383 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-20 10:15:33,383 - INFO - KBank_Samsung - Enter KBank Apps Pin... txn_id=1111
+2026-03-20 10:15:33,384 - INFO - KBank_Samsung - Starting Apps confirm transaction sequence. txn_id=1111
+2026-03-20 10:15:57,120 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-20 10:15:58,379 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-20 10:15:59,619 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-20 10:16:01,296 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-20 10:16:02,512 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-20 10:16:03,771 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-20 10:16:03,772 - INFO - KBank_Samsung - Enter KBank Apps Pin... txn_id=1111
+2026-03-20 10:20:28,168 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-20 10:20:28,189 - INFO - KBank_Samsung - WS client started with PID 14204
+2026-03-20 10:20:28,199 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://10.0.0.253:5004
+2026-03-20 10:20:28,199 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-20 10:20:35,070 - INFO - KBank_Samsung - Starting For Chrome Browser...
+2026-03-20 10:20:35,071 - INFO - KBank_Samsung - Starting Cleaning Notification Bar...
+2026-03-20 10:20:35,071 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-20 10:20:35,071 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-20 10:20:35,096 - INFO - KBank_Samsung - Appium process started with PID 13428
+2026-03-20 10:20:37,153 - INFO - KBank_Samsung - Appium server is ready (attempt 1/10)
+2026-03-20 10:20:43,486 - INFO - KBank_Samsung - Clean Phone Notification
+2026-03-20 10:20:43,488 - INFO - KBank_Samsung - Starting KBANK login flow. txn_id=1111
+2026-03-20 10:20:43,488 - INFO - KBank_Samsung - Starting Playwright instance. txn_id=1111
+2026-03-20 10:20:44,054 - INFO - KBank_Samsung - Connecting Playwright to Chrome CDP. txn_id=1111
+2026-03-20 10:20:44,455 - INFO - KBank_Samsung - Browser context ready. txn_id=1111
+2026-03-20 10:20:44,458 - INFO - KBank_Samsung - Creating new browser page. txn_id=1111
+2026-03-20 10:20:47,624 - ERROR - root - LOGIN FAILED for Transaction 1111:
+Traceback (most recent call last):
+  File "C:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 268, in kbank_login
+    page.goto("https://kbiz.kasikornbank.com/authen/login.jsp?lang=en", wait_until="domcontentloaded")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 9054, in goto
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.goto(
+        ^^^^^^^^^^^^^^^^^^^^
+            url=url, timeout=timeout, waitUntil=wait_until, referer=referer
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_page.py", line 552, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 153, in goto
+    await self._channel.send(
+        "goto", self._navigation_timeout, locals_to_params(locals())
+    )
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: Page.goto: net::ERR_ABORTED; maybe frame was detached?
+Call log:
+  - navigating to "https://kbiz.kasikornbank.com/authen/login.jsp?lang=en", waiting until "domcontentloaded"
+
+
+2026-03-20 10:20:47,627 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "C:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 268, in kbank_login
+    page.goto("https://kbiz.kasikornbank.com/authen/login.jsp?lang=en", wait_until="domcontentloaded")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\sync_api\_generated.py", line 9054, in goto
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.goto(
+        ^^^^^^^^^^^^^^^^^^^^
+            url=url, timeout=timeout, waitUntil=wait_until, referer=referer
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_page.py", line 552, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 153, in goto
+    await self._channel.send(
+        "goto", self._navigation_timeout, locals_to_params(locals())
+    )
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: Page.goto: net::ERR_ABORTED; maybe frame was detached?
+Call log:
+  - navigating to "https://kbiz.kasikornbank.com/authen/login.jsp?lang=en", waiting until "domcontentloaded"
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 864, in runPython
+    page = BankBot.kbank_login(data)
+  File "C:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 319, in kbank_login
+    raise Exception(f"Login failed at step: {str(e)}")
+Exception: Login failed at step: Page.goto: net::ERR_ABORTED; maybe frame was detached?
+Call log:
+  - navigating to "https://kbiz.kasikornbank.com/authen/login.jsp?lang=en", waiting until "domcontentloaded"
+
+
+----------------------------------------
+2026-03-20 10:21:52,745 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-20 10:21:52,762 - INFO - KBank_Samsung - WS client started with PID 19964
+2026-03-20 10:21:52,781 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://10.0.0.253:5004
+2026-03-20 10:21:52,781 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-20 10:24:07,871 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-20 10:24:07,892 - INFO - KBank_Samsung - WS client started with PID 9564
+2026-03-20 10:24:07,903 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://10.0.0.253:5004
+2026-03-20 10:24:07,903 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-20 10:24:12,614 - INFO - KBank_Samsung - Starting For Chrome Browser...
+2026-03-20 10:24:12,614 - INFO - KBank_Samsung - Starting Cleaning Notification Bar...
+2026-03-20 10:24:12,614 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-20 10:24:12,614 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-20 10:24:12,636 - INFO - KBank_Samsung - Appium process started with PID 12604
+2026-03-20 10:24:14,183 - INFO - KBank_Samsung - Appium server is ready (attempt 1/10)
+2026-03-20 10:24:19,650 - INFO - KBank_Samsung - Clean Phone Notification
+2026-03-20 10:24:19,650 - INFO - KBank_Samsung - Starting KBANK login flow. txn_id=1111
+2026-03-20 10:24:19,650 - INFO - KBank_Samsung - Starting Playwright instance. txn_id=1111
+2026-03-20 10:24:20,297 - INFO - KBank_Samsung - Connecting Playwright to Chrome CDP. txn_id=1111
+2026-03-20 10:24:20,738 - INFO - KBank_Samsung - Browser context ready. txn_id=1111
+2026-03-20 10:24:20,738 - INFO - KBank_Samsung - Creating new browser page. txn_id=1111
+2026-03-20 10:24:24,999 - INFO - KBank_Samsung - Navigating to KBANK login page. txn_id=1111
+2026-03-20 10:24:27,271 - INFO - KBank_Samsung - Login Account...
+2026-03-20 10:24:33,054 - INFO - KBank_Samsung - Button click for 'Fund Transfer', txn_id=1111
+2026-03-20 10:24:35,441 - INFO - KBank_Samsung - Wait for navigate to 'Fund Transfer' Title/Page, txn_id=1111
+2026-03-20 10:24:35,441 - INFO - KBank_Samsung - Processing payout started. txn_id=1111
+2026-03-20 10:24:36,442 - INFO - KBank_Samsung - Starting withdrawal flow. txn_id=1111 to_bank=Krung Thai Bank to_account=2600319026 amount=105
+2026-03-20 10:24:36,573 - INFO - KBank_Samsung - Open Bank Menu....., txn_id=1111
+2026-03-20 10:24:36,650 - INFO - KBank_Samsung - Fill in Bank Name Krung Thai Bank, txn_id=1111
+2026-03-20 10:24:36,744 - INFO - KBank_Samsung - Select the Bank Name/Code Krung Thai Bank, txn_id=1111
+2026-03-20 10:24:36,771 - INFO - KBank_Samsung - Fill in Account Number 2600319026, txn_id=1111
+2026-03-20 10:24:36,813 - INFO - KBank_Samsung - Fill in Amount 105, txn_id=1111
+2026-03-20 10:24:36,871 - INFO - KBank_Samsung - Click Next, txn_id=1111
+2026-03-20 10:24:37,882 - INFO - KBank_Samsung - Sufficient Balance... Continue...
+2026-03-20 10:24:42,977 - INFO - KBank_Samsung - Moving to mobile approval Confirm transaction. txn_id=1111
+2026-03-20 10:24:42,980 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-20 10:24:42,980 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-20 10:24:42,980 - INFO - KBank_Samsung - Appium process already exists, skipping new start
+2026-03-20 10:24:42,980 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-20 10:24:42,980 - INFO - KBank_Samsung - Start Appium Driver... txn_id=1111
+2026-03-20 10:24:43,981 - INFO - KBank_Samsung - Start Watchdog Timer, txn_id=1111
+2026-03-20 10:24:43,981 - INFO - KBank_Samsung - Start WatchDog Timer (120s)... txn_id=1111
+2026-03-20 10:24:43,981 - INFO - KBank_Samsung - If Withdrawal cannot complete within 120s, Restart apps and click confirm transaction, txn_id=1111
+2026-03-20 10:24:43,981 - INFO - KBank_Samsung - Mobile approval completed. txn_id=1111
+2026-03-20 10:24:43,981 - INFO - KBank_Samsung - Processing payout completed. txn_id=1111
+2026-03-20 10:24:43,987 - INFO - werkzeug - 127.0.0.1 - - [20/Mar/2026 10:24:43] "POST /kbank_company_web/runPython HTTP/1.1" 200 -
+2026-03-20 10:30:20,601 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-20 10:30:20,631 - INFO - KBank_Samsung - WS client started with PID 1948
+2026-03-20 10:30:20,646 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://10.0.0.253:5004
+2026-03-20 10:30:20,646 - INFO - werkzeug - [33mPress CTRL+C to quit[0m

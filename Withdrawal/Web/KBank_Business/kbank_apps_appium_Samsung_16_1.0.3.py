@@ -147,7 +147,7 @@ class BankBot(Automation):
                 options.automation_name = "UiAutomator2"
                 options.new_command_timeout = 86400
 
-                APPIUM_DRIVER = webdriver.Remote("http://127.0.0.1:8021", options=options)
+                APPIUM_DRIVER = webdriver.Remote("http://127.0.0.1:8021", options=options, keep_alive=False)
             else:
                 logger.info("Reusing existing Appium driver session")
 
@@ -445,7 +445,7 @@ class BankBot(Automation):
                         pass
 
                 watchdog["fired"] = False
-                watchdog["timer"] = threading.Timer(40, watchdog_fire)
+                watchdog["timer"] = threading.Timer(120, watchdog_fire)
                 watchdog["timer"].daemon = True
                 watchdog["timer"].start()
                 
@@ -488,8 +488,8 @@ class BankBot(Automation):
                     # Enter Password
                     enter_pin()
                 
-                    # Confirm Transaction
-                    confirm_transaction()
+                    # # Confirm Transaction
+                    # confirm_transaction()
 
                     logging.info("Enter PIN and Confirm Transcation...")
                     
@@ -529,6 +529,7 @@ class BankBot(Automation):
                 for digit in pin:
                     digit_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, digit)))
                     digit_button.click()
+                    print(f"Pin: {digit}")
                     # "Sorry, Unable to proceed The system cannot proceed this transaction, please try again later.")
                     error_unable_process_this_transaction()
                 
@@ -585,6 +586,7 @@ class BankBot(Automation):
                         # Restart app before retry
                         try:
                             print("Restarting Kbank App...")
+                            
                             # Kill Apps
                             driver.terminate_app("com.kasikornbank.kbiz")
 
@@ -624,8 +626,8 @@ class BankBot(Automation):
 
             # Start Watchdog Timer
             start_watchdog()
-            logger.info("Start WatchDog Timer (40s)... txn_id=%s", txn_id)
-            logger.info("If Withdrawal cannot complete within 40s, Restart apps and click confirm transaction, txn_id=%s", txn_id)
+            logger.info("Start WatchDog Timer (120s)... txn_id=%s", txn_id)
+            logger.info("If Withdrawal cannot complete within 120s, Restart apps and click confirm transaction, txn_id=%s", txn_id)
 
             while True:
                 try:
@@ -641,8 +643,8 @@ class BankBot(Automation):
                         # Enter PIN
                         enter_pin()
 
-                        # Confirm Transaction
-                        confirm_transaction()
+                        # # Confirm Transaction
+                        # confirm_transaction()
 
                         # Stop Watchdog Timer
                         stop_watchdog() 
@@ -666,8 +668,8 @@ class BankBot(Automation):
                             # Enter PIN
                             enter_pin()
 
-                            # Confirm Transaction
-                            confirm_transaction()
+                            # # Confirm Transaction
+                            # confirm_transaction()
 
                             # Stop Watchdog Timer
                             stop_watchdog() 
@@ -680,8 +682,8 @@ class BankBot(Automation):
                         # Enter PIN
                         enter_pin()
 
-                        # Confirm Transaction
-                        confirm_transaction()
+                        # # Confirm Transaction
+                        # confirm_transaction()
 
                         # Stop Watchdog Timer
                         stop_watchdog() 
@@ -717,8 +719,8 @@ class BankBot(Automation):
                         except Exception:
                             pass
 
-                        # Confirm Transaction
-                        confirm_transaction()
+                        # # Confirm Transaction
+                        # confirm_transaction()
 
                         # Stop Watchdog Timer
                         stop_watchdog() 
@@ -732,12 +734,12 @@ class BankBot(Automation):
                 except TimeoutException:
                     continue
             
-            # Call Back Eric API
-            cls.eric_api(data)
+            # # Call Back Eric API
+            # cls.eric_api(data)
             
-            # Wait and Click "Back to main page"
-            WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.XPATH, "//android.view.View[@content-desc='Back to main page']"))).click()
-            logger.info("Back to main Page...")
+            # # Wait and Click "Back to main page"
+            # WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.XPATH, "//android.view.View[@content-desc='Back to main page']"))).click()
+            # logger.info("Back to main Page...")
 
         except Exception as e:
             error_trace = traceback.format_exc()

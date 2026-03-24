@@ -23,32 +23,45 @@ from appium.options.android import UiAutomator2Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-# ================== Eric WS_Client Settings =================
+# ================== Version Change ==========================
+
+# - 1.0.2
+# Remove sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8') causing error 
+
+# - 1.0.3
+# Fix after 3 minutes, doesnt auto logout, and login failed
+
+# ================== Playwright Worker (Perform Logout after inactivity) =================
+
+JOB_Q = queue.Queue()
+BROWSER_WORKER = None
+
+# ================== Eric WS_Client Settings ===============
 
 WS_PROC = None
 
-# ================== Appium Settings ========================
+# ================== Appium Settings =======================
 
 APPIUM_DRIVER = None
 APPIUM_PROC = None
 APPIUM_LOCK = Lock()
 
-# =========================== Flask apps ==============================
+# =========================== Flask apps ====================
 
 app = Flask(__name__)
 LOCK = Lock()
 
 # IDLE
-IDLE_SECONDS = 300 # 5 minutes
+IDLE_SECONDS = 180 # 3minutes
 
-# ================== PLAYWRIGHT SINGLETON ========================
+# ================== PLAYWRIGHT SINGLETON ====================
 
 PLAYWRIGHT = None
 BROWSER = None
 CONTEXT = None
 PAGE = None
 
-# ================== Logger Settings =========================
+# ================== Logger Settings ===================
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 LOG_DIR = os.path.join(BASE_DIR, "logs")
@@ -71,7 +84,7 @@ logging.basicConfig(
 
 logger = logging.getLogger("KTB COMPANY WEB")
 
-# ================== Appium Driver ==================
+# ================== Appium Driver ====================
 
 # Android Appium
 class Appium_Driver:
@@ -145,29 +158,7 @@ class Appium_Driver:
         logger.error("Appium server did not become ready after 10 attempts")
         raise RuntimeError("Appium not started")
 
-    # Inactivity Monitor / Timer
-    @staticmethod
-    def monitor_inactivity():
-        while True:
-            time.sleep(10)
-            # Access via ClassName.VariableName
-            with Appium_Driver.time_Lock:
-                elapsed = time.time() - Appium_Driver.last_TxN_Time
-            
-            if elapsed > 174:
-                # Access the global APPIUM_DRIVER variable
-                global APPIUM_DRIVER
-                if APPIUM_DRIVER:
-                    try:
-                        logger.info("⏳ 2.9 minutes of inactivity. Killing SCB app...")
-                        APPIUM_DRIVER.terminate_app("com.scb.corporate")
-                    except Exception as e:
-                        logger.error(f"Failed to kill app: {e}")
-                
-                with Appium_Driver.time_Lock:
-                    Appium_Driver.last_TxN_Time = time.time()
-
-# ================== Eric Settings ==================
+# ================== Eric Settings ====================
 
 class Eric:
 
@@ -236,6 +227,110 @@ class Eric:
             cwd=workdir
         )
 
+# ================== Trigger Logout ===================
+
+class BrowserWorker:
+    
+    # Create a Backgroud thread, to keep the browser work in one dedicated thread
+    def __init__(self):
+        # self.run, to keep the browser in one dedicated thread
+        # daemon = True, this is a background thread, so when the main program exits, Python does not need to wait for it, Help apps shut down clearly 
+        self.thread = threading.Thread(target=self.run, daemon=True)
+        self.last_activity = time.time()
+        self.running = True
+        self.session_active = False
+
+    # Start Background Thread
+    def start(self):
+        self.thread.start()
+    
+    # Record session last activity timer
+    # To calculate idle time
+    # To decide when 180 seconds has passed
+    def touch(self):
+        self.last_activity = time.time()
+
+    def run(self):
+        global PLAYWRIGHT, BROWSER, CONTEXT, PAGE
+
+        logger.info("Browser worker started")
+
+        # True = keep the worker running, False = Stop the worker
+        while self.running: 
+            try:
+                # Only logout if session is really active
+                # if all 3 condition == True (there is a logged session, playwright page object exists, the page is still open), check current time - last activity time >= 180 seconds, if is True, then perform website logout, else skip....
+                # if 3 condition one of those doesnt meet, then skip ....
+                if self.session_active and PAGE is not None and not PAGE.is_closed():
+                    idle_for = time.time() - self.last_activity
+                    if idle_for >= IDLE_SECONDS:
+                        logger.warning(f"No new transaction for {IDLE_SECONDS} seconds, logging out now...")
+                        try:
+                            BankBot.ktb_logout(PAGE)
+                            logger.info("Idle logout completed")
+                        except Exception:
+                            logger.exception("Idle logout failed")
+                        finally:
+                            self.session_active = False
+                            self.touch()
+
+                # The Worker will continue to waiting for new jobs
+                try:
+                    job = JOB_Q.get(timeout=1)
+                except queue.Empty:
+                    continue
+
+                action = job["action"]
+                reply_q = job["reply_q"]
+
+                try:
+                    if action == "withdrawal":
+                        data = job["data"]
+
+                        self.touch()
+
+                        # all Playwright work stays in this worker thread
+                        Automation.chrome_cdp()
+                        page = BankBot.ktb_login(data)
+
+                        # if is False, means no active session, do not logout
+                        # if is True, means
+                        self.session_active = True
+                        self.touch()
+
+                        BankBot.ktb_withdrawal(page, data)
+                        self.touch()
+
+                        reply_q.put({
+                            "success": True,
+                            "transactionId": data["transactionId"]
+                        })
+
+                    elif action == "logout":
+                        if self.session_active and PAGE is not None and not PAGE.is_closed():
+                            BankBot.ktb_logout(PAGE)
+                        self.session_active = False
+                        self.touch()
+                        reply_q.put({"success": True})
+
+                    else:
+                        reply_q.put({
+                            "success": False,
+                            "message": f"Unknown action: {action}"
+                        })
+
+                except Exception as e:
+                    full_trace = traceback.format_exc()
+                    logger.error(f"Worker error:\n{full_trace}")
+                    reply_q.put({
+                        "success": False,
+                        "message": str(e),
+                        "error_type": type(e).__name__
+                    })
+
+            except Exception:
+                logger.exception("Browser worker main loop crashed")
+
 # ================== Chrome Settings ==================
 
 class Automation:
@@ -289,7 +384,7 @@ class Automation:
             time.sleep(1)
         raise RuntimeError("Chrome CDP not ready")
 
-# ================== KTB BANK BOT ==================
+# ================== KTB BANK BOT =====================
 
 class BankBot(Automation, Appium_Driver, Eric):
     
@@ -667,55 +762,46 @@ class BankBot(Automation, Appium_Driver, Eric):
 # ================== Code Start Here ==================
 
 # Run API
-@app.route("/ktb_company_web/runPython", methods=["POST"])      
-
+@app.route("/ktb_company_web/runPython", methods=["POST"])
 def runPython():
     data = request.get_json(silent=True)
     if not data:
         return jsonify({"success": False, "message": "Invalid JSON"}), 400
 
-    with LOCK:
+    try:
+        reply_q = queue.Queue()
+
+        JOB_Q.put({
+            "action": "withdrawal",
+            "data": data,
+            "reply_q": reply_q
+        })
+
         try:
-            # Run Browser
-            Automation.chrome_cdp()
-
-            # Login KMA
-            page = BankBot.ktb_login(data)
-
-            # Withdrawal KMA
-            BankBot.ktb_withdrawal(page, data)
-
-            # Return Success
-            return jsonify({
-                "success": True,
-                "transactionId": data["transactionId"]
-            })
-        
-        except Exception as e:
-            full_trace = traceback.format_exc()
-            
-            # Prints to console
-            print(f"\n--- CRITICAL TRANSACTION ERROR ---\n{full_trace}")
-            
-            # WRITES TO LOG FILE
-            logging.error(f"CRITICAL ERROR for Transaction {data.get('transactionId', 'unknown')}:\n{full_trace}\n{'-'*40}")
-            
-            # Kill Browser
-            try:
-                Automation.cleanup()
-            except:
-                pass
-
-            # FORCE EXIT: This stops the entire Python script and Flask server
-            # Use os._exit(1) to exit immediately from the thread
-            os._exit(1)
-            
+            result = reply_q.get(timeout=600)   # 10 minutes
+        except queue.Empty:
             return jsonify({
                 "success": False,
-                "message": str(e),
-                "error_type": type(e).__name__
-            }), 500
+                "message": "Worker timeout waiting for browser job"
+            }), 504
+
+        if result.get("success"):
+            return jsonify(result)
+
+        return jsonify(result), 500
+
+    except Exception as e:
+        full_trace = traceback.format_exc()
+        logger.error(f"CRITICAL ERROR for Transaction {data.get('transactionId', 'unknown')}:\n{full_trace}")
+        return jsonify({
+            "success": False,
+            "message": str(e),
+            "error_type": type(e).__name__
+        }), 500
         
 if __name__ == "__main__":
     BankBot.start_ws_client()
-    app.run(host="0.0.0.0", port=5003, debug=False, threaded=False, use_reloader=False)
+    BROWSER_WORKER = BrowserWorker()
+    BROWSER_WORKER.start()
+
+    app.run(host="0.0.0.0", port=5003, debug=False, threaded=True, use_reloader=False)

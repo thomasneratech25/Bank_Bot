@@ -23,6 +23,12 @@ from appium.options.android import UiAutomator2Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+# ================== Version Change ==========================
+
+# - 1.0.1
+# Remove sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8') causing error 
+
+
 # ================== Eric WS_Client Settings =================
 
 WS_PROC = None
@@ -144,28 +150,6 @@ class Appium_Driver:
         # if after 10 times retry, appium still not ready, then raise the error to stop the program
         logger.error("Appium server did not become ready after 10 attempts")
         raise RuntimeError("Appium not started")
-
-    # Inactivity Monitor / Timer
-    @staticmethod
-    def monitor_inactivity():
-        while True:
-            time.sleep(10)
-            # Access via ClassName.VariableName
-            with Appium_Driver.time_Lock:
-                elapsed = time.time() - Appium_Driver.last_TxN_Time
-            
-            if elapsed > 174:
-                # Access the global APPIUM_DRIVER variable
-                global APPIUM_DRIVER
-                if APPIUM_DRIVER:
-                    try:
-                        logger.info("⏳ 2.9 minutes of inactivity. Killing SCB app...")
-                        APPIUM_DRIVER.terminate_app("com.scb.corporate")
-                    except Exception as e:
-                        logger.error(f"Failed to kill app: {e}")
-                
-                with Appium_Driver.time_Lock:
-                    Appium_Driver.last_TxN_Time = time.time()
 
 # ================== Eric Settings ==================
 

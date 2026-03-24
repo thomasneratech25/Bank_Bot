@@ -21,8 +21,8 @@ from selenium.webdriver.support import expected_conditions as EC
 
 # ================== Version Change =========================
 
-# - 1.0.2
-# Fix cannot click back ... after complete transaction
+# - 1.0.4
+# Fix cannot click services
 
 # ================== Eric WS_Client Settings =================
 
@@ -259,9 +259,9 @@ class BankBot(Appium_Driver, Eric):
         driver = cls.use_appium_driver()
 
         # Forces the terminal to handle those sea creatures correctly
-        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+        # sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
         logger.info("="*50)
-        logger.info("🎰 Starting SCB Company Login Flow ....")
+        logger.info(f"🎰 Starting SCB Company Login Flow .... {get_txn_id(data)}")
         logger.info("="*50)
         
         # If already on Quick Transfer, skip login
@@ -271,6 +271,7 @@ class BankBot(Appium_Driver, Eric):
 
             # Withdrawal Process
             cls.scbAnywhere_withdrawal(data)
+            return
 
         except Exception:
             logger.info("Not in Quick Transfer page, Continue ...")
@@ -360,8 +361,10 @@ class BankBot(Appium_Driver, Eric):
                     break
                 except:
                     pass
+
+        time.sleep(4)
         
-        # Wait for Pending Edit (0)
+        # Wait for Pending Edit (0) 
         logger.info("Wait for Pending Edit (0) ...")
         WebDriverWait(driver, 20).until(EC.presence_of_element_located((AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().textContains("Pending edit")')))
 
@@ -387,7 +390,7 @@ class BankBot(Appium_Driver, Eric):
 
         # Forces the terminal to handle those sea creatures correctly
         logger.info("="*50)
-        logger.info("🎰 Starting SCB Company Withdrawal Flow ....")
+        logger.info(f"🎰 Starting SCB Company Withdrawal Flow .... {get_txn_id(data)}")
         logger.info("="*50)
 
         # Use Appium Driver

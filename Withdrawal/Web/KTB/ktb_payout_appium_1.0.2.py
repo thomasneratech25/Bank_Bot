@@ -23,6 +23,12 @@ from appium.options.android import UiAutomator2Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+# ================== Version Change ==========================
+
+# - 1.0.1
+# Remove sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8') causing error 
+
+
 # ================== Eric WS_Client Settings =================
 
 WS_PROC = None
@@ -39,7 +45,7 @@ app = Flask(__name__)
 LOCK = Lock()
 
 # IDLE
-IDLE_SECONDS = 300 # 5 minutes
+IDLE_SECONDS = 180 # 3minutes
 
 # ================== PLAYWRIGHT SINGLETON ========================
 
@@ -144,28 +150,6 @@ class Appium_Driver:
         # if after 10 times retry, appium still not ready, then raise the error to stop the program
         logger.error("Appium server did not become ready after 10 attempts")
         raise RuntimeError("Appium not started")
-
-    # Inactivity Monitor / Timer
-    @staticmethod
-    def monitor_inactivity():
-        while True:
-            time.sleep(10)
-            # Access via ClassName.VariableName
-            with Appium_Driver.time_Lock:
-                elapsed = time.time() - Appium_Driver.last_TxN_Time
-            
-            if elapsed > 174:
-                # Access the global APPIUM_DRIVER variable
-                global APPIUM_DRIVER
-                if APPIUM_DRIVER:
-                    try:
-                        logger.info("⏳ 2.9 minutes of inactivity. Killing SCB app...")
-                        APPIUM_DRIVER.terminate_app("com.scb.corporate")
-                    except Exception as e:
-                        logger.error(f"Failed to kill app: {e}")
-                
-                with Appium_Driver.time_Lock:
-                    Appium_Driver.last_TxN_Time = time.time()
 
 # ================== Eric Settings ==================
 
@@ -294,7 +278,52 @@ class Automation:
 class BankBot(Automation, Appium_Driver, Eric):
     
     _ktb_web_ref_code = None
+    _idle_thread = None
+    _stop_idle_thread = False
 
+    # Last Transaction Activity Timer
+    @classmethod
+    def touch_transaction_timer(cls):
+        with cls.time_Lock:
+            # Last Transaction Time
+            cls.last_TxN_Time = time.time()
+    
+    # Start idle Timer
+    @classmethod
+    def start_idle_monitor(cls, page):
+        if cls._idle_thread and cls._idle_thread.is_alive():
+            return
+
+        cls._stop_idle_thread = False
+
+        # Use to Compare the Current time vs Last Transaction Time
+        def monitor():
+            # Keep monitoring in a loop
+            while not cls._stop_idle_thread:
+                try:
+                    # Read the idle time safely
+                    with cls.time_Lock:
+                        # Total seconds = Current time - last transaction Time
+                        idle_for = time.time() - cls.last_TxN_Time 
+
+                    # if Total Seconds >= IDLE_SECONDS, which i set 3minutes (180seconds), then logout, else
+                    if idle_for >= IDLE_SECONDS:
+                        logger.warning(f"No new transaction for {IDLE_SECONDS} seconds, logging out...")
+                        cls.ktb_logout(page)
+                        # Stop the idle thread timer
+                        cls._stop_idle_thread = True
+                        break
+
+                except Exception as e:
+                    logger.warning(f"Idle monitor error: {str(e)}")
+
+                # else if <= then wait 5 seconds, and check again
+
+                time.sleep(5)
+
+        cls._idle_thread = threading.Thread(target=monitor, daemon=True)
+        cls._idle_thread.start()
+    
     # Login
     @classmethod
     def ktb_login(cls, data):
@@ -676,14 +705,23 @@ def runPython():
 
     with LOCK:
         try:
+            # New transaction arrived, reset idle timer
+            BankBot.touch_transaction_timer()
+
             # Run Browser
             Automation.chrome_cdp()
 
             # Login KMA
             page = BankBot.ktb_login(data)
 
+            # Start idle monitor once page is ready
+            BankBot.start_idle_monitor(page)
+
             # Withdrawal KMA
             BankBot.ktb_withdrawal(page, data)
+
+            # Transaction completed, reset timer again
+            BankBot.touch_transaction_timer()
 
             # Return Success
             return jsonify({
@@ -718,4 +756,5 @@ def runPython():
         
 if __name__ == "__main__":
     BankBot.start_ws_client()
+    BankBot.touch_transaction_timer()
     app.run(host="0.0.0.0", port=5003, debug=False, threaded=False, use_reloader=False)

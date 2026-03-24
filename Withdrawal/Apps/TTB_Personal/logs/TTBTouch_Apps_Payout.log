@@ -4,3 +4,133 @@
  * Running on http://127.0.0.1:5100
  * Running on http://10.0.0.253:5100
 2026-03-17 16:45:22,898 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-19 11:52:44,650 - INFO - TTB Touch Apps - Starting for Eric WS_Client ...
+2026-03-19 11:52:44,687 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.0.0.253:5100
+2026-03-19 11:52:44,688 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-19 11:53:26,269 - INFO - TTB Touch Apps - Preparing Appium driver
+2026-03-19 11:53:26,270 - INFO - TTB Touch Apps - Reusing existing Appium driver session
+2026-03-19 11:53:26,290 - INFO - TTB Touch Apps - Appium process started with PID 16664
+2026-03-19 11:53:26,299 - INFO - TTB Touch Apps - Appium server is ready (attempt 1/10)
+2026-03-19 11:53:30,422 - INFO - TTB Touch Apps - ==================================================
+2026-03-19 11:53:30,422 - INFO - TTB Touch Apps - 🎰 Starting TTB Touch Login Flow ....
+2026-03-19 11:53:30,423 - INFO - TTB Touch Apps - ==================================================
+2026-03-19 11:53:30,423 - INFO - TTB Touch Apps - ADB Shell Screen never Time Out ...
+2026-03-19 11:53:30,627 - INFO - TTB Touch Apps - Already on Transfer page, Skip login...
+2026-03-19 11:53:30,629 - INFO - TTB Touch Apps - ==================================================
+2026-03-19 11:53:30,630 - INFO - TTB Touch Apps - 🎰 Starting TTB Touch Withdrawal Flow ....
+2026-03-19 11:53:30,630 - INFO - TTB Touch Apps - ==================================================
+2026-03-19 11:53:30,630 - INFO - TTB Touch Apps - Preparing Appium driver
+2026-03-19 11:53:30,630 - INFO - TTB Touch Apps - Reusing existing Appium driver session
+2026-03-19 11:53:30,630 - INFO - TTB Touch Apps - Appium process already exists, skipping new start
+2026-03-19 11:53:30,630 - INFO - TTB Touch Apps - Reusing existing Appium driver session
+2026-03-19 11:53:30,631 - INFO - TTB Touch Apps - Click 'Other Accounts' ...
+2026-03-19 11:53:31,455 - INFO - TTB Touch Apps - Click Select Bank ... (Drop Down Menu)
+2026-03-19 11:53:56,362 - INFO - TTB Touch Apps - Preparing Appium driver
+2026-03-19 11:53:56,362 - INFO - TTB Touch Apps - Reusing existing Appium driver session
+2026-03-19 11:53:56,386 - INFO - TTB Touch Apps - Appium process started with PID 12592
+2026-03-19 11:53:56,396 - INFO - TTB Touch Apps - Appium server is ready (attempt 1/10)
+2026-03-19 11:54:00,486 - INFO - TTB Touch Apps - ==================================================
+2026-03-19 11:54:00,487 - INFO - TTB Touch Apps - 🎰 Starting TTB Touch Login Flow ....
+2026-03-19 11:54:00,487 - INFO - TTB Touch Apps - ==================================================
+2026-03-19 11:54:00,487 - INFO - TTB Touch Apps - ADB Shell Screen never Time Out ...
+2026-03-19 11:54:00,702 - INFO - TTB Touch Apps - Already on Transfer page, Skip login...
+2026-03-19 11:54:00,703 - INFO - TTB Touch Apps - ==================================================
+2026-03-19 11:54:00,704 - INFO - TTB Touch Apps - 🎰 Starting TTB Touch Withdrawal Flow ....
+2026-03-19 11:54:00,704 - INFO - TTB Touch Apps - ==================================================
+2026-03-19 11:54:00,704 - INFO - TTB Touch Apps - Preparing Appium driver
+2026-03-19 11:54:00,704 - INFO - TTB Touch Apps - Reusing existing Appium driver session
+2026-03-19 11:54:00,704 - INFO - TTB Touch Apps - Appium process already exists, skipping new start
+2026-03-19 11:54:00,705 - INFO - TTB Touch Apps - Reusing existing Appium driver session
+2026-03-19 11:54:00,705 - INFO - TTB Touch Apps - Click 'Other Accounts' ...
+2026-03-19 11:54:01,481 - INFO - TTB Touch Apps - Click Select Bank ... (Drop Down Menu)
+2026-03-19 11:54:02,740 - INFO - TTB Touch Apps - Wait for Select Bank Menu ...
+2026-03-19 11:54:03,572 - INFO - TTB Touch Apps - Select Bank ....
+2026-03-19 11:54:03,573 - INFO - TTB Touch Apps - Not in Transfer page, Continue ...
+2026-03-19 11:54:03,573 - INFO - TTB Touch Apps - Launch TTB Touch Apps ...
+2026-03-19 11:54:03,825 - INFO - TTB Touch Apps - Click Transfer ...
+2026-03-20 12:56:18,097 - INFO - TTB Touch Apps - Starting for Eric WS_Client ...
+2026-03-20 12:56:18,130 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.0.0.253:5100
+2026-03-20 12:56:18,130 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-20 12:57:00,803 - INFO - TTB Touch Apps - Preparing Appium driver
+2026-03-20 12:57:00,803 - INFO - TTB Touch Apps - Reusing existing Appium driver session
+2026-03-20 12:57:00,879 - INFO - TTB Touch Apps - Appium process started with PID 7880
+2026-03-20 12:57:03,945 - INFO - TTB Touch Apps - Appium server is ready (attempt 2/10)
+2026-03-20 13:03:27,150 - INFO - TTB Touch Apps - ==================================================
+2026-03-20 13:03:27,150 - INFO - TTB Touch Apps - 🎰 Starting TTB Touch Withdrawal Flow ....
+2026-03-20 13:03:27,150 - INFO - TTB Touch Apps - ==================================================
+2026-03-20 13:03:27,150 - INFO - TTB Touch Apps - Preparing Appium driver
+2026-03-20 13:03:27,150 - INFO - TTB Touch Apps - Reusing existing Appium driver session
+2026-03-20 13:03:27,171 - INFO - TTB Touch Apps - Appium process started with PID 1156
+2026-03-20 13:03:29,240 - INFO - TTB Touch Apps - Appium server is ready (attempt 1/10)
+2026-03-20 13:03:39,026 - INFO - TTB Touch Apps - Click 'Other Accounts' ...
+2026-03-20 13:03:39,882 - INFO - TTB Touch Apps - Click Select Bank ... (Drop Down Menu)
+2026-03-20 13:03:40,511 - INFO - TTB Touch Apps - Wait for Select Bank Menu ...
+2026-03-20 13:03:41,353 - INFO - TTB Touch Apps - Select Bank ....
+2026-03-20 13:03:41,592 - INFO - TTB Touch Apps - Fill Account No ...
+2026-03-20 13:03:42,528 - INFO - TTB Touch Apps - Fill Amount ...
+2026-03-20 13:03:43,468 - ERROR - TTB Touch Apps - ERIC API CALLBACK FAILED for Transaction unknown:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Apps\TTB_Personal\ttb_personal_apps_payout_1.0.3.py", line 182, in eric_api
+    "bankCode": str(data["fromBankCode"]),
+                    ~~~~^^^^^^^^^^^^^^^^
+TypeError: 'bool' object is not subscriptable
+
+2026-03-20 13:06:34,820 - INFO - TTB Touch Apps - Starting for Eric WS_Client ...
+2026-03-20 13:06:34,860 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.0.0.253:5100
+2026-03-20 13:06:34,860 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-20 13:06:39,589 - INFO - TTB Touch Apps - Preparing Appium driver
+2026-03-20 13:06:39,589 - INFO - TTB Touch Apps - Reusing existing Appium driver session
+2026-03-20 13:06:39,598 - INFO - TTB Touch Apps - Appium process started with PID 13060
+2026-03-20 13:06:39,606 - INFO - TTB Touch Apps - Appium server is ready (attempt 1/10)
+2026-03-20 13:06:44,515 - INFO - TTB Touch Apps - ==================================================
+2026-03-20 13:06:44,515 - INFO - TTB Touch Apps - 🎰 Starting TTB Touch Login Flow ....
+2026-03-20 13:06:44,515 - INFO - TTB Touch Apps - ==================================================
+2026-03-20 13:06:44,515 - INFO - TTB Touch Apps - ADB Shell Screen never Time Out ...
+2026-03-20 13:07:04,928 - INFO - TTB Touch Apps - Not in Transfer page, Continue ...
+2026-03-20 13:07:04,928 - INFO - TTB Touch Apps - Launch TTB Touch Apps ...
+2026-03-20 13:07:05,164 - INFO - TTB Touch Apps - Click Transfer ...
+2026-03-20 13:07:11,619 - INFO - TTB Touch Apps - Waiting for Enter Pin ...
+2026-03-20 13:07:12,113 - INFO - TTB Touch Apps - Key Login Passcode ...
+2026-03-20 13:07:14,547 - INFO - TTB Touch Apps - Successfully Login ...
+2026-03-20 13:07:14,547 - INFO - TTB Touch Apps - ==================================================
+2026-03-20 13:07:14,547 - INFO - TTB Touch Apps - 🎰 Starting TTB Touch Withdrawal Flow ....
+2026-03-20 13:07:14,547 - INFO - TTB Touch Apps - ==================================================
+2026-03-20 13:07:14,547 - INFO - TTB Touch Apps - Preparing Appium driver
+2026-03-20 13:07:14,547 - INFO - TTB Touch Apps - Reusing existing Appium driver session
+2026-03-20 13:07:14,547 - INFO - TTB Touch Apps - Appium process already exists, skipping new start
+2026-03-20 13:07:14,547 - INFO - TTB Touch Apps - Reusing existing Appium driver session
+2026-03-20 13:07:14,547 - INFO - TTB Touch Apps - Click 'Other Accounts' ...
+2026-03-20 13:07:16,295 - INFO - TTB Touch Apps - Click Select Bank ... (Drop Down Menu)
+2026-03-20 13:07:17,508 - INFO - TTB Touch Apps - Wait for Select Bank Menu ...
+2026-03-20 13:07:17,819 - INFO - TTB Touch Apps - Select Bank ....
+2026-03-20 13:07:18,103 - INFO - TTB Touch Apps - Fill Account No ...
+2026-03-20 13:07:38,684 - ERROR - root - CRITICAL ERROR for Transaction 8813:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Apps\TTB_Personal\ttb_personal_apps_payout_1.0.3.py", line 394, in runPython
+    BankBot.ttbTouch_login(data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Apps\TTB_Personal\ttb_personal_apps_payout_1.0.3.py", line 305, in ttbTouch_login
+    cls.ttbTouch_withdrawal(data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Apps\TTB_Personal\ttb_personal_apps_payout_1.0.3.py", line 337, in ttbTouch_withdrawal
+    WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.ID, "com.TMBTOUCH.PRODUCTION:id/edt_account_no"))).send_keys(str(data["toAccountNum"]))
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\support\wait.py", line 121, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\find.js:62:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:12:16)
+    at async AndroidUiautomator2Driver.findElement (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:27:16)
+
+----------------------------------------
+2026-03-20 13:07:38,684 - INFO - werkzeug - 127.0.0.1 - - [20/Mar/2026 13:07:38] "[35m[1mPOST /ttb_personal/runPython HTTP/1.1[0m" 500 -
