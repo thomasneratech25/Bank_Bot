@@ -16,6 +16,7 @@ from appium import webdriver
 from appium.webdriver.common.appiumby import *
 from appium.webdriver.common.appiumby import AppiumBy
 from appium.options.android import UiAutomator2Options
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -260,7 +261,6 @@ class BankBot(Appium_Driver, Eric):
         driver = cls.use_appium_driver()
 
         # Forces the terminal to handle those sea creatures correctly
-        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
         logger.info("="*50)
         logger.info("🎰 Starting TTB Touch Login Flow ....")
         logger.info("="*50)
@@ -338,12 +338,14 @@ class BankBot(Appium_Driver, Eric):
         
         # Wait and Fill Amount
         logger.info("Fill Amount ...")
+        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.ID, "com.TMBTOUCH.PRODUCTION:id/edt_amount"))).click()
         WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "com.TMBTOUCH.PRODUCTION:id/edt_amount"))).send_keys(str(data["amount"]))
-
+        driver.hide_keyboard()
+        
         # Scroll Down 
         logger.info("Scroll Down ...")
         driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,'new UiScrollable(new UiSelector().scrollable(true)).scrollForward()')
-        
+
         # Button Click Next
         logger.info("Click Next ...")
         WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "com.TMBTOUCH.PRODUCTION:id/btn_next"))).click()

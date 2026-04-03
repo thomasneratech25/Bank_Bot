@@ -445,9 +445,9 @@ class Bank_Bot(Automation):
             
             # Update your Operating System 
             try:
-                expect(page.locator("//span[contains(text(),'Enter Site/เข้าสู่เว็บไซต์')]")).to_be_visible(timeout=1500)
+                expect(page.locator("//span[contains(text(),'Enter Site/เข้าสู่เว็บไซต์')]")).to_be_visible(timeout=1000)
                 page.locator("//span[contains(text(),'Enter Site/เข้าสู่เว็บไซต์')]").click(timeout=0)
-            except TimeoutError:
+            except:
                 pass
                 
             # If Login Page is in Thai Language, change to English

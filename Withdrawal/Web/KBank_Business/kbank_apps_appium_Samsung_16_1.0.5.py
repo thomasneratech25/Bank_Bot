@@ -625,11 +625,17 @@ class BankBot(Automation):
             WebDriverWait(driver, 10).until(EC.presence_of_element_located((AppiumBy.ID, "com.android.systemui:id/notification_stack_scroller")))
 
             # Click notification that contains "Confirm transaction"
-            target_text = "Confirm transaction"
-            notif_xpath = f"//*[contains(@text,'{target_text}') or contains(@content-desc,'{target_text}')]"
-            WebDriverWait(driver, 10).until(EC.element_to_be_clickable((AppiumBy.XPATH, notif_xpath))).click()
-            WebDriverWait(driver, 10).until(EC.element_to_be_clickable((AppiumBy.XPATH, notif_xpath))).click()
-            logger.info("Click KBank Confirm Transaction notification... txn_id=%s", txn_id)
+            try:
+                target_text = "Confirm transaction"
+                notif_xpath = f"//*[contains(@text,'{target_text}') or contains(@content-desc,'{target_text}')]"
+                try:
+                    WebDriverWait(driver, 3).until(EC.element_to_be_clickable((AppiumBy.XPATH, notif_xpath))).click()
+                    WebDriverWait(driver, 3).until(EC.element_to_be_clickable((AppiumBy.XPATH, notif_xpath))).click()
+                except:
+                    pass
+                logger.info("Click KBank Confirm Transaction notification... txn_id=%s", txn_id)
+            except:
+                pass
 
             # Delay 1 second
             time.sleep(1)
@@ -744,12 +750,12 @@ class BankBot(Automation):
                 except TimeoutException:
                     continue
             
-            # # Call Back Eric API
-            # cls.eric_api(data)
+            # Call Back Eric API
+            cls.eric_api(data)
             
-            # # Wait and Click "Back to main page"
-            # WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.XPATH, "//android.view.View[@content-desc='Back to main page']"))).click()
-            # logger.info("Back to main Page...")
+            # Wait and Click "Back to main page"
+            WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.XPATH, "//android.view.View[@content-desc='Back to main page']"))).click()
+            logger.info("Back to main Page...")
 
         except Exception as e:
             error_trace = traceback.format_exc()
@@ -837,10 +843,11 @@ class BankBot(Automation):
             response.raise_for_status()
 
             # Debug info
-            print("Raw string to hash:", string_to_hash)
-            print("MD5 Hash:", hash_result)
-            print("Response:", response.text)
-            print("\n\n")
+            logger.info("\n\n")
+            logger.info("Raw string to hash:", string_to_hash)
+            logger.info("MD5 Hash:", hash_result)
+            logger.info("Response:", response.text)
+            logger.info("\n\n")
 
             logger.info("ERIC callback prepared. txn_id=%s bankCode=%s deviceId=%s merchantCode=%s", get_txn_id(data), payload["bankCode"], payload["deviceId"], payload["merchantCode"])
             logger.info("ERIC hash=%s txn_id=%s", hash_result, get_txn_id(data))

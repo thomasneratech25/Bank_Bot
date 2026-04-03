@@ -17,13 +17,12 @@ from appium.webdriver.common.appiumby import *
 from appium.webdriver.common.appiumby import AppiumBy
 from appium.options.android import UiAutomator2Options
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support import expected_conditions as EC
 
-# ================== Version Change ==========================
+# ================== Version Change =========================
 
-# 1.0.2
-# - Fix cannot proceed to withdrawal 
+# - 1.0.4
+# Fix cannot click services
 
 # ================== Eric WS_Client Settings =================
 
@@ -51,7 +50,7 @@ def get_txn_id(data):
 LOG_DIR = "./logs"
 os.makedirs(LOG_DIR, exist_ok=True)
 
-LOG_FILE = os.path.join(LOG_DIR, "KBank_Company_Apps_Payout.log")
+LOG_FILE = os.path.join(LOG_DIR, "SCBAnywhere_Apps_Payout.log")
 
 # Auto-create the logs folder if it doesn't exist
 if not os.path.exists(LOG_DIR):
@@ -66,7 +65,7 @@ logging.basicConfig(
     ],
 )
 
-logger = logging.getLogger("KBANK Company Apps")
+logger = logging.getLogger("SCB Company Apps")
 
 # ================== Appium Driver ==================
 
@@ -80,12 +79,24 @@ class Appium_Driver():
     # Use Appium Driver
     @classmethod
     def use_appium_driver(cls):
+
         global APPIUM_DRIVER
         logger.info("Preparing Appium driver")
 
         cls.start_appium_server()
 
         with APPIUM_LOCK:
+            # If a driver exists, test if it is still alive
+            if APPIUM_DRIVER is not None:
+                try:
+                    # This sends a fast request to the device to check if the session is valid
+                    APPIUM_DRIVER.current_package 
+                    logger.info("Reusing existing Appium driver session")
+                except Exception as e:
+                    logger.warning(f"Existing session is stale or dead. Reconnecting... ({e})")
+                    APPIUM_DRIVER = None  # Force it to become None so it recreates below
+
+            # If it is None (either first time, or it was dead), create a new one
             if APPIUM_DRIVER is None:
                 options = UiAutomator2Options()
                 options.platform_name = "Android"
@@ -95,8 +106,7 @@ class Appium_Driver():
 
                 APPIUM_DRIVER = webdriver.Remote("http://127.0.0.1:8021", options=options)
                 APPIUM_DRIVER.update_settings({"waitForIdleTimeout": 0})   ### This setting SUPER IMPORTANT Settings, This can make Appium 2–3× faster because it stops waiting for Android UI idle.
-            else:
-                logger.info("Reusing existing Appium driver session")
+                logger.info("Created new Appium driver session")
 
         return APPIUM_DRIVER
     
@@ -147,6 +157,16 @@ class Appium_Driver():
     def monitor_inactivity():
         while True:
             time.sleep(10)
+            
+            # --- NEW ADDITION ---
+            # Check if a transaction is currently holding the global Flask LOCK
+            if LOCK.locked():
+                with Appium_Driver.time_Lock:
+                    # Reset the timer so it doesn't instantly kill the app right after the transaction finishes
+                    Appium_Driver.last_TxN_Time = time.time()
+                continue  # Skip the rest of the loop and wait another 10 seconds
+            # --------------------
+
             # Access via ClassName.VariableName
             with Appium_Driver.time_Lock:
                 elapsed = time.time() - Appium_Driver.last_TxN_Time
@@ -157,7 +177,12 @@ class Appium_Driver():
                 if APPIUM_DRIVER:
                     try:
                         logger.info("⏳ 2.9 minutes of inactivity. Killing SCB app...")
-                        APPIUM_DRIVER.terminate_app("com.kasikornbank.kbiz")
+                        APPIUM_DRIVER.terminate_app("com.scb.corporate")
+                        
+                        # (Optional but recommended): You can also set APPIUM_DRIVER = None here 
+                        # and call APPIUM_DRIVER.quit() if you want to completely clear the session
+                        # instead of just terminating the app.
+                        
                     except Exception as e:
                         logger.error(f"Failed to kill app: {e}")
                 
@@ -252,62 +277,40 @@ class Eric():
 # Apps Automation
 class BankBot(Appium_Driver, Eric):
     
-    #  Kbank Company Login
+    # SCB Anywhere Login
     @classmethod
-    def kbank_login(cls, data):
+    def scbAnywhere_login(cls, data):
 
-        # The system cannot processs this transaction
-        def error_unable_process_this_transaction():
-            try:
-                # Wait up to 5 seconds for the "Close Application" button to appear.
-                # We look directly for the button's accessibility id from your screenshot.
-                close_button = WebDriverWait(driver, 0.5).until(
-                    EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Close Application"))
-                )
-                
-                # IF it appears, this code will run:
-                print("Error popup detected! Clicking 'Close Application'.")
-                logger.info("Error popup detected! Clicking 'Close Application'.")
-                close_button.click()
-                    
-            except TimeoutException:
-                # IF the button does NOT appear within 5 seconds, it throws a TimeoutException.
-                # The 'except' block catches it, meaning the transaction was successful!
-                logger.info("No pop up ['error - Sorry Unable to proceed.' ], Proceeding normally...")
-                pass
-
-        # Enter Login Pin
-        def enter_pin():
-
-            # Wait for "Enter PIN" to appear
-            WebDriverWait(driver, 10).until(EC.presence_of_element_located((AppiumBy.XPATH, "//android.view.View[@content-desc='Enter PIN']")))
-
-            # Enter Pin
-            pin = str(data["pin"])
-            for digit in pin:
-                digit_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, digit)))
-                digit_button.click() 
-                # "Sorry, Unable to proceed The system cannot proceed this transaction, please try again later.")
-                error_unable_process_this_transaction()
-            
-            logger.info("Enter KBank Apps Pin... txn_id=%s")
-            
         # Use Appium Driver
         driver = cls.use_appium_driver()
 
         # Forces the terminal to handle those sea creatures correctly
-        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+        # sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
         logger.info("="*50)
-        logger.info(f"🎰 Starting KBank Company Login Flow ....  {get_txn_id(data)}")
+        logger.info(f"🎰 Starting SCB Company Login Flow .... {get_txn_id(data)}")
         logger.info("="*50)
+        
+        # If already on Quick Transfer, skip login
+        try:
+            WebDriverWait(driver, 1).until(EC.presence_of_element_located((AppiumBy.ACCESSIBILITY_ID, "PromptPay")))
+            logger.info("Already on Transfer page, Skip login...")
+            return
+
+        except Exception:
+            logger.info("Not in Quick Transfer page, Continue ...")
+            pass
 
         # ADB Shell Never Screen Timeout
         logger.info("ADB Shell Screen never Time Out ...")
         driver.execute_script("mobile: shell", {"command": "settings","args": ["put", "system", "screen_off_timeout", "2147483647"]})
+ 
+        # bypass scbanyware detect using usb debugging
+        driver.execute_script('mobile: shell', {'command': 'settings', 'args': ['put', 'global', 'adb_enabled', '12']})
+        logger.info("Bypass USB Debugging...")
 
         # Check Apps State
         # 1 = Not Running, 2 = Suspended, 3 = Background, 4 = Foreground
-        state = driver.query_app_state("com.kasikornbank.kbiz")
+        state = driver.query_app_state("com.scb.corporate")
         logger.info(f"Current App state: {state}")
 
         # Open Apps
@@ -318,131 +321,181 @@ class BankBot(Appium_Driver, Eric):
             logger.info(f"App state is {state}. Performing a clean restart to prevent auto-crash.")
             
             # Force terminate first to clear any hung background sessions
-            driver.terminate_app("com.kasikornbank.kbiz")
+            driver.terminate_app("com.scb.corporate")
             time.sleep(1) 
             
             # Open Apps
-            driver.activate_app("com.kasikornbank.kbiz")
+            driver.activate_app("com.scb.corporate")
             time.sleep(3) 
             
             # Check if Apps is Crash
-            if driver.query_app_state("com.kasikornbank.kbiz") != 4:
+            if driver.query_app_state("com.scb.corporate") != 4:
                 logger.error("App failed to reach foreground. Retrying once...")
-                driver.activate_app("com.kasikornbank.kbiz")
-        
-        # If already on Main Page, Skip login
+                driver.activate_app("com.scb.corporate")
+
+        # Inactive Too Long
         try:
-            WebDriverWait(driver, 10).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Loans")))
-            logger.info("Already login, Skipped!")
-            return  # Already Login
+            # wait for text "You have been inactive too long"
+            WebDriverWait(driver, 1).until(EC.presence_of_element_located((AppiumBy.XPATH, "//*[contains(@text, 'You have been inactive for too long')]")))
+            
+            # Find "Continue" button and click continue
+            driver.find_element(AppiumBy.XPATH, "//*[contains(@text, 'Continue')]").click()
+            logger.info("You have been inactive too long, Click Continue...")
         except:
             pass
+
+        # Session Timeout
+        try:
+            # wait for text "Session Timeout"
+            WebDriverWait(driver, 1).until(EC.presence_of_element_located((AppiumBy.XPATH, "//*[contains(@text, 'Session timeout')]")))
+            logger.info("Session Timeout, Click Continue / Log in...")
+
+            # Find "Continue" / "Log in" button and click continue
+            try:
+                driver.find_element(AppiumBy.XPATH, "//*[contains(@text, 'Continue')]").click()
+                logger.info("Click Continue ....")
+            except:
+                driver.find_element(AppiumBy.XPATH, "//*[contains(@text, 'Log in')]").click()
+                logger.info("Click Log in ....")
+        except:
+            logger.info("No Session Timeout, Skip ...")
+            pass
+
+        # Enter Pin / Pending edit (0)
+        while True:
+            try: 
+                # Wait for "Enter PIN" to appear
+                WebDriverWait(driver, 1).until(EC.visibility_of_element_located((AppiumBy.XPATH, "//*[@text='Enter PIN']")))
+                logger.info("Enter PIN Appear...")
+                logger.info(f"Start Enter PIN... {str(data['pin'])}")
+            
+                # Enter Pin
+                pin = str(data["pin"])
+                for digit in pin:
+                    digit_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((AppiumBy.XPATH, f"//android.widget.TextView[@text='{digit}']")))
+                    digit_button.click()
+                break
+            except:
+                try:
+                    # Wait for "Pending edit (0)" to appear
+                    WebDriverWait(driver, 1).until(EC.visibility_of_element_located((AppiumBy.XPATH, "//*[@text='Pending edit (0)']")))
+                    logger.info("Wait for Pending edit (0) appear ...")
+                    break
+                except:
+                    pass
+
+        time.sleep(4)
         
-        # Wait and Button Click "Login"
-        logger.info("Click Login")
-        WebDriverWait(driver, 30).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Log in"))).click()
+        # Wait for Pending Edit (0) 
+        logger.info("Wait for Pending Edit (0) ...")
+        WebDriverWait(driver, 20).until(EC.presence_of_element_located((AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().textContains("Pending edit")')))
 
-        # Enter PIN
-        enter_pin()
+        # Wait and Button click "Services"
+        logger.info("Click 'Services' ...")
+        WebDriverWait(driver, 30).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Services"))).click()
 
-    # Kbank Company Withdrawal
+        # Wait for "Manage your transactions"
+        logger.info("Wait for 'Manage your transaction appear' ...")
+        WebDriverWait(driver, 20).until(EC.visibility_of_element_located((AppiumBy.XPATH, '//android.widget.TextView[@text="Manage your transactions"]')))
+        time.sleep(1)
+
+        # Wait and Button click "Quick Transfer"
+        logger.info("Button click 'Quick Transfer' ...")
+        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Quick Transfer"))).click()
+
+    # SCB Anywhere Withdrawal
     @classmethod
-    def kbank_withdrawal(cls, data):
+    def scbAnywhere_withdrawal(cls, data):
 
         # Forces the terminal to handle those sea creatures correctly
         logger.info("="*50)
-        logger.info(f"🎰 Starting KBANK Company Withdrawal Flow .... {get_txn_id(data)}")
+        logger.info(f"🎰 Starting SCB Company Withdrawal Flow .... {get_txn_id(data)}")
         logger.info("="*50)
 
         # Use Appium Driver
         driver = cls.use_appium_driver()
 
-        # Wait and Button Click "Banking"
-        logger.info("Click Banking (QR Code)")
-        WebDriverWait(driver, 30).until(EC.element_to_be_clickable((AppiumBy.XPATH, '//android.widget.Button[contains(@content-desc,"Banking")]'))).click()
-
-        # Wait and Button Click "Transfer"
-        logger.info("Click Transfer")
-        WebDriverWait(driver, 30).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Transfer"))).click()
-        
-        # Wait "From"
-        logger.info("Wait 'From' ...")
-        WebDriverWait(driver,20).until(EC.visibility_of_element_located((AppiumBy.ANDROID_UIAUTOMATOR,'new UiSelector().text("From")')))
-
+        # Wait for "Account No."
+        logger.info("Wait for 'PromptPay' ...")
+        WebDriverWait(driver, 20).until(EC.presence_of_element_located((AppiumBy.ACCESSIBILITY_ID, "PromptPay")))
         time.sleep(1)
 
-        # Select Bank (Drop Down Menu)
-        logger.info("Select Bank (Drop Down Menu)")
-        WebDriverWait(driver, 30).until(EC.presence_of_element_located((AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().className("android.widget.Spinner").textContains("Kasikornbank")'))).click()
-
-        time.sleep(1)
+        # Select Bank (If not found, scroll down until it found)
+        logger.info(f"Select Bank ... {data.get('toBankCode')}")
+        driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,f'new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().text("{data.get("toBankCode")}"))')
+        WebDriverWait(driver, 10).until(EC.element_to_be_clickable((AppiumBy.XPATH, f'//android.widget.TextView[@text="{data.get("toBankCode")}"]/..'))).click()
         
-        # Fill Bank Name
-        driver.find_elements(AppiumBy.CLASS_NAME, "android.widget.EditText")[-1].send_keys(data["toBankCode"])
-
+        # Wait for Recipient Details
+        WebDriverWait(driver, 20).until(EC.presence_of_element_located((AppiumBy.XPATH, '//android.widget.TextView[@text="Recipient details"]')))
+        logger.info("Wait for 'Recipient Details' appear ...")
         time.sleep(1)
 
-        # Press Enter
-        logger.info("Press Enter ")
-        driver.press_keycode(66)
+        # Fill Account No
+        logger.info('Fill Account No ...')
+        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.XPATH, '//android.widget.EditText[@resource-id="tfAccountNo"]'))).send_keys(str(data["toAccountNum"]))
 
-        # Fill Account Number
-        logger.info(f"Fill Account Number {str(data['toAccountNum'])} ...")
-        WebDriverWait(driver,20).until(EC.element_to_be_clickable((AppiumBy.ANDROID_UIAUTOMATOR,'new UiSelector().className("android.widget.EditText").instance(0)'))).send_keys(str(data["toAccountNum"]))
-
-        # Press Enter
-        logger.info("Press Enter ")
-        driver.press_keycode(66)
-        
         # Fill Amount
-        logger.info(f"Fill Amount {str(data['amount'])} ...")
-        WebDriverWait(driver,20).until(EC.element_to_be_clickable((AppiumBy.ANDROID_UIAUTOMATOR,'new UiSelector().className("android.widget.EditText").instance(1)'))).send_keys(str(data["amount"]))
-        
-        # Press Enter 
-        if driver.is_keyboard_shown():
-            driver.hide_keyboard()
+        logger.info('Fill Amount ...')
+        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.XPATH, '//android.widget.EditText[@resource-id="transactionAmount"]'))).send_keys(str(data["amount"]))
 
-        # Scroll Down
-        logger.info("Scroll Down ")
-        driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,'new UiScrollable(new UiSelector().scrollable(true)).scrollForward()')
-        
-        # Click Next
-        logger.info("Click Next ")
-        WebDriverWait(driver,20).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID,"Next"))).click()
+        # Wait and Button Click "Next"
+        logger.info('Click Next ...')
+        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Next"))).click()
 
-        # Wait for Confirm Transaction Title
-        logger.info("Wait for 'Confirm Transaction' ")
-        WebDriverWait(driver, 15).until(EC.presence_of_element_located((AppiumBy.XPATH, "//*[contains(@text,'Confirm Transaction')]")))
-
-        # Scroll Down
-        logger.info("Scroll Down ")
-        driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,'new UiScrollable(new UiSelector().scrollable(true)).scrollForward()')
-
-        # Wait and Button Click "Confirm"
-        logger.info("Click Confirm ")
-        driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().textContains("Confirm")').click()
-        driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Confirm")').click()
-
-        # Wait "Do you confirm to perform this transaction?"
-        WebDriverWait(driver, 10).until(EC.presence_of_element_located((AppiumBy.ACCESSIBILITY_ID, "Do you confirm to perform this transaction?")))
-
+        # Wait for Review Information 
+        logger.info('Wait for Review Information ...')
+        WebDriverWait(driver, 20).until(EC.presence_of_element_located((AppiumBy.XPATH, '//android.widget.TextView[@text="Review information"]')))
         time.sleep(1)
 
-        # Wait and Button Click "Confirm"
-        logger.info("Click Confirm again ")
-        WebDriverWait(driver,20).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID,"Confirm"))).click()
+        # Wait and Button Click "Submit"
+        logger.info('Click Submit ...')
+        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Submit"))).click()
 
-        # Call Eric API
+        # Wait for SCB Digital Token Pin
+        logger.info("Wait For 'SCB Digital Token Pin' appear ...")
+        WebDriverWait(driver, 300).until(EC.visibility_of_element_located((AppiumBy.XPATH, "//*[@text='Enter the 8-digit\nSCB Digital Token PIN']")))
+        logger.info("Key in SCB Digital Token PIN...")
+        time.sleep(1)
+
+        token_pin = str(data["scbDigitalTokenPin"])
+        for digit in token_pin:
+            digit_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((AppiumBy.XPATH, f"//android.widget.TextView[@text='{digit}']")))
+            digit_button.click()
+
+        # Call Back Eric API
         cls.eric_api(data)
 
-        # Wait and Button Click "Back to main page"
-        logger.info("Click Back to Main Page ")
-        WebDriverWait(driver,20).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID,"Back to main page"))).click()
+        # Click "Share payment slip"
+        logger.info("Wait for 'Share payment slip' ...")
+        WebDriverWait(driver, 30).until(EC.presence_of_element_located((AppiumBy.ACCESSIBILITY_ID, "Share payment slip")))
+        
+        time.sleep(1)
+
+        # Click Back
+        while True:
+            try:
+                logger.info("Click Back ...")
+                WebDriverWait(driver,2).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID,"Back"))).click()
+                break
+            except:
+                pass
+
+        time.sleep(1)
+
+        # Wait for Success
+        logger.info("Wait for Success ...")
+        WebDriverWait(driver, 30).until(EC.presence_of_element_located((AppiumBy.XPATH, '//android.widget.TextView[@text="Success"]')))
+
+        time.sleep(1)
+
+        # Button Click "Make another transfer"
+        logger.info("Withdrawal Completed Make Another Transfer ...")
+        WebDriverWait(driver, 30).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Make another transfer"))).click()
 
 # ================== Code Start Here ==================
 
 # Run API
-@app.route("/kbank_company/runPython", methods=["POST"])
+@app.route("/scb_company/runPython", methods=["POST"])
 def runPython():
 
     # Count Inactivity Transaction Timer
@@ -454,11 +507,11 @@ def runPython():
 
     with LOCK:
         try:
-            # Perform Login
-            BankBot.kbank_login(data)
-
             # Perform Withdrawal
-            BankBot.kbank_withdrawal(data)
+            BankBot.scbAnywhere_login(data)
+
+            # Withdrawal Process
+            # BankBot.scbAnywhere_withdrawal(data)
 
             # Return Successful, if withdrawal Successful
             return jsonify({"success": True,"transactionId": data.get("transactionId")})
@@ -477,4 +530,5 @@ if __name__ == "__main__":
     inactivity_thread.start()
 
     Eric.start_ws_client()
-    app.run(host="0.0.0.0", port=5104, debug=False, threaded=False, use_reloader=False)
+    app.run(host="0.0.0.0", port=5101, debug=False, threaded=False, use_reloader=False)
+

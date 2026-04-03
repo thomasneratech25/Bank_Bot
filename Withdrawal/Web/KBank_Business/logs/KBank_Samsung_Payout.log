@@ -2086,3 +2086,1737 @@ Call log:
  * Running on http://127.0.0.1:5004
  * Running on http://10.0.0.253:5004
 2026-03-20 10:30:20,646 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-25 18:09:25,039 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-25 18:09:25,070 - INFO - KBank_Samsung - WS client started with PID 23652
+2026-03-25 18:09:25,126 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://192.168.241.6:5004
+2026-03-25 18:09:25,126 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-25 18:21:08,221 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-25 18:21:08,233 - INFO - KBank_Samsung - WS client started with PID 11648
+2026-03-25 18:21:08,300 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://192.168.241.6:5004
+2026-03-25 18:21:08,300 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-25 18:21:17,727 - INFO - KBank_Samsung - Starting For Chrome Browser...
+2026-03-25 18:21:17,727 - INFO - KBank_Samsung - Starting Cleaning Notification Bar...
+2026-03-25 18:21:17,731 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-25 18:21:17,731 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-25 18:21:17,761 - INFO - KBank_Samsung - Appium process started with PID 26224
+2026-03-25 18:21:17,775 - INFO - KBank_Samsung - Appium server is ready (attempt 1/10)
+2026-03-25 18:21:17,775 - WARNING - root - Failed to clean notifications: WebDriver.__init__() got an unexpected keyword argument 'keep_alive'
+2026-03-25 18:21:17,775 - INFO - KBank_Samsung - Clean Phone Notification
+2026-03-25 18:21:17,777 - INFO - KBank_Samsung - Starting KBANK login flow. txn_id=1111
+2026-03-25 18:21:17,777 - INFO - KBank_Samsung - Starting Playwright instance. txn_id=1111
+2026-03-25 18:21:19,324 - INFO - KBank_Samsung - Connecting Playwright to Chrome CDP. txn_id=1111
+2026-03-25 18:21:19,742 - INFO - KBank_Samsung - Browser context ready. txn_id=1111
+2026-03-25 18:21:19,742 - INFO - KBank_Samsung - Creating new browser page. txn_id=1111
+2026-03-25 18:21:22,650 - INFO - KBank_Samsung - Navigating to KBANK login page. txn_id=1111
+2026-03-25 18:21:24,941 - INFO - KBank_Samsung - Login Account...
+2026-03-25 18:21:28,305 - INFO - KBank_Samsung - Button click for 'Fund Transfer', txn_id=1111
+2026-03-25 18:21:30,744 - INFO - KBank_Samsung - Wait for navigate to 'Fund Transfer' Title/Page, txn_id=1111
+2026-03-25 18:21:30,748 - INFO - KBank_Samsung - Processing payout started. txn_id=1111
+2026-03-25 18:21:31,748 - INFO - KBank_Samsung - Starting withdrawal flow. txn_id=1111 to_bank=Krung Thai Bank to_account=2600319026 amount=105
+2026-03-25 18:21:31,881 - INFO - KBank_Samsung - Open Bank Menu....., txn_id=1111
+2026-03-25 18:21:31,998 - INFO - KBank_Samsung - Fill in Bank Name Krung Thai Bank, txn_id=1111
+2026-03-25 18:21:32,094 - INFO - KBank_Samsung - Select the Bank Name/Code Krung Thai Bank, txn_id=1111
+2026-03-25 18:21:32,114 - INFO - KBank_Samsung - Fill in Account Number 2600319026, txn_id=1111
+2026-03-25 18:21:32,168 - INFO - KBank_Samsung - Fill in Amount 105, txn_id=1111
+2026-03-25 18:21:32,285 - INFO - KBank_Samsung - Click Next, txn_id=1111
+2026-03-25 18:21:33,315 - WARNING - KBank_Samsung - Stopping code: Insufficient balance detected.
+2026-03-25 18:21:38,351 - ERROR - root - WITHDRAWAL FAILED for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 369, in kbank_withdrawal
+    raise Exception("Stopping code: Insufficient balance detected.")
+Exception: Stopping code: Insufficient balance detected.
+
+2026-03-25 18:21:38,351 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 369, in kbank_withdrawal
+    raise Exception("Stopping code: Insufficient balance detected.")
+Exception: Stopping code: Insufficient balance detected.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 869, in runPython
+    BankBot.kbank_withdrawal(page, data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 411, in kbank_withdrawal
+    raise Exception(f"Withdrawal failed: {str(e)}")
+Exception: Withdrawal failed: Stopping code: Insufficient balance detected.
+
+----------------------------------------
+2026-03-25 18:27:36,706 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-25 18:27:36,722 - INFO - KBank_Samsung - WS client started with PID 28020
+2026-03-25 18:27:36,780 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://192.168.241.6:5004
+2026-03-25 18:27:36,780 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-25 18:27:45,447 - INFO - KBank_Samsung - Starting For Chrome Browser...
+2026-03-25 18:27:45,449 - INFO - KBank_Samsung - Starting Cleaning Notification Bar...
+2026-03-25 18:27:45,449 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-25 18:27:45,449 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-25 18:27:45,468 - INFO - KBank_Samsung - Appium process started with PID 26776
+2026-03-25 18:27:45,476 - INFO - KBank_Samsung - Appium server is ready (attempt 1/10)
+2026-03-25 18:27:45,476 - WARNING - root - Failed to clean notifications: WebDriver.__init__() got an unexpected keyword argument 'keep_alive'
+2026-03-25 18:27:45,476 - INFO - KBank_Samsung - Clean Phone Notification
+2026-03-25 18:27:45,476 - INFO - KBank_Samsung - Starting KBANK login flow. txn_id=1111
+2026-03-25 18:27:45,476 - INFO - KBank_Samsung - Starting Playwright instance. txn_id=1111
+2026-03-25 18:27:46,031 - INFO - KBank_Samsung - Connecting Playwright to Chrome CDP. txn_id=1111
+2026-03-25 18:27:46,417 - INFO - KBank_Samsung - Browser context ready. txn_id=1111
+2026-03-25 18:27:46,417 - INFO - KBank_Samsung - Creating new browser page. txn_id=1111
+2026-03-25 18:27:49,034 - INFO - KBank_Samsung - Navigating to KBANK login page. txn_id=1111
+2026-03-25 18:27:51,276 - INFO - KBank_Samsung - Login Account...
+2026-03-25 18:27:53,916 - INFO - KBank_Samsung - Button click for 'Fund Transfer', txn_id=1111
+2026-03-25 18:27:55,287 - INFO - KBank_Samsung - Wait for navigate to 'Fund Transfer' Title/Page, txn_id=1111
+2026-03-25 18:27:55,287 - INFO - KBank_Samsung - Processing payout started. txn_id=1111
+2026-03-25 18:27:56,291 - INFO - KBank_Samsung - Starting withdrawal flow. txn_id=1111 to_bank=GSB to_account=020457436150 amount=105
+2026-03-25 18:27:56,390 - INFO - KBank_Samsung - Open Bank Menu....., txn_id=1111
+2026-03-25 18:27:56,430 - INFO - KBank_Samsung - Fill in Bank Name GSB, txn_id=1111
+2026-03-25 18:28:12,388 - ERROR - root - WITHDRAWAL FAILED for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 347, in kbank_withdrawal
+    page.locator(f"//div[span[normalize-space()='{data['toBankCode']}']]").click()
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 15631, in click
+    self._sync(
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 162, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 566, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.click: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("//div[span[normalize-space()='GSB']]")
+
+
+2026-03-25 18:28:12,393 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 347, in kbank_withdrawal
+    page.locator(f"//div[span[normalize-space()='{data['toBankCode']}']]").click()
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 15631, in click
+    self._sync(
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 162, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 566, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.click: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("//div[span[normalize-space()='GSB']]")
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 869, in runPython
+    BankBot.kbank_withdrawal(page, data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 411, in kbank_withdrawal
+    raise Exception(f"Withdrawal failed: {str(e)}")
+Exception: Withdrawal failed: Locator.click: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("//div[span[normalize-space()='GSB']]")
+
+
+----------------------------------------
+2026-03-25 18:29:52,051 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-25 18:29:52,067 - INFO - KBank_Samsung - WS client started with PID 2960
+2026-03-25 18:29:52,147 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://192.168.241.6:5004
+2026-03-25 18:29:52,147 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-25 18:30:13,582 - INFO - KBank_Samsung - Starting For Chrome Browser...
+2026-03-25 18:30:13,582 - INFO - KBank_Samsung - Starting Cleaning Notification Bar...
+2026-03-25 18:30:13,582 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-25 18:30:13,582 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-25 18:30:13,615 - INFO - KBank_Samsung - Appium process started with PID 27896
+2026-03-25 18:30:13,626 - INFO - KBank_Samsung - Appium server is ready (attempt 1/10)
+2026-03-25 18:30:13,632 - WARNING - root - Failed to clean notifications: WebDriver.__init__() got an unexpected keyword argument 'keep_alive'
+2026-03-25 18:30:13,633 - INFO - KBank_Samsung - Clean Phone Notification
+2026-03-25 18:30:13,633 - INFO - KBank_Samsung - Starting KBANK login flow. txn_id=1111
+2026-03-25 18:30:13,635 - INFO - KBank_Samsung - Starting Playwright instance. txn_id=1111
+2026-03-25 18:30:14,154 - INFO - KBank_Samsung - Connecting Playwright to Chrome CDP. txn_id=1111
+2026-03-25 18:30:14,555 - INFO - KBank_Samsung - Browser context ready. txn_id=1111
+2026-03-25 18:30:14,555 - INFO - KBank_Samsung - Creating new browser page. txn_id=1111
+2026-03-25 18:30:17,080 - INFO - KBank_Samsung - Navigating to KBANK login page. txn_id=1111
+2026-03-25 18:30:19,251 - INFO - KBank_Samsung - Login Account...
+2026-03-25 18:30:22,827 - INFO - KBank_Samsung - Button click for 'Fund Transfer', txn_id=1111
+2026-03-25 18:30:25,766 - INFO - KBank_Samsung - Wait for navigate to 'Fund Transfer' Title/Page, txn_id=1111
+2026-03-25 18:30:25,768 - INFO - KBank_Samsung - Processing payout started. txn_id=1111
+2026-03-25 18:30:26,769 - INFO - KBank_Samsung - Starting withdrawal flow. txn_id=1111 to_bank=Government Savings Bank to_account=020457436150 amount=105
+2026-03-25 18:30:26,888 - INFO - KBank_Samsung - Open Bank Menu....., txn_id=1111
+2026-03-25 18:30:26,957 - INFO - KBank_Samsung - Fill in Bank Name Government Savings Bank, txn_id=1111
+2026-03-25 18:30:27,052 - INFO - KBank_Samsung - Select the Bank Name/Code Government Savings Bank, txn_id=1111
+2026-03-25 18:30:27,083 - INFO - KBank_Samsung - Fill in Account Number 020457436150, txn_id=1111
+2026-03-25 18:30:27,113 - INFO - KBank_Samsung - Fill in Amount 105, txn_id=1111
+2026-03-25 18:30:27,204 - INFO - KBank_Samsung - Click Next, txn_id=1111
+2026-03-25 18:30:28,211 - ERROR - root - WITHDRAWAL FAILED for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 365, in kbank_withdrawal
+    if page.locator("//span[normalize-space()='There is insufficient balance in your account.']").is_visible():
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 17297, in is_visible
+    self._sync(self._impl_obj.is_visible(timeout=timeout))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 531, in is_visible
+    return await self._frame.is_visible(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 408, in is_visible
+    return await self._channel.send(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.is_visible: Target page, context or browser has been closed
+
+2026-03-25 18:30:28,213 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 365, in kbank_withdrawal
+    if page.locator("//span[normalize-space()='There is insufficient balance in your account.']").is_visible():
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 17297, in is_visible
+    self._sync(self._impl_obj.is_visible(timeout=timeout))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 531, in is_visible
+    return await self._frame.is_visible(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 408, in is_visible
+    return await self._channel.send(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.is_visible: Target page, context or browser has been closed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 869, in runPython
+    BankBot.kbank_withdrawal(page, data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 411, in kbank_withdrawal
+    raise Exception(f"Withdrawal failed: {str(e)}")
+Exception: Withdrawal failed: Locator.is_visible: Target page, context or browser has been closed
+
+----------------------------------------
+2026-03-25 18:30:56,967 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-25 18:30:57,004 - INFO - KBank_Samsung - WS client started with PID 22740
+2026-03-25 18:30:57,068 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://192.168.241.6:5004
+2026-03-25 18:30:57,068 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-25 18:31:04,311 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-25 18:31:04,337 - INFO - KBank_Samsung - WS client started with PID 3740
+2026-03-25 18:31:04,394 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://192.168.241.6:5004
+2026-03-25 18:31:04,394 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-25 18:31:13,488 - INFO - KBank_Samsung - Starting For Chrome Browser...
+2026-03-25 18:31:13,488 - INFO - KBank_Samsung - Starting Cleaning Notification Bar...
+2026-03-25 18:31:13,490 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-25 18:31:13,490 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-25 18:31:13,522 - INFO - KBank_Samsung - Appium process started with PID 4088
+2026-03-25 18:31:13,535 - INFO - KBank_Samsung - Appium server is ready (attempt 1/10)
+2026-03-25 18:31:13,536 - WARNING - root - Failed to clean notifications: WebDriver.__init__() got an unexpected keyword argument 'keep_alive'
+2026-03-25 18:31:13,536 - INFO - KBank_Samsung - Clean Phone Notification
+2026-03-25 18:31:13,537 - INFO - KBank_Samsung - Starting KBANK login flow. txn_id=1111
+2026-03-25 18:31:13,537 - INFO - KBank_Samsung - Starting Playwright instance. txn_id=1111
+2026-03-25 18:31:14,091 - INFO - KBank_Samsung - Connecting Playwright to Chrome CDP. txn_id=1111
+2026-03-25 18:31:14,482 - INFO - KBank_Samsung - Browser context ready. txn_id=1111
+2026-03-25 18:31:14,484 - INFO - KBank_Samsung - Creating new browser page. txn_id=1111
+2026-03-25 18:31:18,253 - INFO - KBank_Samsung - Navigating to KBANK login page. txn_id=1111
+2026-03-25 18:31:20,369 - INFO - KBank_Samsung - Login Account...
+2026-03-25 18:31:23,537 - INFO - KBank_Samsung - Button click for 'Fund Transfer', txn_id=1111
+2026-03-25 18:31:26,450 - INFO - KBank_Samsung - Wait for navigate to 'Fund Transfer' Title/Page, txn_id=1111
+2026-03-25 18:31:26,450 - INFO - KBank_Samsung - Processing payout started. txn_id=1111
+2026-03-25 18:31:27,454 - INFO - KBank_Samsung - Starting withdrawal flow. txn_id=1111 to_bank=Government Savings Bank to_account=020457436150 amount=80
+2026-03-25 18:31:27,564 - INFO - KBank_Samsung - Open Bank Menu....., txn_id=1111
+2026-03-25 18:31:27,624 - INFO - KBank_Samsung - Fill in Bank Name Government Savings Bank, txn_id=1111
+2026-03-25 18:31:27,691 - INFO - KBank_Samsung - Select the Bank Name/Code Government Savings Bank, txn_id=1111
+2026-03-25 18:31:27,722 - INFO - KBank_Samsung - Fill in Account Number 020457436150, txn_id=1111
+2026-03-25 18:31:27,764 - INFO - KBank_Samsung - Fill in Amount 80, txn_id=1111
+2026-03-25 18:31:27,837 - INFO - KBank_Samsung - Click Next, txn_id=1111
+2026-03-25 18:31:28,849 - INFO - KBank_Samsung - Sufficient Balance... Continue...
+2026-03-25 18:31:33,921 - INFO - KBank_Samsung - Moving to mobile approval Confirm transaction. txn_id=1111
+2026-03-25 18:31:33,921 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-25 18:31:33,921 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-25 18:31:33,921 - INFO - KBank_Samsung - Appium process already exists, skipping new start
+2026-03-25 18:31:33,921 - ERROR - root - MOBILE APP FAILED for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 423, in kbank_business_apps
+    driver = cls.use_appium_driver()
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 150, in use_appium_driver
+    APPIUM_DRIVER = webdriver.Remote("http://127.0.0.1:8021", options=options, keep_alive=False)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: WebDriver.__init__() got an unexpected keyword argument 'keep_alive'
+
+2026-03-25 18:31:33,921 - ERROR - root - WITHDRAWAL FAILED for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 423, in kbank_business_apps
+    driver = cls.use_appium_driver()
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 150, in use_appium_driver
+    APPIUM_DRIVER = webdriver.Remote("http://127.0.0.1:8021", options=options, keep_alive=False)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: WebDriver.__init__() got an unexpected keyword argument 'keep_alive'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 393, in kbank_withdrawal
+    cls.kbank_business_apps(data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 748, in kbank_business_apps
+    raise Exception(f"Mobile app approval failed: {str(e)}")
+Exception: Mobile app approval failed: WebDriver.__init__() got an unexpected keyword argument 'keep_alive'
+
+2026-03-25 18:31:33,931 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 423, in kbank_business_apps
+    driver = cls.use_appium_driver()
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 150, in use_appium_driver
+    APPIUM_DRIVER = webdriver.Remote("http://127.0.0.1:8021", options=options, keep_alive=False)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: WebDriver.__init__() got an unexpected keyword argument 'keep_alive'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 393, in kbank_withdrawal
+    cls.kbank_business_apps(data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 748, in kbank_business_apps
+    raise Exception(f"Mobile app approval failed: {str(e)}")
+Exception: Mobile app approval failed: WebDriver.__init__() got an unexpected keyword argument 'keep_alive'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 869, in runPython
+    BankBot.kbank_withdrawal(page, data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 411, in kbank_withdrawal
+    raise Exception(f"Withdrawal failed: {str(e)}")
+Exception: Withdrawal failed: Mobile app approval failed: WebDriver.__init__() got an unexpected keyword argument 'keep_alive'
+
+----------------------------------------
+2026-03-25 18:32:09,826 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-25 18:32:09,848 - INFO - KBank_Samsung - WS client started with PID 11400
+2026-03-25 18:32:09,896 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://192.168.241.6:5004
+2026-03-25 18:32:09,896 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-25 18:32:12,784 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-25 18:32:12,817 - INFO - KBank_Samsung - WS client started with PID 1416
+2026-03-25 18:32:12,832 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://192.168.241.6:5004
+2026-03-25 18:32:12,832 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-25 18:32:16,663 - INFO - KBank_Samsung - Starting For Chrome Browser...
+2026-03-25 18:32:16,665 - INFO - KBank_Samsung - Starting Cleaning Notification Bar...
+2026-03-25 18:32:16,667 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-25 18:32:16,667 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-25 18:32:16,693 - INFO - KBank_Samsung - Appium process started with PID 31568
+2026-03-25 18:32:16,699 - INFO - KBank_Samsung - Appium server is ready (attempt 1/10)
+2026-03-25 18:32:16,699 - WARNING - root - Failed to clean notifications: WebDriver.__init__() got an unexpected keyword argument 'keep_alive'
+2026-03-25 18:32:16,699 - INFO - KBank_Samsung - Clean Phone Notification
+2026-03-25 18:32:16,699 - INFO - KBank_Samsung - Starting KBANK login flow. txn_id=1111
+2026-03-25 18:32:16,701 - INFO - KBank_Samsung - Starting Playwright instance. txn_id=1111
+2026-03-25 18:32:17,250 - INFO - KBank_Samsung - Connecting Playwright to Chrome CDP. txn_id=1111
+2026-03-25 18:32:17,664 - INFO - KBank_Samsung - Browser context ready. txn_id=1111
+2026-03-25 18:32:17,664 - INFO - KBank_Samsung - Creating new browser page. txn_id=1111
+2026-03-25 18:32:20,354 - INFO - KBank_Samsung - Navigating to KBANK login page. txn_id=1111
+2026-03-25 18:32:22,550 - INFO - KBank_Samsung - Login Account...
+2026-03-25 18:32:26,180 - INFO - KBank_Samsung - Button click for 'Fund Transfer', txn_id=1111
+2026-03-25 18:32:28,647 - INFO - KBank_Samsung - Wait for navigate to 'Fund Transfer' Title/Page, txn_id=1111
+2026-03-25 18:32:28,648 - INFO - KBank_Samsung - Processing payout started. txn_id=1111
+2026-03-25 18:32:29,649 - INFO - KBank_Samsung - Starting withdrawal flow. txn_id=1111 to_bank=Government Savings Bank to_account=020457436150 amount=80
+2026-03-25 18:32:29,802 - INFO - KBank_Samsung - Open Bank Menu....., txn_id=1111
+2026-03-25 18:32:29,900 - INFO - KBank_Samsung - Fill in Bank Name Government Savings Bank, txn_id=1111
+2026-03-25 18:32:30,016 - INFO - KBank_Samsung - Select the Bank Name/Code Government Savings Bank, txn_id=1111
+2026-03-25 18:32:30,061 - INFO - KBank_Samsung - Fill in Account Number 020457436150, txn_id=1111
+2026-03-25 18:32:30,117 - INFO - KBank_Samsung - Fill in Amount 80, txn_id=1111
+2026-03-25 18:32:30,204 - INFO - KBank_Samsung - Click Next, txn_id=1111
+2026-03-25 18:32:31,230 - INFO - KBank_Samsung - Sufficient Balance... Continue...
+2026-03-25 18:32:36,299 - INFO - KBank_Samsung - Moving to mobile approval Confirm transaction. txn_id=1111
+2026-03-25 18:32:36,299 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-25 18:32:36,299 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-25 18:32:36,299 - INFO - KBank_Samsung - Appium process already exists, skipping new start
+2026-03-25 18:32:36,302 - ERROR - root - MOBILE APP FAILED for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 423, in kbank_business_apps
+    driver = cls.use_appium_driver()
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 150, in use_appium_driver
+    APPIUM_DRIVER = webdriver.Remote("http://127.0.0.1:8021", options=options, keep_alive=False)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: WebDriver.__init__() got an unexpected keyword argument 'keep_alive'
+
+2026-03-25 18:32:36,302 - ERROR - root - WITHDRAWAL FAILED for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 423, in kbank_business_apps
+    driver = cls.use_appium_driver()
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 150, in use_appium_driver
+    APPIUM_DRIVER = webdriver.Remote("http://127.0.0.1:8021", options=options, keep_alive=False)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: WebDriver.__init__() got an unexpected keyword argument 'keep_alive'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 393, in kbank_withdrawal
+    cls.kbank_business_apps(data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 748, in kbank_business_apps
+    raise Exception(f"Mobile app approval failed: {str(e)}")
+Exception: Mobile app approval failed: WebDriver.__init__() got an unexpected keyword argument 'keep_alive'
+
+2026-03-25 18:32:36,314 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 423, in kbank_business_apps
+    driver = cls.use_appium_driver()
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 150, in use_appium_driver
+    APPIUM_DRIVER = webdriver.Remote("http://127.0.0.1:8021", options=options, keep_alive=False)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: WebDriver.__init__() got an unexpected keyword argument 'keep_alive'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 393, in kbank_withdrawal
+    cls.kbank_business_apps(data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 748, in kbank_business_apps
+    raise Exception(f"Mobile app approval failed: {str(e)}")
+Exception: Mobile app approval failed: WebDriver.__init__() got an unexpected keyword argument 'keep_alive'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 869, in runPython
+    BankBot.kbank_withdrawal(page, data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 411, in kbank_withdrawal
+    raise Exception(f"Withdrawal failed: {str(e)}")
+Exception: Withdrawal failed: Mobile app approval failed: WebDriver.__init__() got an unexpected keyword argument 'keep_alive'
+
+----------------------------------------
+2026-03-25 18:37:30,256 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-25 18:37:30,272 - INFO - KBank_Samsung - WS client started with PID 11908
+2026-03-25 18:37:30,329 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://192.168.241.6:5004
+2026-03-25 18:37:30,336 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-25 18:37:35,161 - INFO - KBank_Samsung - Starting For Chrome Browser...
+2026-03-25 18:37:35,165 - INFO - KBank_Samsung - Starting Cleaning Notification Bar...
+2026-03-25 18:37:35,169 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-25 18:37:35,171 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-25 18:37:35,210 - INFO - KBank_Samsung - Appium process started with PID 4208
+2026-03-25 18:37:35,218 - INFO - KBank_Samsung - Appium server is ready (attempt 1/10)
+2026-03-25 18:37:45,348 - INFO - KBank_Samsung - Clean Phone Notification
+2026-03-25 18:37:45,348 - INFO - KBank_Samsung - Starting KBANK login flow. txn_id=1111
+2026-03-25 18:37:45,348 - INFO - KBank_Samsung - Starting Playwright instance. txn_id=1111
+2026-03-25 18:37:45,807 - INFO - KBank_Samsung - Connecting Playwright to Chrome CDP. txn_id=1111
+2026-03-25 18:37:46,209 - INFO - KBank_Samsung - Browser context ready. txn_id=1111
+2026-03-25 18:37:46,209 - INFO - KBank_Samsung - Creating new browser page. txn_id=1111
+2026-03-25 18:37:48,581 - ERROR - root - LOGIN FAILED for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 278, in kbank_login
+    page.goto("https://kbiz.kasikornbank.com/authen/login.jsp?lang=en", wait_until="domcontentloaded")
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 9054, in goto
+    self._sync(
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_page.py", line 552, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 153, in goto
+    await self._channel.send(
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+Exception: Page.goto: Connection closed while reading from the driver
+
+2026-03-25 18:37:48,581 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 278, in kbank_login
+    page.goto("https://kbiz.kasikornbank.com/authen/login.jsp?lang=en", wait_until="domcontentloaded")
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 9054, in goto
+    self._sync(
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_page.py", line 552, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 153, in goto
+    await self._channel.send(
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+Exception: Page.goto: Connection closed while reading from the driver
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 875, in runPython
+    page = BankBot.kbank_login(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.3.py", line 329, in kbank_login
+    raise Exception(f"Login failed at step: {str(e)}")
+Exception: Login failed at step: Page.goto: Connection closed while reading from the driver
+
+----------------------------------------
+2026-03-25 18:37:54,324 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-25 18:37:54,346 - INFO - KBank_Samsung - WS client started with PID 21144
+2026-03-25 18:37:54,403 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://192.168.241.6:5004
+2026-03-25 18:37:54,403 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-25 18:38:01,183 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-25 18:38:01,207 - INFO - KBank_Samsung - WS client started with PID 30016
+2026-03-25 18:38:01,274 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://192.168.241.6:5004
+2026-03-25 18:38:01,274 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-25 18:38:03,676 - INFO - KBank_Samsung - Starting For Chrome Browser...
+2026-03-25 18:38:03,676 - INFO - KBank_Samsung - Starting Cleaning Notification Bar...
+2026-03-25 18:38:03,677 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-25 18:38:03,677 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-25 18:38:03,698 - INFO - KBank_Samsung - Appium process started with PID 22748
+2026-03-25 18:38:03,705 - INFO - KBank_Samsung - Appium server is ready (attempt 1/10)
+2026-03-25 18:38:09,498 - INFO - KBank_Samsung - Clean Phone Notification
+2026-03-25 18:38:09,498 - INFO - KBank_Samsung - Starting KBANK login flow. txn_id=1111
+2026-03-25 18:38:09,498 - INFO - KBank_Samsung - Starting Playwright instance. txn_id=1111
+2026-03-25 18:38:09,922 - INFO - KBank_Samsung - Connecting Playwright to Chrome CDP. txn_id=1111
+2026-03-25 18:38:10,344 - INFO - KBank_Samsung - Browser context ready. txn_id=1111
+2026-03-25 18:38:10,344 - INFO - KBank_Samsung - Creating new browser page. txn_id=1111
+2026-03-25 18:38:14,021 - INFO - KBank_Samsung - Navigating to KBANK login page. txn_id=1111
+2026-03-25 18:38:16,120 - INFO - KBank_Samsung - Login Account...
+2026-03-25 18:38:20,700 - INFO - KBank_Samsung - Button click for 'Fund Transfer', txn_id=1111
+2026-03-25 18:38:22,060 - INFO - KBank_Samsung - Wait for navigate to 'Fund Transfer' Title/Page, txn_id=1111
+2026-03-25 18:38:22,062 - INFO - KBank_Samsung - Processing payout started. txn_id=1111
+2026-03-25 18:38:23,065 - INFO - KBank_Samsung - Starting withdrawal flow. txn_id=1111 to_bank=Government Savings Bank to_account=020457436150 amount=80
+2026-03-25 18:38:23,179 - INFO - KBank_Samsung - Open Bank Menu....., txn_id=1111
+2026-03-25 18:38:23,254 - INFO - KBank_Samsung - Fill in Bank Name Government Savings Bank, txn_id=1111
+2026-03-25 18:38:23,388 - INFO - KBank_Samsung - Select the Bank Name/Code Government Savings Bank, txn_id=1111
+2026-03-25 18:38:23,420 - INFO - KBank_Samsung - Fill in Account Number 020457436150, txn_id=1111
+2026-03-25 18:38:23,452 - INFO - KBank_Samsung - Fill in Amount 80, txn_id=1111
+2026-03-25 18:38:23,518 - INFO - KBank_Samsung - Click Next, txn_id=1111
+2026-03-25 18:38:24,533 - INFO - KBank_Samsung - Sufficient Balance... Continue...
+2026-03-25 18:38:29,590 - INFO - KBank_Samsung - Moving to mobile approval Confirm transaction. txn_id=1111
+2026-03-25 18:38:29,593 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-25 18:38:29,593 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-25 18:38:29,595 - INFO - KBank_Samsung - Appium process already exists, skipping new start
+2026-03-25 18:38:29,595 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-25 18:38:29,595 - INFO - KBank_Samsung - Start Appium Driver... txn_id=1111
+2026-03-25 18:38:30,075 - INFO - KBank_Samsung - Open Notification Bar... txn_id=1111
+2026-03-25 18:38:33,912 - INFO - KBank_Samsung - Click KBank Confirm Transaction notification... txn_id=1111
+2026-03-25 18:38:34,916 - INFO - KBank_Samsung - Start Watchdog Timer, txn_id=1111
+2026-03-25 18:38:34,916 - INFO - KBank_Samsung - Start WatchDog Timer (120s)... txn_id=1111
+2026-03-25 18:38:34,916 - INFO - KBank_Samsung - If Withdrawal cannot complete within 120s, Restart apps and click confirm transaction, txn_id=1111
+2026-03-25 18:38:34,996 - INFO - KBank_Samsung - Session Expired, KBank Apps Relogin and Perform Confirm Transaction, and stop Watchdog Timer, txn_id=1111
+2026-03-25 18:42:48,662 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-25 18:42:48,692 - INFO - KBank_Samsung - WS client started with PID 9728
+2026-03-25 18:42:48,762 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://192.168.241.6:5004
+2026-03-25 18:42:48,762 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-25 18:42:57,484 - INFO - KBank_Samsung - Starting For Chrome Browser...
+2026-03-25 18:42:57,487 - INFO - KBank_Samsung - Starting Cleaning Notification Bar...
+2026-03-25 18:42:57,489 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-25 18:42:57,503 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-25 18:42:57,559 - INFO - KBank_Samsung - Appium process started with PID 21528
+2026-03-25 18:42:57,581 - INFO - KBank_Samsung - Appium server is ready (attempt 1/10)
+2026-03-25 18:43:03,618 - INFO - KBank_Samsung - Clean Phone Notification
+2026-03-25 18:43:03,619 - INFO - KBank_Samsung - Starting KBANK login flow. txn_id=1111
+2026-03-25 18:43:03,619 - INFO - KBank_Samsung - Starting Playwright instance. txn_id=1111
+2026-03-25 18:43:04,060 - INFO - KBank_Samsung - Connecting Playwright to Chrome CDP. txn_id=1111
+2026-03-25 18:43:04,479 - INFO - KBank_Samsung - Browser context ready. txn_id=1111
+2026-03-25 18:43:04,480 - INFO - KBank_Samsung - Creating new browser page. txn_id=1111
+2026-03-25 18:43:08,197 - INFO - KBank_Samsung - Navigating to KBANK login page. txn_id=1111
+2026-03-25 18:43:10,429 - INFO - KBank_Samsung - Login Account...
+2026-03-25 18:43:15,598 - INFO - KBank_Samsung - Button click for 'Fund Transfer', txn_id=1111
+2026-03-25 18:43:17,109 - INFO - KBank_Samsung - Wait for navigate to 'Fund Transfer' Title/Page, txn_id=1111
+2026-03-25 18:43:17,111 - INFO - KBank_Samsung - Processing payout started. txn_id=1111
+2026-03-25 18:43:18,113 - INFO - KBank_Samsung - Starting withdrawal flow. txn_id=1111 to_bank=Government Savings Bank to_account=020457436150 amount=80
+2026-03-25 18:43:18,290 - INFO - KBank_Samsung - Open Bank Menu....., txn_id=1111
+2026-03-25 18:43:18,370 - INFO - KBank_Samsung - Fill in Bank Name Government Savings Bank, txn_id=1111
+2026-03-25 18:43:18,486 - INFO - KBank_Samsung - Select the Bank Name/Code Government Savings Bank, txn_id=1111
+2026-03-25 18:43:18,529 - INFO - KBank_Samsung - Fill in Account Number 020457436150, txn_id=1111
+2026-03-25 18:43:18,632 - INFO - KBank_Samsung - Fill in Amount 80, txn_id=1111
+2026-03-25 18:43:18,717 - INFO - KBank_Samsung - Click Next, txn_id=1111
+2026-03-25 18:43:19,730 - INFO - KBank_Samsung - Sufficient Balance... Continue...
+2026-03-25 18:43:24,789 - INFO - KBank_Samsung - Moving to mobile approval Confirm transaction. txn_id=1111
+2026-03-25 18:43:24,789 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-25 18:43:24,790 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-25 18:43:24,792 - INFO - KBank_Samsung - Appium process already exists, skipping new start
+2026-03-25 18:43:24,794 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-25 18:43:24,794 - INFO - KBank_Samsung - Start Appium Driver... txn_id=1111
+2026-03-25 18:43:24,833 - INFO - KBank_Samsung - Open Notification Bar... txn_id=1111
+2026-03-25 18:43:29,085 - INFO - KBank_Samsung - Click KBank Confirm Transaction notification... txn_id=1111
+2026-03-25 18:43:30,089 - INFO - KBank_Samsung - Start Watchdog Timer, txn_id=1111
+2026-03-25 18:43:30,090 - INFO - KBank_Samsung - Start WatchDog Timer (120s)... txn_id=1111
+2026-03-25 18:43:30,090 - INFO - KBank_Samsung - If Withdrawal cannot complete within 120s, Restart apps and click confirm transaction, txn_id=1111
+2026-03-25 18:43:33,331 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-25 18:43:34,779 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-25 18:43:36,191 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-25 18:43:37,618 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-25 18:43:39,034 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-25 18:43:40,739 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-25 18:43:40,740 - INFO - KBank_Samsung - Enter KBank Apps Pin... txn_id=1111
+2026-03-25 18:43:40,740 - INFO - KBank_Samsung - Starting Apps confirm transaction sequence. txn_id=1111
+2026-03-25 18:44:14,774 - ERROR - root - MOBILE APP FAILED for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 578, in confirm_transaction
+    WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.XPATH, "//*[@text='Confirm']/.."))).click()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\support\wait.py", line 121, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\find.js:62:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:12:16)
+    at async AndroidUiautomator2Driver.findElement (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:27:16)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 696, in kbank_business_apps
+    confirm_transaction()
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 617, in confirm_transaction
+    raise restart_error
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 610, in confirm_transaction
+    enter_pin()
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 540, in enter_pin
+    digit_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, digit)))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\support\wait.py", line 112, in until
+    value = method(self._driver)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 515, in _predicate
+    element = visibility_of(target)(driver)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 208, in _predicate
+    return _element_if_visible(element)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 223, in _element_if_visible
+    return element if element.is_displayed() == visibility else False
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\appium\webdriver\webelement.py", line 87, in is_displayed
+    return self._execute(Command.IS_ELEMENT_DISPLAYED)['value']
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 508, in _execute
+    return self._parent.execute(command, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 432, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\appium\webdriver\errorhandler.py", line 125, in check_response
+    raise exception_class(msg=message, stacktrace=format_stacktrace(stacktrace))
+selenium.common.exceptions.StaleElementReferenceException: Message: The element 'By.accessibilityId: 9' does not exist in DOM anymore; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#staleelementreferenceexception
+Stacktrace:
+io.appium.uiautomator2.common.exceptions.StaleElementReferenceException: The element 'By.accessibilityId: 9' does not exist in DOM anymore
+	at io.appium.uiautomator2.model.ElementsCache.restore(ElementsCache.java:117)
+	at io.appium.uiautomator2.model.ElementsCache.get(ElementsCache.java:153)
+	at io.appium.uiautomator2.handler.GetElementAttribute.safeHandle(GetElementAttribute.java:23)
+	at io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)
+	at io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:267)
+	at io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:261)
+	at io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:107)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)
+	at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:434)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:361)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:325)
+	at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:249)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:293)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1429)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:918)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:172)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445)
+	at io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388)
+	at io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596)
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571)
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512)
+	at io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484)
+	at io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)
+	at io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:1564)
+
+
+2026-03-25 18:44:14,787 - ERROR - root - WITHDRAWAL FAILED for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 578, in confirm_transaction
+    WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.XPATH, "//*[@text='Confirm']/.."))).click()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\support\wait.py", line 121, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\find.js:62:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:12:16)
+    at async AndroidUiautomator2Driver.findElement (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:27:16)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 696, in kbank_business_apps
+    confirm_transaction()
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 617, in confirm_transaction
+    raise restart_error
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 610, in confirm_transaction
+    enter_pin()
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 540, in enter_pin
+    digit_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, digit)))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\support\wait.py", line 112, in until
+    value = method(self._driver)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 515, in _predicate
+    element = visibility_of(target)(driver)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 208, in _predicate
+    return _element_if_visible(element)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 223, in _element_if_visible
+    return element if element.is_displayed() == visibility else False
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\appium\webdriver\webelement.py", line 87, in is_displayed
+    return self._execute(Command.IS_ELEMENT_DISPLAYED)['value']
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 508, in _execute
+    return self._parent.execute(command, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 432, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\appium\webdriver\errorhandler.py", line 125, in check_response
+    raise exception_class(msg=message, stacktrace=format_stacktrace(stacktrace))
+selenium.common.exceptions.StaleElementReferenceException: Message: The element 'By.accessibilityId: 9' does not exist in DOM anymore; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#staleelementreferenceexception
+Stacktrace:
+io.appium.uiautomator2.common.exceptions.StaleElementReferenceException: The element 'By.accessibilityId: 9' does not exist in DOM anymore
+	at io.appium.uiautomator2.model.ElementsCache.restore(ElementsCache.java:117)
+	at io.appium.uiautomator2.model.ElementsCache.get(ElementsCache.java:153)
+	at io.appium.uiautomator2.handler.GetElementAttribute.safeHandle(GetElementAttribute.java:23)
+	at io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)
+	at io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:267)
+	at io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:261)
+	at io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:107)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)
+	at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:434)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:361)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:325)
+	at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:249)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:293)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1429)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:918)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:172)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445)
+	at io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388)
+	at io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596)
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571)
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512)
+	at io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484)
+	at io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)
+	at io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:1564)
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 403, in kbank_withdrawal
+    cls.kbank_business_apps(data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 758, in kbank_business_apps
+    raise Exception(f"Mobile app approval failed: {str(e)}")
+Exception: Mobile app approval failed: Message: The element 'By.accessibilityId: 9' does not exist in DOM anymore; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#staleelementreferenceexception
+Stacktrace:
+io.appium.uiautomator2.common.exceptions.StaleElementReferenceException: The element 'By.accessibilityId: 9' does not exist in DOM anymore
+	at io.appium.uiautomator2.model.ElementsCache.restore(ElementsCache.java:117)
+	at io.appium.uiautomator2.model.ElementsCache.get(ElementsCache.java:153)
+	at io.appium.uiautomator2.handler.GetElementAttribute.safeHandle(GetElementAttribute.java:23)
+	at io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)
+	at io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:267)
+	at io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:261)
+	at io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:107)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)
+	at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:434)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:361)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:325)
+	at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:249)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:293)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1429)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:918)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:172)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445)
+	at io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388)
+	at io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596)
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571)
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512)
+	at io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484)
+	at io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)
+	at io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:1564)
+
+
+2026-03-25 18:44:14,800 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 578, in confirm_transaction
+    WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.XPATH, "//*[@text='Confirm']/.."))).click()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\support\wait.py", line 121, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\find.js:62:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:12:16)
+    at async AndroidUiautomator2Driver.findElement (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:27:16)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 696, in kbank_business_apps
+    confirm_transaction()
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 617, in confirm_transaction
+    raise restart_error
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 610, in confirm_transaction
+    enter_pin()
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 540, in enter_pin
+    digit_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, digit)))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\support\wait.py", line 112, in until
+    value = method(self._driver)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 515, in _predicate
+    element = visibility_of(target)(driver)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 208, in _predicate
+    return _element_if_visible(element)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 223, in _element_if_visible
+    return element if element.is_displayed() == visibility else False
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\appium\webdriver\webelement.py", line 87, in is_displayed
+    return self._execute(Command.IS_ELEMENT_DISPLAYED)['value']
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 508, in _execute
+    return self._parent.execute(command, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 432, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\appium\webdriver\errorhandler.py", line 125, in check_response
+    raise exception_class(msg=message, stacktrace=format_stacktrace(stacktrace))
+selenium.common.exceptions.StaleElementReferenceException: Message: The element 'By.accessibilityId: 9' does not exist in DOM anymore; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#staleelementreferenceexception
+Stacktrace:
+io.appium.uiautomator2.common.exceptions.StaleElementReferenceException: The element 'By.accessibilityId: 9' does not exist in DOM anymore
+	at io.appium.uiautomator2.model.ElementsCache.restore(ElementsCache.java:117)
+	at io.appium.uiautomator2.model.ElementsCache.get(ElementsCache.java:153)
+	at io.appium.uiautomator2.handler.GetElementAttribute.safeHandle(GetElementAttribute.java:23)
+	at io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)
+	at io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:267)
+	at io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:261)
+	at io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:107)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)
+	at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:434)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:361)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:325)
+	at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:249)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:293)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1429)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:918)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:172)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445)
+	at io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388)
+	at io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596)
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571)
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512)
+	at io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484)
+	at io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)
+	at io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:1564)
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 403, in kbank_withdrawal
+    cls.kbank_business_apps(data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 758, in kbank_business_apps
+    raise Exception(f"Mobile app approval failed: {str(e)}")
+Exception: Mobile app approval failed: Message: The element 'By.accessibilityId: 9' does not exist in DOM anymore; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#staleelementreferenceexception
+Stacktrace:
+io.appium.uiautomator2.common.exceptions.StaleElementReferenceException: The element 'By.accessibilityId: 9' does not exist in DOM anymore
+	at io.appium.uiautomator2.model.ElementsCache.restore(ElementsCache.java:117)
+	at io.appium.uiautomator2.model.ElementsCache.get(ElementsCache.java:153)
+	at io.appium.uiautomator2.handler.GetElementAttribute.safeHandle(GetElementAttribute.java:23)
+	at io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)
+	at io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:267)
+	at io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:261)
+	at io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:107)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)
+	at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:434)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:361)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:325)
+	at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:249)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:293)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1429)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:918)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:172)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445)
+	at io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388)
+	at io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596)
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571)
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512)
+	at io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484)
+	at io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)
+	at io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:1564)
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 879, in runPython
+    BankBot.kbank_withdrawal(page, data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 421, in kbank_withdrawal
+    raise Exception(f"Withdrawal failed: {str(e)}")
+Exception: Withdrawal failed: Mobile app approval failed: Message: The element 'By.accessibilityId: 9' does not exist in DOM anymore; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#staleelementreferenceexception
+Stacktrace:
+io.appium.uiautomator2.common.exceptions.StaleElementReferenceException: The element 'By.accessibilityId: 9' does not exist in DOM anymore
+	at io.appium.uiautomator2.model.ElementsCache.restore(ElementsCache.java:117)
+	at io.appium.uiautomator2.model.ElementsCache.get(ElementsCache.java:153)
+	at io.appium.uiautomator2.handler.GetElementAttribute.safeHandle(GetElementAttribute.java:23)
+	at io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)
+	at io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:267)
+	at io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:261)
+	at io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:107)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)
+	at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:434)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:361)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:325)
+	at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:249)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:293)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1429)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:918)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:172)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445)
+	at io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388)
+	at io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596)
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571)
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512)
+	at io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484)
+	at io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)
+	at io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:1564)
+
+
+----------------------------------------
+2026-03-25 19:10:24,175 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-25 19:10:24,215 - INFO - KBank_Samsung - WS client started with PID 2340
+2026-03-25 19:10:24,394 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://192.168.241.6:5004
+2026-03-25 19:10:24,396 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-25 19:10:32,836 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-25 19:10:32,856 - INFO - KBank_Samsung - WS client started with PID 4168
+2026-03-25 19:10:35,950 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://192.168.241.6:5004
+2026-03-25 19:10:35,950 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-25 19:10:45,246 - INFO - KBank_Samsung - Starting For Chrome Browser...
+2026-03-25 19:10:45,246 - INFO - KBank_Samsung - Starting Cleaning Notification Bar...
+2026-03-25 19:10:45,246 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-25 19:10:45,246 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-25 19:10:45,281 - INFO - KBank_Samsung - Appium process started with PID 10792
+2026-03-25 19:10:45,304 - INFO - KBank_Samsung - Appium server is ready (attempt 1/10)
+2026-03-25 19:10:53,821 - INFO - KBank_Samsung - Clean Phone Notification
+2026-03-25 19:10:53,821 - INFO - KBank_Samsung - Starting KBANK login flow. txn_id=1111
+2026-03-25 19:10:53,821 - INFO - KBank_Samsung - Starting Playwright instance. txn_id=1111
+2026-03-25 19:10:54,352 - INFO - KBank_Samsung - Connecting Playwright to Chrome CDP. txn_id=1111
+2026-03-25 19:10:54,756 - INFO - KBank_Samsung - Browser context ready. txn_id=1111
+2026-03-25 19:10:54,756 - INFO - KBank_Samsung - Creating new browser page. txn_id=1111
+2026-03-25 19:10:58,490 - INFO - KBank_Samsung - Navigating to KBANK login page. txn_id=1111
+2026-03-25 19:11:00,693 - INFO - KBank_Samsung - Login Account...
+2026-03-25 19:11:04,056 - INFO - KBank_Samsung - Button click for 'Fund Transfer', txn_id=1111
+2026-03-25 19:11:05,469 - INFO - KBank_Samsung - Wait for navigate to 'Fund Transfer' Title/Page, txn_id=1111
+2026-03-25 19:11:05,469 - INFO - KBank_Samsung - Processing payout started. txn_id=1111
+2026-03-25 19:11:05,469 - INFO - werkzeug - 127.0.0.1 - - [25/Mar/2026 19:11:05] "POST /kbank_company_web/runPython HTTP/1.1" 200 -
+2026-03-25 19:12:49,386 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-25 19:12:49,386 - INFO - KBank_Samsung - Starting Cleaning Notification Bar...
+2026-03-25 19:12:49,386 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-25 19:12:49,386 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-25 19:12:49,403 - INFO - KBank_Samsung - Appium process started with PID 15428
+2026-03-25 19:12:49,415 - INFO - KBank_Samsung - Appium server is ready (attempt 1/10)
+2026-03-25 19:12:58,773 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-25 19:12:58,773 - INFO - KBank_Samsung - Starting Cleaning Notification Bar...
+2026-03-25 19:12:58,773 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-25 19:12:58,773 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-25 19:12:58,799 - INFO - KBank_Samsung - Appium process started with PID 16132
+2026-03-25 19:12:58,810 - INFO - KBank_Samsung - Appium server is ready (attempt 1/10)
+2026-03-25 19:14:18,422 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-25 19:14:18,443 - INFO - KBank_Samsung - WS client started with PID 17956
+2026-03-25 19:14:18,519 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://192.168.241.6:5004
+2026-03-25 19:14:18,520 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-25 19:14:24,318 - INFO - KBank_Samsung - Starting For Chrome Browser...
+2026-03-25 19:14:24,318 - INFO - KBank_Samsung - Starting Cleaning Notification Bar...
+2026-03-25 19:14:24,318 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-25 19:14:24,320 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-25 19:14:24,340 - INFO - KBank_Samsung - Appium process started with PID 5232
+2026-03-25 19:14:24,354 - INFO - KBank_Samsung - Appium server is ready (attempt 1/10)
+2026-03-25 19:14:29,435 - INFO - KBank_Samsung - Clean Phone Notification
+2026-03-25 19:14:29,435 - INFO - werkzeug - 127.0.0.1 - - [25/Mar/2026 19:14:29] "POST /kbank_company_web/runPython HTTP/1.1" 200 -
+2026-03-25 19:14:36,137 - INFO - KBank_Samsung - Starting For Chrome Browser...
+2026-03-25 19:14:36,137 - INFO - KBank_Samsung - Starting Cleaning Notification Bar...
+2026-03-25 19:14:36,137 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-25 19:14:36,138 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-25 19:14:36,139 - INFO - KBank_Samsung - Appium process already exists, skipping new start
+2026-03-25 19:14:36,139 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-25 19:14:37,518 - INFO - KBank_Samsung - Clean Phone Notification
+2026-03-25 19:14:37,524 - INFO - werkzeug - 127.0.0.1 - - [25/Mar/2026 19:14:37] "POST /kbank_company_web/runPython HTTP/1.1" 200 -
+2026-03-25 19:14:39,769 - INFO - KBank_Samsung - Starting For Chrome Browser...
+2026-03-25 19:14:39,770 - INFO - KBank_Samsung - Starting Cleaning Notification Bar...
+2026-03-25 19:14:39,770 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-25 19:14:39,770 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-25 19:14:39,771 - INFO - KBank_Samsung - Appium process already exists, skipping new start
+2026-03-25 19:14:39,772 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-25 19:14:41,148 - INFO - KBank_Samsung - Clean Phone Notification
+2026-03-25 19:14:41,148 - INFO - werkzeug - 127.0.0.1 - - [25/Mar/2026 19:14:41] "POST /kbank_company_web/runPython HTTP/1.1" 200 -
+2026-03-26 10:43:07,450 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-26 10:43:07,475 - INFO - KBank_Samsung - WS client started with PID 20416
+2026-03-26 10:43:07,503 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://10.0.0.254:5004
+2026-03-26 10:43:07,504 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-26 10:43:51,159 - INFO - KBank_Samsung - Starting For Chrome Browser...
+2026-03-26 10:43:51,160 - INFO - KBank_Samsung - Starting Cleaning Notification Bar...
+2026-03-26 10:43:51,160 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-26 10:43:51,160 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-26 10:43:51,285 - INFO - KBank_Samsung - Appium process started with PID 23836
+2026-03-26 10:43:51,799 - INFO - KBank_Samsung - Appium server is ready (attempt 1/10)
+2026-03-26 10:44:00,401 - INFO - KBank_Samsung - Clean Phone Notification
+2026-03-26 10:44:00,401 - INFO - KBank_Samsung - Starting KBANK login flow. txn_id=1111
+2026-03-26 10:44:00,401 - INFO - KBank_Samsung - Starting Playwright instance. txn_id=1111
+2026-03-26 10:44:13,598 - INFO - KBank_Samsung - Connecting Playwright to Chrome CDP. txn_id=1111
+2026-03-26 10:44:14,180 - INFO - KBank_Samsung - Browser context ready. txn_id=1111
+2026-03-26 10:44:14,180 - INFO - KBank_Samsung - Creating new browser page. txn_id=1111
+2026-03-26 10:44:18,829 - INFO - KBank_Samsung - Navigating to KBANK login page. txn_id=1111
+2026-03-26 10:44:21,122 - INFO - KBank_Samsung - Login Account...
+2026-03-26 10:44:25,717 - INFO - KBank_Samsung - Button click for 'Fund Transfer', txn_id=1111
+2026-03-26 10:44:27,662 - INFO - KBank_Samsung - Wait for navigate to 'Fund Transfer' Title/Page, txn_id=1111
+2026-03-26 10:44:27,662 - INFO - KBank_Samsung - Processing payout started. txn_id=1111
+2026-03-26 10:44:28,671 - INFO - KBank_Samsung - Starting withdrawal flow. txn_id=1111 to_bank=Government Savings Bank to_account=020457436150 amount=80
+2026-03-26 10:44:28,912 - INFO - KBank_Samsung - Open Bank Menu....., txn_id=1111
+2026-03-26 10:44:29,014 - INFO - KBank_Samsung - Fill in Bank Name Government Savings Bank, txn_id=1111
+2026-03-26 10:44:29,099 - INFO - KBank_Samsung - Select the Bank Name/Code Government Savings Bank, txn_id=1111
+2026-03-26 10:44:29,140 - INFO - KBank_Samsung - Fill in Account Number 020457436150, txn_id=1111
+2026-03-26 10:44:29,184 - INFO - KBank_Samsung - Fill in Amount 80, txn_id=1111
+2026-03-26 10:44:29,256 - INFO - KBank_Samsung - Click Next, txn_id=1111
+2026-03-26 10:44:30,276 - INFO - KBank_Samsung - Sufficient Balance... Continue...
+2026-03-26 10:44:35,378 - INFO - KBank_Samsung - Moving to mobile approval Confirm transaction. txn_id=1111
+2026-03-26 10:44:35,378 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-26 10:44:35,378 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-26 10:44:35,378 - INFO - KBank_Samsung - Appium process already exists, skipping new start
+2026-03-26 10:44:35,378 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-26 10:44:35,378 - INFO - KBank_Samsung - Start Appium Driver... txn_id=1111
+2026-03-26 10:44:35,698 - INFO - KBank_Samsung - Open Notification Bar... txn_id=1111
+2026-03-26 10:44:39,390 - INFO - KBank_Samsung - Click KBank Confirm Transaction notification... txn_id=1111
+2026-03-26 10:44:40,398 - INFO - KBank_Samsung - Start Watchdog Timer, txn_id=1111
+2026-03-26 10:44:40,398 - INFO - KBank_Samsung - Start WatchDog Timer (120s)... txn_id=1111
+2026-03-26 10:44:40,398 - INFO - KBank_Samsung - If Withdrawal cannot complete within 120s, Restart apps and click confirm transaction, txn_id=1111
+2026-03-26 10:44:40,536 - INFO - KBank_Samsung - Session Expired, KBank Apps Relogin and Perform Confirm Transaction, and stop Watchdog Timer, txn_id=1111
+2026-03-26 10:44:44,106 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-26 10:44:45,891 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-26 10:44:47,323 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-26 10:44:48,940 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-26 10:44:50,397 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-26 10:44:51,999 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-26 10:44:52,006 - INFO - KBank_Samsung - Enter KBank Apps Pin... txn_id=1111
+2026-03-26 10:44:52,006 - INFO - KBank_Samsung - Starting Apps confirm transaction sequence. txn_id=1111
+2026-03-26 10:45:04,097 - INFO - KBank_Samsung - Stop Watchdog Timer, txn_id=1111
+2026-03-26 10:45:05,173 - INFO - KBank_Samsung - ERIC callback prepared. txn_id=1111 bankCode=KBANK_COMPANY_WEB deviceId=2312 merchantCode=IBS
+2026-03-26 10:45:05,173 - INFO - KBank_Samsung - ERIC hash=0c227b2ca0805d77d4516a102f76756e txn_id=1111
+2026-03-26 10:45:05,173 - INFO - KBank_Samsung - ERIC callback response received. txn_id=1111 status=200
+2026-03-26 10:45:05,181 - INFO - KBank_Samsung - ERIC callback body. txn_id=1111 body={"code":"400003","msg":"Device is not binded in backoffice yet","data":null}
+2026-03-26 10:45:08,139 - INFO - KBank_Samsung - Back to main Page...
+2026-03-26 10:45:08,139 - INFO - KBank_Samsung - Mobile approval completed. txn_id=1111
+2026-03-26 10:45:08,181 - INFO - KBank_Samsung - Wait for Fund Transfer page to appear.
+2026-03-26 10:45:08,305 - INFO - KBank_Samsung - Button click Fund Transfer to wait for the next withdrawal transaction request... 
+2026-03-26 10:45:08,334 - INFO - KBank_Samsung - Processing payout completed. txn_id=1111
+2026-03-26 10:45:08,336 - INFO - werkzeug - 127.0.0.1 - - [26/Mar/2026 10:45:08] "POST /kbank_company_web/runPython HTTP/1.1" 200 -
+2026-03-26 10:45:20,103 - INFO - KBank_Samsung - Starting For Chrome Browser...
+2026-03-26 10:45:20,103 - INFO - KBank_Samsung - Starting Cleaning Notification Bar...
+2026-03-26 10:45:20,105 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-26 10:45:20,107 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-26 10:45:20,108 - INFO - KBank_Samsung - Appium process already exists, skipping new start
+2026-03-26 10:45:20,109 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-26 10:45:22,573 - INFO - KBank_Samsung - Clean Phone Notification
+2026-03-26 10:45:22,574 - INFO - KBank_Samsung - Starting KBANK login flow. txn_id=1111
+2026-03-26 10:45:22,575 - INFO - KBank_Samsung - Reusing Playwright instance. txn_id=1111
+2026-03-26 10:45:22,575 - INFO - KBank_Samsung - Reusing existing Chrome CDP browser connection. txn_id=1111
+2026-03-26 10:45:22,576 - INFO - KBank_Samsung - Browser context ready. txn_id=1111
+2026-03-26 10:45:22,576 - INFO - KBank_Samsung - Reusing existing browser page. txn_id=1111
+2026-03-26 10:45:22,602 - INFO - KBank_Samsung - Already on Transfer page, Skip login...
+2026-03-26 10:45:22,607 - INFO - KBank_Samsung - Processing payout started. txn_id=1111
+2026-03-26 10:45:23,608 - INFO - KBank_Samsung - Starting withdrawal flow. txn_id=1111 to_bank=Government Savings Bank to_account=020457436150 amount=120
+2026-03-26 10:45:23,772 - INFO - KBank_Samsung - Open Bank Menu....., txn_id=1111
+2026-03-26 10:45:23,822 - INFO - KBank_Samsung - Fill in Bank Name Government Savings Bank, txn_id=1111
+2026-03-26 10:45:23,939 - INFO - KBank_Samsung - Select the Bank Name/Code Government Savings Bank, txn_id=1111
+2026-03-26 10:45:23,983 - INFO - KBank_Samsung - Fill in Account Number 020457436150, txn_id=1111
+2026-03-26 10:45:24,025 - INFO - KBank_Samsung - Fill in Amount 120, txn_id=1111
+2026-03-26 10:45:24,095 - INFO - KBank_Samsung - Click Next, txn_id=1111
+2026-03-26 10:45:25,112 - INFO - KBank_Samsung - Sufficient Balance... Continue...
+2026-03-26 10:45:30,159 - INFO - KBank_Samsung - Moving to mobile approval Confirm transaction. txn_id=1111
+2026-03-26 10:45:30,159 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-26 10:45:30,159 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-26 10:45:30,159 - INFO - KBank_Samsung - Appium process already exists, skipping new start
+2026-03-26 10:45:30,159 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-26 10:45:30,159 - INFO - KBank_Samsung - Start Appium Driver... txn_id=1111
+2026-03-26 10:45:30,202 - INFO - KBank_Samsung - Open Notification Bar... txn_id=1111
+2026-03-26 10:45:43,024 - ERROR - root - MOBILE APP FAILED for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 631, in kbank_business_apps
+    WebDriverWait(driver, 10).until(EC.element_to_be_clickable((AppiumBy.XPATH, notif_xpath))).click()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\support\wait.py", line 121, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\find.js:62:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:12:16)
+    at async AndroidUiautomator2Driver.findElement (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:27:16)
+
+2026-03-26 10:45:43,024 - ERROR - root - WITHDRAWAL FAILED for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 631, in kbank_business_apps
+    WebDriverWait(driver, 10).until(EC.element_to_be_clickable((AppiumBy.XPATH, notif_xpath))).click()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\support\wait.py", line 121, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\find.js:62:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:12:16)
+    at async AndroidUiautomator2Driver.findElement (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:27:16)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 403, in kbank_withdrawal
+    cls.kbank_business_apps(data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 758, in kbank_business_apps
+    raise Exception(f"Mobile app approval failed: {str(e)}")
+Exception: Mobile app approval failed: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\find.js:62:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:12:16)
+    at async AndroidUiautomator2Driver.findElement (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:27:16)
+
+2026-03-26 10:45:43,035 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 631, in kbank_business_apps
+    WebDriverWait(driver, 10).until(EC.element_to_be_clickable((AppiumBy.XPATH, notif_xpath))).click()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\support\wait.py", line 121, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\find.js:62:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:12:16)
+    at async AndroidUiautomator2Driver.findElement (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:27:16)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 403, in kbank_withdrawal
+    cls.kbank_business_apps(data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 758, in kbank_business_apps
+    raise Exception(f"Mobile app approval failed: {str(e)}")
+Exception: Mobile app approval failed: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\find.js:62:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:12:16)
+    at async AndroidUiautomator2Driver.findElement (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:27:16)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 879, in runPython
+    BankBot.kbank_withdrawal(page, data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 421, in kbank_withdrawal
+    raise Exception(f"Withdrawal failed: {str(e)}")
+Exception: Withdrawal failed: Mobile app approval failed: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\find.js:62:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:12:16)
+    at async AndroidUiautomator2Driver.findElement (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:27:16)
+
+----------------------------------------
+2026-03-26 10:54:33,683 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-26 10:54:33,734 - INFO - KBank_Samsung - WS client started with PID 16976
+2026-03-26 10:54:33,788 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://10.0.0.254:5004
+2026-03-26 10:54:33,788 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-26 10:54:46,098 - INFO - KBank_Samsung - Starting For Chrome Browser...
+2026-03-26 10:54:46,098 - INFO - KBank_Samsung - Starting Cleaning Notification Bar...
+2026-03-26 10:54:46,098 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-26 10:54:46,098 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-26 10:54:46,201 - INFO - KBank_Samsung - Appium process started with PID 31436
+2026-03-26 10:54:46,207 - INFO - KBank_Samsung - Appium server is ready (attempt 1/10)
+2026-03-26 10:54:54,464 - INFO - KBank_Samsung - Clean Phone Notification
+2026-03-26 10:54:54,464 - INFO - KBank_Samsung - Starting KBANK login flow. txn_id=1111
+2026-03-26 10:54:54,464 - INFO - KBank_Samsung - Starting Playwright instance. txn_id=1111
+2026-03-26 10:55:11,602 - INFO - KBank_Samsung - Connecting Playwright to Chrome CDP. txn_id=1111
+2026-03-26 10:55:12,092 - ERROR - root - LOGIN FAILED for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 252, in kbank_login
+    BROWSER = PLAYWRIGHT.chromium.connect_over_cdp("http://localhost:9222")
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 14969, in connect_over_cdp
+    self._sync(
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_browser_type.py", line 206, in connect_over_cdp
+    response = await self._channel.send_return_as_dict(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 83, in send_return_as_dict
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+Exception: BrowserType.connect_over_cdp: Connection closed while reading from the driver
+
+2026-03-26 10:55:12,092 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 252, in kbank_login
+    BROWSER = PLAYWRIGHT.chromium.connect_over_cdp("http://localhost:9222")
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 14969, in connect_over_cdp
+    self._sync(
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_browser_type.py", line 206, in connect_over_cdp
+    response = await self._channel.send_return_as_dict(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 83, in send_return_as_dict
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+Exception: BrowserType.connect_over_cdp: Connection closed while reading from the driver
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 881, in runPython
+    page = BankBot.kbank_login(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 329, in kbank_login
+    raise Exception(f"Login failed at step: {str(e)}")
+Exception: Login failed at step: BrowserType.connect_over_cdp: Connection closed while reading from the driver
+
+----------------------------------------
+2026-03-26 10:55:16,395 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-26 10:55:16,417 - INFO - KBank_Samsung - WS client started with PID 20428
+2026-03-26 10:55:16,434 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://10.0.0.254:5004
+2026-03-26 10:55:16,434 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-26 10:55:18,542 - INFO - KBank_Samsung - Starting For Chrome Browser...
+2026-03-26 10:55:18,542 - INFO - KBank_Samsung - Starting Cleaning Notification Bar...
+2026-03-26 10:55:18,542 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-26 10:55:18,542 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-26 10:55:18,555 - INFO - KBank_Samsung - Appium process started with PID 11448
+2026-03-26 10:55:18,561 - INFO - KBank_Samsung - Appium server is ready (attempt 1/10)
+2026-03-26 10:55:23,566 - INFO - KBank_Samsung - Clean Phone Notification
+2026-03-26 10:55:23,566 - INFO - KBank_Samsung - Starting KBANK login flow. txn_id=1111
+2026-03-26 10:55:23,566 - INFO - KBank_Samsung - Starting Playwright instance. txn_id=1111
+2026-03-26 10:55:24,156 - INFO - KBank_Samsung - Connecting Playwright to Chrome CDP. txn_id=1111
+2026-03-26 10:55:24,562 - INFO - KBank_Samsung - Browser context ready. txn_id=1111
+2026-03-26 10:55:24,562 - INFO - KBank_Samsung - Creating new browser page. txn_id=1111
+2026-03-26 10:55:29,211 - INFO - KBank_Samsung - Navigating to KBANK login page. txn_id=1111
+2026-03-26 10:55:31,778 - INFO - KBank_Samsung - Login Account...
+2026-03-26 10:55:40,313 - INFO - KBank_Samsung - Button click for 'Fund Transfer', txn_id=1111
+2026-03-26 10:55:42,715 - INFO - KBank_Samsung - Wait for navigate to 'Fund Transfer' Title/Page, txn_id=1111
+2026-03-26 10:55:42,715 - INFO - KBank_Samsung - Processing payout started. txn_id=1111
+2026-03-26 10:55:43,717 - INFO - KBank_Samsung - Starting withdrawal flow. txn_id=1111 to_bank=Government Savings Bank to_account=020457436150 amount=60
+2026-03-26 10:55:43,854 - INFO - KBank_Samsung - Open Bank Menu....., txn_id=1111
+2026-03-26 10:55:43,988 - INFO - KBank_Samsung - Fill in Bank Name Government Savings Bank, txn_id=1111
+2026-03-26 10:55:44,076 - INFO - KBank_Samsung - Select the Bank Name/Code Government Savings Bank, txn_id=1111
+2026-03-26 10:55:44,107 - INFO - KBank_Samsung - Fill in Account Number 020457436150, txn_id=1111
+2026-03-26 10:55:44,134 - INFO - KBank_Samsung - Fill in Amount 60, txn_id=1111
+2026-03-26 10:55:44,255 - INFO - KBank_Samsung - Click Next, txn_id=1111
+2026-03-26 10:55:45,271 - INFO - KBank_Samsung - Sufficient Balance... Continue...
+2026-03-26 10:55:50,378 - INFO - KBank_Samsung - Moving to mobile approval Confirm transaction. txn_id=1111
+2026-03-26 10:55:50,378 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-26 10:55:50,378 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-26 10:55:50,378 - INFO - KBank_Samsung - Appium process already exists, skipping new start
+2026-03-26 10:55:50,378 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-26 10:55:50,384 - INFO - KBank_Samsung - Start Appium Driver... txn_id=1111
+2026-03-26 10:55:50,430 - INFO - KBank_Samsung - Open Notification Bar... txn_id=1111
+2026-03-26 10:55:55,099 - INFO - KBank_Samsung - Click KBank Confirm Transaction notification... txn_id=1111
+2026-03-26 10:55:56,107 - INFO - KBank_Samsung - Start Watchdog Timer, txn_id=1111
+2026-03-26 10:55:56,107 - INFO - KBank_Samsung - Start WatchDog Timer (120s)... txn_id=1111
+2026-03-26 10:55:56,107 - INFO - KBank_Samsung - If Withdrawal cannot complete within 120s, Restart apps and click confirm transaction, txn_id=1111
+2026-03-26 10:56:00,223 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-26 10:56:01,630 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-26 10:56:03,096 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-26 10:56:04,528 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-26 10:56:05,904 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-26 10:56:07,439 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-26 10:56:07,439 - INFO - KBank_Samsung - Enter KBank Apps Pin... txn_id=1111
+2026-03-26 10:56:07,439 - INFO - KBank_Samsung - Starting Apps confirm transaction sequence. txn_id=1111
+2026-03-26 10:56:18,375 - INFO - KBank_Samsung - Stop Watchdog Timer, txn_id=1111
+2026-03-26 10:56:18,379 - INFO - KBank_Samsung - KBank Apps login and Perform Confirm Transaction, and stop Watchdog Timer, txn_id=1111
+2026-03-26 10:56:18,991 - INFO - KBank_Samsung - ERIC callback prepared. txn_id=1111 bankCode=KBANK_COMPANY_WEB deviceId=2312 merchantCode=IBS
+2026-03-26 10:56:18,991 - INFO - KBank_Samsung - ERIC hash=0c227b2ca0805d77d4516a102f76756e txn_id=1111
+2026-03-26 10:56:18,991 - INFO - KBank_Samsung - ERIC callback response received. txn_id=1111 status=200
+2026-03-26 10:56:18,991 - INFO - KBank_Samsung - ERIC callback body. txn_id=1111 body={"code":"400003","msg":"Device is not binded in backoffice yet","data":null}
+2026-03-26 10:56:23,826 - INFO - KBank_Samsung - Back to main Page...
+2026-03-26 10:56:23,826 - INFO - KBank_Samsung - Mobile approval completed. txn_id=1111
+2026-03-26 10:56:23,853 - INFO - KBank_Samsung - Wait for Fund Transfer page to appear.
+2026-03-26 10:56:23,986 - INFO - KBank_Samsung - Button click Fund Transfer to wait for the next withdrawal transaction request... 
+2026-03-26 10:56:24,005 - INFO - KBank_Samsung - Processing payout completed. txn_id=1111
+2026-03-26 10:56:24,013 - INFO - werkzeug - 127.0.0.1 - - [26/Mar/2026 10:56:24] "POST /kbank_company_web/runPython HTTP/1.1" 200 -
+2026-03-26 10:56:32,808 - INFO - KBank_Samsung - Starting For Chrome Browser...
+2026-03-26 10:56:32,808 - INFO - KBank_Samsung - Starting Cleaning Notification Bar...
+2026-03-26 10:56:32,808 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-26 10:56:32,808 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-26 10:56:32,808 - INFO - KBank_Samsung - Appium process already exists, skipping new start
+2026-03-26 10:56:32,814 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-26 10:56:35,761 - INFO - KBank_Samsung - Clean Phone Notification
+2026-03-26 10:56:35,761 - INFO - KBank_Samsung - Starting KBANK login flow. txn_id=1111
+2026-03-26 10:56:35,761 - INFO - KBank_Samsung - Reusing Playwright instance. txn_id=1111
+2026-03-26 10:56:35,761 - INFO - KBank_Samsung - Reusing existing Chrome CDP browser connection. txn_id=1111
+2026-03-26 10:56:35,761 - INFO - KBank_Samsung - Browser context ready. txn_id=1111
+2026-03-26 10:56:35,761 - INFO - KBank_Samsung - Reusing existing browser page. txn_id=1111
+2026-03-26 10:56:35,815 - INFO - KBank_Samsung - Already on Transfer page, Skip login...
+2026-03-26 10:56:35,818 - INFO - KBank_Samsung - Processing payout started. txn_id=1111
+2026-03-26 10:56:36,820 - INFO - KBank_Samsung - Starting withdrawal flow. txn_id=1111 to_bank=Government Savings Bank to_account=020457436150 amount=60
+2026-03-26 10:56:36,938 - INFO - KBank_Samsung - Open Bank Menu....., txn_id=1111
+2026-03-26 10:56:37,007 - INFO - KBank_Samsung - Fill in Bank Name Government Savings Bank, txn_id=1111
+2026-03-26 10:56:37,085 - INFO - KBank_Samsung - Select the Bank Name/Code Government Savings Bank, txn_id=1111
+2026-03-26 10:56:37,139 - INFO - KBank_Samsung - Fill in Account Number 020457436150, txn_id=1111
+2026-03-26 10:56:37,187 - INFO - KBank_Samsung - Fill in Amount 60, txn_id=1111
+2026-03-26 10:56:37,386 - INFO - KBank_Samsung - Click Next, txn_id=1111
+2026-03-26 10:56:38,401 - INFO - KBank_Samsung - Sufficient Balance... Continue...
+2026-03-26 10:56:38,523 - INFO - KBank_Samsung - Notice | You or Company has made this transaction already .... click Confirm, txn_id=1111
+2026-03-26 10:56:40,939 - INFO - KBank_Samsung - Moving to mobile approval Confirm transaction. txn_id=1111
+2026-03-26 10:56:40,939 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-26 10:56:40,939 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-26 10:56:40,939 - INFO - KBank_Samsung - Appium process already exists, skipping new start
+2026-03-26 10:56:40,939 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-26 10:56:40,939 - INFO - KBank_Samsung - Start Appium Driver... txn_id=1111
+2026-03-26 10:56:41,441 - INFO - KBank_Samsung - Open Notification Bar... txn_id=1111
+2026-03-26 10:56:54,380 - INFO - KBank_Samsung - Click KBank Confirm Transaction notification... txn_id=1111
+2026-03-26 10:56:55,382 - INFO - KBank_Samsung - Start Watchdog Timer, txn_id=1111
+2026-03-26 10:56:55,383 - INFO - KBank_Samsung - Start WatchDog Timer (120s)... txn_id=1111
+2026-03-26 10:56:55,383 - INFO - KBank_Samsung - If Withdrawal cannot complete within 120s, Restart apps and click confirm transaction, txn_id=1111
+2026-03-26 10:56:56,730 - INFO - KBank_Samsung - Starting Apps confirm transaction sequence. txn_id=1111
+2026-03-26 10:57:02,962 - INFO - KBank_Samsung - Stop Watchdog Timer, txn_id=1111
+2026-03-26 10:57:02,962 - INFO - KBank_Samsung - Perform Confirm Transaction, and stop Watchdog Timer, txn_id=1111
+2026-03-26 10:57:03,396 - INFO - KBank_Samsung - ERIC callback prepared. txn_id=1111 bankCode=KBANK_COMPANY_WEB deviceId=2312 merchantCode=IBS
+2026-03-26 10:57:03,396 - INFO - KBank_Samsung - ERIC hash=0c227b2ca0805d77d4516a102f76756e txn_id=1111
+2026-03-26 10:57:03,396 - INFO - KBank_Samsung - ERIC callback response received. txn_id=1111 status=200
+2026-03-26 10:57:03,396 - INFO - KBank_Samsung - ERIC callback body. txn_id=1111 body={"code":"400003","msg":"Device is not binded in backoffice yet","data":null}
+2026-03-26 10:57:07,377 - INFO - KBank_Samsung - Back to main Page...
+2026-03-26 10:57:07,377 - INFO - KBank_Samsung - Mobile approval completed. txn_id=1111
+2026-03-26 10:57:07,411 - INFO - KBank_Samsung - Wait for Fund Transfer page to appear.
+2026-03-26 10:57:07,556 - INFO - KBank_Samsung - Button click Fund Transfer to wait for the next withdrawal transaction request... 
+2026-03-26 10:57:07,589 - INFO - KBank_Samsung - Processing payout completed. txn_id=1111
+2026-03-26 10:57:07,591 - INFO - werkzeug - 127.0.0.1 - - [26/Mar/2026 10:57:07] "POST /kbank_company_web/runPython HTTP/1.1" 200 -
+2026-03-26 11:08:33,158 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-26 11:08:33,182 - INFO - KBank_Samsung - WS client started with PID 3328
+2026-03-26 11:08:33,204 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://10.0.0.254:5004
+2026-03-26 11:08:33,204 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-26 11:08:37,848 - INFO - KBank_Samsung - Starting For Chrome Browser...
+2026-03-26 11:08:37,848 - INFO - KBank_Samsung - Starting Cleaning Notification Bar...
+2026-03-26 11:08:37,849 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-26 11:08:37,849 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-26 11:08:37,865 - INFO - KBank_Samsung - Appium process started with PID 21568
+2026-03-26 11:08:37,873 - INFO - KBank_Samsung - Appium server is ready (attempt 1/10)
+2026-03-26 11:08:43,717 - INFO - KBank_Samsung - Clean Phone Notification
+2026-03-26 11:08:43,717 - INFO - KBank_Samsung - Starting KBANK login flow. txn_id=1111
+2026-03-26 11:08:43,717 - INFO - KBank_Samsung - Starting Playwright instance. txn_id=1111
+2026-03-26 11:08:44,381 - INFO - KBank_Samsung - Connecting Playwright to Chrome CDP. txn_id=1111
+2026-03-26 11:08:44,789 - INFO - KBank_Samsung - Browser context ready. txn_id=1111
+2026-03-26 11:08:44,789 - INFO - KBank_Samsung - Creating new browser page. txn_id=1111
+2026-03-26 11:08:47,695 - ERROR - root - LOGIN FAILED for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 278, in kbank_login
+    page.goto("https://kbiz.kasikornbank.com/authen/login.jsp?lang=en", wait_until="domcontentloaded")
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 9054, in goto
+    self._sync(
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_page.py", line 552, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 153, in goto
+    await self._channel.send(
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Page.goto: Target page, context or browser has been closed
+Call log:
+  - navigating to "https://kbiz.kasikornbank.com/authen/login.jsp?lang=en", waiting until "domcontentloaded"
+
+
+2026-03-26 11:08:47,700 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 278, in kbank_login
+    page.goto("https://kbiz.kasikornbank.com/authen/login.jsp?lang=en", wait_until="domcontentloaded")
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 9054, in goto
+    self._sync(
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_page.py", line 552, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 153, in goto
+    await self._channel.send(
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Page.goto: Target page, context or browser has been closed
+Call log:
+  - navigating to "https://kbiz.kasikornbank.com/authen/login.jsp?lang=en", waiting until "domcontentloaded"
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 882, in runPython
+    page = BankBot.kbank_login(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 329, in kbank_login
+    raise Exception(f"Login failed at step: {str(e)}")
+Exception: Login failed at step: Page.goto: Target page, context or browser has been closed
+Call log:
+  - navigating to "https://kbiz.kasikornbank.com/authen/login.jsp?lang=en", waiting until "domcontentloaded"
+
+
+----------------------------------------
+2026-03-26 11:08:59,278 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-26 11:08:59,304 - INFO - KBank_Samsung - WS client started with PID 23404
+2026-03-26 11:08:59,324 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://10.0.0.254:5004
+2026-03-26 11:08:59,324 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-26 11:11:08,007 - INFO - KBank_Samsung - Starting For Chrome Browser...
+2026-03-26 11:11:08,007 - INFO - KBank_Samsung - Starting Cleaning Notification Bar...
+2026-03-26 11:11:08,007 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-26 11:11:08,007 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-26 11:11:08,050 - INFO - KBank_Samsung - Appium process started with PID 1276
+2026-03-26 11:11:08,060 - INFO - KBank_Samsung - Appium server is ready (attempt 1/10)
+2026-03-26 11:11:13,130 - INFO - KBank_Samsung - Clean Phone Notification
+2026-03-26 11:11:13,130 - INFO - KBank_Samsung - Starting KBANK login flow. txn_id=1111
+2026-03-26 11:11:13,130 - INFO - KBank_Samsung - Starting Playwright instance. txn_id=1111
+2026-03-26 11:11:13,887 - INFO - KBank_Samsung - Connecting Playwright to Chrome CDP. txn_id=1111
+2026-03-26 11:11:14,300 - INFO - KBank_Samsung - Browser context ready. txn_id=1111
+2026-03-26 11:11:14,301 - INFO - KBank_Samsung - Creating new browser page. txn_id=1111
+2026-03-26 11:11:18,360 - INFO - KBank_Samsung - Navigating to KBANK login page. txn_id=1111
+2026-03-26 11:11:20,674 - INFO - KBank_Samsung - Login Account...
+2026-03-26 11:11:29,039 - INFO - KBank_Samsung - Button click for 'Fund Transfer', txn_id=1111
+2026-03-26 11:11:30,911 - INFO - KBank_Samsung - Wait for navigate to 'Fund Transfer' Title/Page, txn_id=1111
+2026-03-26 11:11:30,923 - INFO - KBank_Samsung - Processing payout started. txn_id=1111
+2026-03-26 11:11:31,923 - INFO - KBank_Samsung - Starting withdrawal flow. txn_id=1111 to_bank=Bangkok Bank Public Company Limited. to_account=9808607411 amount=105
+2026-03-26 11:11:32,070 - INFO - KBank_Samsung - Open Bank Menu....., txn_id=1111
+2026-03-26 11:11:32,153 - INFO - KBank_Samsung - Fill in Bank Name Bangkok Bank Public Company Limited., txn_id=1111
+2026-03-26 11:11:50,567 - ERROR - root - WITHDRAWAL FAILED for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 357, in kbank_withdrawal
+    page.locator(f"//div[span[normalize-space()='{data['toBankCode']}']]").click()
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 15631, in click
+    self._sync(
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 162, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 566, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.click: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("//div[span[normalize-space()='Bangkok Bank Public Company Limited.']]")
+
+
+2026-03-26 11:11:50,569 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 357, in kbank_withdrawal
+    page.locator(f"//div[span[normalize-space()='{data['toBankCode']}']]").click()
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 15631, in click
+    self._sync(
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 162, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 566, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.click: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("//div[span[normalize-space()='Bangkok Bank Public Company Limited.']]")
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 886, in runPython
+    BankBot.kbank_withdrawal(page, data)
+  File "c:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Web\KBank_Business\kbank_apps_appium_Samsung_16_1.0.4.py", line 421, in kbank_withdrawal
+    raise Exception(f"Withdrawal failed: {str(e)}")
+Exception: Withdrawal failed: Locator.click: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("//div[span[normalize-space()='Bangkok Bank Public Company Limited.']]")
+
+
+----------------------------------------
+2026-03-26 11:12:03,960 - INFO - KBank_Samsung - Logging started: ./logs\KBank_Samsung_Payout.log
+2026-03-26 11:12:03,986 - INFO - KBank_Samsung - WS client started with PID 12976
+2026-03-26 11:12:04,002 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://10.0.0.254:5004
+2026-03-26 11:12:04,003 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-03-26 11:12:08,748 - INFO - KBank_Samsung - Starting For Chrome Browser...
+2026-03-26 11:12:08,748 - INFO - KBank_Samsung - Starting Cleaning Notification Bar...
+2026-03-26 11:12:08,748 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-26 11:12:08,748 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-26 11:12:08,773 - INFO - KBank_Samsung - Appium process started with PID 31540
+2026-03-26 11:12:08,778 - INFO - KBank_Samsung - Appium server is ready (attempt 1/10)
+2026-03-26 11:12:14,790 - INFO - KBank_Samsung - Clean Phone Notification
+2026-03-26 11:12:14,790 - INFO - KBank_Samsung - Starting KBANK login flow. txn_id=1111
+2026-03-26 11:12:14,790 - INFO - KBank_Samsung - Starting Playwright instance. txn_id=1111
+2026-03-26 11:12:15,388 - INFO - KBank_Samsung - Connecting Playwright to Chrome CDP. txn_id=1111
+2026-03-26 11:12:15,792 - INFO - KBank_Samsung - Browser context ready. txn_id=1111
+2026-03-26 11:12:15,792 - INFO - KBank_Samsung - Creating new browser page. txn_id=1111
+2026-03-26 11:12:19,777 - INFO - KBank_Samsung - Navigating to KBANK login page. txn_id=1111
+2026-03-26 11:12:22,138 - INFO - KBank_Samsung - Login Account...
+2026-03-26 11:12:31,028 - INFO - KBank_Samsung - Button click for 'Fund Transfer', txn_id=1111
+2026-03-26 11:12:33,395 - INFO - KBank_Samsung - Wait for navigate to 'Fund Transfer' Title/Page, txn_id=1111
+2026-03-26 11:12:33,395 - INFO - KBank_Samsung - Processing payout started. txn_id=1111
+2026-03-26 11:12:34,399 - INFO - KBank_Samsung - Starting withdrawal flow. txn_id=1111 to_bank=Bangkok Bank to_account=9808607411 amount=105
+2026-03-26 11:12:34,533 - INFO - KBank_Samsung - Open Bank Menu....., txn_id=1111
+2026-03-26 11:12:34,610 - INFO - KBank_Samsung - Fill in Bank Name Bangkok Bank, txn_id=1111
+2026-03-26 11:12:34,688 - INFO - KBank_Samsung - Select the Bank Name/Code Bangkok Bank, txn_id=1111
+2026-03-26 11:12:34,728 - INFO - KBank_Samsung - Fill in Account Number 9808607411, txn_id=1111
+2026-03-26 11:12:34,771 - INFO - KBank_Samsung - Fill in Amount 105, txn_id=1111
+2026-03-26 11:12:34,914 - INFO - KBank_Samsung - Click Next, txn_id=1111
+2026-03-26 11:12:35,936 - INFO - KBank_Samsung - Sufficient Balance... Continue...
+2026-03-26 11:12:40,993 - INFO - KBank_Samsung - Moving to mobile approval Confirm transaction. txn_id=1111
+2026-03-26 11:12:40,993 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-26 11:12:40,993 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-26 11:12:40,993 - INFO - KBank_Samsung - Appium process already exists, skipping new start
+2026-03-26 11:12:40,993 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-26 11:12:40,993 - INFO - KBank_Samsung - Start Appium Driver... txn_id=1111
+2026-03-26 11:12:41,041 - INFO - KBank_Samsung - Open Notification Bar... txn_id=1111
+2026-03-26 11:12:44,644 - INFO - KBank_Samsung - Click KBank Confirm Transaction notification... txn_id=1111
+2026-03-26 11:12:45,646 - INFO - KBank_Samsung - Start Watchdog Timer, txn_id=1111
+2026-03-26 11:12:45,653 - INFO - KBank_Samsung - Start WatchDog Timer (120s)... txn_id=1111
+2026-03-26 11:12:45,654 - INFO - KBank_Samsung - If Withdrawal cannot complete within 120s, Restart apps and click confirm transaction, txn_id=1111
+2026-03-26 11:12:50,982 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-26 11:12:52,426 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-26 11:12:53,846 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-26 11:12:55,257 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-26 11:12:56,625 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-26 11:12:58,291 - INFO - root - No error - Sorry Unable to proceed. Proceeding normally.
+2026-03-26 11:12:58,292 - INFO - KBank_Samsung - Enter KBank Apps Pin... txn_id=1111
+2026-03-26 11:12:58,292 - INFO - KBank_Samsung - Starting Apps confirm transaction sequence. txn_id=1111
+2026-03-26 11:13:08,466 - INFO - KBank_Samsung - Stop Watchdog Timer, txn_id=1111
+2026-03-26 11:13:08,466 - INFO - KBank_Samsung - KBank Apps login and Perform Confirm Transaction, and stop Watchdog Timer, txn_id=1111
+2026-03-26 11:13:09,190 - INFO - KBank_Samsung - 
+
+
+2026-03-26 11:13:09,447 - INFO - KBank_Samsung - 
+
+
+2026-03-26 11:13:09,448 - INFO - KBank_Samsung - ERIC callback prepared. txn_id=1111 bankCode=KBANK_COMPANY_WEB deviceId=2312 merchantCode=IBS
+2026-03-26 11:13:09,448 - INFO - KBank_Samsung - ERIC hash=0c227b2ca0805d77d4516a102f76756e txn_id=1111
+2026-03-26 11:13:09,449 - INFO - KBank_Samsung - ERIC callback response received. txn_id=1111 status=200
+2026-03-26 11:13:09,449 - INFO - KBank_Samsung - ERIC callback body. txn_id=1111 body={"code":"400003","msg":"Device is not binded in backoffice yet","data":null}
+2026-03-26 11:13:11,553 - INFO - KBank_Samsung - Back to main Page...
+2026-03-26 11:13:11,553 - INFO - KBank_Samsung - Mobile approval completed. txn_id=1111
+2026-03-26 11:13:11,570 - INFO - KBank_Samsung - Wait for Fund Transfer page to appear.
+2026-03-26 11:13:12,637 - INFO - KBank_Samsung - Button click Fund Transfer to wait for the next withdrawal transaction request... 
+2026-03-26 11:13:12,662 - INFO - KBank_Samsung - Processing payout completed. txn_id=1111
+2026-03-26 11:13:12,663 - INFO - werkzeug - 127.0.0.1 - - [26/Mar/2026 11:13:12] "POST /kbank_company_web/runPython HTTP/1.1" 200 -
+2026-03-26 11:13:24,111 - INFO - KBank_Samsung - Starting For Chrome Browser...
+2026-03-26 11:13:24,111 - INFO - KBank_Samsung - Starting Cleaning Notification Bar...
+2026-03-26 11:13:24,111 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-26 11:13:24,111 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-26 11:13:24,111 - INFO - KBank_Samsung - Appium process already exists, skipping new start
+2026-03-26 11:13:24,111 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-26 11:13:26,569 - INFO - KBank_Samsung - Clean Phone Notification
+2026-03-26 11:13:26,569 - INFO - KBank_Samsung - Starting KBANK login flow. txn_id=1111
+2026-03-26 11:13:26,569 - INFO - KBank_Samsung - Reusing Playwright instance. txn_id=1111
+2026-03-26 11:13:26,569 - INFO - KBank_Samsung - Reusing existing Chrome CDP browser connection. txn_id=1111
+2026-03-26 11:13:26,569 - INFO - KBank_Samsung - Browser context ready. txn_id=1111
+2026-03-26 11:13:26,569 - INFO - KBank_Samsung - Reusing existing browser page. txn_id=1111
+2026-03-26 11:13:26,601 - INFO - KBank_Samsung - Already on Transfer page, Skip login...
+2026-03-26 11:13:26,601 - INFO - KBank_Samsung - Processing payout started. txn_id=1111
+2026-03-26 11:13:27,606 - INFO - KBank_Samsung - Starting withdrawal flow. txn_id=1111 to_bank=Bangkok Bank to_account=9808607411 amount=100
+2026-03-26 11:13:27,711 - INFO - KBank_Samsung - Open Bank Menu....., txn_id=1111
+2026-03-26 11:13:27,756 - INFO - KBank_Samsung - Fill in Bank Name Bangkok Bank, txn_id=1111
+2026-03-26 11:13:27,820 - INFO - KBank_Samsung - Select the Bank Name/Code Bangkok Bank, txn_id=1111
+2026-03-26 11:13:27,850 - INFO - KBank_Samsung - Fill in Account Number 9808607411, txn_id=1111
+2026-03-26 11:13:27,881 - INFO - KBank_Samsung - Fill in Amount 100, txn_id=1111
+2026-03-26 11:13:27,997 - INFO - KBank_Samsung - Click Next, txn_id=1111
+2026-03-26 11:13:29,017 - INFO - KBank_Samsung - Sufficient Balance... Continue...
+2026-03-26 11:13:34,100 - INFO - KBank_Samsung - Moving to mobile approval Confirm transaction. txn_id=1111
+2026-03-26 11:13:34,100 - INFO - KBank_Samsung - Preparing Appium driver
+2026-03-26 11:13:34,100 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-26 11:13:34,100 - INFO - KBank_Samsung - Appium process already exists, skipping new start
+2026-03-26 11:13:34,100 - INFO - KBank_Samsung - Reusing existing Appium driver session
+2026-03-26 11:13:34,100 - INFO - KBank_Samsung - Start Appium Driver... txn_id=1111
+2026-03-26 11:13:34,326 - INFO - KBank_Samsung - Open Notification Bar... txn_id=1111
+2026-03-26 11:13:40,681 - INFO - KBank_Samsung - Click KBank Confirm Transaction notification... txn_id=1111
+2026-03-26 11:13:41,685 - INFO - KBank_Samsung - Start Watchdog Timer, txn_id=1111
+2026-03-26 11:13:41,687 - INFO - KBank_Samsung - Start WatchDog Timer (120s)... txn_id=1111
+2026-03-26 11:13:41,687 - INFO - KBank_Samsung - If Withdrawal cannot complete within 120s, Restart apps and click confirm transaction, txn_id=1111
+2026-03-26 11:13:44,259 - INFO - KBank_Samsung - Starting Apps confirm transaction sequence. txn_id=1111
+2026-03-26 11:13:49,193 - INFO - KBank_Samsung - Stop Watchdog Timer, txn_id=1111
+2026-03-26 11:13:49,193 - INFO - KBank_Samsung - Perform Confirm Transaction, and stop Watchdog Timer, txn_id=1111
+2026-03-26 11:13:49,822 - INFO - KBank_Samsung - 
+
+
+2026-03-26 11:13:49,895 - INFO - KBank_Samsung - 
+
+
+2026-03-26 11:13:49,895 - INFO - KBank_Samsung - ERIC callback prepared. txn_id=1111 bankCode=KBANK_COMPANY_WEB deviceId=2312 merchantCode=IBS
+2026-03-26 11:13:49,903 - INFO - KBank_Samsung - ERIC hash=0c227b2ca0805d77d4516a102f76756e txn_id=1111
+2026-03-26 11:13:49,904 - INFO - KBank_Samsung - ERIC callback response received. txn_id=1111 status=200
+2026-03-26 11:13:49,904 - INFO - KBank_Samsung - ERIC callback body. txn_id=1111 body={"code":"400003","msg":"Device is not binded in backoffice yet","data":null}
+2026-03-26 11:13:53,535 - INFO - KBank_Samsung - Back to main Page...
+2026-03-26 11:13:53,535 - INFO - KBank_Samsung - Mobile approval completed. txn_id=1111
+2026-03-26 11:13:53,567 - INFO - KBank_Samsung - Wait for Fund Transfer page to appear.
+2026-03-26 11:13:56,128 - INFO - KBank_Samsung - Button click Fund Transfer to wait for the next withdrawal transaction request... 
+2026-03-26 11:13:56,153 - INFO - KBank_Samsung - Processing payout completed. txn_id=1111
+2026-03-26 11:13:56,161 - INFO - werkzeug - 127.0.0.1 - - [26/Mar/2026 11:13:56] "POST /kbank_company_web/runPython HTTP/1.1" 200 -

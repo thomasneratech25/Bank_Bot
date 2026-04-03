@@ -3,6 +3,7 @@ import io
 import sys
 import json
 import time
+import random
 import hashlib
 import logging
 import requests
@@ -24,6 +25,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 # 1.0.2
 # - Fix cannot proceed to withdrawal 
+
 
 # ================== Eric WS_Client Settings =================
 
@@ -332,7 +334,7 @@ class BankBot(Appium_Driver, Eric):
         
         # If already on Main Page, Skip login
         try:
-            WebDriverWait(driver, 10).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Loans")))
+            WebDriverWait(driver, 3).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Loans")))
             logger.info("Already login, Skipped!")
             return  # Already Login
         except:
@@ -357,6 +359,12 @@ class BankBot(Appium_Driver, Eric):
         # Use Appium Driver
         driver = cls.use_appium_driver()
 
+        # Random Click History and Approval
+        logger.info("Random Click 'History' or 'Approval' ")
+        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.XPATH, random.choice(['//android.widget.ImageView[contains(@content-desc,"Tab 4 of 5")]', '//android.widget.ImageView[contains(@content-desc,"Tab 2 of 5")]'])))).click()
+
+        time.sleep(2)
+        
         # Wait and Button Click "Banking"
         logger.info("Click Banking (QR Code)")
         WebDriverWait(driver, 30).until(EC.element_to_be_clickable((AppiumBy.XPATH, '//android.widget.Button[contains(@content-desc,"Banking")]'))).click()

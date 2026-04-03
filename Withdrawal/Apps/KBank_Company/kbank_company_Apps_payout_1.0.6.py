@@ -3,6 +3,7 @@ import io
 import sys
 import json
 import time
+import random
 import hashlib
 import logging
 import requests
@@ -18,12 +19,14 @@ from appium.webdriver.common.appiumby import AppiumBy
 from appium.options.android import UiAutomator2Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
 
 # ================== Version Change ==========================
 
-# 1.0.2
-# - Fix cannot proceed to withdrawal 
+# 1.0.6
+# - Everytime Complete 1 withdrawal then kill apps
+
 
 # ================== Eric WS_Client Settings =================
 
@@ -92,7 +95,14 @@ class Appium_Driver():
                 options.device_name = "androidtesting"
                 options.automation_name = "UiAutomator2"
                 options.new_command_timeout = 86400
-
+                options.set_capability("appium:disableWindowAnimation", True)
+                # 尝试隐藏辅助功能检测
+                options.set_capability("appium:skipDeviceInitialization", True)
+                options.set_capability("appium:skipServerInstallation", True)
+                # 移除可能暴露的系统权限请求
+                options.set_capability("appium:autoGrantPermissions", False)
+                options.set_capability("appium:noReset", True)
+                
                 APPIUM_DRIVER = webdriver.Remote("http://127.0.0.1:8021", options=options)
                 APPIUM_DRIVER.update_settings({"waitForIdleTimeout": 0})   ### This setting SUPER IMPORTANT Settings, This can make Appium 2–3× faster because it stops waiting for Android UI idle.
             else:
@@ -283,6 +293,7 @@ class BankBot(Appium_Driver, Eric):
             WebDriverWait(driver, 10).until(EC.presence_of_element_located((AppiumBy.XPATH, "//android.view.View[@content-desc='Enter PIN']")))
 
             # Enter Pin
+            logger.info("Enter KBank Apps Pin... txn_id=%s")
             pin = str(data["pin"])
             for digit in pin:
                 digit_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, digit)))
@@ -290,20 +301,17 @@ class BankBot(Appium_Driver, Eric):
                 # "Sorry, Unable to proceed The system cannot proceed this transaction, please try again later.")
                 error_unable_process_this_transaction()
             
-            logger.info("Enter KBank Apps Pin... txn_id=%s")
-            
         # Use Appium Driver
         driver = cls.use_appium_driver()
 
         # Forces the terminal to handle those sea creatures correctly
-        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
         logger.info("="*50)
         logger.info(f"🎰 Starting KBank Company Login Flow ....  {get_txn_id(data)}")
         logger.info("="*50)
 
-        # ADB Shell Never Screen Timeout
-        logger.info("ADB Shell Screen never Time Out ...")
-        driver.execute_script("mobile: shell", {"command": "settings","args": ["put", "system", "screen_off_timeout", "2147483647"]})
+        # # ADB Shell Never Screen Timeout
+        # logger.info("ADB Shell Screen never Time Out ...")
+        # driver.execute_script("mobile: shell", {"command": "settings","args": ["put", "system", "screen_off_timeout", "2147483647"]})
 
         # Check Apps State
         # 1 = Not Running, 2 = Suspended, 3 = Background, 4 = Foreground
@@ -332,7 +340,7 @@ class BankBot(Appium_Driver, Eric):
         
         # If already on Main Page, Skip login
         try:
-            WebDriverWait(driver, 10).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Loans")))
+            WebDriverWait(driver, 3).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Loans")))
             logger.info("Already login, Skipped!")
             return  # Already Login
         except:
@@ -349,6 +357,24 @@ class BankBot(Appium_Driver, Eric):
     @classmethod
     def kbank_withdrawal(cls, data):
 
+        def human_type(driver, element, text, min_delay=0.2, max_delay=0.25):
+            """
+            Taps an element to open the Android keyboard, then uses W3C Action Chains 
+            to type the given text character by character with random delays.
+            """
+            # Tap the field to pop up the Android keyboard
+            element.click()
+
+            time.sleep(0.5)
+
+            # Queue up the keystrokes and random pauses
+            for char in text:
+                actions = ActionChains(driver)
+                actions.send_keys(char)
+                actions.perform()
+
+                time.sleep(random.uniform(min_delay, max_delay))
+
         # Forces the terminal to handle those sea creatures correctly
         logger.info("="*50)
         logger.info(f"🎰 Starting KBANK Company Withdrawal Flow .... {get_txn_id(data)}")
@@ -357,6 +383,12 @@ class BankBot(Appium_Driver, Eric):
         # Use Appium Driver
         driver = cls.use_appium_driver()
 
+        # Random Click History and Approval
+        logger.info("Random Click 'History' or 'Approval' ")
+        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.XPATH, random.choice(['//android.widget.ImageView[contains(@content-desc,"Tab 4 of 5")]', '//android.widget.ImageView[contains(@content-desc,"Tab 2 of 5")]'])))).click()
+
+        time.sleep(2)
+        
         # Wait and Button Click "Banking"
         logger.info("Click Banking (QR Code)")
         WebDriverWait(driver, 30).until(EC.element_to_be_clickable((AppiumBy.XPATH, '//android.widget.Button[contains(@content-desc,"Banking")]'))).click()
@@ -378,7 +410,9 @@ class BankBot(Appium_Driver, Eric):
         time.sleep(1)
         
         # Fill Bank Name
-        driver.find_elements(AppiumBy.CLASS_NAME, "android.widget.EditText")[-1].send_keys(data["toBankCode"])
+        bank_input_element = driver.find_elements(AppiumBy.CLASS_NAME, "android.widget.EditText")[-1]
+        # Human Type
+        human_type(driver, bank_input_element, data["toBankCode"])
 
         time.sleep(1)
 
@@ -388,7 +422,9 @@ class BankBot(Appium_Driver, Eric):
 
         # Fill Account Number
         logger.info(f"Fill Account Number {str(data['toAccountNum'])} ...")
-        WebDriverWait(driver,20).until(EC.element_to_be_clickable((AppiumBy.ANDROID_UIAUTOMATOR,'new UiSelector().className("android.widget.EditText").instance(0)'))).send_keys(str(data["toAccountNum"]))
+        account_input = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().className("android.widget.EditText").instance(0)')))
+        # Human Type
+        human_type(driver, account_input, str(data["toAccountNum"]))
 
         # Press Enter
         logger.info("Press Enter ")
@@ -396,8 +432,10 @@ class BankBot(Appium_Driver, Eric):
         
         # Fill Amount
         logger.info(f"Fill Amount {str(data['amount'])} ...")
-        WebDriverWait(driver,20).until(EC.element_to_be_clickable((AppiumBy.ANDROID_UIAUTOMATOR,'new UiSelector().className("android.widget.EditText").instance(1)'))).send_keys(str(data["amount"]))
-        
+        amount_input = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().className("android.widget.EditText").instance(1)')))  
+        # Human Type
+        human_type(driver, amount_input, str(data["amount"]))
+
         # Press Enter 
         if driver.is_keyboard_shown():
             driver.hide_keyboard()
@@ -438,6 +476,10 @@ class BankBot(Appium_Driver, Eric):
         # Wait and Button Click "Back to main page"
         logger.info("Click Back to Main Page ")
         WebDriverWait(driver,20).until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID,"Back to main page"))).click()
+
+        # Kill Apps
+        APPIUM_DRIVER.terminate_app("com.kasikornbank.kbiz")
+
 
 # ================== Code Start Here ==================
 

@@ -325,7 +325,6 @@ class BankBot(Automation):
         txn_id = get_txn_id(data)
 
         # Forces the terminal to handle those sea creatures correctly
-        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
         logger.info("="*50)
         logger.info(f"🎰 Starting SCB Company Login Flow .... {txn_id}")
         logger.info("="*50)
