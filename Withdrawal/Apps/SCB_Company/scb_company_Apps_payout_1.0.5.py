@@ -511,7 +511,7 @@ def runPython():
             BankBot.scbAnywhere_login(data)
 
             # Withdrawal Process
-            # BankBot.scbAnywhere_withdrawal(data)
+            BankBot.scbAnywhere_withdrawal(data)
 
             # Return Successful, if withdrawal Successful
             return jsonify({"success": True,"transactionId": data.get("transactionId")})

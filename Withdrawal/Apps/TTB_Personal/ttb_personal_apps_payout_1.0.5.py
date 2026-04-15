@@ -336,46 +336,46 @@ class BankBot(Appium_Driver, Eric):
         logger.info("Fill Account No ...")
         WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.ID, "com.TMBTOUCH.PRODUCTION:id/edt_account_no"))).send_keys(str(data["toAccountNum"]))
         
-        # Wait and Fill Amount
-        logger.info("Fill Amount ...")
-        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.ID, "com.TMBTOUCH.PRODUCTION:id/edt_amount"))).click()
-        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "com.TMBTOUCH.PRODUCTION:id/edt_amount"))).send_keys(str(data["amount"]))
-        driver.hide_keyboard()
+        # # Wait and Fill Amount
+        # logger.info("Fill Amount ...")
+        # WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.ID, "com.TMBTOUCH.PRODUCTION:id/edt_amount"))).click()
+        # WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "com.TMBTOUCH.PRODUCTION:id/edt_amount"))).send_keys(str(data["amount"]))
+        # driver.hide_keyboard()
         
-        # Scroll Down 
-        logger.info("Scroll Down ...")
-        driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,'new UiScrollable(new UiSelector().scrollable(true)).scrollForward()')
+        # # Scroll Down 
+        # logger.info("Scroll Down ...")
+        # driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,'new UiScrollable(new UiSelector().scrollable(true)).scrollForward()')
 
-        # Button Click Next
-        logger.info("Click Next ...")
-        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "com.TMBTOUCH.PRODUCTION:id/btn_next"))).click()
+        # # Button Click Next
+        # logger.info("Click Next ...")
+        # WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "com.TMBTOUCH.PRODUCTION:id/btn_next"))).click()
         
-        # Button Click Confirm
-        logger.info("Click Confirm Transaction ...")
-        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "com.TMBTOUCH.PRODUCTION:id/btn_confirm"))).click()
+        # # Button Click Confirm
+        # logger.info("Click Confirm Transaction ...")
+        # WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "com.TMBTOUCH.PRODUCTION:id/btn_confirm"))).click()
 
-        # Wait for Enter Pin
-        logger.info("Waiting for Enter Pin ...")
-        WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.ID, "com.TMBTOUCH.PRODUCTION:id/title_pin")))
+        # # Wait for Enter Pin
+        # logger.info("Waiting for Enter Pin ...")
+        # WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.ID, "com.TMBTOUCH.PRODUCTION:id/title_pin")))
         
-        # Click Passcode Number
-        logger.info('Key Login Passcode ...')
-        pin = str(data["pin"])
-        for digit in pin:
-            driver.find_element(By.ID, f"com.TMBTOUCH.PRODUCTION:id/pin_key_{digit}").click()
+        # # Click Passcode Number
+        # logger.info('Key Login Passcode ...')
+        # pin = str(data["pin"])
+        # for digit in pin:
+        #     driver.find_element(By.ID, f"com.TMBTOUCH.PRODUCTION:id/pin_key_{digit}").click()
 
-        time.sleep(2)
+        # time.sleep(2)
 
-        # Call Back Eric API
-        cls.eric_api(data)
+        # # Call Back Eric API
+        # cls.eric_api(data)
 
-        # Scroll to bottom
-        logger.info("Scroll to bottom")
-        driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, 'new UiScrollable(new UiSelector().scrollable(true)).scrollToEnd(10)')
+        # # Scroll to bottom
+        # logger.info("Scroll to bottom")
+        # driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, 'new UiScrollable(new UiSelector().scrollable(true)).scrollToEnd(10)')
 
-        # Click Transfer More
-        logger.info("Click 'Transfer More'")
-        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.ID, "com.TMBTOUCH.PRODUCTION:id/buttonTransferMore"))).click()
+        # # Click Transfer More
+        # logger.info("Click 'Transfer More'")
+        # WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.ID, "com.TMBTOUCH.PRODUCTION:id/buttonTransferMore"))).click()
 
         logger.info("Withdrawal Completed ")
         

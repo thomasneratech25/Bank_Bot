@@ -2343,3 +2343,175 @@ Error: Could not find a connected Android device in 20000ms
 2026-03-30 16:11:26,713 - INFO - KBANK Company Apps - Current App state: 3
 2026-03-30 16:11:26,713 - INFO - KBANK Company Apps - App state is 3. Performing a clean restart to prevent auto-crash.
 2026-03-30 16:11:31,386 - ERROR - KBANK Company Apps - App failed to reach foreground. Retrying once...
+2026-04-06 17:59:07,778 - INFO - KBANK Company Apps - Starting for Eric WS_Client ...
+2026-04-06 17:59:08,838 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5104
+ * Running on http://192.168.241.6:5104
+2026-04-06 17:59:08,838 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2026-04-06 17:59:15,726 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-04-06 17:59:15,727 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-04-06 17:59:15,737 - INFO - KBANK Company Apps - Appium process started with PID 32644
+2026-04-06 17:59:17,280 - INFO - KBANK Company Apps - Appium server is ready (attempt 1/10)
+2026-04-06 17:59:20,614 - INFO - KBANK Company Apps - ==================================================
+2026-04-06 17:59:20,615 - INFO - KBANK Company Apps - 🎰 Starting KBank Company Login Flow ....  1111
+2026-04-06 17:59:20,616 - INFO - KBANK Company Apps - ==================================================
+2026-04-06 17:59:20,890 - INFO - KBANK Company Apps - Current App state: 3
+2026-04-06 17:59:20,890 - INFO - KBANK Company Apps - App state is 3. Performing a clean restart to prevent auto-crash.
+2026-04-06 17:59:28,984 - INFO - KBANK Company Apps - Click Login
+2026-04-06 17:59:29,625 - INFO - KBANK Company Apps - Enter KBank Apps Pin... txn_id=%s
+2026-04-06 17:59:30,379 - INFO - KBANK Company Apps - No pop up ['error - Sorry Unable to proceed.' ], Proceeding normally...
+2026-04-06 17:59:31,189 - INFO - KBANK Company Apps - No pop up ['error - Sorry Unable to proceed.' ], Proceeding normally...
+2026-04-06 17:59:31,980 - INFO - KBANK Company Apps - No pop up ['error - Sorry Unable to proceed.' ], Proceeding normally...
+2026-04-06 17:59:32,760 - INFO - KBANK Company Apps - No pop up ['error - Sorry Unable to proceed.' ], Proceeding normally...
+2026-04-06 17:59:33,574 - INFO - KBANK Company Apps - No pop up ['error - Sorry Unable to proceed.' ], Proceeding normally...
+2026-04-06 17:59:34,358 - INFO - KBANK Company Apps - No pop up ['error - Sorry Unable to proceed.' ], Proceeding normally...
+2026-04-06 17:59:34,359 - INFO - KBANK Company Apps - ==================================================
+2026-04-06 17:59:34,360 - INFO - KBANK Company Apps - 🎰 Starting KBANK Company Withdrawal Flow .... 1111
+2026-04-06 17:59:34,360 - INFO - KBANK Company Apps - ==================================================
+2026-04-06 17:59:34,360 - INFO - KBANK Company Apps - Preparing Appium driver
+2026-04-06 17:59:34,361 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-04-06 17:59:34,361 - INFO - KBANK Company Apps - Appium process already exists, skipping new start
+2026-04-06 17:59:34,362 - INFO - KBANK Company Apps - Reusing existing Appium driver session
+2026-04-06 17:59:34,362 - INFO - KBANK Company Apps - Random Click 'History' or 'Approval' 
+2026-04-06 17:59:38,493 - INFO - KBANK Company Apps - Click Banking (QR Code)
+2026-04-06 17:59:38,859 - INFO - KBANK Company Apps - Click Transfer
+2026-04-06 17:59:39,143 - INFO - KBANK Company Apps - Wait 'From' ...
+2026-04-06 17:59:42,194 - INFO - KBANK Company Apps - Select Bank (Drop Down Menu)
+2026-04-06 17:59:49,013 - INFO - KBANK Company Apps - Press Enter 
+2026-04-06 17:59:49,104 - INFO - KBANK Company Apps - Fill Account Number 9808607411 ...
+2026-04-06 17:59:53,029 - INFO - KBANK Company Apps - Press Enter 
+2026-04-06 17:59:53,116 - INFO - KBANK Company Apps - Fill Amount 1000 ...
+2026-04-06 17:59:55,629 - INFO - KBANK Company Apps - Scroll Down 
+2026-04-06 18:00:07,027 - ERROR - root - CRITICAL ERROR for Transaction 1111:
+Traceback (most recent call last):
+  File "C:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Apps\KBank_Company\kbank_company_Apps_payout_1.0.7.py", line 503, in runPython
+    BankBot.kbank_withdrawal(data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Thomas\Desktop\bank_bot-main\playwright\THAI\Withdrawal\Apps\KBank_Company\kbank_company_Apps_payout_1.0.7.py", line 445, in kbank_withdrawal
+    driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,'new UiScrollable(new UiSelector().scrollable(true)).scrollForward()')
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python314\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 816, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python314\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 446, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Thomas\AppData\Local\Programs\Python\Python314\Lib\site-packages\appium\webdriver\errorhandler.py", line 125, in check_response
+    raise exception_class(msg=message, stacktrace=format_stacktrace(stacktrace))
+selenium.common.exceptions.NoSuchElementException: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\build\lib\commands\find.js:62:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:12:16)
+    at async AndroidUiautomator2Driver.findElement (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\build\lib\basedriver\commands\find.js:27:16)
+
+----------------------------------------
+2026-04-06 18:00:07,029 - INFO - werkzeug - 127.0.0.1 - - [06/Apr/2026 18:00:07] "[35m[1mPOST /kbank_company/runPython HTTP/1.1[0m" 500 -
+2026-04-06 18:02:17,790 - INFO - KBANK Company Apps - ⏳ 2.9 minutes of inactivity. Killing SCB app...
+2026-04-06 18:32:21,728 - INFO - KBANK Company Apps - ⏳ 2.9 minutes of inactivity. Killing SCB app...
+2026-04-06 18:32:22,150 - ERROR - KBANK Company Apps - Failed to kill app: Message: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R8YY91PEE4B shell dumpsys activity processes' exited with code 1'; Command output: adb.exe: device 'R8YY91PEE4B' not found
+
+Stacktrace:
+UnknownError: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R8YY91PEE4B shell dumpsys activity processes' exited with code 1'; Command output: adb.exe: device 'R8YY91PEE4B' not found
+
+    at getResponseForW3CError (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\errors.js:824:36)
+    at asyncHandler (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\protocol.js:430:77)
+The above error is caused by
+Error: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R8YY91PEE4B shell dumpsys activity processes' exited with code 1'; Command output: adb.exe: device 'R8YY91PEE4B' not found
+
+    at ChildProcess.<anonymous> (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\teen_process\build\lib\exec.js:114:43)
+    at ChildProcess.emit (node:events:508:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:305:5)
+2026-04-06 18:35:22,163 - INFO - KBANK Company Apps - ⏳ 2.9 minutes of inactivity. Killing SCB app...
+2026-04-06 18:35:22,244 - ERROR - KBANK Company Apps - Failed to kill app: Message: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R8YY91PEE4B shell dumpsys activity processes' exited with code 1'; Command output: adb.exe: device 'R8YY91PEE4B' not found
+
+Stacktrace:
+UnknownError: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R8YY91PEE4B shell dumpsys activity processes' exited with code 1'; Command output: adb.exe: device 'R8YY91PEE4B' not found
+
+    at getResponseForW3CError (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\errors.js:824:36)
+    at asyncHandler (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\protocol.js:430:77)
+The above error is caused by
+Error: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R8YY91PEE4B shell dumpsys activity processes' exited with code 1'; Command output: adb.exe: device 'R8YY91PEE4B' not found
+
+    at ChildProcess.<anonymous> (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\teen_process\build\lib\exec.js:114:43)
+    at ChildProcess.emit (node:events:508:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:305:5)
+2026-04-06 18:38:22,257 - INFO - KBANK Company Apps - ⏳ 2.9 minutes of inactivity. Killing SCB app...
+2026-04-06 18:38:22,655 - ERROR - KBANK Company Apps - Failed to kill app: Message: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R8YY91PEE4B shell dumpsys activity processes' exited with code 1'; Command output: adb.exe: device 'R8YY91PEE4B' not found
+
+Stacktrace:
+UnknownError: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R8YY91PEE4B shell dumpsys activity processes' exited with code 1'; Command output: adb.exe: device 'R8YY91PEE4B' not found
+
+    at getResponseForW3CError (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\errors.js:824:36)
+    at asyncHandler (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\protocol.js:430:77)
+The above error is caused by
+Error: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R8YY91PEE4B shell dumpsys activity processes' exited with code 1'; Command output: adb.exe: device 'R8YY91PEE4B' not found
+
+    at ChildProcess.<anonymous> (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\teen_process\build\lib\exec.js:114:43)
+    at ChildProcess.emit (node:events:508:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:305:5)
+2026-04-06 19:46:41,189 - INFO - KBANK Company Apps - ⏳ 2.9 minutes of inactivity. Killing SCB app...
+2026-04-06 19:46:41,467 - ERROR - KBANK Company Apps - Failed to kill app: Message: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R8YY91PEE4B shell dumpsys activity processes' exited with code 1'; Command output: adb.exe: device 'R8YY91PEE4B' not found
+
+Stacktrace:
+UnknownError: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R8YY91PEE4B shell dumpsys activity processes' exited with code 1'; Command output: adb.exe: device 'R8YY91PEE4B' not found
+
+    at getResponseForW3CError (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\errors.js:824:36)
+    at asyncHandler (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\protocol.js:430:77)
+The above error is caused by
+Error: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R8YY91PEE4B shell dumpsys activity processes' exited with code 1'; Command output: adb.exe: device 'R8YY91PEE4B' not found
+
+    at ChildProcess.<anonymous> (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\teen_process\build\lib\exec.js:114:43)
+    at ChildProcess.emit (node:events:508:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:305:5)
+2026-04-07 13:47:36,119 - INFO - KBANK Company Apps - ⏳ 2.9 minutes of inactivity. Killing SCB app...
+2026-04-07 13:47:36,551 - ERROR - KBANK Company Apps - Failed to kill app: Message: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R8YY91PEE4B shell dumpsys activity processes' exited with code 1'; Command output: adb.exe: device 'R8YY91PEE4B' not found
+
+Stacktrace:
+UnknownError: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R8YY91PEE4B shell dumpsys activity processes' exited with code 1'; Command output: adb.exe: device 'R8YY91PEE4B' not found
+
+    at getResponseForW3CError (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\errors.js:824:36)
+    at asyncHandler (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\protocol.js:430:77)
+The above error is caused by
+Error: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R8YY91PEE4B shell dumpsys activity processes' exited with code 1'; Command output: adb.exe: device 'R8YY91PEE4B' not found
+
+    at ChildProcess.<anonymous> (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\teen_process\build\lib\exec.js:114:43)
+    at ChildProcess.emit (node:events:508:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:305:5)
+2026-04-07 13:50:40,353 - INFO - KBANK Company Apps - ⏳ 2.9 minutes of inactivity. Killing SCB app...
+2026-04-07 13:50:40,453 - ERROR - KBANK Company Apps - Failed to kill app: Message: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R8YY91PEE4B shell dumpsys activity processes' exited with code 1'; Command output: adb.exe: device 'R8YY91PEE4B' not found
+
+Stacktrace:
+UnknownError: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R8YY91PEE4B shell dumpsys activity processes' exited with code 1'; Command output: adb.exe: device 'R8YY91PEE4B' not found
+
+    at getResponseForW3CError (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\errors.js:824:36)
+    at asyncHandler (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\protocol.js:430:77)
+The above error is caused by
+Error: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R8YY91PEE4B shell dumpsys activity processes' exited with code 1'; Command output: adb.exe: device 'R8YY91PEE4B' not found
+
+    at ChildProcess.<anonymous> (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\teen_process\build\lib\exec.js:114:43)
+    at ChildProcess.emit (node:events:508:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:305:5)
+2026-04-07 13:53:40,465 - INFO - KBANK Company Apps - ⏳ 2.9 minutes of inactivity. Killing SCB app...
+2026-04-07 13:53:40,496 - ERROR - KBANK Company Apps - Failed to kill app: Message: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R8YY91PEE4B shell dumpsys activity processes' exited with code 1'; Command output: adb.exe: device 'R8YY91PEE4B' not found
+
+Stacktrace:
+UnknownError: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R8YY91PEE4B shell dumpsys activity processes' exited with code 1'; Command output: adb.exe: device 'R8YY91PEE4B' not found
+
+    at getResponseForW3CError (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\errors.js:824:36)
+    at asyncHandler (C:\Users\Thomas\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\build\lib\protocol\protocol.js:430:77)
+The above error is caused by
+Error: Error executing adbExec. Original error: 'Command ''C:\Users\Thomas\AppData\Local\Android\Sdk\platform-tools\adb.exe' -P 5037 -s R8YY91PEE4B shell dumpsys activity processes' exited with code 1'; Command output: adb.exe: device 'R8YY91PEE4B' not found
+
+    at ChildProcess.<anonymous> (C:\Users\Thomas\.appium\node_modules\appium-uiautomator2-driver\node_modules\teen_process\build\lib\exec.js:114:43)
+    at ChildProcess.emit (node:events:508:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:305:5)

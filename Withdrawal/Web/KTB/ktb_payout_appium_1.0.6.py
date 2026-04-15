@@ -587,14 +587,14 @@ class BankBot(Automation, Appium_Driver, Eric):
 
         # Click "Add Details"  
         logger.info("Click 'Add Details' ....")
-        page.locator("//span[normalize-space()='Add Details']").click()
+        page.locator("//span[normalize-space()='Add Details']").click(timeout=100000)
 
         # Delay 1 second
         page.wait_for_timeout(1500)
 
         # Wait for "value date" appear
         logger.info("Wait for 'Value Date' ...")
-        page.locator("//label[normalize-space()='Value Date']").wait_for(state="visible", timeout=30000)
+        page.locator("//label[normalize-space()='Value Date']").wait_for(state="visible", timeout=100000)
 
         # Delay 1 second
         page.wait_for_timeout(1500)
